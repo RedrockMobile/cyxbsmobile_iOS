@@ -20,6 +20,7 @@
 
 @property (nonatomic, weak) UILabel *corporationLabel;
 @property (nonatomic, weak) UILabel *copyrightLabel;
+@property (nonatomic, weak) UILabel *icpLabel;
 
 @end
 
@@ -112,7 +113,7 @@
         self.corporationLabel = corporationLabel;
         
         UILabel *copyrightLabel = [[UILabel alloc] init];
-        copyrightLabel.text = @"Copyright © 2015-2020 All Rights Reserverd";
+        copyrightLabel.text = @"Copyright © 2015-2024 All Rights Reserverd";
         copyrightLabel.textAlignment = NSTextAlignmentCenter;
         copyrightLabel.font = [UIFont systemFontOfSize:11*fontSizeScaleRate_SE];
         if (@available(iOS 11.0, *)) {
@@ -122,6 +123,7 @@
         }
         [self addSubview:copyrightLabel];
         self.copyrightLabel = copyrightLabel;
+        [self addICPLabel];
         [self addLearnMoreBtns];
     }
     return self;
@@ -160,6 +162,33 @@
         make.height.equalTo(leftBtn);
     }];
     
+}
+
+///添加备案信息
+-(void)addICPLabel {
+    UILabel *icpLabel = [[UILabel alloc] init];
+    icpLabel.text = @"ICP备案号：渝ICP备17002788号-7A";
+    icpLabel.textAlignment = NSTextAlignmentCenter;
+    icpLabel.font = [UIFont systemFontOfSize:11*fontSizeScaleRate_SE];
+    icpLabel.userInteractionEnabled = YES;
+    if (@available(iOS 11.0, *)) {
+        icpLabel.textColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#294169" alpha:0.4] darkColor:[UIColor colorWithHexString:@"#EFEFF2" alpha:0.29]];
+    } else {
+        icpLabel.textColor = [UIColor colorWithRed:41/255.0 green:65/255.0 blue:105/255.0 alpha:0.4];
+    }
+    [self addSubview:icpLabel];
+    self.icpLabel = icpLabel;
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] init];
+    [tapGes addTarget:self action:@selector(icpLabelClicked)];
+    [icpLabel addGestureRecognizer:tapGes];
+}
+
+///备案label被点击
+-(void)icpLabelClicked {
+    NSURL *url = [NSURL URLWithString:@"https://beian.miit.gov.cn"];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+    }
 }
 
 //用户协议
@@ -236,13 +265,18 @@
         make.bottom.equalTo(self.copyrightLabel.mas_top).offset(-5);
     }];
     
+    [self.copyrightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.bottom.equalTo(self.icpLabel.mas_top).offset(-5);
+    }];
+    
     if (IS_IPHONEX) {
-        [self.copyrightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.icpLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self);
             make.bottom.equalTo(self).offset(-40);
         }];
     } else {
-        [self.copyrightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.icpLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self);
             make.bottom.equalTo(self).offset(-20);
         }];
