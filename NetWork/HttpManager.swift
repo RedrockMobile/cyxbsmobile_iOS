@@ -85,7 +85,7 @@ extension HttpManager {
         let parameters: [String: Any] = [
             "refreshToken": refreshToken
         ]
-        return SessionManager.shared.ry_request(APIConfig.current.api("/magipoke/token/refresh"), method: .post, parameters: parameters)
+        return SessionManager.shared.ry_request(APIConfig.current.api("/magipoke/token/refresh"), method: .post, parameters: parameters, encoding: JSONEncoding())
     }
     
     /// 查询是否有未读消息
