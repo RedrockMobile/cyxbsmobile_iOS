@@ -19,25 +19,6 @@
     return self;
 }
 
-- (UILabel *)mainLabel{
-    if (!_mainLabel) {
-        UILabel *mainLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0427*SCREEN_WIDTH, 10, 200, 22)];
-        mainLabel.font = [UIFont fontWithName:PingFangSCRegular size:15];
-//        mainLabel.textColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#15315B" alpha:1] darkColor:[UIColor colorWithHexString:@"#FFFFFF" alpha:1]];
-        mainLabel.text = @"逛逛邮问";
-        _mainLabel = mainLabel;
-    }
-    return _mainLabel;
-}
-
-- (GotoButton *)gotoButton{
-    if (!_gotoButton) {
-        GotoButton *gotobutton = [[GotoButton alloc]initWithFrame:CGRectMake(0.781*SCREEN_WIDTH, 9, 66, 28) AndTitle:@"去完成"];
-        _gotoButton = gotobutton;
-    }
-    return _gotoButton;
-}
-
 - (void)setData:(StampTaskData *)data{
     NSString *addString = [NSString stringWithFormat:@"+%d", data.gain_stamp];;
     NSString *combinedString = [NSString stringWithFormat:@"%@ %@", data.title, addString];
@@ -59,31 +40,47 @@
         self.gotoButton.enabled = NO;
         [self.gotoButton setTitle:@"已完成" forState:UIControlStateNormal];
     }
-    [self.gotoButton addTarget:self action:@selector(test:) forControlEvents:UIControlEventTouchUpInside];
+    [self.gotoButton addTarget:self action:@selector(uploadTaskProgress:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 //做任务
-- (void)test:(GotoButton *)sender{
-    if ([sender.target isEqualToString:@"斐然成章"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToReleaseDynamic" object:nil];
-    }else if ([sender.target isEqualToString:@"绑定志愿者账号"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToZhiyuan" object:nil];
-    }else if ([sender.target isEqualToString:@"完善个人信息"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToProfile" object:nil];
-    }else if ([sender.target isEqualToString:@"发表一次动态"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToAttitude" object:nil];
-    }else if ([sender.target isEqualToString:@"使用美食板块"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToFood" object:nil];
-    }else if ([sender.target isEqualToString:@"使用一次没课约"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToWeDate" object:nil];
-    }else if ([sender.target isEqualToString:@"在表态广场完成一次表态"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToProfile" object:nil];
-    }else if ([sender.target isEqualToString:@"今日打卡"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"checkInToday" object:nil];
-    }else if ([sender.target isEqualToString:@"参加一次活动"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToActivity" object:nil];
-    }else {
+- (void)uploadTaskProgress:(GotoButton *)sender{
+    NSDictionary *targetToNotification = @{
+        @"斐然成章": @"jumpToReleaseDynamic",
+        @"绑定志愿者账号": @"jumpToZhiyuan",
+        @"完善个人信息": @"jumpToProfile",
+        @"发表一次表态": @"jumpToAttitude",
+        @"使用美食板块": @"jumpToFood",
+        @"使用一次没课约": @"jumpToWeDate",
+        @"在表态广场完成一次表态": @"jumpToProfile",
+        @"今日打卡": @"checkInToday",
+        @"参加一次活动": @"jumpToActivity"
+    };
+    NSString *notificationName = targetToNotification[sender.target];
+    if (notificationName) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil];
+    } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"jumpToProfile" object:nil];
     }
 }
+
+- (UILabel *)mainLabel{
+    if (!_mainLabel) {
+        UILabel *mainLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0427*SCREEN_WIDTH, 10, 200, 22)];
+        mainLabel.font = [UIFont fontWithName:PingFangSCRegular size:15];
+        mainLabel.textColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#15315B" alpha:1] darkColor:[UIColor colorWithHexString:@"#FFFFFF" alpha:1]];
+        mainLabel.text = @"逛逛邮问";
+        _mainLabel = mainLabel;
+    }
+    return _mainLabel;
+}
+
+- (GotoButton *)gotoButton{
+    if (!_gotoButton) {
+        GotoButton *gotobutton = [[GotoButton alloc]initWithFrame:CGRectMake(0.781*SCREEN_WIDTH, 9, 66, 28) AndTitle:@"去完成"];
+        _gotoButton = gotobutton;
+    }
+    return _gotoButton;
+}
+
 @end
