@@ -39,6 +39,9 @@
 ///被投票的选项名
 @property (nonatomic, strong) NSString *votedChoice;
 
+///是否已投票
+@property (nonatomic, assign) BOOL getVoted;
+
 ///展示投票选项的表格视图
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -103,7 +106,7 @@
 - (void)loadAnimate {
     NSLog(@"%@", self.votedChoice);
     //如果已投票
-    if (![self.votedChoice isEqualToString:@""]) {
+    if (self.getVoted) {
         [UIView setAnimationsEnabled:YES];
         [self putAnimation];
     }
@@ -132,6 +135,11 @@
         self.percentStringArray = model.percentStrArray;
         self.percentNumArray = model.percentNumArray;
         self.votedChoice = model.getVoted;
+        if (![self.votedChoice isEqualToString:@""] && self.votedChoice != nil) {
+            self.getVoted = YES;
+        } else {
+            self.getVoted = NO;
+        }
         // 重新加载tableView
         [self.tableView reloadData];
         NSLog(@"detailModel---%@", model.title);
@@ -148,32 +156,10 @@
 
 /// 投票动画
 - (void)putAnimation {
-    ExpressDetailCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    // 获取cell的宽度
-    CGFloat cellWidth = cell.bounds.size.width;
-    // 占比宽度
-    CGFloat gradientWidth;
+//    ExpressDetailCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     // 所有的cell都变颜色
     for (ExpressDetailCell *cell in self.tableView.visibleCells) {
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-        // 先全部恢复原始状态
-        [cell backToOriginState];
-        // 分别得到gradientWidth
-        gradientWidth = cellWidth * [self.percentNumArray[indexPath.row] doubleValue];
-        if (cell.titleLab.text == self.votedChoice) {
-            // 是选中的cell
-            [cell selectCell];
-        } else {
-            [cell otherCell];
-        }
-        if (![self.votedChoice isEqualToString:@""]) {
-            // 渐变动画
-            [UIView animateWithDuration:2.0 animations:^{
-                cell.gradientView.frame = CGRectMake(0, 0, gradientWidth, cell.bounds.size.height);
-            } completion:^(BOOL finished) {
-                cell.gradientView.frame = CGRectMake(0, 0, gradientWidth, cell.bounds.size.height);
-            }];
-        }
+        [cell animationWithGetVoted:self.getVoted votedChoice:self.votedChoice];
     }
 }
 
@@ -183,6 +169,16 @@
     UIImpactFeedbackGenerator *feedbackGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleMedium];
     // 触发震动效果
     [feedbackGenerator impactOccurred];
+}
+
+/// 刷新投票数据
+/// 为什么要有这个方法：调用tableView reloadData时，由于复用机制实际上会导致cell的实际顺序发生变化，因此gradientView的长度与选项的对应会错乱，导致动画逻辑也错乱
+- (void)reloadPercent {
+    for (ExpressDetailCell *cell in self.tableView.visibleCells) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        cell.percent = self.percentNumArray[indexPath.row];
+        cell.percentLabel.text = self.percentStringArray[indexPath.row];
+    }
 }
 
 - (void)setPosition {
@@ -232,15 +228,16 @@
         // cell的标题
         cell.titleLab.text = self.choices[indexPath.row];
         // 如果已经投票
-        if (![self.votedChoice isEqualToString:@""]) {
-            cell.percent.text = self.percentStringArray[indexPath.row];
-            NSLog(@"cell百分比:%@",cell.percent.text);
+        if (self.getVoted) {
+            cell.percent = self.percentNumArray[indexPath.row];
+            cell.percentLabel.text = self.percentStringArray[indexPath.row];
+            NSLog(@"cell百分比:%@",cell.percentLabel.text);
             // 没有数据情况.空值或不为字符串
-            if (cell.percent.text == NULL || ![cell.percent.text isKindOfClass:[NSString class]]) {
-                cell.percent.text = @"nil";
+            if (cell.percentLabel.text == NULL || ![cell.percentLabel.text isKindOfClass:[NSString class]]) {
+                cell.percentLabel.text = @"nil";
             }
         } else {
-            cell.percent.text = @"";
+            cell.percentLabel.text = @"";
         }
     }
     return cell;
@@ -261,9 +258,8 @@
     [self tapFeedback];
     // MARK: DELETE 撤销投票
     // 如果已经投票
-    if (![self.votedChoice isEqualToString:@""]) {
+    if (self.getVoted) {
         //撤销投票
-        [cell backToOriginState];// cell撤销动画
         [self.declareModel requestDeclareDataWithId:self.theId Success:^(bool declareSuccess) {
             if (declareSuccess) {
                 NSLog(@"撤销成功");
@@ -271,8 +267,6 @@
         } Failure:^(NSError * _Nonnull error) {
             // 网络错误页面
             [NewQAHud showHudAtWindowWithStr:@"撤销投票失败" enableInteract:YES];
-//            [self.view removeAllSubviews];
-//            [self.view addSubview:self.netWrong];
         }];
     }
     if (![self.votedChoice isEqualToString:cell.titleLab.text]) {
@@ -281,12 +275,13 @@
         // MARK: PUT 投票
         [self.putModel requestPutDataWithId:self.theId Choice:cell.titleLab.text Success:^(ExpressPickPutItem * _Nonnull model) {
             self.votedChoice = cell.titleLab.text;
+            self.getVoted = YES;
             self.percentNumArray = model.percentNumArray;
             NSLog(@"发布成功");
             // 更新百分比数组
             self.percentStringArray = model.percentStrArray;
             NSLog(@"百分比array:%@",self.percentStringArray);
-            [self.tableView reloadData];
+            [self reloadPercent];
             [self putAnimation];  // 动画
             [self tapFeedback];  // 雷达效果
             
@@ -294,14 +289,13 @@
             NSLog(@"发布失败");
             // 网络错误页面
             [NewQAHud showHudAtWindowWithStr:@"投票失败" enableInteract:YES];
-    //        [self.view removeAllSubviews];
-    //        [self.view addSubview:self.netWrong];
         }];
     } else {
         // 选中选项为之前选中的选项
         // 仅取消投票
         self.votedChoice = @"";
-        [self.tableView reloadData];
+        self.getVoted = NO;
+        [self reloadPercent];
         [self putAnimation];
     }
     

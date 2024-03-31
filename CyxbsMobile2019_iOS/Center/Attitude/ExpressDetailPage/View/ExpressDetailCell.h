@@ -14,18 +14,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *titleLab;
 @property (nonatomic, strong) UIImageView *checkImage;
-@property (nonatomic, strong) UILabel *percent;
+@property (nonatomic, strong) UILabel *percentLabel;
 /// 渐变层
 @property (nonatomic, strong) UIView *gradientView;
+/// 选项的投票比例
+@property (nonatomic, strong) NSNumber *percent;
+/// 选项的投票比例
+@property (nonatomic, strong) NSNumber *prePercent;
 
 /// 选中后的第一步是恢复初始状态
-- (void)backToOriginState;
+- (void)unselectedState;
 
 /// 选中的cell的UI情况
 - (void)selectCell;
 
 /// 其他cell的UI情况
 - (void)otherCell;
+
+///动画
+- (void)animationWithGetVoted:(BOOL)getVoted votedChoice:(NSString *)votedChoice;
 
 @end
 
