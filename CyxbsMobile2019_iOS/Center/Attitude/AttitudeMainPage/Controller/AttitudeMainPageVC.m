@@ -20,7 +20,7 @@
 #import "AttitudeMainModel.h"
 #import "AttitudeMainPageItem.h"
 /// 详情数据
-#import "ExpressPickGetModel.h"
+#import "ExpressDetailModel.h"
 #import "ExpressPickGetItem.h"
 /// 鉴权
 #import "AttitudeSelfPageModel.h"

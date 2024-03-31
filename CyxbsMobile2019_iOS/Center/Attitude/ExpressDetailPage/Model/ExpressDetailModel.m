@@ -6,12 +6,12 @@
 //  Copyright © 2023 Redrock. All rights reserved.
 //
 
-#import "ExpressPickGetModel.h"
+#import "ExpressDetailModel.h"
 
-@implementation ExpressPickGetModel
+@implementation ExpressDetailModel
 
 // 获取表态页详细信息 参数id
-- (void)requestGetDetailDataWithId:(NSNumber *)theId
+- (void)requestDetailDataWithId:(NSNumber *)theId
                            Success:(void(^)(ExpressPickGetItem *model))success
                            Failure:(void(^)(NSError * _Nonnull))failure {
     NSDictionary *param = @{ @"id": theId };

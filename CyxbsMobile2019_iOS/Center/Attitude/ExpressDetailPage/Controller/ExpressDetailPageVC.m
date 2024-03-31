@@ -10,9 +10,9 @@
 #import "ExpressDetailPageVC.h"
 
 // model
-#import "ExpressPickGetModel.h"
+#import "ExpressDetailModel.h"
 #import "ExpressPickGetItem.h"
-#import "ExpressPickPutModel.h"
+#import "ExpressPutModel.h"
 #import "ExpressPickPutItem.h"
 #import "ExpressDeclareModel.h"
 
@@ -53,10 +53,10 @@
 @property (nonatomic, strong) UIImageView *backgroundImage;
 
 /// 详细信息
-@property (nonatomic, strong) ExpressPickGetModel *getDetailModel;
+@property (nonatomic, strong) ExpressDetailModel *detailModel;
 
 /// PUT 投票
-@property (nonatomic, strong) ExpressPickPutModel *putPickModel;
+@property (nonatomic, strong) ExpressPutModel *putModel;
 
 /// 撤销投票
 @property (nonatomic, strong) ExpressDeclareModel *declareModel;
@@ -124,7 +124,7 @@
 /// 首先请求获取详情信息
 - (void)requestDetails {
     
-    [self.getDetailModel requestGetDetailDataWithId:self.theId Success:^(ExpressPickGetItem * _Nonnull model) {
+    [self.detailModel requestDetailDataWithId:self.theId Success:^(ExpressPickGetItem * _Nonnull model) {
         // 标题
         self.detailTitle.text = model.title;
         self.attitudeTitle = model.title;
@@ -279,7 +279,7 @@
         // 选中选项不为之前选中的选项
         // 更新投票选项
         // MARK: PUT 投票
-        [self.putPickModel requestPickDataWithId:self.theId Choice:cell.titleLab.text Success:^(ExpressPickPutItem * _Nonnull model) {
+        [self.putModel requestPutDataWithId:self.theId Choice:cell.titleLab.text Success:^(ExpressPickPutItem * _Nonnull model) {
             self.votedChoice = cell.titleLab.text;
             self.percentNumArray = model.percentNumArray;
             NSLog(@"发布成功");
@@ -363,18 +363,18 @@
     return _backgroundImage;
 }
 
-- (ExpressPickGetModel *)getDetailModel {
-    if (!_getDetailModel) {
-        _getDetailModel = [[ExpressPickGetModel alloc] init];
+- (ExpressDetailModel *)detailModel {
+    if (!_detailModel) {
+        _detailModel = [[ExpressDetailModel alloc] init];
     }
-    return _getDetailModel;
+    return _detailModel;
 }
 
-- (ExpressPickPutModel *)putPickModel {
-    if (!_putPickModel) {
-        _putPickModel = [[ExpressPickPutModel alloc] init];
+- (ExpressPutModel *)putModel {
+    if (!_putModel) {
+        _putModel = [[ExpressPutModel alloc] init];
     }
-    return _putPickModel;
+    return _putModel;
 }
 
 - (ExpressDeclareModel *)declareModel {

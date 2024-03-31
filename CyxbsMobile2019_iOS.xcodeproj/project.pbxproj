@@ -486,8 +486,8 @@
 		B0F71C8C2ABC71B200F8B1AC /* AttitudeHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C532ABC71B200F8B1AC /* AttitudeHomeCell.m */; };
 		B0F71C8D2ABC71B200F8B1AC /* AttitudeMainDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C542ABC71B200F8B1AC /* AttitudeMainDefaultView.m */; };
 		B0F71C8E2ABC71B200F8B1AC /* AttitudeNetWrong.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C552ABC71B200F8B1AC /* AttitudeNetWrong.m */; };
-		B0F71C902ABC71B200F8B1AC /* ExpressPickPutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C5F2ABC71B200F8B1AC /* ExpressPickPutModel.m */; };
-		B0F71C912ABC71B200F8B1AC /* ExpressPickGetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C602ABC71B200F8B1AC /* ExpressPickGetModel.m */; };
+		B0F71C902ABC71B200F8B1AC /* ExpressPutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C5F2ABC71B200F8B1AC /* ExpressPutModel.m */; };
+		B0F71C912ABC71B200F8B1AC /* ExpressDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C602ABC71B200F8B1AC /* ExpressDetailModel.m */; };
 		B0F71C922ABC71B200F8B1AC /* ExpressDeclareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C622ABC71B200F8B1AC /* ExpressDeclareModel.m */; };
 		B0F71C932ABC71B200F8B1AC /* ExpressPickGetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C652ABC71B200F8B1AC /* ExpressPickGetItem.m */; };
 		B0F71C942ABC71B200F8B1AC /* ExpressPickPutItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F71C662ABC71B200F8B1AC /* ExpressPickPutItem.m */; };
@@ -1486,9 +1486,9 @@
 		B0F71C582ABC71B200F8B1AC /* AttitudeMainDefaultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttitudeMainDefaultView.h; sourceTree = "<group>"; };
 		B0F71C5B2ABC71B200F8B1AC /* ExpressDetailPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressDetailPageVC.h; sourceTree = "<group>"; };
 		B0F71C5E2ABC71B200F8B1AC /* ExpressDeclareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressDeclareModel.h; sourceTree = "<group>"; };
-		B0F71C5F2ABC71B200F8B1AC /* ExpressPickPutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressPickPutModel.m; sourceTree = "<group>"; };
-		B0F71C602ABC71B200F8B1AC /* ExpressPickGetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressPickGetModel.m; sourceTree = "<group>"; };
-		B0F71C612ABC71B200F8B1AC /* ExpressPickPutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressPickPutModel.h; sourceTree = "<group>"; };
+		B0F71C5F2ABC71B200F8B1AC /* ExpressPutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressPutModel.m; sourceTree = "<group>"; };
+		B0F71C602ABC71B200F8B1AC /* ExpressDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressDetailModel.m; sourceTree = "<group>"; };
+		B0F71C612ABC71B200F8B1AC /* ExpressPutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressPutModel.h; sourceTree = "<group>"; };
 		B0F71C622ABC71B200F8B1AC /* ExpressDeclareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressDeclareModel.m; sourceTree = "<group>"; };
 		B0F71C642ABC71B200F8B1AC /* ExpressDeclareItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressDeclareItem.h; sourceTree = "<group>"; };
 		B0F71C652ABC71B200F8B1AC /* ExpressPickGetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressPickGetItem.m; sourceTree = "<group>"; };
@@ -1496,7 +1496,7 @@
 		B0F71C672ABC71B200F8B1AC /* ExpressDeclareItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressDeclareItem.m; sourceTree = "<group>"; };
 		B0F71C682ABC71B200F8B1AC /* ExpressPickPutItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressPickPutItem.h; sourceTree = "<group>"; };
 		B0F71C692ABC71B200F8B1AC /* ExpressPickGetItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressPickGetItem.h; sourceTree = "<group>"; };
-		B0F71C6A2ABC71B200F8B1AC /* ExpressPickGetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressPickGetModel.h; sourceTree = "<group>"; };
+		B0F71C6A2ABC71B200F8B1AC /* ExpressDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressDetailModel.h; sourceTree = "<group>"; };
 		B0F71C6C2ABC71B200F8B1AC /* ExpressDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressDetailCell.h; sourceTree = "<group>"; };
 		B0F71C6D2ABC71B200F8B1AC /* ExpressDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressDetailCell.m; sourceTree = "<group>"; };
 		B0F71C702ABC71B200F8B1AC /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
@@ -5184,10 +5184,10 @@
 		B0F71C5D2ABC71B200F8B1AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B0F71C612ABC71B200F8B1AC /* ExpressPickPutModel.h */,
-				B0F71C5F2ABC71B200F8B1AC /* ExpressPickPutModel.m */,
-				B0F71C6A2ABC71B200F8B1AC /* ExpressPickGetModel.h */,
-				B0F71C602ABC71B200F8B1AC /* ExpressPickGetModel.m */,
+				B0F71C612ABC71B200F8B1AC /* ExpressPutModel.h */,
+				B0F71C5F2ABC71B200F8B1AC /* ExpressPutModel.m */,
+				B0F71C6A2ABC71B200F8B1AC /* ExpressDetailModel.h */,
+				B0F71C602ABC71B200F8B1AC /* ExpressDetailModel.m */,
 				B0F71C5E2ABC71B200F8B1AC /* ExpressDeclareModel.h */,
 				B0F71C622ABC71B200F8B1AC /* ExpressDeclareModel.m */,
 				B0F71C632ABC71B200F8B1AC /* items */,
@@ -6534,7 +6534,7 @@
 				758C7E522BA4700F002CA3F4 /* MXObjCBackButton.m in Sources */,
 				1A15DF97238D03B3005E0843 /* CheckInContentView.m in Sources */,
 				1A4A466C24C97E2A0033734E /* UserProtocolViewController.m in Sources */,
-				B0F71C902ABC71B200F8B1AC /* ExpressPickPutModel.m in Sources */,
+				B0F71C902ABC71B200F8B1AC /* ExpressPutModel.m in Sources */,
 				14F6F54C2AFB8CDA007C7CA6 /* ScheduleDataFetch.swift in Sources */,
 				1893DC9126EA3375007E871E /* MGDGroup.m in Sources */,
 				73AAA1CF26C918250084E44D /* DetailsGoodsTableView.m in Sources */,
@@ -6827,7 +6827,7 @@
 				14B73F71281BED7B00D08ADD /* ActiveMessage.m in Sources */,
 				AA0DDB5B286C8B1A00802324 /* PMPBasicNavBarController.m in Sources */,
 				73AAA1CB26C918250084E44D /* DetailsTaskModel.m in Sources */,
-				B0F71C912ABC71B200F8B1AC /* ExpressPickGetModel.m in Sources */,
+				B0F71C912ABC71B200F8B1AC /* ExpressDetailModel.m in Sources */,
 				14F6F4FB2AFB8171007C7CA6 /* AppDelegate.swift in Sources */,
 				D0101D572433C885004337ED /* NSLayoutConstraint+SDMask.m in Sources */,
 				18CDF4BB257F8DBD006E8E5C /* ResetPwdViewController.m in Sources */,

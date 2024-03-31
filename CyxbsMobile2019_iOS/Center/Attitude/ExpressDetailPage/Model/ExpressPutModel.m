@@ -6,19 +6,15 @@
 //  Copyright © 2023 Redrock. All rights reserved.
 //
 
-#import "ExpressPickPutModel.h"
+#import "ExpressPutModel.h"
 
-@implementation ExpressPickPutModel
+@implementation ExpressPutModel
 
 // 表态投票 body参数id，choices
-- (void)requestPickDataWithId:(NSNumber *)theID
+- (void)requestPutDataWithId:(NSNumber *)theID
                        Choice:(NSString *)choice
                                Success:(void(^)(ExpressPickPutItem *model))success
                                Failure:(void(^)(NSError * _Nonnull))failure {
-//    NSDictionary *params = @{
-//        @"choice": choice,
-//        @"id": theID
-//    };
     
     [HttpTool.shareTool
      form:Center_PUT_AttitudeExpressPick_API
