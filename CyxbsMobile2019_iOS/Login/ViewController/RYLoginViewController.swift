@@ -386,7 +386,8 @@ extension RYLoginViewController {
         
         if let tokenModel = UserModel.default.token {
             if let didRead = UserDefaultsManager.shared.didReadUserAgreementBefore, didRead {
-                if (Date().timeIntervalSince1970 - tokenModel.iat) <= (tokenModel.exp - tokenModel.iat) / 2 {
+                //离上次刷新token不足5小时，不请求新的token
+                if Date().timeIntervalSince(UserDefaultsManager.shared.latestRequestToken ?? Date(timeIntervalSince1970: 0)) / 3600 <= 5 {
                     
                     afterCallAction(showVC: false, action: action)
                     return
@@ -403,6 +404,7 @@ extension RYLoginViewController {
         afterCallAction(showVC: true, action: action)
     }
     
+    ///使用refreshToken请求新的Token
     static func requestNewToken(refreshToken: String, success: @escaping (Bool) -> ()) {
         HttpManager.shared.magipoke_token_refresh(refreshToken: refreshToken).ry_JSON { response in
             
