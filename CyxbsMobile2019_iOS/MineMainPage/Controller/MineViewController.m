@@ -121,7 +121,7 @@
     MineTopBlurView *blurView = self.blurView;
     [blurView.headImgBtn sd_setImageWithURL:[NSURL URLWithString:item.headImgUrl] forState:UIControlStateNormal];
     blurView.realNameLabel.text = item.realName;
-    blurView.mottoLabel.text = @"快来红岩网校和我一起玩吧⁓";
+    blurView.introductionLabel.text = @"快来红岩网校和我一起玩吧⁓";
     [self.signView setSignDay:item.checkInDay];
     BOOL canCheckIn = !item.isCheckedToday;
     [self.signView setSignBtnEnable:canCheckIn];
