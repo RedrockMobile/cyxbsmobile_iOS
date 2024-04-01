@@ -116,7 +116,7 @@
 }
 
 - (void)updateUserInfoInUserItem {
-    [CheckInModel requestCheckInInfo];
+    [CheckInModel requestCheckInInfoSucceeded:nil Failed:nil];
     UserItem *item = [UserItem defaultItem];
     MineTopBlurView *blurView = self.blurView;
     [blurView.headImgBtn sd_setImageWithURL:[NSURL URLWithString:item.headImgUrl] forState:UIControlStateNormal];

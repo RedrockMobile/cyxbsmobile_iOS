@@ -38,7 +38,7 @@
     self.contentView = contentView;
     
     //检查签到情况
-    [CheckInModel requestCheckInInfo];
+    [CheckInModel requestCheckInInfoSucceeded:nil Failed:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
