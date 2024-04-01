@@ -33,10 +33,8 @@
         NSInteger status = [object[@"status"] intValue];
         if (status == 10000) {
             ExpressPickPutItem *pickModel = [[ExpressPickPutItem alloc] initWithDictionary:object[@"data"]];
-            NSLog(@"%@",object);
             [pickModel votedPercenteCalculateToNSNumber:pickModel.putStatistic];
             pickModel.percentStrArray = [pickModel votedPercentCalculateToString:pickModel.putStatistic];
-            NSLog(@"put-numArray:%@",pickModel.percentNumArray);
             if (success) {
                 success(pickModel);
             }
@@ -45,7 +43,6 @@
      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure) {
             failure(error);
-            NSLog(@"%@",error);
         }
         }];
     
