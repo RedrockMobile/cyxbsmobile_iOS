@@ -253,7 +253,7 @@
 // 选中
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //邮票任务进度上传
-    [TaskManager.shared uploadTaskProgressWithTitle:@"发表一次动态" stampCount:10 remindText:@"今日已完成表态1次，获得10张邮票"];
+    [TaskManager.shared uploadTaskProgressWithTitle:@"发表一次表态" stampCount:10 remindText:@"今日已完成表态1次，获得10张邮票"];
     ExpressDetailCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [self tapFeedback];
     // MARK: DELETE 撤销投票
