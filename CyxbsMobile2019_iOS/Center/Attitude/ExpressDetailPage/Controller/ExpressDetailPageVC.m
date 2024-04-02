@@ -65,10 +65,10 @@
 @property (nonatomic, strong) ExpressDeclareModel *declareModel;
 
 /// 投票百分比字符串数组
-@property (nonatomic, strong) NSArray *percentStringArray;
+@property (nonatomic, copy) NSArray<NSString *> *percentStringArray;
 
 /// 投票比例（NSNumber）数组
-@property (nonatomic, strong) NSArray *percentNumArray;
+@property (nonatomic, copy) NSArray<NSNumber *> *percentNumArray;
 
 /// 网络错误页面
 @property (nonatomic, strong) AttitudeNetWrong *netWrong;

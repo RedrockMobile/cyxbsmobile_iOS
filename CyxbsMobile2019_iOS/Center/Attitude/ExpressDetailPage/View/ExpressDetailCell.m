@@ -16,14 +16,10 @@
         self.backgroundColor = UIColor.whiteColor;  // 无黑夜模式
         self.contentView.backgroundColor = [UIColor colorWithHexString:@"#0028FC" alpha:0.05];
     }
-    return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
     [self.contentView addSubview:self.gradientView];
     [self.contentView addSubview:self.titleLab];
     [self setTitlePosition];
+    return self;
 }
 
 #pragma mark - Method
@@ -37,6 +33,7 @@
         // 颜色改变
         self.titleLab.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.7];
         self.percentLabel.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
+    } completion:^(BOOL finished) {
         [self.checkImage removeFromSuperview];
         [self.percentLabel removeFromSuperview];
     }];
@@ -57,7 +54,6 @@
 
 /// 其他cell的UI情况
 - (void)otherCell {
-    [self.checkImage removeFromSuperview];
     [self.contentView addSubview:self.percentLabel];
     [self addViewsAndPosition];
     [UIView animateWithDuration:0.5 animations:^{
@@ -66,6 +62,8 @@
         // 颜色改变
         self.titleLab.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.7];
         self.percentLabel.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
+    } completion:^(BOOL finished) {
+        [self.checkImage removeFromSuperview];
     }];
 }
 
@@ -174,7 +172,7 @@
 
 - (UIView *)gradientView {
     if (_gradientView == nil) {
-        _gradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.bounds.size.height)];
+        _gradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
     }
     return _gradientView;
 }
