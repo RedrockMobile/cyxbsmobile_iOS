@@ -17,8 +17,7 @@
 
 @implementation DetailsGoodsTableView
 
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
-{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     self = [super initWithFrame:frame style:style];
     if (self) {
         [self configureView];
@@ -60,4 +59,5 @@
    _dataAry = dataAry;
    [self reloadData];
 }
+
 @end

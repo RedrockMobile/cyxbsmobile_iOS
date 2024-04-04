@@ -68,6 +68,16 @@
     [self.horizontalScrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
+- (void)setCornerRadiousForView: (UIView *)view conerRadious: (CGFloat) radious {
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
+                                                   byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
+                                                         cornerRadii:CGSizeMake(radious, radious)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = view.bounds;
+    maskLayer.path = maskPath.CGPath;
+    view.layer.mask = maskLayer;
+}
+
 #pragma mark - configure
 
 - (void)configureView {
@@ -168,7 +178,7 @@
     }];
 }
 
-//MARK:table view delegate
+//MARK: table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -276,7 +286,7 @@
         _horizontalScrollView.backgroundColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#FFFFFF" alpha:0.9] darkColor:[UIColor colorWithHexString:@"#1D1D1D" alpha:0.8]];
         _horizontalScrollView.showsHorizontalScrollIndicator = NO;
         _horizontalScrollView.pagingEnabled = YES;
-        _horizontalScrollView.layer.cornerRadius = 20;
+        [self setCornerRadiousForView:_horizontalScrollView conerRadious:20];
         [_horizontalScrollView addObserver:self forKeyPath:@"contentOffset" options:(NSKeyValueObservingOptionNew) context:nil];
     }
     return _horizontalScrollView;
