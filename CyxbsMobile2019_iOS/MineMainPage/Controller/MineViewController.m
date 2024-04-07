@@ -25,6 +25,7 @@
 
 #import "MineMessageVC.h"//消息中心模块by ssr，将接入router技术
 #import "RemindHUD.h"
+#import "CheckInViewController.h"
 
 //获取用户关注的人和粉丝的个人信息
 #define fansAndFollowsInfo @"/magipoke-loop/user/fansAndFollowsInfo"
@@ -71,7 +72,7 @@
 /// 签到相关的一块 view
 @property(nonatomic, strong)MineSignView *signView;
 
-/// /// 签到相关的一块 view 下面的 tableView
+/// 签到相关的一块 view 下面的 tableView
 @property(nonatomic, strong)UITableView *tableView;
 
 /// 挡在底部，用来避免因为 tabbar 半透明而导致的 tabbar 颜色变化
@@ -320,6 +321,9 @@
 - (void)addSignView {
     MineSignView *view = [[MineSignView alloc] init];
     self.signView = view;
+    self.signView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signViewClicked)];
+    [self.signView addGestureRecognizer:tapGes];
     [self.backBoardView addSubview:view];
     
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -472,7 +476,7 @@
     [CheckInModel CheckInSucceeded:^{
         [self.signView setSignBtnEnable:NO];
         [self.signView setSignDay:[UserItemTool defaultItem].checkInDay];
-        [RemindHUD.shared showDefaultHUDWithText:@"签到成功" completion:nil];
+        [RemindHUD.shared showDefaultHUDWithText:@"签到成功，邮票+10" completion:nil];
     } Failed:^(NSError * _Nonnull err) {
         [RemindHUD.shared showDefaultHUDWithText:@"签到失败" completion:nil];
     }];
@@ -502,6 +506,13 @@
     vc.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+///点击签到的view后调用
+- (void)signViewClicked {
+    CheckInViewController *vc = [[CheckInViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 @end

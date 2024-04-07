@@ -89,7 +89,11 @@
 //CheckInContentViewDelegate代理方法：
 //点击返回按钮后调用
 - (void)backButtonClicked {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.navigationController != nil) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if (self.presentingViewController != nil) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 //点击积分商城页面的签到按钮后调用
