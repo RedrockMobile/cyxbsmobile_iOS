@@ -54,10 +54,10 @@ extension RYScheduleInteractionFact {
         Int(collectionView.contentOffset.x / collectionView.bounds.width / CGFloat(collectionView.ry_layout?.pageShows ?? 1) + 0.5)
     }
     
-    func scroll(to section: Int, animated: Bool = true) {
+    func scroll(to section: Int, animated: Bool = false) {
         let visibleSection = min(max(0, section), 23)
         let pageWidth = collectionView.bounds.width / CGFloat(collectionView.ry_layout?.pageShows ?? 1) * CGFloat(visibleSection)
-        collectionView.setContentOffset(CGPoint(x: pageWidth, y: collectionView.contentOffset.y), animated: true)
+        collectionView.setContentOffset(CGPoint(x: pageWidth, y: collectionView.contentOffset.y), animated: animated)
     }
     
     func scrollToNowWeek() {

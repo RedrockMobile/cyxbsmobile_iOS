@@ -14,7 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - Alamofire (5.9.0)
+  - Alamofire (5.9.1)
   - AlicloudHTTPDNS (2.1.0):
     - AlicloudSender
     - AlicloudUT
@@ -27,7 +27,7 @@ PODS:
   - AlicloudUTDID (1.5.0.94)
   - AlicloudUtils (1.4.1):
     - AlicloudUTDID
-  - AMap3DMap-NO-IDFA (9.7.0):
+  - AMap3DMap-NO-IDFA (10.0.600):
     - AMapFoundation-NO-IDFA (>= 1.8.0)
   - AMapFoundation-NO-IDFA (1.8.2)
   - AMapLocation-NO-IDFA (2.10.0):
@@ -35,10 +35,10 @@ PODS:
   - Bugly (2.5.93)
   - EMASRest (11.1.1.2)
   - FluentDarkModeKit (1.0.4)
-  - FMDB (2.7.9):
-    - FMDB/standard (= 2.7.9)
-  - FMDB/standard (2.7.9)
-  - IQKeyboardManager (6.5.17)
+  - FMDB (2.7.10):
+    - FMDB/standard (= 2.7.10)
+  - FMDB/standard (2.7.10)
+  - IQKeyboardManager (6.5.18)
   - JXBanner (0.3.6):
     - JXBanner/Banner (= 0.3.6)
     - JXBanner/PageControl (= 0.3.6)
@@ -70,20 +70,20 @@ PODS:
     - JXPageControl/Common
   - JXPageControl/Transform (0.1.5):
     - JXPageControl/Common
-  - JXPagingView (2.1.2):
-    - JXPagingView/Pager (= 2.1.2)
-    - JXPagingView/Paging (= 2.1.2)
-  - JXPagingView/Pager (2.1.2)
-  - JXPagingView/Paging (2.1.2)
-  - JXSegmentedView (1.3.0)
-  - LookinServer (1.2.7):
-    - LookinServer/Core (= 1.2.7)
-  - LookinServer/Core (1.2.7)
+  - JXPagingView (2.1.3):
+    - JXPagingView/Pager (= 2.1.3)
+    - JXPagingView/Paging (= 2.1.3)
+  - JXPagingView/Pager (2.1.3)
+  - JXPagingView/Paging (2.1.3)
+  - JXSegmentedView (1.3.1)
+  - LookinServer (1.2.8):
+    - LookinServer/Core (= 1.2.8)
+  - LookinServer/Core (1.2.8)
   - MarkdownKit (1.7.1)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
   - MJExtension (3.4.2)
-  - MJRefresh (3.7.7)
+  - MJRefresh (3.7.9)
   - NudeIn (1.2.8)
   - ProgressHUD (13.7.2)
   - RxCocoa (6.6.0):
@@ -96,21 +96,21 @@ PODS:
   - RYTransitioningDelegateSwift (0.2.3)
   - SDCycleScrollView (1.82):
     - SDWebImage (>= 5.0.0)
-  - SDWebImage (5.19.0):
-    - SDWebImage/Core (= 5.19.0)
-  - SDWebImage/Core (5.19.0)
+  - SDWebImage (5.19.1):
+    - SDWebImage/Core (= 5.19.1)
+  - SDWebImage/Core (5.19.1)
   - SnapKit (5.7.1)
   - SwiftyJSON (5.0.1)
-  - TOCropViewController (2.6.1)
+  - TOCropViewController (2.7.2)
   - TZImagePickerController (3.8.4):
     - TZImagePickerController/Basic (= 3.8.4)
     - TZImagePickerController/Location (= 3.8.4)
   - TZImagePickerController/Basic (3.8.4)
   - TZImagePickerController/Location (3.8.4)
   - UMCCommonLog (2.0.2)
-  - UMCommon (7.4.5):
+  - UMCommon (7.4.6):
     - UMDevice
-  - UMDevice (3.3.0)
+  - UMDevice (3.4.0)
   - UMShare/Core (6.10.10):
     - UMCommon
   - UMShare/Social/QQ (6.10.10):
@@ -189,7 +189,7 @@ SPEC REPOS:
     - AlicloudUTDID
     - AlicloudUtils
     - EMASRest
-  https://github.com/CocoaPods/specs:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Alamofire
     - AMap3DMap-NO-IDFA
@@ -233,30 +233,30 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
-  Alamofire: 02b772c9910e8eba1a079227c32fbd9e46c90a24
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   AlicloudHTTPDNS: fc256d8741c8163a8f3171d63fec30e5b5cf410d
   AlicloudSender: 1f468b6bd962a099ffc19d45e3608b0fe98f259d
   AlicloudUT: 6d1cf30d57d096b7e9bb4b069dd0ba6ad59a3338
   AlicloudUTDID: 7323c443dcdf9a73e2224dc6ce51703671d7a765
   AlicloudUtils: 873a76615bebcee8b1996f20820d366e433c3eab
-  AMap3DMap-NO-IDFA: a3516859f2e82eda9fe9309c57d862f1543c2de4
+  AMap3DMap-NO-IDFA: bbec94f265ca66c0744a5634dec31cc6090fc970
   AMapFoundation-NO-IDFA: 6ce0ef596d4eb8d934ff498e56747b6de1247b05
   AMapLocation-NO-IDFA: 735791aeb1ba52dff666e4158b86caf4b68b5be7
   Bugly: b8715e6ec4004b7f7fbffab0643ba80545aee3da
   EMASRest: 8df6f87836767a9415ad5cc4af739bc9d215b475
   FluentDarkModeKit: b6317653a00329564582884772ec57c4eaad1a1f
-  FMDB: aa44149f6fb634b1ac54f64f47064bb0d0c5a032
-  IQKeyboardManager: 904d013844bbae0abe073f015487bfebe5476335
+  FMDB: eae540775bf7d0c87a5af926ae37af69effe5a19
+  IQKeyboardManager: 67f92bb29b650c094c40bd11c0545b47bdd25c5b
   JXBanner: 348dbef856e786494cbf30fb45d6b84826f2d3c5
   JXPageControl: e9487b39e2e58fc17790833214f3b8e935bef98b
-  JXPagingView: 90924b364a2ff7e94db534fad1fa50925ff69ee4
-  JXSegmentedView: fec0d335355b6e019c494fe2e030bde8a36d2df6
-  LookinServer: 36f1a0ad280de34b9794cf8825867fcc2dd93e75
+  JXPagingView: afdd2e9af09c90160dd232b970d603cc6e7ddd0e
+  JXSegmentedView: 4b0e5506a9883da26472c9c0857d782c13cef05a
+  LookinServer: 1b2b61c6402ae29fa22182d48f5cd067b4e99e80
   MarkdownKit: 0b15195c63cf3e39387949c4bdeccde0055e252a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: e97d164cb411aa9795cf576093a1fa208b4a8dd8
-  MJRefresh: d1bdca269d250edd1a3bafb4f003a7bd957f2a0f
+  MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   NudeIn: e428b516a60a241d47c9d8882a8a00d0f42cfcb4
   ProgressHUD: 093d24ca970f191744017bee2649e37d0cd1c5b9
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
@@ -265,14 +265,14 @@ SPEC CHECKSUMS:
   RYAngelWalker: e5314ea021ca43de12bc4f86d086936caf4b7bdf
   RYTransitioningDelegateSwift: 72dee49a78fa4c2747b4d92ba3ed6b2e493e1df7
   SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
-  SDWebImage: 981fd7e860af070920f249fd092420006014c3eb
+  SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
-  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  TOCropViewController: bf38459e9da6efe414de22087ebd5c530640f4bd
   TZImagePickerController: f1c9f1cae6ac0e30b31aaa9698f9bf4a7cf5b84f
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
-  UMCommon: 28cd03c308341f687f5269abd26a82d66f01837f
-  UMDevice: f67106f8f1a8bc465ba20d376d896e178be66ba7
+  UMCommon: 9399105b64e099c3c66aad21fc85ae695567a1f1
+  UMDevice: dcdf7ec167387837559d149fbc7d793d984faf82
   UMShare: 92c3b9361204a63236d134b359775c3795297e88
   UMVerify: 1744df15965a18c770af8017746d6ab0cf931f28
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
