@@ -164,7 +164,7 @@ extension TabBarController {
     }
     
     func createVC(root: UIViewController) -> UIViewController {
-        let nav = UINavigationController(rootViewController: root)
+        let nav = CustomNavigationController(rootViewController: root)
         nav.isNavigationBarHidden = true
         return nav
     }
