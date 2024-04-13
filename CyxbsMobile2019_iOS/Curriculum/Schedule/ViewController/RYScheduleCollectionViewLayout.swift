@@ -287,7 +287,7 @@ open class RYScheduleCollectionViewLayout: UICollectionViewLayout {
         let pageWidth = ry_collectionView.bounds.width
         var pageIndex = Int(round(proposedContentOffset.x / pageWidth))
 
-        if abs(velocityX) > 0.5 {
+        if abs(velocityX) > 20 {
             // 根据速度方向调整pageIndex
             if velocityX > 0 {
                 pageIndex += 1
