@@ -12,7 +12,7 @@ class PopAnimation: NSObject, UIViewControllerAnimatedTransitioning {
     
     // 设置动画执行的时长
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
+        return 0.2
     }
     
     // 处理具体的动画

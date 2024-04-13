@@ -45,7 +45,7 @@ class CustomNavigationController: UINavigationController, UINavigationController
             }
         case .ended, .cancelled:
             if let interactiveTransition = interactiveTransition {
-                if pan.translation(in: view).x / view.width > 0.5 {
+                if pan.translation(in: view).x / view.width > 0.4 || pan.velocity(in: view).x > 300 {
                     interactiveTransition.finish()
                 } else {
                     interactiveTransition.cancel()
