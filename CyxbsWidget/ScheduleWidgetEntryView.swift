@@ -23,8 +23,8 @@ struct ScheduleWidgetEntryView: View {
     var body: some View {
         
         switch family {
-//        case .systemSmall:
-//            ScheduleSystemSmall()
+        case .systemSmall:
+            ScheduleSystemSmall(mappy: mappy, section: section, date: date)
         case .systemLarge:
             ScheduleSystemLarge(mappy: mappy, section: section, date: date)
         default:

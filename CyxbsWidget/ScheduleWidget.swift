@@ -28,7 +28,7 @@ struct ScheduleWidget: Widget {
 
 extension ScheduleWidget {
     var supportedFamilies: Array<WidgetFamily> {
-        return [.systemLarge]
+        return [.systemLarge, .systemSmall]
 //        var ary: Array<WidgetFamily> = [.systemSmall, .systemMedium, .systemLarge]
 //        if #available(iOS 15.0, *) {
 //            ary.append(.systemExtraLarge)
