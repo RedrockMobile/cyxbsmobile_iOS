@@ -52,7 +52,12 @@ class CustomNavigationController: UINavigationController, UINavigationController
                 }
                 self.interactiveTransition = nil
             }
-        default:
+        
+        case .possible:
+            break
+        case .failed:
+            break
+        @unknown default:
             break
         }
     }
@@ -60,17 +65,11 @@ class CustomNavigationController: UINavigationController, UINavigationController
     
     // MARK: - UINavigationControllerDelegate
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> (any UIViewControllerAnimatedTransitioning)? {
-        if operation == .pop {
-            return PopAnimation()
-        }
-        return nil
+        return operation == .pop ? PopAnimation() : nil
     }
     
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: any UIViewControllerAnimatedTransitioning) -> (any UIViewControllerInteractiveTransitioning)? {
-        if animationController is PopAnimation {
-            return interactiveTransition
-        }
-        return nil
+        return animationController is PopAnimation ? interactiveTransition : nil
     }
     
 }
