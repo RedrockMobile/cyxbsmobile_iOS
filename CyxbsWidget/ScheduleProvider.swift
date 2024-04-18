@@ -8,10 +8,14 @@
 
 import WidgetKit
 import Intents
+import SwiftDate
 
 typealias ScheduleWidgetConfiguration = ConfigurationIntent
 
 struct ScheduleProvider: IntentTimelineProvider {    
+    
+    // 定义更新的时间线(每次下课5分钟后更新，避免出错)
+    let refreshTimes: [String] = ["6:00", "8:50", "9:45", "11:05", "12:00", "14:50", "15:45", "17:05", "18:00", "19:50", "20:45", "21:40"]
     
     func placeholder(in context: Context) -> ScheduleTimelineEntry {
         let entry = ScheduleTimelineEntry(date: Date())
@@ -35,21 +39,20 @@ struct ScheduleProvider: IntentTimelineProvider {
         guard let mainSno = UserModel.default.token?.stuNum else { return }
         
         ScheduleModel.request(sno: mainSno) { response in
-            let currentDate = Date()
+            let currentDate = DateInRegion()
+            let dateStringPrefix = currentDate.dateAtStartOf(.day).toFormat("yyyy-MM-dd")
             var entries: [ScheduleTimelineEntry] = []
             
             if let response {
-                for hourOffset in 0 ..< 12 {
-                    let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate) ?? currentDate
-                    
-                    var entry = ScheduleTimelineEntry(date: entryDate, configuration: configuration)
-                    entry.models.append(response)
-                    
-                    entries.append(entry)
+                for timeString in refreshTimes {
+                    if let entryDate = (dateStringPrefix + " " + timeString).toDate(region:.current)?.date {
+                        var entry = ScheduleTimelineEntry(date: entryDate, configuration: configuration)
+                        entry.models.append(response)
+                        entries.append(entry)
+                    }
                 }
-                
             } else {
-                var entry = ScheduleTimelineEntry(date: currentDate, configuration: configuration)
+                var entry = ScheduleTimelineEntry(date: currentDate.date, configuration: configuration)
                 entry.errorMsg = "请求有问题"
                 entries.append(entry)
             }
@@ -58,4 +61,7 @@ struct ScheduleProvider: IntentTimelineProvider {
             completion(timeline)
         }
     }
+    
+    
 }
+

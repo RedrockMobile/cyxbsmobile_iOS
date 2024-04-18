@@ -56,10 +56,12 @@ target 'CyxbsMobile2019_iOS' do
   
   pod 'RYTransitioningDelegateSwift'  # 自定义过渡动画库
   pod 'RYAngelWalker'  # 友盟行为统计库
+  pod 'SwiftDate'  # Swift日期和时间处理库
 end
 
 target 'CyxbsWidgetExtension' do
   # 这里可以添加扩展目标的 Pods 配置
+  pod 'SwiftDate'  # Swift日期和时间处理库
 end
 
 # 定义 M1 芯片相关的宏定义变量
