@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 // 表态投票
-@interface ExpressPickPutModel : NSObject
+@interface ExpressPutModel : NSObject
 
-- (void)requestPickDataWithId:(NSNumber *)theID Choice:(NSString *)choice Success:(void(^)(ExpressPickPutItem *model))success Failure:(void(^)(NSError * _Nonnull))failure;
+- (void)requestPutDataWithId:(NSNumber *)theID Choice:(NSString *)choice Success:(void(^)(ExpressPickPutItem *model))success Failure:(void(^)(NSError * _Nonnull))failure;
 
 @end
 

@@ -1,8 +1,9 @@
 //
-//  TaskTableViewCellWithProgress.h
-//  Demo5
+//  TaskTableViewCell.h
+//  CyxbsMobile2019_iOS
 //
-//  Created by 钟文韬 on 2021/8/9.
+//  Created by 许晋嘉 on 2024/2/28.
+//  Copyright © 2024 Redrock. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -10,8 +11,8 @@
 #import "StampTaskData.h"
 NS_ASSUME_NONNULL_BEGIN
 
-///带有进度条的Cell
-@interface TaskTableViewCellWithProgress : UITableViewCell
+///不带有进度条的Cell
+@interface TaskTableViewCell : UITableViewCell
 
 ///主要内容
 @property (nonatomic,strong) UILabel *mainLabel;

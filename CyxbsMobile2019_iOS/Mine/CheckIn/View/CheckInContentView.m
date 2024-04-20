@@ -45,7 +45,7 @@
         // 返回
         float unitSize = 4*fontSizeScaleRate_SE;
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setImage:[UIImage imageNamed:@"空教室返回"] forState:UIControlStateNormal];
+        [backBtn setImage:[UIImage imageNamed:@"LQQBackButton"] forState:UIControlStateNormal];
         backBtn.imageEdgeInsets = UIEdgeInsetsMake(unitSize, 1.5*unitSize, unitSize, 2.5*unitSize);
         [backBtn addTarget:self action:@selector(backButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:backBtn];

@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 // 获取表态页详细信息
-@interface ExpressPickGetModel : NSObject
+@interface ExpressDetailModel : NSObject
 
-- (void)requestGetDetailDataWithId:(NSNumber *)theId
+- (void)requestDetailDataWithId:(NSNumber *)theId
                            Success:(void(^)(ExpressPickGetItem *model))success
                            Failure:(void(^)(NSError * _Nonnull))failure;
 @end

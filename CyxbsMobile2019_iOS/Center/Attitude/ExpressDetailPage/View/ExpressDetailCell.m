@@ -15,48 +15,85 @@
     if (self) {
         self.backgroundColor = UIColor.whiteColor;  // 无黑夜模式
         self.contentView.backgroundColor = [UIColor colorWithHexString:@"#0028FC" alpha:0.05];
-        [self.contentView addSubview:self.titleLab];
-        [self setTitlePosition];
     }
+    [self.contentView addSubview:self.gradientView];
+    [self.contentView addSubview:self.titleLab];
+    [self setTitlePosition];
     return self;
 }
 
 #pragma mark - Method
 
 /// 选中后的第一步是恢复初始状态
-- (void)backToOriginState {
-    [self.checkImage removeFromSuperview];
-    [self.percent removeFromSuperview];
-    [self.gradientView removeFromSuperview];
-    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#0028FC" alpha:0.05];
-    self.gradientView.frame = CGRectMake(0, 0, 0, self.bounds.size.height);
+- (void)unselectedState {
+    [UIView animateWithDuration:1.0 animations:^{
+        self.contentView.backgroundColor = [UIColor colorWithHexString:@"#0028FC" alpha:0.05];
+        self.gradientView.frame = CGRectMake(0, 0, 0, self.bounds.size.height);
+        self.gradientView.backgroundColor = [UIColor colorWithHexString:@"#4A44E4" alpha:0.1];
+        // 颜色改变
+        self.titleLab.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.7];
+        self.percentLabel.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
+    } completion:^(BOOL finished) {
+        [self.checkImage removeFromSuperview];
+        [self.percentLabel removeFromSuperview];
+    }];
 }
 
 /// 选中的cell的UI情况
 - (void)selectCell {
-    self.gradientView.backgroundColor = [UIColor colorWithHexString:@"#534EF3" alpha:1.0];
-    [self setCheckImagePosition];  // 加入对勾
-    self.titleLab.textColor = [UIColor colorWithHexString:@"#FFFFFF" alpha:1.0];
-    self.percent.textColor = [UIColor colorWithHexString:@"#FFFFFF" alpha:1.0];
-    self.contentView.backgroundColor = [UIColor colorWithHexString:@"#6C68EE" alpha:1.0];
-    [self.contentView addSubview:self.gradientView];
+    [self.contentView addSubview:self.percentLabel];
     [self addViewsAndPosition];
+    [UIView animateWithDuration:0.5 animations:^{
+            self.gradientView.backgroundColor = [UIColor colorWithHexString:@"#534EF3" alpha:1.0];
+            [self setCheckImagePosition];  // 加入对勾
+            self.titleLab.textColor = [UIColor colorWithHexString:@"#FFFFFF" alpha:1.0];
+            self.percentLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF" alpha:1.0];
+            self.contentView.backgroundColor = [UIColor colorWithHexString:@"#6C68EE" alpha:1.0];
+    }];
 }
 
 /// 其他cell的UI情况
 - (void)otherCell {
-    self.gradientView.backgroundColor = [UIColor colorWithHexString:@"#4A44E4" alpha:0.1];
-    // 颜色改变
-    self.titleLab.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.7];
-    self.percent.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
-    [self.contentView addSubview:self.gradientView];
+    [self.contentView addSubview:self.percentLabel];
     [self addViewsAndPosition];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.contentView.backgroundColor = [UIColor colorWithHexString:@"#0028FC" alpha:0.05];
+        self.gradientView.backgroundColor = [UIColor colorWithHexString:@"#4A44E4" alpha:0.1];
+        // 颜色改变
+        self.titleLab.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.7];
+        self.percentLabel.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
+    } completion:^(BOOL finished) {
+        [self.checkImage removeFromSuperview];
+    }];
+}
+
+/// 动画
+- (void)animationWithGetVoted:(BOOL)getVoted votedChoice:(NSString *)votedChoice {
+    if (getVoted) {
+        // 分别得到gradientWidth
+        CGFloat gradientWidth = self.bounds.size.width * self.percent.floatValue;
+        if (self.titleLab.text == votedChoice) {
+            // 是选中的cell
+            [self selectCell];
+        } else {
+            [self otherCell];
+        }
+        self.userInteractionEnabled = NO;
+        // 渐变动画
+        [UIView animateWithDuration:1.5 animations:^{
+            self.gradientView.frame = CGRectMake(0, 0, gradientWidth, self.bounds.size.height);
+        } completion:^(BOOL finished) {
+            self.userInteractionEnabled = YES;
+        }];
+    } else {
+        [self unselectedState];
+    }
 }
 
 /// title与百分比
 - (void)addViewsAndPosition {
     [self.contentView addSubview:self.titleLab];
-    [self.contentView addSubview:self.percent];
+    [self.contentView addSubview:self.percentLabel];
     [self.titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.contentView).mas_offset(36);
@@ -64,10 +101,10 @@
         make.right.mas_equalTo(-71);
     }];
     
-    [self.percent mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.percentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.right.equalTo(self.contentView).mas_offset(-15);
-        make.size.mas_equalTo(CGSizeMake(27, 17));
+        make.size.mas_equalTo(CGSizeMake(35, 17));
     }];
 }
 
@@ -123,19 +160,19 @@
     }
     return _checkImage;
 }
-- (UILabel *)percent {
-    if (_percent == nil) {
-        _percent = [[UILabel alloc] init];
-        _percent.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
-        _percent.font = [UIFont fontWithName:PingFangSCMedium size:12];
-        _percent.textAlignment = NSTextAlignmentLeft;
+- (UILabel *)percentLabel {
+    if (_percentLabel == nil) {
+        _percentLabel = [[UILabel alloc] init];
+        _percentLabel.textColor = [UIColor colorWithHexString:@"#15315B" alpha:0.5];
+        _percentLabel.font = [UIFont fontWithName:PingFangSCMedium size:12];
+        _percentLabel.textAlignment = NSTextAlignmentLeft;
     }
-    return _percent;
+    return _percentLabel;
 }
 
 - (UIView *)gradientView {
     if (_gradientView == nil) {
-        _gradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.bounds.size.height)];
+        _gradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 80)];
     }
     return _gradientView;
 }

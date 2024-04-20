@@ -25,6 +25,7 @@
 
 #import "MineMessageVC.h"//消息中心模块by ssr，将接入router技术
 #import "RemindHUD.h"
+#import "CheckInViewController.h"
 
 //获取用户关注的人和粉丝的个人信息
 #define fansAndFollowsInfo @"/magipoke-loop/user/fansAndFollowsInfo"
@@ -71,7 +72,7 @@
 /// 签到相关的一块 view
 @property(nonatomic, strong)MineSignView *signView;
 
-/// /// 签到相关的一块 view 下面的 tableView
+/// 签到相关的一块 view 下面的 tableView
 @property(nonatomic, strong)UITableView *tableView;
 
 /// 挡在底部，用来避免因为 tabbar 半透明而导致的 tabbar 颜色变化
@@ -111,31 +112,31 @@
     
     self.userInfoModel = [MineUserInfoModel shareModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userItemDidUpdate:) name:@"UserItemGetUserInfo" object:nil];
-    [self updateUserInfoInUserInfoModel];
+//    [self updateUserInfoInUserInfoModel];
     [self updateUserInfoInUserItem];
 }
 
 - (void)updateUserInfoInUserItem {
-    [CheckInModel requestCheckInInfo];
+    [CheckInModel requestCheckInInfoSucceeded:nil Failed:nil];
     UserItem *item = [UserItem defaultItem];
     MineTopBlurView *blurView = self.blurView;
     [blurView.headImgBtn sd_setImageWithURL:[NSURL URLWithString:item.headImgUrl] forState:UIControlStateNormal];
-    blurView.nickNameLabel.text = item.nickname;
-    blurView.mottoLabel.text = item.introduction;
+    blurView.realNameLabel.text = item.realName;
+    blurView.introductionLabel.text = @"快来红岩网校和我一起玩吧⁓";
     [self.signView setSignDay:item.checkInDay];
     BOOL canCheckIn = !item.isCheckedToday;
     [self.signView setSignBtnEnable:canCheckIn];
 }
 
-- (void)updateUserInfoInUserInfoModel {
-    MineUserInfoModel *model = self.userInfoModel;
-    [self.blurView.blogBtn setTitle:[NSString stringWithFormat:@"%ld", model.blogCnt] forState:UIControlStateNormal];
-    [self.blurView.remarkBtn setTitle:[NSString stringWithFormat:@"%ld", model.remarkCnt] forState:UIControlStateNormal];
-    [self.blurView.praiseBtn setTitle:[NSString stringWithFormat:@"%ld", model.praiseCnt] forState:UIControlStateNormal];
-    
-    self.blurView.remarkBtn.hideTipView = !model.hasNewRemark;
-    self.blurView.praiseBtn.hideTipView = !model.hasNewPraise;
-}
+//- (void)updateUserInfoInUserInfoModel {
+//    MineUserInfoModel *model = self.userInfoModel;
+//    [self.blurView.blogBtn setTitle:[NSString stringWithFormat:@"%ld", model.blogCnt] forState:UIControlStateNormal];
+//    [self.blurView.remarkBtn setTitle:[NSString stringWithFormat:@"%ld", model.remarkCnt] forState:UIControlStateNormal];
+//    [self.blurView.praiseBtn setTitle:[NSString stringWithFormat:@"%ld", model.praiseCnt] forState:UIControlStateNormal];
+//    
+//    self.blurView.remarkBtn.hideTipView = !model.hasNewRemark;
+//    self.blurView.praiseBtn.hideTipView = !model.hasNewPraise;
+//}
 
 
 - (void)userItemDidUpdate:(NSNotification*)noti {
@@ -215,13 +216,13 @@
     
     [blurView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.backImgView).offset(0.04533333333*SCREEN_WIDTH);
-        make.top.equalTo(self.backImgView).offset(0.07512315271*SCREEN_HEIGHT);
+        make.top.equalTo(self.backImgView).offset(0.07512315*SCREEN_HEIGHT);
     }];
     
     [blurView.headImgBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [blurView.blogBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [blurView.remarkBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    [blurView.praiseBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [blurView.blogBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [blurView.remarkBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+//    [blurView.praiseBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [blurView.homePageBtn addTarget:self action:@selector(homePageBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(homePageBtnClicked)];
     [blurView.blurImgView setUserInteractionEnabled:YES];
@@ -247,7 +248,7 @@
     
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.contentView);
-        make.top.equalTo(self.blurView.mas_bottom).offset(-0.02216748768*SCREEN_HEIGHT);
+        make.top.equalTo(self.blurView.mas_bottom).offset(-0.06216748768*SCREEN_HEIGHT);
         make.width.mas_equalTo(SCREEN_WIDTH);
         make.height.mas_equalTo(0.6896551724*SCREEN_HEIGHT);
     }];
@@ -320,11 +321,14 @@
 - (void)addSignView {
     MineSignView *view = [[MineSignView alloc] init];
     self.signView = view;
+    self.signView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(signViewClicked)];
+    [self.signView addGestureRecognizer:tapGes];
     [self.backBoardView addSubview:view];
     
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.backBoardView).offset(0.04266666667*SCREEN_WIDTH);
-        make.top.equalTo(self.backBoardView).offset(0.37497537*SCREEN_HEIGHT);
+        make.top.equalTo(self.backBoardView).offset(0.30325123*SCREEN_HEIGHT);
     }];
     
     [view.signBtn addTarget:self action:@selector(signBtnClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -346,7 +350,7 @@
     
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.backBoardView);
-        make.top.equalTo(self.backBoardView).offset(0.49674877*SCREEN_HEIGHT);
+        make.top.equalTo(self.backBoardView).offset(0.41162562*SCREEN_HEIGHT);
         
     }];
 }
@@ -472,7 +476,7 @@
     [CheckInModel CheckInSucceeded:^{
         [self.signView setSignBtnEnable:NO];
         [self.signView setSignDay:[UserItemTool defaultItem].checkInDay];
-        [RemindHUD.shared showDefaultHUDWithText:@"签到成功" completion:nil];
+        [RemindHUD.shared showDefaultHUDWithText:@"签到成功，邮票+10" completion:nil];
     } Failed:^(NSError * _Nonnull err) {
         [RemindHUD.shared showDefaultHUDWithText:@"签到失败" completion:nil];
     }];
@@ -502,6 +506,13 @@
     vc.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+///点击签到的view后调用
+- (void)signViewClicked {
+    CheckInViewController *vc = [[CheckInViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:true];
 }
 
 @end

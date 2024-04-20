@@ -6,12 +6,12 @@
 //  Copyright © 2023 Redrock. All rights reserved.
 //
 
-#import "ExpressPickGetModel.h"
+#import "ExpressDetailModel.h"
 
-@implementation ExpressPickGetModel
+@implementation ExpressDetailModel
 
 // 获取表态页详细信息 参数id
-- (void)requestGetDetailDataWithId:(NSNumber *)theId
+- (void)requestDetailDataWithId:(NSNumber *)theId
                            Success:(void(^)(ExpressPickGetItem *model))success
                            Failure:(void(^)(NSError * _Nonnull))failure {
     NSDictionary *param = @{ @"id": theId };
@@ -24,10 +24,9 @@
      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable object) {
         NSInteger status = [object[@"status"] intValue];
         if (status == 10000) {
-            NSDictionary *data = object[@"data"];
-            ExpressPickGetItem *model = [[ExpressPickGetItem alloc] initWithDic:data];
+            ExpressPickGetItem *model = [[ExpressPickGetItem alloc] initWithDic:object[@"data"]];
             // 转换成百分比字符数组
-            [model votedPercentCalculateToString:model.getStatistic];
+            model.percentStrArray = [model votedPercentCalculateToString:model.getStatistic];
             [model votedPercenteCalculateToNSNumber:model.getStatistic];
             if (success) {
                 success(model);

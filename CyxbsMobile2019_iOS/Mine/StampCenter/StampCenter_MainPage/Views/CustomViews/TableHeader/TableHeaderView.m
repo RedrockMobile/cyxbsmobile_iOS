@@ -21,7 +21,7 @@
         [self addSubview:self.mainLabel];
         [self addSubview:self.detailLabel];
         //检查签到情况
-        [CheckInModel requestCheckInInfo];
+        [CheckInModel requestCheckInInfoSucceeded:nil Failed:nil];
     }
     return self;
 }
