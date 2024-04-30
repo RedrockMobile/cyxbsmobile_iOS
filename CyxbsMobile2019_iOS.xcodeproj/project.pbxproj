@@ -1236,6 +1236,7 @@
 		75B1D7742B9EC71100BBC794 /* NSDictionaryExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryExtension.m; sourceTree = "<group>"; };
 		75B7AFB62B8F35F30028E4DC /* TaskTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewCell.m; sourceTree = "<group>"; };
 		75B7AFB82B8F35FD0028E4DC /* TaskTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskTableViewCell.h; sourceTree = "<group>"; };
+		75CE6C752BE0FEEC000D3DAF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		75FD5F662BC5514500D8302D /* PopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimation.swift; sourceTree = "<group>"; };
 		75FD5F672BC5514500D8302D /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		7A64BFF32892826F007CCB1E /* NewQAHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewQAHeader.h; sourceTree = "<group>"; };
@@ -3407,6 +3408,7 @@
 			children = (
 				1476CA532AFCD24600635848 /* CyxbsWidgetExtension.entitlements */,
 				14F6F4FE2AFB8C7D007C7CA6 /* 掌上重邮用户协议.md */,
+				75CE6C752BE0FEEC000D3DAF /* PrivacyInfo.xcprivacy */,
 				14FFFBD62AF8C0F3005A7EBD /* Cache */,
 				14FFFBDA2AF8C0F3005A7EBD /* Common */,
 				14FFFBCA2AF8C0F3005A7EBD /* Constants */,
