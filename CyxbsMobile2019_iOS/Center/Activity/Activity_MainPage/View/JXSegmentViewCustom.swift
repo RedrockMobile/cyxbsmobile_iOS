@@ -29,7 +29,7 @@ open class JXSegmentedActivityCustomDataSource: JXSegmentedTitleDataSource {
         }
 
         myItemModel.title = titles[index]
-        myItemModel.textWidth = widthForTitle(myItemModel.title ?? "")
+        myItemModel.textWidth = widthForTitle(myItemModel.title ?? "", index)
         myItemModel.titleNumberOfLines = titleNumberOfLines
         myItemModel.isSelectedAnimable = isSelectedAnimable
         myItemModel.titleNormalColor = titleNormalColor
