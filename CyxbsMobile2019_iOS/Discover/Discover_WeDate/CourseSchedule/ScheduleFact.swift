@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 protocol ScheduleFactDelegate: AnyObject {
     func updateCpllectionViewPageNum(_ num: Int)
@@ -23,19 +24,45 @@ class ScheduleFact: NSObject {
     
     private var scrollDirection: Int = 0
     
-    private var data: [[[String: Any]]] = []
+    // 课表数据初始化为空
+    private var data: [[[String: Any]]] = Array(repeating: [[String: Any]](), count: 26)
+    
+    // 标志位数组，标志当周的课程安排是否被请求
+    private var flagArray = Array(repeating: false, count: 26)
     
     private var dateVersion: String = ""
     
     private var stuNumAry: [String] = []
     
-    init(stuNumAry: [String], dateVersion: String) {
+    private var nowWeek: Int = 0
+    
+    init(stuNumAry: [String], dateVersion: String, nowWeek: Int) {
         super.init()
         self.stuNumAry = stuNumAry
-        WeekMaping.mapAry(stuNumAry: self.stuNumAry) { array in
-            self.data = array
-            self.dateVersion = dateVersion
-            self.collectionView.reloadData()
+        self.dateVersion = dateVersion
+        self.nowWeek = nowWeek
+        // 先加载全部周和当周课表
+        updateWeeklySchedule(forWeek: 0)
+        updateWeeklySchedule(forWeek: nowWeek)
+    }
+    
+    // 更新某周的课表
+    func updateWeeklySchedule(forWeek week: Int) {
+        if !flagArray[week] {
+            WeekMaping.mapWeekToAry(stuNumAry: stuNumAry, weekNum: week) { weekAry in
+                self.data[week] = WeekMaping.processWeekArray(weekAry: weekAry, weekNum: week)
+                self.flagArray[week] = true
+                self.collectionView.reloadSections(IndexSet(integer: week))
+                // 新加载的课表cell渐入
+                for cell in self.collectionView.visibleCells {
+                    if let indexPath = self.collectionView.indexPath(for: cell), indexPath.section == week {
+                        cell.alpha = 0
+                        UIView.animate(withDuration: 0.3) {
+                            cell.alpha = 1
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -53,6 +80,7 @@ extension ScheduleFact {
         layout.columnSpacing = 2
         layout.widthForLeadingSupplementaryView = 30
         layout.dataSource = self
+        layout.delegate = self
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
@@ -320,5 +348,11 @@ extension ScheduleFact: UICollectionViewDelegate {
                 }
             }
         }
+    }
+}
+
+extension ScheduleFact: ScheduleCollectionViewLayoutDelegate {
+    func pageWillScrollTo(page: Int) {
+        updateWeeklySchedule(forWeek: page)
     }
 }
