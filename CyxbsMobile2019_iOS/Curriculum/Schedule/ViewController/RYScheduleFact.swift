@@ -40,6 +40,7 @@ extension RYScheduleFact {
         collectionView.isDirectionalLockEnabled = true
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.isPagingEnabled = true
         collectionView.decelerationRate = .fast
         /* cell */
         collectionView.register(RYScheduleCollectionViewCell.self, forCellWithReuseIdentifier: RYScheduleCollectionViewCell.curriculumReuseIdentifier)
