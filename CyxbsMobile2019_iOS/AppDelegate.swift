@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupWindow() // 设置应用程序窗口
         setupAlicloudSDK() // 设置阿里云SDK
+        if #available(iOS 16.2, *) {
+            CyxbsWidgetLiveActivityManager.shared.create()
+        }
         
         return true
     }

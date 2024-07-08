@@ -14,7 +14,12 @@ import SwiftUI
 struct CyxbsWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        var date: Date
+        var section: Int
+        var weekdat: Int
+        var course: String
+        var classRoom: String
+        var startCal: Date
     }
 
     // Fixed non-changing properties about your activity go here!
@@ -27,7 +32,7 @@ struct CyxbsWidgetLiveActivity: Widget {
         ActivityConfiguration(for: CyxbsWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
-                Text("Hello \(context.state.emoji)")
+                Text("Hello ")
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
@@ -43,15 +48,15 @@ struct CyxbsWidgetLiveActivity: Widget {
                     Text("Trailing")
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
+                    Text("Bottom")
                     // more content
                 }
             } compactLeading: {
-                Text("L")
+                Text("14:00")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text("3501")
             } minimal: {
-                Text(context.state.emoji)
+                Text("")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
@@ -66,13 +71,13 @@ extension CyxbsWidgetAttributes {
     }
 }
 
-@available(iOS 16.1, *)
-extension CyxbsWidgetAttributes.ContentState {
-    fileprivate static var smiley: CyxbsWidgetAttributes.ContentState {
-        CyxbsWidgetAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: CyxbsWidgetAttributes.ContentState {
-         CyxbsWidgetAttributes.ContentState(emoji: "🤩")
-     }
-}
+//@available(iOS 16.1, *)
+//extension CyxbsWidgetAttributes.ContentState {
+//    fileprivate static var smiley: CyxbsWidgetAttributes.ContentState {
+//        CyxbsWidgetAttributes.ContentState(emoji: "😀")
+//     }
+//     
+//     fileprivate static var starEyes: CyxbsWidgetAttributes.ContentState {
+//         CyxbsWidgetAttributes.ContentState(emoji: "🤩")
+//     }
+//}
