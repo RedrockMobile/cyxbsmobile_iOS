@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var tabBarController: TabBarController?
     
     // 应用程序启动时调用的方法
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -27,9 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //检查token是否过期
         RYLoginViewController.checkToken(rootVC: window?.rootViewController)
         //更新Tabbar上方的课表topView显示的课程信息
-        if let vc = window?.rootViewController as? TabBarController {
-            vc.reloadData()
-        }
+        tabBarController?.reloadData()
     }
     
     // 当应用程序进入后台时调用的方法
@@ -49,10 +48,9 @@ extension AppDelegate {
     
     // 设置应用程序窗口
     func setupWindow() {
-        let rootVC = TabBarController()
-        
+        tabBarController = TabBarController()
         window = UIWindow()
-        window?.rootViewController = rootVC
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
     

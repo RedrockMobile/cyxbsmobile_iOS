@@ -57,14 +57,14 @@ struct ActivityMessageResponse: Codable {
 }
 
 struct ActivityResponse: Codable {
-    let data: Activity
+    let data: ActivityModel
     let info: String
     let status: Int
     
     init(from json: JSON) {
         status = json["status"].intValue
         info = json["info"].stringValue
-        data = Activity(from: json["data"])
+        data = ActivityModel(from: json["data"])
     }
 }
 

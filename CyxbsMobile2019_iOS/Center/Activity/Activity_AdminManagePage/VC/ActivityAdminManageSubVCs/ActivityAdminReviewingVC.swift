@@ -12,7 +12,7 @@ import JXSegmentedView
 
 class ActivityAdminReviewingVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var activities: [Activity] = []
+    private var activities: [ActivityModel] = []
     private var titleParagraphStyle = NSMutableParagraphStyle()
     private var lower_id: Int? = nil
     

@@ -16,7 +16,7 @@ protocol ActivityDetailVCDelegate: AnyObject {
 
 class ActivityDetailVC: UIViewController {
     
-    var activity: Activity!
+    var activity: ActivityModel!
     var numOfIndexPath: Int!
     weak var delegate: ActivityDetailVCDelegate?
     var countdownTimer: Timer?

@@ -348,6 +348,7 @@
 		7591F1AF2B95D61E001890D2 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591F1AE2B95D61E001890D2 /* TaskManager.swift */; };
 		7591F1B22B96FDB5001890D2 /* UpdatePersonModelTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591F1B12B96FDB5001890D2 /* UpdatePersonModelTool.swift */; };
 		75B1D7752B9EC71100BBC794 /* NSDictionaryExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B1D7742B9EC71100BBC794 /* NSDictionaryExtension.m */; };
+		75B682F22C3BF5A000F06F71 /* CyxbsWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476CA352AFCD21600635848 /* CyxbsWidgetLiveActivity.swift */; };
 		75B7AFB72B8F35F30028E4DC /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7AFB62B8F35F30028E4DC /* TaskTableViewCell.m */; };
 		75FD5F682BC5514500D8302D /* PopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F662BC5514500D8302D /* PopAnimation.swift */; };
 		75FD5F692BC5514500D8302D /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F672BC5514500D8302D /* CustomNavigationController.swift */; };
@@ -6688,6 +6689,7 @@
 				DB4064FD2466D889006CE5BC /* DLReminderSetTimeVC.m in Sources */,
 				14FFFC022AF8C0FD005A7EBD /* APIConfig.swift in Sources */,
 				AA0DDB6B286C8B1A00802324 /* EditMyInfoPresenter.m in Sources */,
+				75B682F22C3BF5A000F06F71 /* CyxbsWidgetLiveActivity.swift in Sources */,
 				14F6F5602AFB8CDB007C7CA6 /* FinderNewsModel.swift in Sources */,
 				14F6F5482AFB8CDA007C7CA6 /* CurriculumModel.swift in Sources */,
 				FC5849B62A9677BB00D9BBDF /* GroupTableViewCell.swift in Sources */,

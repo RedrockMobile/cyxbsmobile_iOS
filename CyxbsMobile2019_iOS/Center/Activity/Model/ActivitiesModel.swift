@@ -11,10 +11,10 @@ import SwiftyJSON
 
 class ActivitiesModel {
     
-    var activities: [Activity] = []
+    var activities: [ActivityModel] = []
 
     ///用于请求活动布告栏的活动
-    func requestNoticeboardActivities(activityType: String?, success: @escaping ([Activity]) -> Void, failure: @escaping (Error) -> Void) {
+    func requestNoticeboardActivities(activityType: String?, success: @escaping ([ActivityModel]) -> Void, failure: @escaping (Error) -> Void) {
         activities = []
         HttpManager.shared.magipoke_ufield_activity_list_all(activity_type: activityType).ry_JSON { response in
             switch response {
@@ -32,7 +32,7 @@ class ActivitiesModel {
     }
     
     ///用于请求排行榜的活动
-    func requestHitActivity(success: @escaping ([Activity]) -> Void, failure: @escaping (Error) -> Void) {
+    func requestHitActivity(success: @escaping ([ActivityModel]) -> Void, failure: @escaping (Error) -> Void) {
         activities = []
         HttpManager.shared.magipoke_ufield_activity_search(activity_type: "all", activity_num: 50, order_by: "watch").ry_JSON { response in
             switch response {
@@ -51,7 +51,7 @@ class ActivitiesModel {
     }
     
     ///用于请求搜索活动
-    func requestSearchActivity(keyword: String, activityType: String, success: @escaping ([Activity]) -> Void, failure: @escaping (Error) -> Void) {
+    func requestSearchActivity(keyword: String, activityType: String, success: @escaping ([ActivityModel]) -> Void, failure: @escaping (Error) -> Void) {
         activities = []
         HttpManager.shared.magipoke_ufield_activity_search(activity_type: activityType, activity_num: 50, order_by: "start_timestamp_but_ongoing_first", contain_keyword: keyword).ry_JSON { response in
             switch response {
@@ -71,7 +71,7 @@ class ActivitiesModel {
 }
 
 
-struct Activity: Codable {
+struct ActivityModel: Codable {
     
     var activityTitle: String
     var activityType: String
@@ -112,7 +112,7 @@ struct Activity: Codable {
     }
 }
 
-extension Activity {
+extension ActivityModel {
     init(from json: JSON) {
         activityTitle = json["activity_title"].stringValue
         activityType = json["activity_type"].stringValue
@@ -149,28 +149,28 @@ extension AllActivityResponse {
 }
 
 struct AllActivityData: Codable {
-    var ended: [Activity]
-    var ongoing: [Activity]
+    var ended: [ActivityModel]
+    var ongoing: [ActivityModel]
 }
 
 extension AllActivityData {
     init(from json: JSON) {
-        ended = json["ended"].arrayValue.map { Activity(from: $0) }
-        ongoing = json["ongoing"].arrayValue.map { Activity(from: $0) }
+        ended = json["ended"].arrayValue.map { ActivityModel(from: $0) }
+        ongoing = json["ongoing"].arrayValue.map { ActivityModel(from: $0) }
     }
 }
 
 struct SearchActivityResponse: Codable {
     var status: Int
     var info: String
-    var data: [Activity]
+    var data: [ActivityModel]
 }
 
 extension SearchActivityResponse {
     init(from json: JSON) {
         status = json["status"].intValue
         info = json["info"].stringValue
-        data = json["data"].arrayValue.map { Activity(from: $0) }
+        data = json["data"].arrayValue.map { ActivityModel(from: $0) }
     }
 }
 
@@ -203,10 +203,10 @@ extension MineActivityResponse {
 }
 
 struct MineActivityData: Codable {
-    var wantToWatch: [Activity]
-    var participated: [Activity]
-    var reviewing: [Activity]
-    var published: [Activity]
+    var wantToWatch: [ActivityModel]
+    var participated: [ActivityModel]
+    var reviewing: [ActivityModel]
+    var published: [ActivityModel]
     
     private enum CodingKeys: String, CodingKey {
         case wantToWatch = "want_to_watch"
@@ -218,10 +218,10 @@ struct MineActivityData: Codable {
 
 extension MineActivityData {
     init(from json: JSON) {
-        wantToWatch = json["want_to_watch"].arrayValue.map { Activity(from: $0) }
-        participated = json["participated"].arrayValue.map { Activity(from: $0) }
-        reviewing = json["reviewing"].arrayValue.map { Activity(from: $0) }
-        published = json["published"].arrayValue.map { Activity(from: $0) }
+        wantToWatch = json["want_to_watch"].arrayValue.map { ActivityModel(from: $0) }
+        participated = json["participated"].arrayValue.map { ActivityModel(from: $0) }
+        reviewing = json["reviewing"].arrayValue.map { ActivityModel(from: $0) }
+        published = json["published"].arrayValue.map { ActivityModel(from: $0) }
     }
 }
 

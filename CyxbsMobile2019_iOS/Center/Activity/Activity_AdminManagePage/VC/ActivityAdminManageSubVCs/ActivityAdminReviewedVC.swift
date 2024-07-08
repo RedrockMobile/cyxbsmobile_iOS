@@ -12,7 +12,7 @@ import MJRefresh
 
 class ActivityAdminReviewedVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    private var activities: [Activity] = []
+    private var activities: [ActivityModel] = []
     private var titleParagraphStyle = NSMutableParagraphStyle()
     private var upper_id : Int? = nil
     

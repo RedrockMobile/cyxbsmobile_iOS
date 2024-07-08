@@ -11,7 +11,7 @@ import JXSegmentedView
 
 class ActivityCenterTableViewVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var activities: [Activity] = []
+    var activities: [ActivityModel] = []
     var titleParagraphStyle = NSMutableParagraphStyle()
     
     override func viewDidLoad() {

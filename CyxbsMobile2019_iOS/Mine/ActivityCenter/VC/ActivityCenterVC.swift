@@ -11,10 +11,10 @@ import JXSegmentedView
 
 class ActivityCenterVC: UIViewController {
     
-    var participatedActivities: [Activity] = []
-    var publishedActivities: [Activity] = []
-    var reviewingActivities: [Activity] = []
-    var wantToWatchActivities: [Activity] = []
+    var participatedActivities: [ActivityModel] = []
+    var publishedActivities: [ActivityModel] = []
+    var reviewingActivities: [ActivityModel] = []
+    var wantToWatchActivities: [ActivityModel] = []
     var tableViewControllers: [ActivityCenterTableViewVC] = []
     var segmentedDataSource: JXSegmentedTitleDataSource!
     var segmentedView: JXSegmentedView!
