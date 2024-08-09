@@ -342,6 +342,9 @@
 		75500E612AEE8FD200C2FC3A /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75500E5E2AEE8FD200C2FC3A /* UIColorExtension.swift */; };
 		75500E622AEE8FD200C2FC3A /* SwiftyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75500E5F2AEE8FD200C2FC3A /* SwiftyClient.swift */; };
 		75500E632AEE8FD200C2FC3A /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75500E602AEE8FD200C2FC3A /* TextManager.swift */; };
+		7551F9AA2C6549B30072CA88 /* DiscoverSAVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9A12C6549B30072CA88 /* DiscoverSAVC.m */; };
+		7551F9AB2C6549B30072CA88 /* popUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9A42C6549B30072CA88 /* popUpViewController.m */; };
+		7551F9AC2C6549B30072CA88 /* DataContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9A72C6549B30072CA88 /* DataContentView.m */; };
 		757A58EE2BA1EAD0003D95F0 /* ExpressDetailPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 757A58ED2BA1EAD0003D95F0 /* ExpressDetailPageVC.m */; };
 		758C7E4F2BA456AF002CA3F4 /* MXBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758C7E4E2BA456AF002CA3F4 /* MXBackButton.swift */; };
 		758C7E522BA4700F002CA3F4 /* MXObjCBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 758C7E512BA4700F002CA3F4 /* MXObjCBackButton.m */; };
@@ -1265,6 +1268,12 @@
 		75500E5E2AEE8FD200C2FC3A /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		75500E5F2AEE8FD200C2FC3A /* SwiftyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyClient.swift; sourceTree = "<group>"; };
 		75500E602AEE8FD200C2FC3A /* TextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
+		7551F9A02C6549B30072CA88 /* DiscoverSAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSAVC.h; sourceTree = "<group>"; };
+		7551F9A12C6549B30072CA88 /* DiscoverSAVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSAVC.m; sourceTree = "<group>"; };
+		7551F9A32C6549B30072CA88 /* popUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popUpViewController.h; sourceTree = "<group>"; };
+		7551F9A42C6549B30072CA88 /* popUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popUpViewController.m; sourceTree = "<group>"; };
+		7551F9A62C6549B30072CA88 /* DataContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataContentView.h; sourceTree = "<group>"; };
+		7551F9A72C6549B30072CA88 /* DataContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataContentView.m; sourceTree = "<group>"; };
 		757A58ED2BA1EAD0003D95F0 /* ExpressDetailPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressDetailPageVC.m; sourceTree = "<group>"; };
 		758C7E4E2BA456AF002CA3F4 /* MXBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MXBackButton.swift; sourceTree = "<group>"; };
 		758C7E502BA4700F002CA3F4 /* MXObjCBackButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXObjCBackButton.h; sourceTree = "<group>"; };
@@ -3100,6 +3109,7 @@
 		18CDF4D5257F91BC006E8E5C /* Discover_MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				7551F9A92C6549B30072CA88 /* Discover_SportAttendanceForMainPage */,
 				B0B1B9DB29E69E7B00A1BB02 /* Discover_Electric */,
 				14B73F29281BED7B00D08ADD /* Discover_MineMessage */,
 			);
@@ -4280,6 +4290,43 @@
 				75500E602AEE8FD200C2FC3A /* TextManager.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		7551F9A22C6549B30072CA88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A02C6549B30072CA88 /* DiscoverSAVC.h */,
+				7551F9A12C6549B30072CA88 /* DiscoverSAVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7551F9A52C6549B30072CA88 /* PopUpController */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A32C6549B30072CA88 /* popUpViewController.h */,
+				7551F9A42C6549B30072CA88 /* popUpViewController.m */,
+			);
+			path = PopUpController;
+			sourceTree = "<group>";
+		};
+		7551F9A82C6549B30072CA88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A62C6549B30072CA88 /* DataContentView.h */,
+				7551F9A72C6549B30072CA88 /* DataContentView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7551F9A92C6549B30072CA88 /* Discover_SportAttendanceForMainPage */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A22C6549B30072CA88 /* Controller */,
+				7551F9A52C6549B30072CA88 /* PopUpController */,
+				7551F9A82C6549B30072CA88 /* View */,
+			);
+			path = Discover_SportAttendanceForMainPage;
 			sourceTree = "<group>";
 		};
 		758C7E482BA4548D002CA3F4 /* MXBackButton */ = {
@@ -6684,6 +6731,7 @@
 				FC4B3BD02A8766F2003336C8 /* WeDateTopView.swift in Sources */,
 				14B73F8B2823577600D08ADD /* SSRButton.m in Sources */,
 				75CC08082C539B3700810A4E /* ExamArrangeModel.m in Sources */,
+				7551F9AA2C6549B30072CA88 /* DiscoverSAVC.m in Sources */,
 				DB34EACF239BD4550052B65E /* WYCClassAndRemindDataModel.m in Sources */,
 				14F6F5552AFB8CDB007C7CA6 /* ScheduleDetailCollectionViewCell.swift in Sources */,
 				14F6F54D2AFB8CDA007C7CA6 /* ScheduleDrawType.swift in Sources */,
@@ -6925,6 +6973,7 @@
 				18CDF721257F91BE006E8E5C /* FinderToolViewController.m in Sources */,
 				14F6F5592AFB8CDB007C7CA6 /* ScheduleEditSectionCollectionViewCell.swift in Sources */,
 				1ABE8026238D01EC00E88C4E /* CheckInViewController.m in Sources */,
+				7551F9AC2C6549B30072CA88 /* DataContentView.m in Sources */,
 				DB4064FA2466D889006CE5BC /* DLTextFiled.m in Sources */,
 				147842EA27F0758F002359BA /* UIView+Frame.m in Sources */,
 				18CDF67E257F91BD006E8E5C /* HistoryView.m in Sources */,
@@ -7030,6 +7079,7 @@
 				FC15428B2ABBEC8100BD806F /* ScheduleCollectionViewLayout.swift in Sources */,
 				FC9E3A8D2AB6CD4C00E3C65F /* ScheduleCollectionViewCell.swift in Sources */,
 				B0B1BA0A29E6E98000A1BB02 /* PickerDormitoryViewController.m in Sources */,
+				7551F9AB2C6549B30072CA88 /* popUpViewController.m in Sources */,
 				D0101D5C2433C885004337ED /* SDMaskGuidController.m in Sources */,
 				6464F93426E4F6EE008562C5 /* BuyModel.m in Sources */,
 				AA5D39B824F74A9800AB2DF5 /* LocalNotiManager.m in Sources */,

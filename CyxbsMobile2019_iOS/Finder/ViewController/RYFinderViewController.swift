@@ -11,11 +11,15 @@ import UIKit
 class RYFinderViewController: UIViewController {
     
     // 适配OC
+    // 体育打卡
+    lazy var sportsVC = DiscoverSAVC()
+    // 电费
     lazy var electricVC = ElectricViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addChild(sportsVC)
         addChild(electricVC)
         
         view.backgroundColor = .ry(light: "#F2F3F8", dark: "#000000")
@@ -23,6 +27,7 @@ class RYFinderViewController: UIViewController {
         view.addSubview(contentScrollView)
         setupUI()
         setupElectric()
+        setupSA()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,9 +94,14 @@ extension RYFinderViewController {
     }
     
     func setupElectric() {
-        
+        electricVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 152)
         electricVC.view.frame.origin.y = toolsView.frame.maxY + 20
         contentScrollView.addSubview(electricVC.view)
+    }
+    
+    func setupSA() {
+        sportsVC.view.frame.origin.y = electricVC.view.frame.maxY
+        contentScrollView.addSubview(sportsVC.view)
     }
     
     func reloadData() {

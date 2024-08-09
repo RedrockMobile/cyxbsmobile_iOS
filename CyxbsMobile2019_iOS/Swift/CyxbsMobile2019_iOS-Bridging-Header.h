@@ -338,3 +338,4 @@ typedef NS_ENUM(NSInteger, ScheduleType) {
 #import "MineViewController.h"
 #import "ElectricViewController.h"
 #import "AttitudeMainPageVC.h"
+#import "DiscoverSAVC.h"
