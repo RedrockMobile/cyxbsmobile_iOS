@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SportAttendanceViewController : UIViewController<
-RisingRouterHandler
->
+@interface SportAttendanceViewController : UIViewController
 
 @end
 

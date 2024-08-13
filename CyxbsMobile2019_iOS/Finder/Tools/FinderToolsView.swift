@@ -143,6 +143,12 @@ extension FinderToolsView: UICollectionViewDelegate {
             vc = CQUPTMapViewController()
         } else if name == "邮子清单" {
             vc = TODOMainViewController()
+        } else if name == "空教室" {
+            vc = EmptyClassViewController()
+        } else if name == "体育打卡" {
+            vc = SportAttendanceViewController()
+        } else if name == "我的考试" {
+            vc = TestArrangeViewController()
         } else if name == "更多功能" {
             vc = FinderToolViewController()
         }
