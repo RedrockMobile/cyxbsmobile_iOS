@@ -267,7 +267,7 @@
     //添加跑步的详情列表
     [self.view addSubview:self.sADetailsTableView];
     
-    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"404"]];
+    UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder.empty.boy_404"]];
     [self.view addSubview:img];
     [img mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
