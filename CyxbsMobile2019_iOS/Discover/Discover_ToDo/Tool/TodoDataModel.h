@@ -34,6 +34,12 @@ typedef enum : NSUInteger {
 
 @interface TodoDataModel : NSObject
 
+/// todo是否置顶
+@property (nonatomic, assign)BOOL isPinned;
+
+/// todo的分组
+@property (nonatomic, copy)NSString* type;
+
 /// todo的ID，创建时的时间戳
 @property (nonatomic, copy)NSString* todoIDStr;
 

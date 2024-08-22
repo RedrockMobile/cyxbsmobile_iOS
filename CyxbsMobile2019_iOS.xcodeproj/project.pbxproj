@@ -355,6 +355,14 @@
 		7551F9CC2C69FB810072CA88 /* EmptyClassUnavailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9BF2C69FB810072CA88 /* EmptyClassUnavailableViewController.m */; };
 		7551F9CD2C69FB810072CA88 /* EmptyClassUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7551F9C02C69FB810072CA88 /* EmptyClassUnavailableViewController.xib */; };
 		7551F9CE2C69FB810072CA88 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9C22C69FB810072CA88 /* EmptyClassViewController.m */; };
+		7551F9D12C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9D02C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift */; };
+		7551F9D32C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9D22C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift */; };
+		7551F9DC2C73A3FC0072CA88 /* DLHistodyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9DB2C73A3FC0072CA88 /* DLHistodyButton.swift */; };
+		7551F9DE2C73A8BF0072CA88 /* DLTimeSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9DD2C73A8BF0072CA88 /* DLTimeSelectedButton.swift */; };
+		7551F9E02C74785A0072CA88 /* DiscoverTodoSelectTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9DF2C74785A0072CA88 /* DiscoverTodoSelectTimeView.swift */; };
+		7551F9E22C748F2F0072CA88 /* YearBtnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9E12C748F2F0072CA88 /* YearBtnsView.swift */; };
+		7551F9E42C74AC470072CA88 /* DiscoverTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */; };
+		7551F9E62C74C2020072CA88 /* TodoTitleInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */; };
 		757A58EE2BA1EAD0003D95F0 /* ExpressDetailPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 757A58ED2BA1EAD0003D95F0 /* ExpressDetailPageVC.m */; };
 		758C7E4F2BA456AF002CA3F4 /* MXBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758C7E4E2BA456AF002CA3F4 /* MXBackButton.swift */; };
 		758C7E522BA4700F002CA3F4 /* MXObjCBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 758C7E512BA4700F002CA3F4 /* MXObjCBackButton.m */; };
@@ -1303,6 +1311,14 @@
 		7551F9C02C69FB810072CA88 /* EmptyClassUnavailableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyClassUnavailableViewController.xib; sourceTree = "<group>"; };
 		7551F9C12C69FB810072CA88 /* EmptyClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
 		7551F9C22C69FB810072CA88 /* EmptyClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
+		7551F9D02C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSetRemindBasicView.swift; sourceTree = "<group>"; };
+		7551F9D22C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectRepeatView.swift; sourceTree = "<group>"; };
+		7551F9DB2C73A3FC0072CA88 /* DLHistodyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLHistodyButton.swift; sourceTree = "<group>"; };
+		7551F9DD2C73A8BF0072CA88 /* DLTimeSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTimeSelectedButton.swift; sourceTree = "<group>"; };
+		7551F9DF2C74785A0072CA88 /* DiscoverTodoSelectTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectTimeView.swift; sourceTree = "<group>"; };
+		7551F9E12C748F2F0072CA88 /* YearBtnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBtnsView.swift; sourceTree = "<group>"; };
+		7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSheetView.swift; sourceTree = "<group>"; };
+		7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTitleInputTextField.swift; sourceTree = "<group>"; };
 		757A58ED2BA1EAD0003D95F0 /* ExpressDetailPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressDetailPageVC.m; sourceTree = "<group>"; };
 		758C7E4E2BA456AF002CA3F4 /* MXBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MXBackButton.swift; sourceTree = "<group>"; };
 		758C7E502BA4700F002CA3F4 /* MXObjCBackButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXObjCBackButton.h; sourceTree = "<group>"; };
@@ -4417,6 +4433,29 @@
 			path = Discover_EmptyClass;
 			sourceTree = "<group>";
 		};
+		7551F9CF2C733ABB0072CA88 /* SwiftView */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9DA2C73A3EB0072CA88 /* Button */,
+				7551F9D02C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift */,
+				7551F9D22C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift */,
+				7551F9DF2C74785A0072CA88 /* DiscoverTodoSelectTimeView.swift */,
+				7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */,
+				7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */,
+			);
+			path = SwiftView;
+			sourceTree = "<group>";
+		};
+		7551F9DA2C73A3EB0072CA88 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9DB2C73A3FC0072CA88 /* DLHistodyButton.swift */,
+				7551F9DD2C73A8BF0072CA88 /* DLTimeSelectedButton.swift */,
+				7551F9E12C748F2F0072CA88 /* YearBtnsView.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		758C7E482BA4548D002CA3F4 /* MXBackButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -6298,8 +6337,8 @@
 			children = (
 				FE2C131627AEF629001CF7AF /* ToDoDetaileViewController.h */,
 				FE2C131827AEF629001CF7AF /* ToDoDetaileViewController.m */,
-				FE2C131727AEF629001CF7AF /* TODOMainViewController.m */,
 				FE2C131927AEF629001CF7AF /* TODOMainViewController.h */,
+				FE2C131727AEF629001CF7AF /* TODOMainViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6334,6 +6373,7 @@
 		FE2C132F27AEF629001CF7AF /* Discover_ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				7551F9CF2C733ABB0072CA88 /* SwiftView */,
 				FE2C133027AEF629001CF7AF /* DiscoverTodoSelectRepeatView.h */,
 				FE2C133B27AEF629001CF7AF /* DiscoverTodoSelectRepeatView.m */,
 				FE2C133227AEF629001CF7AF /* DiscoverTodoSelectTimeView.h */,
@@ -6782,6 +6822,7 @@
 				AA289B1224EFC78C00FDF70C /* NoteDetailView.m in Sources */,
 				B0C9F2372B0126E1006F4286 /* ActivityMainViewController.swift in Sources */,
 				75CC081F2C539B3800810A4E /* SportAttendanceHeadView.m in Sources */,
+				7551F9E22C748F2F0072CA88 /* YearBtnsView.swift in Sources */,
 				B0F71C872ABC71B200F8B1AC /* AttitudeMainPageVC.m in Sources */,
 				1A141377235F524B0001417E /* SYCSegmentViewButton.m in Sources */,
 				DB34EB39239BD4550052B65E /* TimeChooseScrollView.m in Sources */,
@@ -6845,6 +6886,7 @@
 				646B1975282CDF840015DF28 /* StationsCollectionViewCell.m in Sources */,
 				AA0DDB6D286C8B1A00802324 /* EditMyInfoViewController.m in Sources */,
 				B0FE5F2D294C94540070E755 /* UIColor+Rising.m in Sources */,
+				7551F9DE2C73A8BF0072CA88 /* DLTimeSelectedButton.swift in Sources */,
 				D0101F66243587A1004337ED /* GKWebImageManager.m in Sources */,
 				14B73F70281BED7B00D08ADD /* ActiveMessageModel.m in Sources */,
 				D0101D6A24352092004337ED /* UITextView+Placeholder.m in Sources */,
@@ -6856,6 +6898,7 @@
 				FC4B3BCE2A8764FA003336C8 /* WeDateVC.swift in Sources */,
 				B0C9F2442B0126E1006F4286 /* ActivityAdminRejectVC.swift in Sources */,
 				75500E632AEE8FD200C2FC3A /* TextManager.swift in Sources */,
+				7551F9E02C74785A0072CA88 /* DiscoverTodoSelectTimeView.swift in Sources */,
 				D0101D5A2433C885004337ED /* SDMaskNotificationName.m in Sources */,
 				14F6F54F2AFB8CDA007C7CA6 /* ScheduleCalModel+EX.swift in Sources */,
 				14FFFBEF2AF8C0F3005A7EBD /* PlaceholderCollectionViewCell.swift in Sources */,
@@ -6867,6 +6910,7 @@
 				B0F71C922ABC71B200F8B1AC /* ExpressDeclareModel.m in Sources */,
 				646B1984282E8F000015DF28 /* StationGuideView.m in Sources */,
 				B0C9F22F2B0126E1006F4286 /* ActivityRankingListVC.swift in Sources */,
+				7551F9E42C74AC470072CA88 /* DiscoverTodoSheetView.swift in Sources */,
 				FC7D381A2AAB867000DEAD50 /* BatchAddModel.swift in Sources */,
 				14B73F7C281BED7B00D08ADD /* MineMessageModel.m in Sources */,
 				B0F71C832ABC71B200F8B1AC /* AttitudeSelfPageViewController.m in Sources */,
@@ -6935,7 +6979,9 @@
 				14F6F55B2AFB8CDB007C7CA6 /* ScheduleEditViewController.swift in Sources */,
 				14FFFC082AF8C0FD005A7EBD /* TabBarPresentationViewController.swift in Sources */,
 				4931630E26CD7B6800140412 /* StampCenterSecondHeaderView.m in Sources */,
+				7551F9D12C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift in Sources */,
 				75CC08192C539B3800810A4E /* ScoreTwoTitleView.m in Sources */,
+				7551F9D32C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift in Sources */,
 				18CDF722257F91BE006E8E5C /* FinderToolViewItem.m in Sources */,
 				FE2C136827AEF629001CF7AF /* TodoSyncMsg.m in Sources */,
 				14F6F56D2AFB8CDB007C7CA6 /* ForgotViewController.swift in Sources */,
@@ -7164,6 +7210,7 @@
 				14FFFC022AF8C0FD005A7EBD /* APIConfig.swift in Sources */,
 				AA0DDB6B286C8B1A00802324 /* EditMyInfoPresenter.m in Sources */,
 				14F6F5602AFB8CDB007C7CA6 /* FinderNewsModel.swift in Sources */,
+				7551F9E62C74C2020072CA88 /* TodoTitleInputTextField.swift in Sources */,
 				14F6F5482AFB8CDA007C7CA6 /* CurriculumModel.swift in Sources */,
 				FC5849B62A9677BB00D9BBDF /* GroupTableViewCell.swift in Sources */,
 				B0C9F2462B0126E1006F4286 /* ActivityAdminManageMainVC.swift in Sources */,
@@ -7206,6 +7253,7 @@
 				B09BB8372AADA35400FF88F7 /* FoodMainPageCollectionViewCell.m in Sources */,
 				18CDF691257F91BD006E8E5C /* CQUPTMapStarPlaceItem.m in Sources */,
 				75CC08462C5657AA00810A4E /* SCLineChart.m in Sources */,
+				7551F9DC2C73A3FC0072CA88 /* DLHistodyButton.swift in Sources */,
 				AA0DDB72286C8B1A00802324 /* PMPPickerView.m in Sources */,
 				B0F71C992ABC71B200F8B1AC /* PublishTableAddTagView.m in Sources */,
 				75CC08162C539B3800810A4E /* ABScoreView.m in Sources */,

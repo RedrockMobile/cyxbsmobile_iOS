@@ -305,7 +305,7 @@ static TodoSyncTool* _instance;
     __block int mark = 0;
     CCLog(@"%d", [FMDatabase isSQLiteThreadSafe]);
     dispatch_async(que, ^{
-//        NSString *token = [UserItem defaultItem].token;
+        NSString *token = [UserItem defaultItem].token;
         NSDictionary* paramDict;
         NSArray *todoDataArr = [self getAddAndAlterDataToPush];
         if (todoDataArr.count!=0) {
@@ -554,7 +554,8 @@ static TodoSyncTool* _instance;
 - (TodoDataModel*)resultSetToDataModel:(FMResultSet*)resultSet {
     TodoDataModel* model = [[TodoDataModel alloc] init];
     NSString* code;
-    
+    model.isPinned = [resultSet boolForColumn:@"is_pinned"];
+    model.type = [resultSet stringForColumn:@"type"];
     model.todoIDStr = [resultSet stringForColumn:@"todo_id"];
     model.titleStr = [resultSet stringForColumn:@"title"];
     model.detailStr = [resultSet stringForColumn:@"detail"];
@@ -614,11 +615,11 @@ static TodoSyncTool* _instance;
     
     NSString* code;
     code = OSTRING(
-                   INSERT INTO todoTable (todo_id, title, detail, is_done, overdueTime, lastOverdueTime, last_modify_time)
+                   INSERT INTO todoTable (todo_id, title, detail, type, is_pinned, is_done, overdueTime, lastOverdueTime, last_modify_time)
                        VALUES
-                        (?, ?, ?, ?, ?, ?, ?)
+                        (?, ?, ?, ?, ?, ?, ?, ?, ?)
                    );
-    [self.db executeUpdate:code withArgumentsInArray:@[model.todoIDStr, model.titleStr, model.detailStr, @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime)]];
+    [self.db executeUpdate:code withArgumentsInArray:@[model.todoIDStr, model.titleStr, model.detailStr, model.type, @(model.isPinned), @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime)]];
     
     code = OSTRING(
                    INSERT INTO remindModeTable(todo_id, repeat_mode, week, day, date, notify_datetime)
@@ -666,6 +667,8 @@ static TodoSyncTool* _instance;
                    UPDATE todoTable
                        SET title = ? <
                            detail = ? <
+                           type = ? <
+                           is_pinned = ? <
                            is_done = ? <
                        overdueTime = ? <
                        lastOverdueTime = ? <
@@ -674,7 +677,7 @@ static TodoSyncTool* _instance;
                        WHERE todo_id = ?
                    );
     code = [code stringByReplacingOccurrencesOfString:@"<" withString:@","];
-    [self.db executeUpdate:code withArgumentsInArray:@[model.titleStr, model.detailStr, @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime), model.todoIDStr]];
+    [self.db executeUpdate:code withArgumentsInArray:@[model.titleStr, model.detailStr, model.type, @(model.isPinned), @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime), model.todoIDStr]];
     
     //重新添加通知
     [TodoDateTool addNotiWithModel:model];
@@ -1099,12 +1102,43 @@ static inline int ForeignWeekToChinaWeek(int week) {
 
 /// 建表
 - (void)creatTodoTable {
+    
+    NSString *checkColumnQuery = @"PRAGMA table_info(todoTable);";
+    FMResultSet *resultSet = [self.db executeQuery:checkColumnQuery];
+    BOOL typeExists = NO;
+    BOOL isPinnedExists = NO;
+    while ([resultSet next]) {
+        NSString *columnName = [resultSet stringForColumn:@"name"];
+        if ([columnName isEqualToString:@"type"]) {
+            typeExists = YES;
+        }
+        if ([columnName isEqualToString:@"is_pinned"]) {
+            isPinnedExists = YES;
+        }
+        if (typeExists && isPinnedExists) {
+            break;
+        }
+    }
+    
+    [resultSet close];
+
+    if (!typeExists) {
+        NSString *alterTypeColumnQuery = @"ALTER TABLE todoTable ADD COLUMN type TEXT;";
+        [self.db executeUpdate:alterTypeColumnQuery];
+    }
+    if (!isPinnedExists) {
+        NSString *alterIsPinColumnQuery = @"ALTER TABLE todoTable ADD COLUMN is_pinned INTEGER;";
+        [self.db executeUpdate:alterIsPinColumnQuery];
+    }
+    
     NSString* code = OSTRING(
                              CREATE TABLE IF NOT EXISTS
                                 todoTable (
                                                todo_id TEXT not null,
                                                title TEXT,
                                                detail TEXT,
+                                               type TEXT,
+                                               is_pinned INTEGER,
                                                is_done INTEGER,
                                                overdueTime INTEGER,
                                                lastOverdueTime INTEGER,
@@ -1186,11 +1220,13 @@ static inline int ForeignWeekToChinaWeek(int week) {
         NSString* todo_id = [set stringForColumn:@"todo_id"];
         NSString* title = [set stringForColumn:@"title"];
         NSString* detail = [set stringForColumn:@"detail"];
+        NSString* type = [set stringForColumn:@"type"];
+        NSInteger is_pinned = [set longForColumn:@"is_pinned"];
         NSInteger is_done = [set longForColumn:@"is_done"];
         NSInteger overdueTime = [set longForColumn:@"overdueTime"];
         NSInteger lastOverdueTime = [set longForColumn:@"lastOverdueTime"];
         NSInteger last_modify_time = [set longForColumn:@"last_modify_time"];
-        CCLog(@"%@, %@, %@, %ld, %ld, %ld, %ld", todo_id, title, detail, is_done, overdueTime, lastOverdueTime, last_modify_time);
+        CCLog(@"%@, %@, %@, %@, %ld, %ld, %ld, %ld, %ld", todo_id, title, detail, type, is_pinned, is_done, overdueTime, lastOverdueTime, last_modify_time);
     }
     /*
      todo_id TEXT,

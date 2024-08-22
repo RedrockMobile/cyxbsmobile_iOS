@@ -15,6 +15,8 @@
     self = [super init];
     if (self) {
         //这些初始化，是为了避免数据库因为空值出错
+        self.isPinned = NO;
+        self.type = @"";
         self.todoIDStr = @"";
         self.titleStr = @"";
         self.repeatMode = TodoDataModelRepeatModeNO;
@@ -45,10 +47,14 @@
      },
      "detail": "全栈永远滴神",
      "last_modify_time": 1561561561,
-     "is_done": 0
+     "is_done": 0,
+     "type": "study",
+     "is_pinned": 0
  }
  */
 - (void)setDataWithDict:(NSDictionary*)dict {
+    self.type = dict[@"type"];
+    self.isPinned = dict[@"is_pinned"];
     self.todoIDStr = dict[@"todo_id"];
     self.titleStr = dict[@"title"];
     NSDictionary* remind_mode = dict[@"remind_mode"];
@@ -93,7 +99,9 @@
         },
         @"detail": self.detailStr,
         @"last_modify_time":@(self.lastModifyTime),
-        @"is_done": @((int)self.isDone)
+        @"is_done": @((int)self.isDone),
+        @"type": self.type,
+        @"is_pinned": @((int)self.isPinned)
     };
 }
 //从[1, 2, ... 7]转化为[2, 3, ... 1]
@@ -247,6 +255,23 @@ static inline int ForeignWeekToChinaWeek(int week) {
     }
 }
 //MARK: - 底下重写setter方法，是为了避免数据库因为空值出错
+
+- (void)setIsPinned:(BOOL)isPinned {
+    isPinned = !!isPinned;
+    if (isPinned == _isPinned) {
+        return;
+    }
+    _isPinned = isPinned;
+}
+
+- (void)setType:(NSString *)type {
+    if (type == nil) {
+        _type = @"";
+    } else {
+        _type = type;
+    }
+}
+
 - (void)setTodoIDStr:(NSString *)todoIDStr {
     if (todoIDStr==nil) {
         _todoIDStr = @"";
