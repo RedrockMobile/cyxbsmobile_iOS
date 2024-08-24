@@ -96,8 +96,8 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         
         scrollView.snp.makeConstraints { make in
             make.left.right.equalTo(self)
-            make.top.equalTo(self).offset(0.017 * UIScreen.main.bounds.height)
-            make.height.equalTo(0.044 * UIScreen.main.bounds.height)
+            make.top.equalTo(self).offset(0.01724137931 * SCREEN_HEIGHT)
+            make.height.equalTo(0.04433497537 * SCREEN_HEIGHT)
         }
         
         scrContenView = UIView()
@@ -275,23 +275,23 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
 
     
     private func reLayoutAllBtn() {
-        let btnCnt = btnArr.count
-        let btnSpacing = 15.0
-        let btnWidth = 50.0
-        let btnHeight = 30.0
+        var lastConstraint = scrContenView.snp.left
         
-        scrContenView.snp.updateConstraints { make in
-            make.width.equalTo((btnWidth + btnSpacing) * Double(btnCnt))
+        for btn in btnArr {
+            btn.snp.remakeConstraints { make in
+                make.height.equalTo(0.04433497537 * UIScreen.main.bounds.height)
+                make.top.bottom.equalTo(scrContenView)
+                make.left.equalTo(lastConstraint).offset(0.03733333333 * UIScreen.main.bounds.width)
+            }
+            lastConstraint = btn.snp.right
         }
         
-        for i in 0..<btnCnt {
-            let btn = btnArr[i]
-            btn.snp.remakeConstraints { make in
-                make.left.equalTo(scrContenView.snp.left).offset(btnSpacing * Double(i) + btnWidth * Double(i))
-                make.width.equalTo(btnWidth)
-                make.height.equalTo(btnHeight)
-                make.centerY.equalTo(scrContenView)
-            }
+        if btnArr.isEmpty {
+            return
+        }
+        
+        btnArr.last?.snp.makeConstraints { make in
+            make.right.equalTo(scrContenView).offset(-0.03733333333 * UIScreen.main.bounds.width)
         }
     }
     
@@ -313,6 +313,43 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         }
         
         reLayoutAllBtn()
+    }
+    
+    /// 外界调用，调用后显示出来
+    override func showView() {
+        if isViewHided {
+            isViewHided = false
+            UIView.animate(withDuration: 0.3) {
+                self.alpha = 1
+                for subView in self.subviews {
+                    subView.alpha = 1
+                }
+            }
+            increseCnt = 0
+        }
+    }
+
+    /// 调用后效果如同点击取消按钮，但是不会调用代理方法
+    override func hideView() {
+        if !isViewHided {
+            isViewHided = true
+            UIView.animate(withDuration: 0.3) {
+                self.addBtn.alpha = 0
+                self.tipView.alpha = 0
+                self.pickerView.alpha = 0
+                self.sureBtn.alpha = 0
+                self.cancelBtn.alpha = 0
+                self.separatorLine.alpha = 0
+            }
+
+            for _ in 0..<increseCnt {
+                if let lastButton = btnArr.popLast() {
+                    lastButton.removeFromSuperview()
+                }
+                dateArr.removeLast()
+            }
+            reLayoutAllBtn()
+        }
     }
 }
 
@@ -345,4 +382,3 @@ extension DiscoverTodoSelectRepeatView: DLTimeSelectedButtonDelegate {
     }
 
 }
-

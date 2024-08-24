@@ -29,13 +29,23 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     
     private lazy var selectTimeView: DiscoverTodoSelectTimeView = {
         let view = DiscoverTodoSelectTimeView()
+        backView.addSubview(view)
         view.delegate = self
+        view.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(0.4729064039 * SCREEN_HEIGHT)
+        }
         return view
     }()
     
     private lazy var selectRepeatView: DiscoverTodoSelectRepeatView = {
         let view = DiscoverTodoSelectRepeatView()
+        backView.addSubview(view)
         view.delegate = self
+        view.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(0.4729064039 * SCREEN_HEIGHT)
+        }
         return view
     }()
     
@@ -46,8 +56,8 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(cancel))
-        self.addGestureRecognizer(tapGesture)
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(cancel))
+        self.addGestureRecognizer(tapGes)
         self.backgroundColor = .clear
         self.setupViews()
     }
@@ -59,10 +69,14 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     // MARK: - Setup Views
     
     private func setupViews() {
+        self.snp.makeConstraints { make in
+            make.size.equalTo(CGSize(width: SCREEN_WIDTH, height: 1.7389162562 * SCREEN_HEIGHT))
+        }
         self.addSubview(backView)
         backView.backgroundColor = UIColor.ry(light: "#FFFFFF", dark: "#2C2C2C")
         backView.layer.mask = createRoundedCornerMask()
-        
+        let tapGes = UITapGestureRecognizer()
+        backView.addGestureRecognizer(tapGes)
         backView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(UIScreen.main.bounds.height * 0.7389)
@@ -206,23 +220,25 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     }
     
     @objc private func remindTimeBtnClicked() {
-        addSubview(selectTimeView)
-        selectTimeView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        selectTimeView.showView()
+        self.endEditing(true)
+        self.selectRepeatView.hideView()
+        self.selectTimeView.showView()
+        self.backView.bringSubviewToFront(selectTimeView)
     }
     
     @objc private func repeatModelBtnClicked() {
-        addSubview(selectRepeatView)
-        selectRepeatView.snp.makeConstraints { make in
-            make.edges.equalTo(self)
-        }
-        selectRepeatView.showView()
+        self.endEditing(true)
+        self.selectTimeView.hideView()
+        self.selectRepeatView.showView()
+        self.backView.bringSubviewToFront(selectRepeatView)
     }
     
     @objc private func deleteBtnClicked() {
-        print("deleteBtnClicked")
+        UIView.animate(withDuration: 0.5) {
+            self.deleteBtn.alpha = 0
+        }
+        remindTimeBtn.setTitle("设置提醒时间", for: .normal)
+        dataModel.timeStr = ""
     }
     
     // MARK: - UITextFieldDelegate

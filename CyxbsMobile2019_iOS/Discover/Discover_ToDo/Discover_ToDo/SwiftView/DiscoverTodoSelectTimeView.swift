@@ -102,26 +102,6 @@ class DiscoverTodoSelectTimeView: DiscoverTodoSetRemindBasicView {
         delegate?.selectTimeViewSureBtnClicked(components: components)
     }
     
-    func yearBtnsView(_ view: YearBtnsView, didSelectedYear year: Int) {
-        let calendar = Calendar.current
-        var minDate: Date
-        var maxDate: Date
-        
-        var components = DateComponents()
-        components.year = year + 1
-        maxDate = calendar.date(from: components)!.addingTimeInterval(-1)
-        
-        if calendar.component(.year, from: Date()) == year {
-            minDate = Date(timeIntervalSinceNow: 60)
-        } else {
-            components.year = year
-            minDate = calendar.date(from: components)!
-        }
-        
-        datePicker.minimumDate = minDate
-        datePicker.maximumDate = maxDate
-    }
-    
     /// 外界调用，调用后显示出来
     override func showView() {
         print("\(isViewHided), \(self.alpha)")
@@ -145,8 +125,24 @@ class DiscoverTodoSelectTimeView: DiscoverTodoSetRemindBasicView {
 }
 
 extension DiscoverTodoSelectTimeView: YearBtnsViewDelegate {
-    func yearBtnsView(_ view: YearBtnsView, didSelectYear year: Int) {
-        yearBtnsView(view, didSelectedYear: year)
+    func yearBtnsView(_ view: YearBtnsView, didSelectedYear year: Int) {
+        let calendar = Calendar.current
+        var minDate: Date
+        var maxDate: Date
+        
+        var components = DateComponents()
+        components.year = year + 1
+        maxDate = calendar.date(from: components)!.addingTimeInterval(-1)
+        
+        if calendar.component(.year, from: Date()) == year {
+            minDate = Date(timeIntervalSinceNow: 60)
+        } else {
+            components.year = year
+            minDate = calendar.date(from: components)!
+        }
+        
+        datePicker.minimumDate = minDate
+        datePicker.maximumDate = maxDate
     }
 }
 
