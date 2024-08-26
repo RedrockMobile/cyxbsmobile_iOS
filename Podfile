@@ -23,12 +23,14 @@ target 'CyxbsMobile2019_iOS' do
   pod 'MBProgressHUD', '~> 0.9.2'  # 提示框库
   pod 'YYKit'  # iOS开发工具集合
   pod 'YYImage'  # 图片处理库
+  pod 'TOCropViewController'  # 图片裁剪库
   pod 'Masonry'  # 自动布局库
   pod 'MJRefresh'  # 下拉刷新库
   pod 'AMapLocation-NO-IDFA'  # 高德地图定位库
   pod 'AMap3DMap-NO-IDFA'  # 高德地图3D库
   pod 'MJExtension'  # 字典和模型之间的转换库
   pod 'SDCycleScrollView'  # 轮播图库
+  pod 'FSCalendar'  # iOS日历库，兼容Objective-C和Swift
   
   pod 'UMCommon'  # 友盟统计库
   pod 'UMDevice'  # 友盟设备信息库
@@ -48,7 +50,6 @@ target 'CyxbsMobile2019_iOS' do
   # pod 'RxSwift'
   pod 'RxCocoa'  # ReactiveX Cocoa扩展库
   pod 'SnapKit'  # 约束布局库
-  pod 'TOCropViewController'  # 图片裁剪库
   
   pod 'JXPagingView'  # 分页视图库
   pod 'JXSegmentedView'  # 分段视图库

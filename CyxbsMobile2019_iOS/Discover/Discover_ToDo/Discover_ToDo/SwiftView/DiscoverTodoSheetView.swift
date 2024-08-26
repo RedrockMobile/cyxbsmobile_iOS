@@ -19,21 +19,30 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     
     weak var delegate: DiscoverTodoSheetViewDelegate?
     
+    /// 带圆角白色背景板
     private let backView = UIView()
+    /// 覆盖在蒙版上的透明view，用于实现点击返回逻辑
+    private let cancelView = UIView()
+    /// 取消按钮
     private let cancelBtn = UIButton()
+    /// 保存按钮
     private let saveBtn = UIButton()
+    /// 设置截止时间按钮
     private let remindTimeBtn = UIButton()
+    /// 设置重复按钮
     private let repeatModelBtn = UIButton()
+    /// 标题文本输入框
     private let titleInputTextField = TodoTitleInputTextField()
+    /// 删除按钮
     private let deleteBtn = UIButton()
     
-    private lazy var selectTimeView: DiscoverTodoSelectTimeView = {
-        let view = DiscoverTodoSelectTimeView()
+    private lazy var selectDateView: DiscoverTodoSelectDateView = {
+        let view = DiscoverTodoSelectDateView()
         backView.addSubview(view)
         view.delegate = self
         view.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(0.4729064039 * SCREEN_HEIGHT)
+            make.height.equalTo(0.518472906403941 * SCREEN_HEIGHT)
         }
         return view
     }()
@@ -55,9 +64,6 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let tapGes = UITapGestureRecognizer(target: self, action: #selector(cancel))
-        self.addGestureRecognizer(tapGes)
         self.backgroundColor = .clear
         self.setupViews()
     }
@@ -75,11 +81,17 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         self.addSubview(backView)
         backView.backgroundColor = UIColor.ry(light: "#FFFFFF", dark: "#2C2C2C")
         backView.layer.mask = createRoundedCornerMask()
-        let tapGes = UITapGestureRecognizer()
-        backView.addGestureRecognizer(tapGes)
         backView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(self)
             make.height.equalTo(UIScreen.main.bounds.height * 0.7389)
+        }
+        self.addSubview(cancelView)
+        cancelView.backgroundColor = .clear
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(cancel))
+        cancelView.addGestureRecognizer(tapGes)
+        cancelView.snp.makeConstraints { make in
+            make.left.right.top.equalTo(self)
+            make.bottom.equalTo(backView.snp.top)
         }
         
         setupCancelButton()
@@ -222,13 +234,13 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     @objc private func remindTimeBtnClicked() {
         self.endEditing(true)
         self.selectRepeatView.hideView()
-        self.selectTimeView.showView()
-        self.backView.bringSubviewToFront(selectTimeView)
+        self.selectDateView.showView()
+        self.backView.bringSubviewToFront(selectDateView)
     }
     
     @objc private func repeatModelBtnClicked() {
         self.endEditing(true)
-        self.selectTimeView.hideView()
+        self.selectDateView.hideView()
         self.selectRepeatView.showView()
         self.backView.bringSubviewToFront(selectRepeatView)
     }
@@ -277,21 +289,19 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
 //    }
 }
 
-extension DiscoverTodoSheetView: DiscoverTodoSelectTimeViewDelegate, DiscoverTodoSelectRepeatViewDelegate {
+extension DiscoverTodoSheetView: DiscoverTodoSelectDateViewDelegate, DiscoverTodoSelectRepeatViewDelegate {
     // MARK: - DiscoverTodoSelectTimeViewDelegate
-    func selectTimeViewSureBtnClicked(components: DateComponents) {
-        if let date = Calendar.current.date(from: components) {
-            let dateFormatter1 = DateFormatter()
-            dateFormatter1.dateFormat = "M月d日HH:mm"
-            let btnString = dateFormatter1.string(from: date)
-            remindTimeBtn.setTitle(btnString, for: .normal)
-            let dateFormatter2 = DateFormatter()
-            dateFormatter2.dateFormat = "yyyy年M月d日HH:mm"
-            let modelTimeStr = dateFormatter2.string(from: date)
-            self.dataModel.timeStr = modelTimeStr
-            UIView.animate(withDuration: 0.5) {
-                self.deleteBtn.alpha = 1
-            }
+    func selectTimeViewSureBtnClicked(date: Date) {
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "M月d日HH:mm"
+        let btnString = dateFormatter1.string(from: date)
+        remindTimeBtn.setTitle(btnString, for: .normal)
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "yyyy年M月d日HH:mm"
+        let modelTimeStr = dateFormatter2.string(from: date)
+        self.dataModel.timeStr = modelTimeStr
+        UIView.animate(withDuration: 0.5) {
+            self.deleteBtn.alpha = 1
         }
     }
     
