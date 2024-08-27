@@ -18,7 +18,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     
     // MARK: - Properties
     var dateArr: [Any] = []
-    var repeatMode: TodoDataModelRepeatMode = TodoDataModelRepeatModeNO
+    var repeatMode: TodoDataModelRepeatMode = .NO
     weak var delegate: DiscoverTodoSelectRepeatViewDelegate?
     var btnArr: [DLTimeSelectedButton] = []
     /// 数据选择器
@@ -27,7 +27,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     private var week: [String] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     private var days: [Int] = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     private var addBtn: UIButton!
-    private var scrollView: UIScrollView!
+    var scrollView: UIScrollView!
     private var scrContenView: UIView!
     private var selectedCntOfcom: [Int] = Array(repeating: 0, count: 3)
     private var increseCnt: Int = 0
@@ -61,8 +61,8 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         pickerView.dataSource = self
         pickerView.snp.makeConstraints { make in
             make.centerX.equalTo(self)
-            make.top.equalTo(self).offset(0.039 * UIScreen.main.bounds.height)
-            make.bottom.equalTo(self).offset(-0.147 * UIScreen.main.bounds.height)
+            make.top.equalTo(self).offset(0.039 * SCREEN_HEIGHT)
+            make.bottom.equalTo(self).offset(-0.147 * SCREEN_HEIGHT)
         }
     }
     
@@ -83,7 +83,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         addBtn.snp.makeConstraints { make in
             make.left.equalTo(pickerView.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.height.equalTo(0.058 * UIScreen.main.bounds.width)
+            make.width.height.equalTo(0.058 * SCREEN_WIDTH)
         }
     }
     
@@ -146,8 +146,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if component == 0, !btnArr.isEmpty, row != selectedCntOfcom[component] {
             pickerView.selectRow(selectedCntOfcom[component], inComponent: 0, animated: true)
-            // Display error HUD (assuming NewQAHud is a custom HUD class)
-            // NewQAHud.showHudAtWindow(withStr: "只能选择一种重复模式～", enableInteract: true)
+            RemindHUD.shared().showDefaultHUD(withText: "只能选择一种重复模式～")
             return
         }
         selectedCntOfcom[component] = row
@@ -176,12 +175,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     
     @objc private func sureBtnClicked() {
         UIView.animate(withDuration: 0.3) {
-            self.addBtn.alpha = 0
-            self.tipView.alpha = 0
-            self.pickerView.alpha = 0
-            self.sureBtn.alpha = 0
-            self.cancelBtn.alpha = 0
-            self.separatorLine.alpha = 0
+            self.alpha = 0
         }
         increseCnt = 0
         isViewHided = true
@@ -196,7 +190,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
             if !btnArr.isEmpty {
                 return
             }
-            repeatMode = TodoDataModelRepeatModeDay
+            repeatMode = .day
             titleStr = "每天"
             
         case 1:
@@ -205,7 +199,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
                 return
             }
             dateArr.append(dateStr)
-            repeatMode = TodoDataModelRepeatModeWeek
+            repeatMode = .week
             titleStr = week[Int(selectedCntOfcom[1])]
             
         case 2:
@@ -214,7 +208,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
                 return
             }
             dateArr.append(dateStr)
-            repeatMode = TodoDataModelRepeatModeMonth
+            repeatMode = .month
             titleStr = "每月\(selectedCntOfcom[1] + 1)日"
             
         case 3:
@@ -240,7 +234,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
             dateArr.append(dateDict)
 
             // 设置重复模式为年
-            repeatMode = TodoDataModelRepeatModeYear
+            repeatMode = .year
 
             // 设置标题字符串
             titleStr = "每年\(selectedCntOfcom[1] + 1)月\(selectedCntOfcom[2] + 1)日"
@@ -259,7 +253,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         reLayoutAllBtn()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            let x = self.scrollView.contentSize.width - UIScreen.main.bounds.width
+            let x = self.scrollView.contentSize.width - SCREEN_WIDTH
             if x > 60 {
                 UIView.animate(withDuration: 0.6, animations: {
                     self.scrollView.contentOffset = CGPoint(x: x + 4, y: 0)
@@ -274,14 +268,14 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     }
 
     
-    private func reLayoutAllBtn() {
+    func reLayoutAllBtn() {
         var lastConstraint = scrContenView.snp.left
         
         for btn in btnArr {
             btn.snp.remakeConstraints { make in
-                make.height.equalTo(0.04433497537 * UIScreen.main.bounds.height)
+                make.height.equalTo(0.04433497537 * SCREEN_HEIGHT)
                 make.top.bottom.equalTo(scrContenView)
-                make.left.equalTo(lastConstraint).offset(0.03733333333 * UIScreen.main.bounds.width)
+                make.left.equalTo(lastConstraint).offset(0.03733333333 * SCREEN_WIDTH)
             }
             lastConstraint = btn.snp.right
         }
@@ -291,28 +285,8 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         }
         
         btnArr.last?.snp.makeConstraints { make in
-            make.right.equalTo(scrContenView).offset(-0.03733333333 * UIScreen.main.bounds.width)
+            make.right.equalTo(scrContenView).offset(-0.03733333333 * SCREEN_WIDTH)
         }
-    }
-    
-    // MARK: - DLTimeSelectedButtonDelegate
-    func timeSelectedButtonClicked(_ btn: DLTimeSelectedButton) {
-        guard let index = btnArr.firstIndex(of: btn) else { return }
-        
-        btnArr.remove(at: index)
-        btn.removeFromSuperview()
-        
-        if btnArr.isEmpty {
-            increseCnt = 0
-        }
-        
-        if selectedCntOfcom[0] == 3 {
-            dateArr.remove(at: index)
-        } else {
-            dateArr.remove(at: index)
-        }
-        
-        reLayoutAllBtn()
     }
     
     /// 外界调用，调用后显示出来
@@ -327,6 +301,11 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
             }
             increseCnt = 0
         }
+        scrollView.snp.remakeConstraints { make in
+            make.left.right.equalTo(self)
+            make.top.equalTo(self).offset(0.01724137931 * SCREEN_HEIGHT)
+            make.height.equalTo(0.04433497537 * SCREEN_HEIGHT)
+        }
     }
 
     /// 调用后效果如同点击取消按钮，但是不会调用代理方法
@@ -334,12 +313,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         if !isViewHided {
             isViewHided = true
             UIView.animate(withDuration: 0.3) {
-                self.addBtn.alpha = 0
-                self.tipView.alpha = 0
-                self.pickerView.alpha = 0
-                self.sureBtn.alpha = 0
-                self.cancelBtn.alpha = 0
-                self.separatorLine.alpha = 0
+                self.alpha = 0
             }
 
             for _ in 0..<increseCnt {
@@ -368,17 +342,39 @@ extension DiscoverTodoSelectRepeatView {
 extension DiscoverTodoSelectRepeatView: DLTimeSelectedButtonDelegate {
     func deleteButton(with button: DLTimeSelectedButton) {
         button.removeFromSuperview()
-        
         // 避免在每天重复的情况下出问题
         if !dateArr.isEmpty {
+            // 移除日期数组中对应日期
             if let index = btnArr.firstIndex(of: button) {
                 dateArr.remove(at: index)
             }
         }
-        
-        btnArr.removeAll { $0 == button }
+        // 从按钮数组中移除按钮
+        if let index = btnArr.firstIndex(of: button) {
+            btnArr.remove(at: index)
+        }
         reLayoutAllBtn()
+        // 调整按钮增加计数
         increseCnt -= 1
     }
 
+    // MARK: - DLTimeSelectedButtonDelegate
+    func timeSelectedButtonClicked(_ btn: DLTimeSelectedButton) {
+        guard let index = btnArr.firstIndex(of: btn) else { return }
+        
+        btnArr.remove(at: index)
+        btn.removeFromSuperview()
+        
+        if btnArr.isEmpty {
+            increseCnt = 0
+        }
+        
+        if selectedCntOfcom[0] == 3 {
+            dateArr.remove(at: index)
+        } else {
+            dateArr.remove(at: index)
+        }
+        
+        reLayoutAllBtn()
+    }
 }

@@ -556,6 +556,8 @@ static TodoSyncTool* _instance;
     NSString* code;
     model.isPinned = [resultSet boolForColumn:@"is_pinned"];
     model.type = [resultSet stringForColumn:@"type"];
+    model.isOvered = [resultSet boolForColumn:@"is_overed"];
+    model.endTime = [resultSet stringForColumn:@"end_time"];
     model.todoIDStr = [resultSet stringForColumn:@"todo_id"];
     model.titleStr = [resultSet stringForColumn:@"title"];
     model.detailStr = [resultSet stringForColumn:@"detail"];
@@ -615,11 +617,11 @@ static TodoSyncTool* _instance;
     
     NSString* code;
     code = OSTRING(
-                   INSERT INTO todoTable (todo_id, title, detail, type, is_pinned, is_done, overdueTime, lastOverdueTime, last_modify_time)
+                   INSERT INTO todoTable (todo_id, title, detail, type, is_pinned, is_overed, end_time, is_done, overdueTime, lastOverdueTime, last_modify_time)
                        VALUES
-                        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                    );
-    [self.db executeUpdate:code withArgumentsInArray:@[model.todoIDStr, model.titleStr, model.detailStr, model.type, @(model.isPinned), @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime)]];
+    [self.db executeUpdate:code withArgumentsInArray:@[model.todoIDStr, model.titleStr, model.detailStr, model.type, @(model.isPinned), @(model.isOvered), model.endTime, @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime)]];
     
     code = OSTRING(
                    INSERT INTO remindModeTable(todo_id, repeat_mode, week, day, date, notify_datetime)
@@ -669,6 +671,8 @@ static TodoSyncTool* _instance;
                            detail = ? <
                            type = ? <
                            is_pinned = ? <
+                           is_overed = ? <
+                           end_time = ? <
                            is_done = ? <
                        overdueTime = ? <
                        lastOverdueTime = ? <
@@ -677,7 +681,7 @@ static TodoSyncTool* _instance;
                        WHERE todo_id = ?
                    );
     code = [code stringByReplacingOccurrencesOfString:@"<" withString:@","];
-    [self.db executeUpdate:code withArgumentsInArray:@[model.titleStr, model.detailStr, model.type, @(model.isPinned), @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime), model.todoIDStr]];
+    [self.db executeUpdate:code withArgumentsInArray:@[model.titleStr, model.detailStr, model.type, @(model.isPinned), @(model.isOvered), model.endTime, @(model.isDone), @(model.overdueTime), @(model.lastOverdueTime), @(model.lastModifyTime), model.todoIDStr]];
     
     //重新添加通知
     [TodoDateTool addNotiWithModel:model];
@@ -1107,6 +1111,8 @@ static inline int ForeignWeekToChinaWeek(int week) {
     FMResultSet *resultSet = [self.db executeQuery:checkColumnQuery];
     BOOL typeExists = NO;
     BOOL isPinnedExists = NO;
+    BOOL isOveredExists = NO;
+    BOOL endTimeExists = NO;
     while ([resultSet next]) {
         NSString *columnName = [resultSet stringForColumn:@"name"];
         if ([columnName isEqualToString:@"type"]) {
@@ -1115,7 +1121,13 @@ static inline int ForeignWeekToChinaWeek(int week) {
         if ([columnName isEqualToString:@"is_pinned"]) {
             isPinnedExists = YES;
         }
-        if (typeExists && isPinnedExists) {
+        if ([columnName isEqualToString:@"is_overed"]) {
+            isOveredExists = YES;
+        }
+        if ([columnName isEqualToString:@"end_time"]) {
+            endTimeExists = YES;
+        }
+        if (typeExists && isPinnedExists && isOveredExists && endTimeExists) {
             break;
         }
     }
@@ -1130,6 +1142,14 @@ static inline int ForeignWeekToChinaWeek(int week) {
         NSString *alterIsPinColumnQuery = @"ALTER TABLE todoTable ADD COLUMN is_pinned INTEGER;";
         [self.db executeUpdate:alterIsPinColumnQuery];
     }
+    if (!isOveredExists) {
+        NSString *alterIsOverColumnQuery = @"ALTER TABLE todoTable ADD COLUMN is_overed INTEGER;";
+        [self.db executeUpdate:alterIsOverColumnQuery];
+    }
+    if (!endTimeExists) {
+        NSString *alterEndTimeColumnQuery = @"ALTER TABLE todoTable ADD COLUMN end_time TEXT;";
+        [self.db executeUpdate:alterEndTimeColumnQuery];
+    }
     
     NSString* code = OSTRING(
                              CREATE TABLE IF NOT EXISTS
@@ -1139,6 +1159,8 @@ static inline int ForeignWeekToChinaWeek(int week) {
                                                detail TEXT,
                                                type TEXT,
                                                is_pinned INTEGER,
+                                               is_overed INTEGER,
+                                               end_time TEXT,
                                                is_done INTEGER,
                                                overdueTime INTEGER,
                                                lastOverdueTime INTEGER,
@@ -1222,11 +1244,13 @@ static inline int ForeignWeekToChinaWeek(int week) {
         NSString* detail = [set stringForColumn:@"detail"];
         NSString* type = [set stringForColumn:@"type"];
         NSInteger is_pinned = [set longForColumn:@"is_pinned"];
+        NSInteger is_overed = [set longForColumn:@"is_overed"];
+        NSString* end_time = [set stringForColumn:@"end_time"];
         NSInteger is_done = [set longForColumn:@"is_done"];
         NSInteger overdueTime = [set longForColumn:@"overdueTime"];
         NSInteger lastOverdueTime = [set longForColumn:@"lastOverdueTime"];
         NSInteger last_modify_time = [set longForColumn:@"last_modify_time"];
-        CCLog(@"%@, %@, %@, %@, %ld, %ld, %ld, %ld, %ld", todo_id, title, detail, type, is_pinned, is_done, overdueTime, lastOverdueTime, last_modify_time);
+        CCLog(@"%@, %@, %@, %@, %ld, %ld, %@, %ld, %ld, %ld, %ld", todo_id, title, detail, type, is_pinned, is_overed, end_time,is_done, overdueTime, lastOverdueTime, last_modify_time);
     }
     /*
      todo_id TEXT,

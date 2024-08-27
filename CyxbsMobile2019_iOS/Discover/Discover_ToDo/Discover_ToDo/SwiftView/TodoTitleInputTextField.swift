@@ -10,7 +10,7 @@ import UIKit
 
 class TodoTitleInputTextField: UITextField {
 
-    private let offset: CGFloat = 0.04533333333 * UIScreen.main.bounds.width
+    private let offset: CGFloat = 0.04533333333 * SCREEN_WIDTH
 
     override init(frame: CGRect) {
         super.init(frame: frame)

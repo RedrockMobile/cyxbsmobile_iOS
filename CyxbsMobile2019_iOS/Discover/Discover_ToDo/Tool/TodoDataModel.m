@@ -17,6 +17,8 @@
         //这些初始化，是为了避免数据库因为空值出错
         self.isPinned = NO;
         self.type = @"";
+        self.isOvered = NO;
+        self.endTime = @"";
         self.todoIDStr = @"";
         self.titleStr = @"";
         self.repeatMode = TodoDataModelRepeatModeNO;
@@ -49,12 +51,16 @@
      "last_modify_time": 1561561561,
      "is_done": 0,
      "type": "study",
-     "is_pinned": 0
+     "is_pinned": 0,
+     "is_overed": 0,
+     "end_time": ""
  }
  */
 - (void)setDataWithDict:(NSDictionary*)dict {
     self.type = dict[@"type"];
-    self.isPinned = dict[@"is_pinned"];
+    self.isPinned = [dict[@"is_pinned"] boolValue];
+    self.isOvered = [dict[@"is_overed"] boolValue];
+    self.endTime = dict[@"end_time"];
     self.todoIDStr = dict[@"todo_id"];
     self.titleStr = dict[@"title"];
     NSDictionary* remind_mode = dict[@"remind_mode"];
@@ -101,7 +107,9 @@
         @"last_modify_time":@(self.lastModifyTime),
         @"is_done": @((int)self.isDone),
         @"type": self.type,
-        @"is_pinned": @((int)self.isPinned)
+        @"is_pinned": @((int)self.isPinned),
+        @"is_overed": @((int)self.isOvered),
+        @"end_time": self.endTime
     };
 }
 //从[1, 2, ... 7]转化为[2, 3, ... 1]
@@ -266,9 +274,38 @@ static inline int ForeignWeekToChinaWeek(int week) {
 
 - (void)setType:(NSString *)type {
     if (type == nil) {
-        _type = @"";
+        _type = @"ohter";
+        _typeMode = ToDoTypeOther;
     } else {
         _type = type;
+        _typeMode = [TodoDataModel ToDoTypeFromNSString:type];
+    }
+}
+
+- (void)setTypeMode:(ToDoType)typeMode {
+    if (typeMode == NSNotFound) {
+        _typeMode = ToDoTypeOther;
+        // 绕过属性封装，避免set方法的循环调用
+        _type = @"ohter";
+    } else {
+        _typeMode = typeMode;
+        _type = [TodoDataModel NSStringFromToDoType:typeMode];
+    }
+}
+
+- (void)setIsOvered:(BOOL)isOvered {
+    isOvered = !!isOvered;
+    if (isOvered == _isOvered) {
+        return;
+    }
+    _isOvered = isOvered;
+}
+
+- (void)setEndTime:(NSString *)endTime {
+    if (endTime == nil) {
+        _endTime = @"";
+    } else {
+        _endTime = endTime;
     }
 }
 
@@ -405,6 +442,33 @@ static inline int ForeignWeekToChinaWeek(int week) {
      "is_done": 0
  }
  */
+
++ (nonnull NSString *)NSStringFromToDoType:(ToDoType)type {
+    switch (type) {
+        case ToDoTypeStudy:
+            return @"study";
+        case ToDoTypeLife:
+            return @"life";
+        case ToDoTypeOther:
+            return @"other";
+        default:
+            return @"";  // 处理未知类型
+    }
+}
+
++ (ToDoType)ToDoTypeFromNSString:(nonnull NSString *)string {
+    if ([string isEqualToString:@"study"]) {
+        return ToDoTypeStudy;
+    } else if ([string isEqualToString:@"life"]) {
+        return ToDoTypeLife;
+    } else if ([string isEqualToString:@"other"]) {
+        return ToDoTypeOther;
+    } else {
+        // 处理未知字符串
+        return NSNotFound;
+    }
+}
+
 @end
 
 /*

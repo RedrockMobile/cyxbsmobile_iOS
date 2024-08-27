@@ -411,6 +411,9 @@
 		75CC08492C5657AA00810A4E /* SCTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC083B2C5657AA00810A4E /* SCTool.m */; };
 		75CC084A2C5657AA00810A4E /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC083D2C5657AA00810A4E /* UICountingLabel.m */; };
 		75F7296D2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7296C2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift */; };
+		75F7296F2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7296E2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift */; };
+		75F729732C7D8F4B00B36A56 /* TodoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F729702C7D8F4B00B36A56 /* TodoDataModel.m */; };
+		75F729742C7D8F4B00B36A56 /* TodoSyncTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F729712C7D8F4B00B36A56 /* TodoSyncTool.m */; };
 		75FD5F692BC5514500D8302D /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F672BC5514500D8302D /* CustomNavigationController.swift */; };
 		7FBF39F4257B79F30077494E /* ByPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EB257B79F20077494E /* ByPasswordViewController.m */; };
 		7FBF39F6257B79F30077494E /* ByWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EF257B79F30077494E /* ByWordViewController.m */; };
@@ -708,8 +711,6 @@
 		FE2C136027AEF629001CF7AF /* DiscoverTodoSelectTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133F27AEF629001CF7AF /* DiscoverTodoSelectTimeView.m */; };
 		FE2C136127AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134027AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m */; };
 		FE2C136327AEF629001CF7AF /* YearBtnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134327AEF629001CF7AF /* YearBtnsView.m */; };
-		FE2C136627AEF629001CF7AF /* TodoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134727AEF629001CF7AF /* TodoDataModel.m */; };
-		FE2C136727AEF629001CF7AF /* TodoSyncTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134827AEF629001CF7AF /* TodoSyncTool.m */; };
 		FE2C136827AEF629001CF7AF /* TodoSyncMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134927AEF629001CF7AF /* TodoSyncMsg.m */; };
 		FEBA676427E9BAC000C4D231 /* updatePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA676327E9BAC000C4D231 /* updatePopView.m */; };
 /* End PBXBuildFile section */
@@ -1415,6 +1416,10 @@
 		75CC083D2C5657AA00810A4E /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		75CE6C752BE0FEEC000D3DAF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		75F7296C2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectTimeView.swift; sourceTree = "<group>"; };
+		75F7296E2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectTypeView.swift; sourceTree = "<group>"; };
+		75F729702C7D8F4B00B36A56 /* TodoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDataModel.m; sourceTree = "<group>"; };
+		75F729712C7D8F4B00B36A56 /* TodoSyncTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoSyncTool.m; sourceTree = "<group>"; };
+		75F729722C7D8F4B00B36A56 /* TodoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDataModel.h; sourceTree = "<group>"; };
 		75FD5F672BC5514500D8302D /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		7A64BFF32892826F007CCB1E /* NewQAHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewQAHeader.h; sourceTree = "<group>"; };
 		7AA4C469288D23A700E204C8 /* MineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeader.h; sourceTree = "<group>"; };
@@ -1936,12 +1941,9 @@
 		FE2C134227AEF629001CF7AF /* TodoConflictStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoConflictStateView.m; sourceTree = "<group>"; };
 		FE2C134327AEF629001CF7AF /* YearBtnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearBtnsView.m; sourceTree = "<group>"; };
 		FE2C134627AEF629001CF7AF /* TodoDateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDateTool.m; sourceTree = "<group>"; };
-		FE2C134727AEF629001CF7AF /* TodoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDataModel.m; sourceTree = "<group>"; };
-		FE2C134827AEF629001CF7AF /* TodoSyncTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoSyncTool.m; sourceTree = "<group>"; };
 		FE2C134927AEF629001CF7AF /* TodoSyncMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoSyncMsg.m; sourceTree = "<group>"; };
 		FE2C134A27AEF629001CF7AF /* TodoDateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDateTool.h; sourceTree = "<group>"; };
 		FE2C134B27AEF629001CF7AF /* TodoSyncTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoSyncTool.h; sourceTree = "<group>"; };
-		FE2C134C27AEF629001CF7AF /* TodoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDataModel.h; sourceTree = "<group>"; };
 		FE2C134D27AEF629001CF7AF /* TodoSyncMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoSyncMsg.h; sourceTree = "<group>"; };
 		FEBA676227E9BAC000C4D231 /* updatePopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = updatePopView.h; sourceTree = "<group>"; };
 		FEBA676327E9BAC000C4D231 /* updatePopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = updatePopView.m; sourceTree = "<group>"; };
@@ -4445,6 +4447,7 @@
 				75F7296C2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift */,
 				7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */,
 				7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */,
+				75F7296E2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift */,
 			);
 			path = SwiftView;
 			sourceTree = "<group>";
@@ -6404,12 +6407,12 @@
 		FE2C134527AEF629001CF7AF /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				75F729722C7D8F4B00B36A56 /* TodoDataModel.h */,
+				75F729702C7D8F4B00B36A56 /* TodoDataModel.m */,
 				FE2C134A27AEF629001CF7AF /* TodoDateTool.h */,
 				FE2C134627AEF629001CF7AF /* TodoDateTool.m */,
 				FE2C134B27AEF629001CF7AF /* TodoSyncTool.h */,
-				FE2C134827AEF629001CF7AF /* TodoSyncTool.m */,
-				FE2C134C27AEF629001CF7AF /* TodoDataModel.h */,
-				FE2C134727AEF629001CF7AF /* TodoDataModel.m */,
+				75F729712C7D8F4B00B36A56 /* TodoSyncTool.m */,
 				FE2C134D27AEF629001CF7AF /* TodoSyncMsg.h */,
 				FE2C134927AEF629001CF7AF /* TodoSyncMsg.m */,
 			);
@@ -6976,6 +6979,7 @@
 				B0C9F2402B0126E1006F4286 /* GradientButton.swift in Sources */,
 				14F6F5522AFB8CDB007C7CA6 /* RYScheduleViewController.swift in Sources */,
 				AA9ABE9024EB63BF00D16BE0 /* ClassDetailViewShower.m in Sources */,
+				75F7296F2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift in Sources */,
 				18CDF694257F91BD006E8E5C /* CQUPTMapSearchItem.m in Sources */,
 				AAC7CA3B25F89C9D00E6B5D5 /* MainPageModel.m in Sources */,
 				FC06D0F02A9E643A00A974D8 /* StudentItem.swift in Sources */,
@@ -7011,7 +7015,6 @@
 				14F6F55C2AFB8CDB007C7CA6 /* FinderToolsView.swift in Sources */,
 				1AC2550823C9B14F00DF0475 /* DidNotCheckInDot.m in Sources */,
 				FE2C135F27AEF629001CF7AF /* DiscoverTodoSheetView.m in Sources */,
-				FE2C136727AEF629001CF7AF /* TodoSyncTool.m in Sources */,
 				EE131C212471362E00B6ED97 /* URLController.m in Sources */,
 				AA0DDB6F286C8B1A00802324 /* MineInformationLabel.m in Sources */,
 				14E7E4A827F5762500B67469 /* QuestionSelectView.m in Sources */,
@@ -7029,6 +7032,7 @@
 				B033366E294C971D004D141D /* HttpTool.m in Sources */,
 				73AAA1D626C918250084E44D /* DetailsBaseTableViewCell.m in Sources */,
 				75CC080E2C539B3700810A4E /* TestArrangeViewController.m in Sources */,
+				75F729742C7D8F4B00B36A56 /* TodoSyncTool.m in Sources */,
 				73AAA1D526C918250084E44D /* PurchaseInfoOrderIDView.m in Sources */,
 				14FBBD4E2805489A00D5B05D /* SSRTextCycleCell.m in Sources */,
 				B0F71C942ABC71B200F8B1AC /* ExpressPickPutItem.m in Sources */,
@@ -7139,6 +7143,7 @@
 				DB34EB29239BD4550052B65E /* WeekChooseViewController.m in Sources */,
 				14FFFC0A2AF8C0FD005A7EBD /* TabBarController.swift in Sources */,
 				D0101F65243587A1004337ED /* GKPhoto.m in Sources */,
+				75F729732C7D8F4B00B36A56 /* TodoDataModel.m in Sources */,
 				B0C9F2482B0126E1006F4286 /* ActivityReviewingTableViewCell.swift in Sources */,
 				FE2C135D27AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.m in Sources */,
 				75CC08482C5657AA00810A4E /* SCPieChartDataItem.m in Sources */,
@@ -7273,7 +7278,6 @@
 				14FFFBEB2AF8C0F3005A7EBD /* CacheManager.swift in Sources */,
 				B0275A032AFE4F9E007E3D02 /* SwiftToOC.swift in Sources */,
 				FC63434B2A891FD200DCD96C /* SearchResultVC.swift in Sources */,
-				FE2C136627AEF629001CF7AF /* TodoDataModel.m in Sources */,
 				DB34EADA239BD4550052B65E /* RemindNotification.m in Sources */,
 				FC42109F2AD5C2F20044EEAA /* ArrangeMessageTableViewCell.swift in Sources */,
 				18CDF678257F91BD006E8E5C /* ChooseStudentListViewController.m in Sources */,

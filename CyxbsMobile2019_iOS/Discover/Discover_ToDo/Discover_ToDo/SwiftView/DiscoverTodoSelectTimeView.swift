@@ -57,8 +57,8 @@ class DiscoverTodoSelectTimeView: DiscoverTodoSetRemindBasicView {
         addSubview(datePicker)
         datePicker.snp.makeConstraints { make in
             make.centerX.equalTo(self)
-            make.top.equalTo(self).offset(0.059408867 * UIScreen.main.bounds.height)
-            make.bottom.equalTo(self).offset(-0.1477832512 * UIScreen.main.bounds.height)
+            make.top.equalTo(self).offset(0.059408867 * SCREEN_HEIGHT)
+            make.bottom.equalTo(self).offset(-0.1477832512 * SCREEN_HEIGHT)
         }
     }
     

@@ -15,30 +15,43 @@ typedef NSString* TodoDataModelKey;
 static TodoDataModelKey const _Nonnull TodoDataModelKeyMonth = @"TodoDataModelKeyMonth";
 static TodoDataModelKey const _Nonnull TodoDataModelKeyDay = @"TodoDataModelKeyDay";
 
-typedef enum : NSUInteger {
-    TodoDataModelRepeatModeNO = 0,  //不重复
-    TodoDataModelRepeatModeDay,     //每日重复
-    TodoDataModelRepeatModeWeek,    //每周重复
-    TodoDataModelRepeatModeMonth,   //每月重复
-    TodoDataModelRepeatModeYear     //每年重复
-} TodoDataModelRepeatMode;
+typedef NS_ENUM(NSUInteger, TodoDataModelRepeatMode) {
+    TodoDataModelRepeatModeNO = 0,  // 不重复
+    TodoDataModelRepeatModeDay,     // 每日重复
+    TodoDataModelRepeatModeWeek,    // 每周重复
+    TodoDataModelRepeatModeMonth,   // 每月重复
+    TodoDataModelRepeatModeYear     // 每年重复
+};
 
-typedef enum : NSUInteger {
-    //已完成
-    TodoDataModelStateDone,
-    //已过期
-    TodoDataModelStateOverdue,
-    //待完成
-    TodoDataModelStateNeedDone,
-} TodoDataModelState;
+typedef NS_ENUM(NSUInteger, TodoDataModelState) {
+    TodoDataModelStateDone,      // 已完成
+    TodoDataModelStateOverdue,   // 已过期
+    TodoDataModelStateNeedDone   // 待完成
+};
+
+// 定义 ToDoType 枚举
+typedef NS_ENUM(NSUInteger, ToDoType) {
+    ToDoTypeStudy,
+    ToDoTypeLife,
+    ToDoTypeOther
+};
 
 @interface TodoDataModel : NSObject
 
 /// todo是否置顶
 @property (nonatomic, assign)BOOL isPinned;
 
-/// todo的分组
-@property (nonatomic, copy)NSString* type;
+/// todo的分组（字符串类型）
+@property (nonatomic, assign)NSString* type;
+
+/// todo的分组（ToDoType类型）
+@property (nonatomic, assign)ToDoType typeMode;
+
+/// todo是否过期
+@property (nonatomic, assign)BOOL isOvered;
+
+/// 新增的用来存todo下次过期时间的字段,暂时没用
+@property (nonatomic, copy)NSString* endTime;
 
 /// todo的ID，创建时的时间戳
 @property (nonatomic, copy)NSString* todoIDStr;
@@ -116,6 +129,13 @@ typedef enum : NSUInteger {
 - (NSDate* _Nullable)getTimeStrDate;
 
 - (void)debugLog;
+
+// 从 ToDoType 转换到字符串
++(NSString *)NSStringFromToDoType:(ToDoType)type;
+
+// 从字符串转换到 ToDoType
++(ToDoType)ToDoTypeFromNSString:(NSString *)string;
+
 @end
 
 NS_ASSUME_NONNULL_END
