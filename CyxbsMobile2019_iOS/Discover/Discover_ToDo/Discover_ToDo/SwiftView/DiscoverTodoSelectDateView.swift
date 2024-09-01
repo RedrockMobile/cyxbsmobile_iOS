@@ -33,6 +33,7 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
         calendar.scope = .month
         // 隐藏自带header
         calendar.headerHeight = 0
+        calendar.placeholderType = .fillHeadTail
         calendar.locale = Locale(identifier: "zh-CN")
         // 日历中每周第一天为周一
         calendar.firstWeekday = 2
@@ -123,13 +124,14 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
         }
         // 使用 SnapKit 设置约束
         calendarHeader.snp.makeConstraints { make in
-            make.top.equalTo(self).offset(15)
-            make.left.equalTo(self).offset(0.04*SCREEN_WIDTH)
+            make.top.equalTo(self).offset(0.029556650246305*SCREEN_HEIGHT)
+            make.left.equalTo(self).offset(0.08*SCREEN_WIDTH)
         }
         calendar.snp.makeConstraints { make in
-            make.top.equalTo(calendarHeader.snp.bottom).offset(0.017241379310345*SCREEN_HEIGHT)
-            make.left.right.equalTo(self)
-            make.height.equalTo(0.263546798029557 * SCREEN_HEIGHT)
+            make.top.equalTo(calendarHeader.snp.bottom).offset(0.024630541871921*SCREEN_HEIGHT)
+            make.left.equalTo(self).offset(0.04*SCREEN_WIDTH)
+            make.right.equalTo(self).offset(-0.04*SCREEN_WIDTH)
+            make.height.equalTo(0.3 * SCREEN_HEIGHT)
         }
     }
     
@@ -140,12 +142,12 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
         prevBtn.snp.makeConstraints { make in
             make.centerY.equalTo(calendarHeader)
             make.width.height.equalTo(0.04*SCREEN_WIDTH)
-            make.left.equalTo(calendarHeader.snp.right).offset(0.032*SCREEN_WIDTH)
+            make.right.equalTo(nextBtn.snp.left).offset(-0.08533*SCREEN_WIDTH)
         }
         nextBtn.snp.makeConstraints { make in
             make.centerY.equalTo(calendarHeader)
             make.width.height.equalTo(0.04*SCREEN_WIDTH)
-            make.left.equalTo(prevBtn.snp.right).offset(0.056*SCREEN_WIDTH)
+            make.right.equalTo(self.snp.right).offset(-0.08533*SCREEN_WIDTH)
         }
         prevBtn.isEnabled = false
     }
@@ -153,19 +155,18 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
     func addTimeBtn() {
         addSubview(timeBtn)
         timeBtn.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom).offset(0.024630541871921*SCREEN_HEIGHT)
+            make.top.equalTo(calendar.snp.bottom).offset(0.012315270935961*SCREEN_HEIGHT)
             make.height.equalTo(max(0.025862068965517*SCREEN_HEIGHT, 21))
             make.left.right.equalTo(self)
         }
         timeBtn.imageView?.snp.makeConstraints({ make in
-            make.right.equalTo(timeBtn.snp.right).offset(-0.04*SCREEN_WIDTH)
+            make.right.equalTo(timeBtn.snp.right)
             make.centerY.equalTo(timeBtn)
-            make.width.equalTo(max(0.018586666666667*SCREEN_WIDTH, 6.97))
-            make.height.equalTo(max(0.015689655172414*SCREEN_HEIGHT, 12.74))
+            make.height.equalTo(0.015689655172414*SCREEN_HEIGHT)
         })
         timeBtn.titleLabel?.snp.makeConstraints({ make in
-            make.left.equalTo(timeBtn.snp.left).offset(0.04*SCREEN_WIDTH)
-            make.right.equalTo(timeBtn.snp.left).offset(0.04*SCREEN_WIDTH+30)
+            make.left.equalTo(timeBtn.snp.left).offset(0.08*SCREEN_WIDTH)
+            make.right.equalTo(timeBtn.snp.left).offset(0.08*SCREEN_WIDTH+30)
             make.centerY.equalTo(timeBtn)
             make.height.equalTo(21)
         })
@@ -261,10 +262,19 @@ extension DiscoverTodoSelectDateView: FSCalendarDelegate {
         headerFormatter.dateFormat = "yyyy年MM月"
         calendarHeader.text = headerFormatter.string(from: calendar.currentPage)
         calendarHeader.sizeToFit()
-        if calendar.currentPage >= calendar.minimumDate {
+        if calendar.currentPage > calendar.minimumDate {
             prevBtn.isEnabled = true
         } else {
             prevBtn.isEnabled = false
+        }
+    }
+    
+    // 隐藏下月日期的titleLabel
+    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+        if monthPosition == .next {
+            cell.titleLabel.alpha = 0
+        } else {
+            cell.titleLabel.alpha = 1
         }
     }
 }
@@ -278,3 +288,4 @@ extension DiscoverTodoSelectDateView: DiscoverTodoSelectTimeViewDelegate {
         
     }
 }
+

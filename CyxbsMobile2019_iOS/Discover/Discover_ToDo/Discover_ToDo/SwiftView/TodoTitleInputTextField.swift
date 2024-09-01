@@ -27,7 +27,14 @@ class TodoTitleInputTextField: UITextField {
         self.backgroundColor = UIColor.ry(light: "#E8F1FC", dark: "#1F1F1F")
         self.textColor = UIColor.ry(light: "#15315B", dark: "#F0F0F2")
         self.font = UIFont(name: "PingFangSC-Medium", size: 15)
-        self.placeholder = "添加代办事项"
+        // 创建一个带有自定义颜色的属性字符串
+        let placeholderText = "添加待办事项"
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.ry(light: "#15315B", dark: "#FFFFFF").withAlphaComponent(0.52) // 设置 placeholder 的颜色
+        ]
+        let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        // 设置 UITextField 的 placeholder
+        self.attributedPlaceholder = attributedPlaceholder
     }
 
     /// 重写后可以改变非编辑状态时光标的位置

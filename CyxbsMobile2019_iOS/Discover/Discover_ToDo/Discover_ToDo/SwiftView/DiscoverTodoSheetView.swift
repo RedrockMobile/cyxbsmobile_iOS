@@ -57,7 +57,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         view.delegate = self
         view.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(0.518472906403941 * SCREEN_HEIGHT)
+            make.height.equalTo(0.562807881773399 * SCREEN_HEIGHT)
         }
         return view
     }()
@@ -118,14 +118,14 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     
     private func setupViews() {
         self.snp.makeConstraints { make in
-            make.size.equalTo(CGSize(width: SCREEN_WIDTH, height: 1.7389162562 * SCREEN_HEIGHT))
+            make.size.equalTo(CGSize(width: SCREEN_WIDTH, height: 1.782019704433498 * SCREEN_HEIGHT))
         }
         self.addSubview(backView)
         backView.backgroundColor = UIColor.ry(light: "#FFFFFF", dark: "#2C2C2C")
         backView.layer.mask = createRoundedCornerMask()
         backView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(self)
-            make.height.equalTo(SCREEN_HEIGHT * 0.7389)
+            make.height.equalTo(SCREEN_HEIGHT * 0.782019704433498)
         }
         self.addSubview(cancelView)
         cancelView.backgroundColor = .clear
@@ -147,7 +147,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     }
     
     private func createRoundedCornerMask() -> CAShapeLayer {
-        let rect = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 0.7389)
+        let rect = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 0.782019704433498)
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 16, height: 16))
         let layer = CAShapeLayer()
         layer.path = path.cgPath
@@ -198,7 +198,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         remindTimeBtn.addTarget(self, action: #selector(remindTimeBtnClicked), for: .touchUpInside)
         backView.addSubview(remindTimeBtn)
         remindTimeBtn.snp.makeConstraints { make in
-            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.048)
+            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.08)
             make.top.equalTo(backView).offset(SCREEN_HEIGHT * 0.17611)
         }
         
@@ -216,7 +216,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         repeatModelBtn.addTarget(self, action: #selector(repeatModelBtnClicked), for: .touchUpInside)
         backView.addSubview(repeatModelBtn)
         repeatModelBtn.snp.makeConstraints { make in
-            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.048)
+            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.08)
             make.top.equalTo(backView).offset(SCREEN_HEIGHT * 0.22167)
         }
         
@@ -236,7 +236,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         scrollView.snp.makeConstraints { make in
             make.left.equalTo(repeatModelBtn.imageView!.snp.right).offset(SCREEN_WIDTH * 0.04)
             make.height.equalTo(0.04433497537 * SCREEN_HEIGHT)
-            make.right.equalTo(backView).offset(-SCREEN_WIDTH * 0.048)
+            make.right.equalTo(backView).offset(-SCREEN_WIDTH * 0.08)
             make.centerY.equalTo(repeatModelBtn)
         }
         scrollView.alpha = 0
@@ -251,7 +251,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         typeBtn.addTarget(self, action: #selector(typeBtnClicked), for: .touchUpInside)
         backView.addSubview(typeBtn)
         typeBtn.snp.makeConstraints { make in
-            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.048)
+            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.08)
             make.top.equalTo(backView).offset(SCREEN_HEIGHT * 0.26724)
         }
         typeBtn.imageView?.snp.makeConstraints { make in
@@ -310,7 +310,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     
     private func setupStandardButton(_ button: UIButton, title: String, imageName: String) {
         button.setTitle(title, for: .normal)
-        button.setTitleColor(UIColor.ry(light: "#14305B", dark: "#EFEFF1"), for: .normal)
+        button.setTitleColor(UIColor.ry(light: "#2A4E84", dark: "#EFEFF1").withAlphaComponent(0.4), for: .normal)
         button.setTitleColor(UIColor.ry(light: "#14305B", dark: "#EFEFF1"), for: .highlighted)
         button.setImage(UIImage(named: imageName), for: .normal)
         button.titleLabel?.font = UIFont(name: PingFangSCMedium, size: 15)
@@ -423,7 +423,7 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     
     func showView() {
         UIView.animate(withDuration: 0.5, animations: {
-            self.transform = CGAffineTransform(translationX: 0, y: -SCREEN_HEIGHT * 0.7389)
+            self.transform = CGAffineTransform(translationX: 0, y: -SCREEN_HEIGHT * 0.782019704433498)
             self.backgroundColor = UIColor(hexString: "#000000", alpha: 0.4)
         })
     }
@@ -445,7 +445,7 @@ extension DiscoverTodoSheetView: DiscoverTodoSelectDateViewDelegate {
     // MARK: - DiscoverTodoSelectTimeViewDelegate
     func selectTimeViewSureBtnClicked(date: Date) {
         let dateFormatter1 = DateFormatter()
-        dateFormatter1.dateFormat = "M月d日HH:mm"
+        dateFormatter1.dateFormat = "yyyy年M月d日 HH:mm"
         let btnString = dateFormatter1.string(from: date)
         remindTimeBtn.setTitle(btnString, for: .normal)
         let dateFormatter2 = DateFormatter()
