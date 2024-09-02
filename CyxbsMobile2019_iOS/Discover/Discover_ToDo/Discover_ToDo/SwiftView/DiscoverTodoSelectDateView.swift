@@ -33,6 +33,7 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
         calendar.scope = .month
         // 隐藏自带header
         calendar.headerHeight = 0
+        calendar.weekdayHeight = 30
         calendar.placeholderType = .fillHeadTail
         calendar.locale = Locale(identifier: "zh-CN")
         // 日历中每周第一天为周一
@@ -128,7 +129,7 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
             make.left.equalTo(self).offset(0.08*SCREEN_WIDTH)
         }
         calendar.snp.makeConstraints { make in
-            make.top.equalTo(calendarHeader.snp.bottom).offset(0.024630541871921*SCREEN_HEIGHT)
+            make.top.equalTo(calendarHeader.snp.bottom).offset(0.018472906403941*SCREEN_HEIGHT)
             make.left.equalTo(self).offset(0.04*SCREEN_WIDTH)
             make.right.equalTo(self).offset(-0.04*SCREEN_WIDTH)
             make.height.equalTo(0.3 * SCREEN_HEIGHT)
