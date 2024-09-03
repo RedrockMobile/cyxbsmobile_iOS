@@ -43,7 +43,10 @@ class ScheduleFact: NSObject {
         self.nowWeek = nowWeek
         // 先加载全部周和当周课表
         updateWeeklySchedule(forWeek: 0)
-        updateWeeklySchedule(forWeek: nowWeek)
+        // 如果当前周数不在学期内（会导致数组越界），则不加载当周课表
+        if nowWeek <= 26 {
+            updateWeeklySchedule(forWeek: nowWeek)
+        }
     }
     
     // 更新某周的课表
