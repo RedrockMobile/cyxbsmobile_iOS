@@ -36,7 +36,7 @@ typedef NS_ENUM(NSUInteger, ToDoType) {
     ToDoTypeOther
 };
 
-@interface TodoDataModel : NSObject
+@interface TodoDataModel : NSObject<NSCopying>
 
 /// todo是否置顶
 @property (nonatomic, assign)BOOL isPinned;
@@ -97,7 +97,6 @@ typedef NS_ENUM(NSUInteger, ToDoType) {
 @property (nonatomic, readonly)NSString* overdueTimeStr;
 
 /// todo的过期时间（有提醒的情况下，代表提醒时间，无提醒的情况则代表todo需要完成的那一天的23:59:59的时间）
-/// 使用这个工具，写UI交互的同学，无需为这个属性赋值，只需在完成todo的各种数据设置后调用resetOverdueTime
 /// 为0意味着没有初始化，为-1意味着没有下一次提醒了
 @property (nonatomic, assign)long overdueTime;
 
@@ -124,7 +123,7 @@ typedef NS_ENUM(NSUInteger, ToDoType) {
 - (NSDictionary*)getDataDictToPush;
 
 /// 调用后计算过期时间，一般在完成todo的各种数据设置后调用，必须调用。
-- (void)resetOverdueTime;
+- (void)resetOverdueTime:(long)startTimeStamp;
 
 - (NSDate* _Nullable)getTimeStrDate;
 

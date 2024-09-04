@@ -15,10 +15,16 @@ class RYFinderViewController: UIViewController {
     lazy var sportsVC = DiscoverSAVC()
     // 电费
     lazy var electricVC = ElectricViewController()
+    lazy var ToDoMainPageVC: ToDoFinderVC = {
+        let vc = ToDoFinderVC()
+        vc.delegate = self
+        return vc
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addChild(ToDoMainPageVC)
         addChild(sportsVC)
         addChild(electricVC)
         
@@ -26,8 +32,10 @@ class RYFinderViewController: UIViewController {
         
         view.addSubview(contentScrollView)
         setupUI()
+        setupToDo()
         setupElectric()
         setupSA()
+        updateContentSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,19 +101,44 @@ extension RYFinderViewController {
         contentScrollView.addSubview(toolsView)
     }
     
+    func setupToDo() {
+        ToDoMainPageVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 152)
+        ToDoMainPageVC.view.frame.origin.y = toolsView.frame.maxY + 20
+        contentScrollView.addSubview(ToDoMainPageVC.view)
+    }
+    
     func setupElectric() {
         electricVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 152)
-        electricVC.view.frame.origin.y = toolsView.frame.maxY + 20
+        electricVC.view.frame.origin.y = ToDoMainPageVC.view.frame.maxY
         contentScrollView.addSubview(electricVC.view)
     }
     
     func setupSA() {
-        sportsVC.view.frame.origin.y = electricVC.view.frame.maxY
+        sportsVC.view.frame = CGRectMake(0, electricVC.view.frame.maxY, SCREEN_WIDTH, 152)
         contentScrollView.addSubview(sportsVC.view)
     }
     
     func reloadData() {
         headerView.reloadData()
         bannerView.request()
+    }
+    
+    func updateContentSize() {
+        var contentHeight = SCREEN_HEIGHT
+        for subView in contentScrollView.subviews {
+            contentHeight = max(contentHeight, subView.frame.maxY)
+        }
+        contentHeight += 107 + Constants.safeDistanceBottom
+        contentScrollView.contentSize = CGSize(width: contentScrollView.frame.width, height: contentHeight)
+    }
+}
+
+extension RYFinderViewController: ToDoFinderVCDelegate {
+    func updateContentSize(size: CGSize) {
+        ToDoMainPageVC.view.frame = CGRectMake(0, toolsView.frame.maxY + 20, size.width, size.height)
+        electricVC.view.frame.origin.y = ToDoMainPageVC.view.frame.maxY
+        sportsVC.view.frame.origin.y = electricVC.view.frame.maxY
+        updateContentSize()
+        // 强制更新布局
     }
 }

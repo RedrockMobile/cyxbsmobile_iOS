@@ -608,7 +608,7 @@ static TodoSyncTool* _instance;
 
 /// 保存事项数据，由于用户的操作而调用时is填YES，内部合并数据时is填NO
 - (void)saveTodoWithModel:(TodoDataModel*)model needRecord:(BOOL)is {
-    [model resetOverdueTime];
+    [model resetOverdueTime:(long)[NSDate date].timeIntervalSince1970];;
     
     //如果提醒时间是今天，那么把todo的状态重置为待完成
     if (self.todayEndTimeStamp-86400 < model.overdueTime&&model.overdueTime <= self.todayEndTimeStamp) {

@@ -244,7 +244,7 @@ static inline int ForeignWeekToChinaWeek(int week) {
 }
 
 - (NSString *)overdueTimeStr {
-    [self resetOverdueTime];
+    [self resetOverdueTime:(long)[NSDate date].timeIntervalSince1970];
     NSString* str;
     if (self.overdueTime==-1) {
         str = @"";
@@ -256,10 +256,11 @@ static inline int ForeignWeekToChinaWeek(int week) {
     return str;
 }
 
-- (void)resetOverdueTime {
+// 从startTimeStamp开始计算下一次的过期时间
+- (void)resetOverdueTime:(long)startTimeStamp {
     if (self.overdueTime < 1) {
-    self.overdueTime = [TodoDateTool getOverdueTimeStampFrom:(long)[NSDate date].timeIntervalSince1970 inModel:self];
-    self.lastOverdueTime = -1;
+        self.overdueTime = [TodoDateTool getOverdueTimeStampFrom:startTimeStamp inModel:self];
+        self.lastOverdueTime = -1;
     }
 }
 //MARK: - 底下重写setter方法，是为了避免数据库因为空值出错
@@ -286,7 +287,7 @@ static inline int ForeignWeekToChinaWeek(int week) {
     if (typeMode == NSNotFound) {
         _typeMode = ToDoTypeOther;
         // 绕过属性封装，避免set方法的循环调用
-        _type = @"ohter";
+        _type = @"other";
     } else {
         _typeMode = typeMode;
         _type = [TodoDataModel NSStringFromToDoType:typeMode];
@@ -467,6 +468,30 @@ static inline int ForeignWeekToChinaWeek(int week) {
         // 处理未知字符串
         return NSNotFound;
     }
+}
+
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    TodoDataModel *copy = [[[self class] allocWithZone:zone] init];
+    if (copy) {
+        copy.isPinned = self.isPinned;
+        copy.type = self.type;
+        copy.typeMode = self.typeMode;
+        copy.isOvered = self.isOvered;
+        copy.endTime = self.endTime;
+        copy.todoIDStr = self.todoIDStr;
+        copy.titleStr = self.titleStr;
+        copy.repeatMode = self.repeatMode;
+        copy.dateArr = self.dateArr;
+        copy.weekArr = self.weekArr;
+        copy.dayArr = self.dayArr;
+        copy.detailStr = self.detailStr;
+        copy.timeStr = self.timeStr;
+        copy.cellHeight = self.cellHeight;
+        copy.overdueTime = self.overdueTime;
+        copy.lastOverdueTime = self.lastOverdueTime;
+        copy.lastModifyTime = self.lastModifyTime;
+    }
+    return copy;
 }
 
 @end

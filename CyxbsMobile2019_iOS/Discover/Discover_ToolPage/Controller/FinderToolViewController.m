@@ -13,7 +13,7 @@
 #import "CalendarViewController.h"
 //#import "WeDateViewController.h"
 #import "CQUPTMapViewController.h"
-#import "TODOMainViewController.h"
+//#import "TODOMainViewController.h"
 #import "TestArrangeViewController.h"
 #import "SportAttendanceViewController.h"
 #import "EmptyClassViewController.h"
@@ -349,7 +349,7 @@
     if (sender.isChooingNow == YES) {
         [sender toggleFavoriteStates];
     } else {
-        TODOMainViewController *vc = [[TODOMainViewController alloc] init];
+        ToDoVC *vc = [[ToDoVC alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }

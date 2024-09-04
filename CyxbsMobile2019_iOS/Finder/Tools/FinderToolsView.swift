@@ -142,7 +142,7 @@ extension FinderToolsView: UICollectionViewDelegate {
         } else if name == "重邮地图" {
             vc = CQUPTMapViewController()
         } else if name == "邮子清单" {
-            vc = TODOMainViewController()
+            vc = ToDoVC()
         } else if name == "空教室" {
             vc = EmptyClassViewController()
         } else if name == "体育打卡" {

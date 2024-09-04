@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //更新Tabbar上方的课表topView显示的课程信息
         if let vc = window?.rootViewController as? TabBarController {
             vc.reloadData()
+            vc.finderVC.electricVC
         }
     }
     
