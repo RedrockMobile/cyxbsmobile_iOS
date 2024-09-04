@@ -37,12 +37,12 @@ class ToDoFinderVC: UIViewController {
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ToDoTopExpiredStyleCell.self, forCellReuseIdentifier: ToDoTopExpiredStyleCellReuseIdentifier)
-        tableView.register(ToDoTopActiveStyleCell.self, forCellReuseIdentifier: ToDoTopActiveStyleCellReuseIdentifier)
-        tableView.register(ToDoTopNoDeadlineStyleCell.self, forCellReuseIdentifier: ToDoTopNoDeadlineStyleCellReuseIdentifier)
-        tableView.register(ToDoNonTopExpiredStyleCell.self, forCellReuseIdentifier: ToDoNonTopExpiredStyleCellReuseIdentifier)
-        tableView.register(ToDoNonTopActiveStyleCell.self, forCellReuseIdentifier: ToDoNonTopActiveStyleCellReuseIdentifier)
-        tableView.register(ToDoNonTopNoDeadlineStyleCell.self, forCellReuseIdentifier: ToDoNonTopNoDeadlineStyleCellReuseIdentifier)
+        tableView.register(ToDoTopExpiredStyleCellForFinder.self, forCellReuseIdentifier: ToDoTopExpiredStyleCellForFinderReuseIdentifier)
+        tableView.register(ToDoTopActiveStyleCellForFinder.self, forCellReuseIdentifier: ToDoTopActiveStyleCellForFinderReuseIdentifier)
+        tableView.register(ToDoTopNoDeadlineStyleCellForFinder.self, forCellReuseIdentifier: ToDoTopNoDeadlineStyleCellForFinderReuseIdentifier)
+        tableView.register(ToDoNonTopExpiredStyleCellForFinder.self, forCellReuseIdentifier: ToDoNonTopExpiredStyleCellForFinderReuseIdentifier)
+        tableView.register(ToDoNonTopActiveStyleCellForFinder.self, forCellReuseIdentifier: ToDoNonTopActiveStyleCellForFinderReuseIdentifier)
+        tableView.register(ToDoNonTopNoDeadlineStyleCellForFinder.self, forCellReuseIdentifier: ToDoNonTopNoDeadlineStyleCellForFinderReuseIdentifier)
         tableView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 152)
         return tableView
     }()
@@ -75,13 +75,11 @@ class ToDoFinderVC: UIViewController {
             make.height.equalTo(1)
             make.bottom.equalTo(view.snp.bottom)
         }
-        getToDoData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let newsize = CGSizeMake(tableView.contentSize.width, tableView.contentSize.height + 86)
-        delegate?.updateContentSize(size: newsize)
+        getToDoData()
     }
     
     // 获取每种todo待办,置顶的待办在上
@@ -99,6 +97,8 @@ class ToDoFinderVC: UIViewController {
         entireToDoAry.append(contentsOf: entireNotPinnedAry)
         tableView.reloadData()
         tableView.size.height = tableView.contentSize.height
+        let newsize = CGSizeMake(tableView.contentSize.width, tableView.contentSize.height + 86)
+        delegate?.updateContentSize(size: newsize)
 //        isRowSelected = Array(repeating: false, count: entireToDoAry.count)
         
 //        if entireToDoAry.count == 0 {
@@ -200,24 +200,24 @@ extension ToDoFinderVC: UITableViewDataSource {
             haveTime = false
         }
         
-        let cell: ToDoTableViewCell
+        let cell: ToDoTableViewCellForFinder
         let identifier: String
         
         if isTop, haveTime, expired {
-            identifier = ToDoTopExpiredStyleCellReuseIdentifier
+            identifier = ToDoTopActiveStyleCellForFinderReuseIdentifier
         } else if isTop, haveTime, !expired {
-            identifier = ToDoTopActiveStyleCellReuseIdentifier
+            identifier = ToDoTopActiveStyleCellForFinderReuseIdentifier
         } else if isTop, !haveTime {
-            identifier = ToDoTopNoDeadlineStyleCellReuseIdentifier
+            identifier = ToDoTopNoDeadlineStyleCellForFinderReuseIdentifier
         } else if !isTop, haveTime, expired {
-            identifier = ToDoNonTopExpiredStyleCellReuseIdentifier
+            identifier = ToDoNonTopExpiredStyleCellForFinderReuseIdentifier
         } else if !isTop, haveTime, !expired {
-            identifier = ToDoNonTopActiveStyleCellReuseIdentifier
+            identifier = ToDoNonTopActiveStyleCellForFinderReuseIdentifier
         } else {
-            identifier = ToDoNonTopNoDeadlineStyleCellReuseIdentifier
+            identifier = ToDoNonTopNoDeadlineStyleCellForFinderReuseIdentifier
         }
         
-        cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ToDoTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ToDoTableViewCellForFinder
         cell.selectionStyle = .none
         cell.button.tag = indexPath.row
         cell.contentLab.text = data.titleStr
@@ -238,11 +238,13 @@ extension ToDoFinderVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let data = entireToDoAry[indexPath.row]
-        return (data.timeStr.isEmpty && data.overdueTimeStr.isEmpty) ? 49 : 67
+        return (data.timeStr.isEmpty && data.overdueTimeStr.isEmpty) ? 39 : 58
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ToDoDetailVC(model: entireToDoAry[indexPath.row]), animated: true)
+        let vc = ToDoDetailVC(model: entireToDoAry[indexPath.row])
+        vc.hidesBottomBarWhenPushed = true
+        latestViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

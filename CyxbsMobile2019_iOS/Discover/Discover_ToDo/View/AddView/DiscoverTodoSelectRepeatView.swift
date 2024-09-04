@@ -58,17 +58,16 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.snp.makeConstraints { make in
-            make.width.equalTo(0.533333333333333 * SCREEN_WIDTH)
+            make.centerX.equalTo(self)
             make.top.equalTo(self).offset(0.039 * SCREEN_HEIGHT)
             make.bottom.equalTo(self).offset(-0.147 * SCREEN_HEIGHT)
-            make.right.equalTo(self).offset(-0.317333333333333 * SCREEN_WIDTH)
         }
     }
     
     private func layoutTipView() {
         tipView.snp.makeConstraints { make in
             make.centerY.equalTo(pickerView)
-            make.left.equalTo(self).offset(0.138666666666667 * SCREEN_WIDTH)
+            make.right.equalTo(pickerView.snp.left)
         }
     }
     
@@ -80,9 +79,9 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
         
         addBtn.snp.makeConstraints { make in
-            make.right.equalTo(self).offset(-0.138666666666667 * SCREEN_WIDTH)
+            make.left.equalTo(pickerView.snp.right)
             make.centerY.equalTo(pickerView)
-            make.width.height.equalTo(0.058666666666667 * SCREEN_WIDTH)
+            make.width.height.equalTo(0.058 * SCREEN_WIDTH)
         }
     }
     
