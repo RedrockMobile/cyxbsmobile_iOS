@@ -90,6 +90,7 @@ struct Activity: Codable {
     var ended: Bool?
     var state: String?
     var phone: String?
+    var isAdded: Bool? // 是否添加为待办
 
     private enum CodingKeys: String, CodingKey {
         case activityTitle = "activity_title"
@@ -109,6 +110,7 @@ struct Activity: Codable {
         case ended = "ended"
         case state = "activity_state"
         case phone = "phone"
+        case isAdded = "is_add"
     }
 }
 
@@ -130,6 +132,7 @@ extension Activity {
         wantToWatch = json["want_to_watch"].bool
         ended = json["ended"].bool
         state = json["activity_state"].stringValue
+        isAdded = json["is_add"].boolValue
         phone = json["phone"].stringValue
     }
 }

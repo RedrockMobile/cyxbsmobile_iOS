@@ -129,16 +129,19 @@ extension RYFinderViewController {
             contentHeight = max(contentHeight, subView.frame.maxY)
         }
         contentHeight += 107 + Constants.safeDistanceBottom
-        contentScrollView.contentSize = CGSize(width: contentScrollView.frame.width, height: contentHeight)
+        UIView.animate(withDuration: 0.5) {
+            self.contentScrollView.contentSize = CGSize(width: self.contentScrollView.frame.width, height: contentHeight)
+        }
     }
 }
 
 extension RYFinderViewController: ToDoFinderVCDelegate {
     func updateContentSize(size: CGSize) {
-        ToDoMainPageVC.view.frame = CGRectMake(0, toolsView.frame.maxY + 20, size.width, size.height)
-        electricVC.view.frame.origin.y = ToDoMainPageVC.view.frame.maxY
-        sportsVC.view.frame.origin.y = electricVC.view.frame.maxY
-        updateContentSize()
-        // 强制更新布局
+        UIView.animate(withDuration: 0.5) {
+            self.ToDoMainPageVC.view.frame = CGRectMake(0, self.toolsView.frame.maxY + 20, size.width, size.height)
+            self.electricVC.view.frame.origin.y = self.ToDoMainPageVC.view.frame.maxY
+            self.sportsVC.view.frame.origin.y = self.electricVC.view.frame.maxY
+        }
+        self.updateContentSize()
     }
 }

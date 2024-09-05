@@ -50,7 +50,17 @@ class ToDoFinderVC: UIViewController {
     lazy var seperateLine: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(light: UIColor(hexString: "#2A4E84", alpha: 0.1), dark: UIColor(hexString: "#2D2D2D", alpha: 0.5))
+        view.frame = CGRect(x: 0, y: view.height - 1, width: view.width, height: 1)
         return view
+    }()
+    
+    lazy var emptyView: UIView = {
+        let label = UILabel(frame: CGRect(x: 70, y: 84, width: 226, height: 25))
+        label.text = "还没有待做事项哦~快去添加吧"
+        label.textColor = UIColor(light: UIColor(hexString: "#15315B", alpha: 0.6), dark: UIColor(hexString: "#F0F0F2", alpha: 0.38))
+        label.font = .systemFont(ofSize: 15)
+        label.textAlignment = .center
+        return label
     }()
 
     // MARK: - Life Cycle
@@ -69,12 +79,12 @@ class ToDoFinderVC: UIViewController {
         view.layer.shadowOffset = CGSize(width: 0, height: -5)
         view.addSubview(titleLab)
         view.addSubview(tableView)
-        view.addSubview(seperateLine)
-        seperateLine.snp.makeConstraints { make in
-            make.width.equalTo(view.width)
-            make.height.equalTo(1)
-            make.bottom.equalTo(view.snp.bottom)
+        tableView.snp.makeConstraints { make in
+            make.left.right.equalTo(view)
+            make.top.equalTo(view.snp.top).offset(57)
+            make.bottom.equalTo(view.snp.bottom).offset(-15)
         }
+        view.addSubview(seperateLine)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,18 +105,24 @@ class ToDoFinderVC: UIViewController {
             }
         }
         entireToDoAry.append(contentsOf: entireNotPinnedAry)
+        // 只显示前三个
+        entireToDoAry = Array(entireToDoAry.prefix(3))
         tableView.reloadData()
+        relayoutTableView()
+    }
+    
+    func relayoutTableView() {
         tableView.size.height = tableView.contentSize.height
-        let newsize = CGSizeMake(tableView.contentSize.width, tableView.contentSize.height + 86)
+        let newsize = CGSizeMake(tableView.contentSize.width, max(tableView.contentSize.height + 86, 152))
         delegate?.updateContentSize(size: newsize)
-//        isRowSelected = Array(repeating: false, count: entireToDoAry.count)
-        
-//        if entireToDoAry.count == 0 {
-//            view.addSubview(todoEmptyView)
-//            view.bringSubviewToFront(addToDoBtn)
-//        } else {
-//            todoEmptyView.removeFromSuperview()
-//        }
+        UIView.animate(withDuration: 0.5) {
+            self.seperateLine.frame = CGRect(x: 0, y: newsize.height - 1, width: self.view.width, height: 1)
+        }
+        if entireToDoAry.isEmpty {
+            view.addSubview(emptyView)
+        } else {
+            emptyView.removeFromSuperview()
+        }
     }
     
     // 配置左滑的删除按钮
@@ -165,12 +181,6 @@ class ToDoFinderVC: UIViewController {
             self.entireToDoAry.remove(at: index)
             self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }
-//        if entireToDoAry.count == 0 {
-//            view.addSubview(todoEmptyView)
-//            view.bringSubviewToFront(addToDoBtn)
-//        } else {
-//            todoEmptyView.removeFromSuperview()
-//        }
     }
 }
 
@@ -254,6 +264,7 @@ extension ToDoFinderVC: UITableViewDelegate {
             TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 tableView.reloadData()
+                self.relayoutTableView()
             }
         }
         deleteAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FF6262", alpha: 1), dark: UIColor(hexString: "#FF6262", alpha: 1))
