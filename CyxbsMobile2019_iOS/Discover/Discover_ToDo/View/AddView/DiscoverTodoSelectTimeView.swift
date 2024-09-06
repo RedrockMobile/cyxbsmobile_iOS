@@ -41,8 +41,8 @@ class DiscoverTodoSelectTimeView: DiscoverTodoSetRemindBasicView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addDatePicker()
-        layoutTipView()
+        addSubview(datePicker)
+        setupConstraints()
         cancelBtn.addTarget(self, action: #selector(cancelBtnClicked), for: .touchUpInside)
         cancelBtn.setTitle("上一步", for: .normal)
         sureBtn.addTarget(self, action: #selector(sureBtnClicked), for: .touchUpInside)
@@ -52,21 +52,16 @@ class DiscoverTodoSelectTimeView: DiscoverTodoSetRemindBasicView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// 添加日期选择器
-    private func addDatePicker() {
-        addSubview(datePicker)
+    /// 为紫色的tipView布局
+    private func setupConstraints() {
+        tipView.snp.makeConstraints { make in
+            make.centerY.equalTo(datePicker)
+            make.right.equalTo(datePicker.snp.left)
+        }
         datePicker.snp.makeConstraints { make in
             make.centerX.equalTo(self)
             make.top.equalTo(self).offset(0.059408867 * SCREEN_HEIGHT)
             make.bottom.equalTo(self).offset(-0.1477832512 * SCREEN_HEIGHT)
-        }
-    }
-    
-    /// 为紫色的tipView布局
-    private func layoutTipView() {
-        tipView.snp.makeConstraints { make in
-            make.centerY.equalTo(datePicker)
-            make.right.equalTo(datePicker.snp.left)
         }
     }
     

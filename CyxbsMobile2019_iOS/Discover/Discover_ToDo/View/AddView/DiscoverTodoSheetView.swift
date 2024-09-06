@@ -490,7 +490,7 @@ extension DiscoverTodoSheetView: DiscoverTodoSelectRepeatViewDelegate {
             break
 //        case .year:
 //            dataModel.dateArr = view.dateArr.compactMap { $0 as? [String: String] }
-            break
+//            break
         default:
             break
         }

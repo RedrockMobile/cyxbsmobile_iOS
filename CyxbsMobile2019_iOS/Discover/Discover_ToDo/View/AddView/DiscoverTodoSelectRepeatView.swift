@@ -22,12 +22,30 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     weak var delegate: DiscoverTodoSelectRepeatViewDelegate?
     var btnArr: [DLTimeSelectedButton] = []
     /// 数据选择器
-    private var pickerView: UIPickerView!
+    private lazy var pickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
+    }()
     /// 周几的数组
-    private var week: [String] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
-    private var addBtn: UIButton!
-    var scrollView: UIScrollView!
-    private var scrContenView: UIView!
+    private let week: [String] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+    private lazy var addBtn: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "加号"), for: .normal)
+        button.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
+        return button
+    }()
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        return scrollView
+    }()
+    private lazy var scrContenView: UIView = {
+        let view = UIView()
+        return view
+    }()
     private var selectedCntOfcom: [Int] = Array(repeating: 0, count: 3)
     private var increseCnt: Int = 0
     
@@ -43,67 +61,34 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     
     // MARK: - UI Setup
     private func setupUI() {
-        addPickerView()
-        layoutTipView()
-        addAddBtn()
-        addScrollView()
-        
-        cancelBtn.addTarget(self, action: #selector(cancelBtnClicked), for: .touchUpInside)
-        sureBtn.addTarget(self, action: #selector(sureBtnClicked), for: .touchUpInside)
-    }
-    
-    private func addPickerView() {
-        pickerView = UIPickerView()
         addSubview(pickerView)
-        pickerView.delegate = self
-        pickerView.dataSource = self
         pickerView.snp.makeConstraints { make in
             make.centerX.equalTo(self)
             make.top.equalTo(self).offset(0.039 * SCREEN_HEIGHT)
             make.bottom.equalTo(self).offset(-0.147 * SCREEN_HEIGHT)
         }
-    }
-    
-    private func layoutTipView() {
-        tipView.snp.makeConstraints { make in
-            make.centerY.equalTo(pickerView)
-            make.right.equalTo(pickerView.snp.left)
-        }
-    }
-    
-    private func addAddBtn() {
-        addBtn = UIButton()
-        addSubview(addBtn)
-        
-        addBtn.setImage(UIImage(named: "加号"), for: .normal)
-        addBtn.addTarget(self, action: #selector(addBtnClicked), for: .touchUpInside)
-        
-        addBtn.snp.makeConstraints { make in
-            make.left.equalTo(pickerView.snp.right)
-            make.centerY.equalTo(pickerView)
-            make.width.height.equalTo(0.058 * SCREEN_WIDTH)
-        }
-    }
-    
-    private func addScrollView() {
-        scrollView = UIScrollView()
         addSubview(scrollView)
-        
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.showsHorizontalScrollIndicator = false
-        
         scrollView.snp.makeConstraints { make in
             make.left.right.equalTo(self)
             make.top.equalTo(self).offset(0.01724137931 * SCREEN_HEIGHT)
             make.height.equalTo(0.04433497537 * SCREEN_HEIGHT)
         }
-        
-        scrContenView = UIView()
         scrollView.addSubview(scrContenView)
-        
         scrContenView.snp.makeConstraints { make in
             make.edges.equalTo(scrollView)
         }
+        tipView.snp.makeConstraints { make in
+            make.centerY.equalTo(pickerView)
+            make.right.equalTo(pickerView.snp.left)
+        }
+        addSubview(addBtn)
+        addBtn.snp.makeConstraints { make in
+            make.left.equalTo(pickerView.snp.right)
+            make.centerY.equalTo(pickerView)
+            make.width.height.equalTo(0.058 * SCREEN_WIDTH)
+        }
+        cancelBtn.addTarget(self, action: #selector(cancelBtnClicked), for: .touchUpInside)
+        sureBtn.addTarget(self, action: #selector(sureBtnClicked), for: .touchUpInside)
     }
     
     // MARK: - UIPickerViewDataSource & UIPickerViewDelegate
@@ -190,7 +175,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
             
         case 1:
             let dateStr = "\(ForeignWeekToChinaWeek(Int(selectedCntOfcom[1]) + 1))"
-            if dateArr.contains(where: { $0 as? String == dateStr }) {
+            if dateArr.contains(where: { $0 == dateStr }) {
                 return
             }
             dateArr.append(dateStr)
@@ -199,7 +184,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
             
         case 2:
             let dateStr = "\(selectedCntOfcom[1] + 1)"
-            if dateArr.contains(where: { $0 as? String == dateStr }) {
+            if dateArr.contains(where: { $0 == dateStr }) {
                 return
             }
             dateArr.append(dateStr)
