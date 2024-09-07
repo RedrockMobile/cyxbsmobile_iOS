@@ -55,8 +55,8 @@ class ToDoTopView: UIView {
     // MARK: - Lazy
     
     /// 返回按钮
-    private lazy var backBtn: UIButton = {
-        let backBtn = UIButton()
+    private lazy var backBtn: MXBackButton = {
+        let backBtn = MXBackButton(frame: .zero, isAutoHotspotExpand: true)
         backBtn.setImage(UIImage(named: "todo返回按钮"), for: .normal)
         backBtn.addTarget(self, action: #selector(clickBackBtn), for: .touchUpInside)
         return backBtn
