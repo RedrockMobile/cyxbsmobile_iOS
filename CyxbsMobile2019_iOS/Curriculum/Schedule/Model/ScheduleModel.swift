@@ -42,8 +42,7 @@ struct ScheduleModel: Codable {
     
     var nowWeek: Int = 0 {
         didSet {
-            var calculateWeek = nowWeek
-            if calculateWeek == 0 { calculateWeek = 1 }
+            let calculateWeek = nowWeek
             
             if customType == .custom { return }
             let calendar = Calendar(identifier: .gregorian)
