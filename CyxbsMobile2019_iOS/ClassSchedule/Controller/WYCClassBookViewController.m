@@ -198,7 +198,9 @@
 
 //重写set方法，如果index超过25，就让index变成0
 - (void)setIndex:(NSNumber *)index{
-    if(index.intValue>25)index = [NSNumber numberWithInt:0];
+    if(index.intValue > 25 || index.intValue < 0) {
+        index = [NSNumber numberWithInt:0];
+    }
     _index = index;
     self.topBarView.correctIndex = _index;
     int count = (int)self.dateModel.dateArray.count + 1;
