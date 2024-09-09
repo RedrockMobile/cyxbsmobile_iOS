@@ -349,7 +349,6 @@
 		7591F1B22B96FDB5001890D2 /* UpdatePersonModelTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591F1B12B96FDB5001890D2 /* UpdatePersonModelTool.swift */; };
 		75B1D7752B9EC71100BBC794 /* NSDictionaryExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B1D7742B9EC71100BBC794 /* NSDictionaryExtension.m */; };
 		75B7AFB72B8F35F30028E4DC /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7AFB62B8F35F30028E4DC /* TaskTableViewCell.m */; };
-		75FD5F682BC5514500D8302D /* PopAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F662BC5514500D8302D /* PopAnimation.swift */; };
 		75FD5F692BC5514500D8302D /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F672BC5514500D8302D /* CustomNavigationController.swift */; };
 		7FBF39F4257B79F30077494E /* ByPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EB257B79F20077494E /* ByPasswordViewController.m */; };
 		7FBF39F6257B79F30077494E /* ByWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EF257B79F30077494E /* ByWordViewController.m */; };
@@ -1236,7 +1235,7 @@
 		75B1D7742B9EC71100BBC794 /* NSDictionaryExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryExtension.m; sourceTree = "<group>"; };
 		75B7AFB62B8F35F30028E4DC /* TaskTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewCell.m; sourceTree = "<group>"; };
 		75B7AFB82B8F35FD0028E4DC /* TaskTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskTableViewCell.h; sourceTree = "<group>"; };
-		75FD5F662BC5514500D8302D /* PopAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimation.swift; sourceTree = "<group>"; };
+		75CE6C752BE0FEEC000D3DAF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		75FD5F672BC5514500D8302D /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		7A64BFF32892826F007CCB1E /* NewQAHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewQAHeader.h; sourceTree = "<group>"; };
 		7AA4C469288D23A700E204C8 /* MineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeader.h; sourceTree = "<group>"; };
@@ -2824,7 +2823,6 @@
 				14FFFBFE2AF8C0FD005A7EBD /* UITabBarItem+TabBar.swift */,
 				14FFFBFF2AF8C0FD005A7EBD /* TabBarController.swift */,
 				75FD5F672BC5514500D8302D /* CustomNavigationController.swift */,
-				75FD5F662BC5514500D8302D /* PopAnimation.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -3407,6 +3405,7 @@
 			children = (
 				1476CA532AFCD24600635848 /* CyxbsWidgetExtension.entitlements */,
 				14F6F4FE2AFB8C7D007C7CA6 /* 掌上重邮用户协议.md */,
+				75CE6C752BE0FEEC000D3DAF /* PrivacyInfo.xcprivacy */,
 				14FFFBD62AF8C0F3005A7EBD /* Cache */,
 				14FFFBDA2AF8C0F3005A7EBD /* Common */,
 				14FFFBCA2AF8C0F3005A7EBD /* Constants */,
@@ -6291,7 +6290,6 @@
 				14B73F6F281BED7B00D08ADD /* MessageSettingVC.m in Sources */,
 				73AAA1D326C918250084E44D /* PurchaseinfoViewController.m in Sources */,
 				14F6F5712AFB8CDB007C7CA6 /* RYCarnieViewController.swift in Sources */,
-				75FD5F682BC5514500D8302D /* PopAnimation.swift in Sources */,
 				FC5279002AAC46D500B09685 /* StudentResultItem.swift in Sources */,
 				187DF4BA260310DD000BCDE9 /* LYEmptyBaseView.m in Sources */,
 				14F6F5642AFB8CDB007C7CA6 /* RYFinderHeaderView.swift in Sources */,
