@@ -215,6 +215,19 @@ extension RYScheduleInteractionFact {
         scrollView.mj_header?.frame.origin.x = scrollView.contentOffset.x
         reloadHeaderView()
     }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        super.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+        // 当滑动速度过大，且不满足翻页条件时，使用setContentOffset
+        let targetPage = Int(targetContentOffset.pointee.x / scrollView.width)
+        if targetPage == currentPage && abs(velocity.x) >= 0.2 {
+            let targetOffsetX = targetContentOffset.pointee.x
+            targetContentOffset.pointee.x = scrollView.contentOffset.x + 50 * velocity.x
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                self.scroll(to: targetPage, animated: true)
+            }
+        }
+    }
 }
 
 // MARK: ScheduleDetailTableHeaderViewDelegate
