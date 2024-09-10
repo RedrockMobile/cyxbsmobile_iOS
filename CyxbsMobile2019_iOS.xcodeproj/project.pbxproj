@@ -342,6 +342,43 @@
 		75500E612AEE8FD200C2FC3A /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75500E5E2AEE8FD200C2FC3A /* UIColorExtension.swift */; };
 		75500E622AEE8FD200C2FC3A /* SwiftyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75500E5F2AEE8FD200C2FC3A /* SwiftyClient.swift */; };
 		75500E632AEE8FD200C2FC3A /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75500E602AEE8FD200C2FC3A /* TextManager.swift */; };
+		7551F9AA2C6549B30072CA88 /* DiscoverSAVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9A12C6549B30072CA88 /* DiscoverSAVC.m */; };
+		7551F9AB2C6549B30072CA88 /* popUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9A42C6549B30072CA88 /* popUpViewController.m */; };
+		7551F9AC2C6549B30072CA88 /* DataContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9A72C6549B30072CA88 /* DataContentView.m */; };
+		7551F9C52C69FB810072CA88 /* EmptyClassItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9AE2C69FB810072CA88 /* EmptyClassItem.m */; };
+		7551F9C62C69FB810072CA88 /* EmptyClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9B02C69FB810072CA88 /* EmptyClassModel.m */; };
+		7551F9C72C69FB810072CA88 /* EmptyClassPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9B32C69FB810072CA88 /* EmptyClassPresenter.m */; };
+		7551F9C82C69FB810072CA88 /* EmptyClassCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9B82C69FB810072CA88 /* EmptyClassCollectionViewCell.m */; };
+		7551F9C92C69FB810072CA88 /* EmptyClassContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9BA2C69FB810072CA88 /* EmptyClassContentView.m */; };
+		7551F9CA2C69FB810072CA88 /* EmptyClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9BC2C69FB810072CA88 /* EmptyClassTableViewCell.m */; };
+		7551F9CB2C69FB810072CA88 /* EmptyClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7551F9BD2C69FB810072CA88 /* EmptyClassTableViewCell.xib */; };
+		7551F9CC2C69FB810072CA88 /* EmptyClassUnavailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9BF2C69FB810072CA88 /* EmptyClassUnavailableViewController.m */; };
+		7551F9CD2C69FB810072CA88 /* EmptyClassUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7551F9C02C69FB810072CA88 /* EmptyClassUnavailableViewController.xib */; };
+		7551F9CE2C69FB810072CA88 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9C22C69FB810072CA88 /* EmptyClassViewController.m */; };
+		7551F9D12C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9D02C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift */; };
+		7551F9D32C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9D22C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift */; };
+		7551F9DC2C73A3FC0072CA88 /* DLHistodyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9DB2C73A3FC0072CA88 /* DLHistodyButton.swift */; };
+		7551F9DE2C73A8BF0072CA88 /* DLTimeSelectedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9DD2C73A8BF0072CA88 /* DLTimeSelectedButton.swift */; };
+		7551F9E02C74785A0072CA88 /* DiscoverTodoSelectDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9DF2C74785A0072CA88 /* DiscoverTodoSelectDateView.swift */; };
+		7551F9E22C748F2F0072CA88 /* YearBtnsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9E12C748F2F0072CA88 /* YearBtnsView.swift */; };
+		7551F9E42C74AC470072CA88 /* DiscoverTodoSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */; };
+		7551F9E62C74C2020072CA88 /* TodoTitleInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */; };
+		757729502C85914F00982233 /* ToDoDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294C2C85914E00982233 /* ToDoDetailVC.swift */; };
+		757729512C85914F00982233 /* ToDoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294D2C85914E00982233 /* ToDoDetailView.swift */; };
+		757729522C85914F00982233 /* ToDoTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294E2C85914E00982233 /* ToDoTypeView.swift */; };
+		757729532C85914F00982233 /* ToDoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294F2C85914E00982233 /* ToDoVC.swift */; };
+		757729592C85915E00982233 /* ToDoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729542C85915E00982233 /* ToDoAlertView.swift */; };
+		7577295A2C85915E00982233 /* ToDoBatchManageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729552C85915E00982233 /* ToDoBatchManageBottomView.swift */; };
+		7577295B2C85915E00982233 /* ToDoEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729562C85915E00982233 /* ToDoEmptyView.swift */; };
+		7577295C2C85915E00982233 /* ToDoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729572C85915E00982233 /* ToDoTopView.swift */; };
+		757729652C85916E00982233 /* ToDoNonTopActiveStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577295D2C85916E00982233 /* ToDoNonTopActiveStyleCell.swift */; };
+		757729662C85916E00982233 /* ToDoNonTopExpiredStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577295E2C85916E00982233 /* ToDoNonTopExpiredStyleCell.swift */; };
+		757729672C85916E00982233 /* ToDoNonTopNoDeadlineStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577295F2C85916E00982233 /* ToDoNonTopNoDeadlineStyleCell.swift */; };
+		757729682C85916E00982233 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729602C85916E00982233 /* ToDoTableViewCell.swift */; };
+		757729692C85916E00982233 /* ToDoTopActiveStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729612C85916E00982233 /* ToDoTopActiveStyleCell.swift */; };
+		7577296A2C85916E00982233 /* ToDoTopExpiredStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729622C85916E00982233 /* ToDoTopExpiredStyleCell.swift */; };
+		7577296B2C85916E00982233 /* ToDoTopNoDeadlineStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729632C85916E00982233 /* ToDoTopNoDeadlineStyleCell.swift */; };
+		7577296D2C85E02B00982233 /* ToDoFinderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577296C2C85E02B00982233 /* ToDoFinderVC.swift */; };
 		757A58EE2BA1EAD0003D95F0 /* ExpressDetailPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 757A58ED2BA1EAD0003D95F0 /* ExpressDetailPageVC.m */; };
 		758C7E4F2BA456AF002CA3F4 /* MXBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758C7E4E2BA456AF002CA3F4 /* MXBackButton.swift */; };
 		758C7E522BA4700F002CA3F4 /* MXObjCBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 758C7E512BA4700F002CA3F4 /* MXObjCBackButton.m */; };
@@ -349,6 +386,57 @@
 		7591F1B22B96FDB5001890D2 /* UpdatePersonModelTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7591F1B12B96FDB5001890D2 /* UpdatePersonModelTool.swift */; };
 		75B1D7752B9EC71100BBC794 /* NSDictionaryExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B1D7742B9EC71100BBC794 /* NSDictionaryExtension.m */; };
 		75B7AFB72B8F35F30028E4DC /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7AFB62B8F35F30028E4DC /* TaskTableViewCell.m */; };
+		75CC08062C539B3700810A4E /* ExamArrangeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07C32C539B3700810A4E /* ExamArrangeData.m */; };
+		75CC08072C539B3700810A4E /* ExamArrangeDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07C52C539B3700810A4E /* ExamArrangeDataItem.m */; };
+		75CC08082C539B3700810A4E /* ExamArrangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07C72C539B3700810A4E /* ExamArrangeModel.m */; };
+		75CC08092C539B3700810A4E /* PointAndDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07CA2C539B3700810A4E /* PointAndDottedLineView.m */; };
+		75CC080A2C539B3700810A4E /* TestCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07CC2C539B3700810A4E /* TestCardTableViewCell.m */; };
+		75CC080B2C539B3700810A4E /* GPAUnavailableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07CF2C539B3700810A4E /* GPAUnavailableViewController.m */; };
+		75CC080C2C539B3700810A4E /* GPAUnavailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75CC07D02C539B3700810A4E /* GPAUnavailableViewController.xib */; };
+		75CC080D2C539B3700810A4E /* ScorePresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07D22C539B3700810A4E /* ScorePresentAnimation.m */; };
+		75CC080E2C539B3700810A4E /* TestArrangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07D42C539B3700810A4E /* TestArrangeViewController.m */; };
+		75CC080F2C539B3700810A4E /* Credit.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07D82C539B3700810A4E /* Credit.m */; };
+		75CC08102C539B3700810A4E /* Credits.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07DA2C539B3700810A4E /* Credits.m */; };
+		75CC08112C539B3700810A4E /* GPAItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07DC2C539B3700810A4E /* GPAItem.m */; };
+		75CC08122C539B3700810A4E /* SingleGrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07DE2C539B3700810A4E /* SingleGrade.m */; };
+		75CC08132C539B3700810A4E /* TermGrade.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07E02C539B3700810A4E /* TermGrade.m */; };
+		75CC08142C539B3700810A4E /* TermGrades.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07E22C539B3700810A4E /* TermGrades.m */; };
+		75CC08152C539B3700810A4E /* GPA.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07E52C539B3700810A4E /* GPA.m */; };
+		75CC08162C539B3800810A4E /* ABScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07E82C539B3700810A4E /* ABScoreView.m */; };
+		75CC08172C539B3800810A4E /* DetailScorePerYearCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07EA2C539B3700810A4E /* DetailScorePerYearCell.m */; };
+		75CC08182C539B3800810A4E /* DetailSubjectScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07EC2C539B3700810A4E /* DetailSubjectScoreCell.m */; };
+		75CC08192C539B3800810A4E /* ScoreTwoTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07EE2C539B3700810A4E /* ScoreTwoTitleView.m */; };
+		75CC081A2C539B3800810A4E /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07F02C539B3700810A4E /* UserInfoView.m */; };
+		75CC081B2C539B3800810A4E /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07F32C539B3700810A4E /* ScoreViewController.m */; };
+		75CC081C2C539B3800810A4E /* SportAttendanceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07F62C539B3700810A4E /* SportAttendanceItem.m */; };
+		75CC081D2C539B3800810A4E /* SportAttendanceItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07F92C539B3700810A4E /* SportAttendanceItemModel.m */; };
+		75CC081E2C539B3800810A4E /* SportAttendanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07FB2C539B3700810A4E /* SportAttendanceModel.m */; };
+		75CC081F2C539B3800810A4E /* SportAttendanceHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC07FE2C539B3700810A4E /* SportAttendanceHeadView.m */; };
+		75CC08202C539B3800810A4E /* SportAttendanceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08002C539B3700810A4E /* SportAttendanceTableViewCell.m */; };
+		75CC08212C539B3800810A4E /* SportAttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08032C539B3700810A4E /* SportAttendanceViewController.m */; };
+		75CC083F2C5657AA00810A4E /* SCBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08262C5657AA00810A4E /* SCBar.m */; };
+		75CC08402C5657AA00810A4E /* SCBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08282C5657AA00810A4E /* SCBarChart.m */; };
+		75CC08412C5657AA00810A4E /* SCChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC082A2C5657AA00810A4E /* SCChart.m */; };
+		75CC08422C5657AA00810A4E /* SCChartLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC082D2C5657AA00810A4E /* SCChartLabel.m */; };
+		75CC08432C5657AA00810A4E /* SCCircleChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC082F2C5657AA00810A4E /* SCCircleChart.m */; };
+		75CC08442C5657AA00810A4E /* SCColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08312C5657AA00810A4E /* SCColor.m */; };
+		75CC08452C5657AA00810A4E /* SCGenericChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08332C5657AA00810A4E /* SCGenericChart.m */; };
+		75CC08462C5657AA00810A4E /* SCLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08352C5657AA00810A4E /* SCLineChart.m */; };
+		75CC08472C5657AA00810A4E /* SCPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08372C5657AA00810A4E /* SCPieChart.m */; };
+		75CC08482C5657AA00810A4E /* SCPieChartDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC08392C5657AA00810A4E /* SCPieChartDataItem.m */; };
+		75CC08492C5657AA00810A4E /* SCTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC083B2C5657AA00810A4E /* SCTool.m */; };
+		75CC084A2C5657AA00810A4E /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75CC083D2C5657AA00810A4E /* UICountingLabel.m */; };
+		75F5E32F2C887FFA00D539BA /* ToDoNonTopActiveStyleCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E3272C887FFA00D539BA /* ToDoNonTopActiveStyleCellForFinder.swift */; };
+		75F5E3302C887FFA00D539BA /* ToDoNonTopExpiredStyleCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E3282C887FFA00D539BA /* ToDoNonTopExpiredStyleCellForFinder.swift */; };
+		75F5E3312C887FFA00D539BA /* ToDoNonTopNoDeadlineStyleCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E3292C887FFA00D539BA /* ToDoNonTopNoDeadlineStyleCellForFinder.swift */; };
+		75F5E3322C887FFA00D539BA /* ToDoTableViewCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E32A2C887FFA00D539BA /* ToDoTableViewCellForFinder.swift */; };
+		75F5E3332C887FFA00D539BA /* ToDoTopActiveStyleCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E32B2C887FFA00D539BA /* ToDoTopActiveStyleCellForFinder.swift */; };
+		75F5E3342C887FFA00D539BA /* ToDoTopExpiredStyleCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E32C2C887FFA00D539BA /* ToDoTopExpiredStyleCellForFinder.swift */; };
+		75F5E3352C887FFA00D539BA /* ToDoTopNoDeadlineStyleCellForFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F5E32D2C887FFA00D539BA /* ToDoTopNoDeadlineStyleCellForFinder.swift */; };
+		75F7296D2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7296C2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift */; };
+		75F7296F2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F7296E2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift */; };
+		75F729732C7D8F4B00B36A56 /* TodoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F729702C7D8F4B00B36A56 /* TodoDataModel.m */; };
+		75F729742C7D8F4B00B36A56 /* TodoSyncTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F729712C7D8F4B00B36A56 /* TodoSyncTool.m */; };
 		75FD5F692BC5514500D8302D /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F672BC5514500D8302D /* CustomNavigationController.swift */; };
 		7FBF39F4257B79F30077494E /* ByPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EB257B79F20077494E /* ByPasswordViewController.m */; };
 		7FBF39F6257B79F30077494E /* ByWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EF257B79F30077494E /* ByWordViewController.m */; };
@@ -422,7 +510,6 @@
 		B07597282B2037E00004AC3C /* TodoDateTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134627AEF629001CF7AF /* TodoDateTool.m */; };
 		B07597292B20381D0004AC3C /* ClassSchedulPresentingAnimater.m in Sources */ = {isa = PBXBuildFile; fileRef = AA289B1424F29F7600FDF70C /* ClassSchedulPresentingAnimater.m */; };
 		B075972A2B20383F0004AC3C /* ElectricityView.m in Sources */ = {isa = PBXBuildFile; fileRef = B01AFD6929EFE531004F82D7 /* ElectricityView.m */; };
-		B075972B2B2038440004AC3C /* TodoConflictStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134227AEF629001CF7AF /* TodoConflictStateView.m */; };
 		B09BB82F2AADA35400FF88F7 /* popFoodResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B09BB8182AADA35400FF88F7 /* popFoodResultVC.m */; };
 		B09BB8302AADA35400FF88F7 /* popUpInformationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B09BB8192AADA35400FF88F7 /* popUpInformationVC.m */; };
 		B09BB8312AADA35400FF88F7 /* FoodVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B09BB81B2AADA35400FF88F7 /* FoodVC.m */; };
@@ -625,29 +712,6 @@
 		FE0D60462801702B00319A9E /* SchoolBusBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0D60402801702B00319A9E /* SchoolBusBottomView.m */; };
 		FE0D60472801702B00319A9E /* SchoolBusMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0D60412801702B00319A9E /* SchoolBusMapView.m */; };
 		FE11E82027E8712B00C4B90B /* QAListSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE11E81D27E8712A00C4B90B /* QAListSegmentView.m */; };
-		FE2C134E27AEF629001CF7AF /* TODOMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C131727AEF629001CF7AF /* TODOMainViewController.m */; };
-		FE2C134F27AEF629001CF7AF /* ToDoDetaileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C131827AEF629001CF7AF /* ToDoDetaileViewController.m */; };
-		FE2C135027AEF629001CF7AF /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C131B27AEF629001CF7AF /* TodoTableViewCell.m */; };
-		FE2C135127AEF629001CF7AF /* ToDoEmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C131D27AEF629001CF7AF /* ToDoEmptyCell.m */; };
-		FE2C135227AEF629001CF7AF /* ToDoMainBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C131E27AEF629001CF7AF /* ToDoMainBarView.m */; };
-		FE2C135327AEF629001CF7AF /* ToDoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C131F27AEF629001CF7AF /* ToDoTableView.m */; };
-		FE2C135427AEF629001CF7AF /* ToDoDetailRemarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C132127AEF629001CF7AF /* ToDoDetailRemarkView.m */; };
-		FE2C135527AEF629001CF7AF /* ToDoDetailTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C132427AEF629001CF7AF /* ToDoDetailTitleView.m */; };
-		FE2C135627AEF629001CF7AF /* ToDoDetailRepeatView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C132527AEF629001CF7AF /* ToDoDetailRepeatView.m */; };
-		FE2C135727AEF629001CF7AF /* ToDoDetailCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C132927AEF629001CF7AF /* ToDoDetailCurrencyView.m */; };
-		FE2C135827AEF629001CF7AF /* ToDoDetailBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C132C27AEF629001CF7AF /* ToDoDetailBar.m */; };
-		FE2C135927AEF629001CF7AF /* ToDoDetailReminderTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C132D27AEF629001CF7AF /* ToDoDetailReminderTimeView.m */; };
-		FE2C135A27AEF629001CF7AF /* TodoTitleInputTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133127AEF629001CF7AF /* TodoTitleInputTextField.m */; };
-		FE2C135B27AEF629001CF7AF /* DiscoverTodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133427AEF629001CF7AF /* DiscoverTodoTableViewCell.m */; };
-		FE2C135C27AEF629001CF7AF /* DiscoverTodoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133527AEF629001CF7AF /* DiscoverTodoView.m */; };
-		FE2C135D27AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133627AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.m */; };
-		FE2C135E27AEF629001CF7AF /* DiscoverTodoSelectRepeatView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133B27AEF629001CF7AF /* DiscoverTodoSelectRepeatView.m */; };
-		FE2C135F27AEF629001CF7AF /* DiscoverTodoSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133E27AEF629001CF7AF /* DiscoverTodoSheetView.m */; };
-		FE2C136027AEF629001CF7AF /* DiscoverTodoSelectTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C133F27AEF629001CF7AF /* DiscoverTodoSelectTimeView.m */; };
-		FE2C136127AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134027AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m */; };
-		FE2C136327AEF629001CF7AF /* YearBtnsView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134327AEF629001CF7AF /* YearBtnsView.m */; };
-		FE2C136627AEF629001CF7AF /* TodoDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134727AEF629001CF7AF /* TodoDataModel.m */; };
-		FE2C136727AEF629001CF7AF /* TodoSyncTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134827AEF629001CF7AF /* TodoSyncTool.m */; };
 		FE2C136827AEF629001CF7AF /* TodoSyncMsg.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2C134927AEF629001CF7AF /* TodoSyncMsg.m */; };
 		FEBA676427E9BAC000C4D231 /* updatePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEBA676327E9BAC000C4D231 /* updatePopView.m */; };
 /* End PBXBuildFile section */
@@ -1225,6 +1289,55 @@
 		75500E5E2AEE8FD200C2FC3A /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		75500E5F2AEE8FD200C2FC3A /* SwiftyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyClient.swift; sourceTree = "<group>"; };
 		75500E602AEE8FD200C2FC3A /* TextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
+		7551F9A02C6549B30072CA88 /* DiscoverSAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSAVC.h; sourceTree = "<group>"; };
+		7551F9A12C6549B30072CA88 /* DiscoverSAVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSAVC.m; sourceTree = "<group>"; };
+		7551F9A32C6549B30072CA88 /* popUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = popUpViewController.h; sourceTree = "<group>"; };
+		7551F9A42C6549B30072CA88 /* popUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = popUpViewController.m; sourceTree = "<group>"; };
+		7551F9A62C6549B30072CA88 /* DataContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataContentView.h; sourceTree = "<group>"; };
+		7551F9A72C6549B30072CA88 /* DataContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataContentView.m; sourceTree = "<group>"; };
+		7551F9AD2C69FB810072CA88 /* EmptyClassItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassItem.h; sourceTree = "<group>"; };
+		7551F9AE2C69FB810072CA88 /* EmptyClassItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassItem.m; sourceTree = "<group>"; };
+		7551F9AF2C69FB810072CA88 /* EmptyClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassModel.h; sourceTree = "<group>"; };
+		7551F9B02C69FB810072CA88 /* EmptyClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassModel.m; sourceTree = "<group>"; };
+		7551F9B22C69FB810072CA88 /* EmptyClassPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassPresenter.h; sourceTree = "<group>"; };
+		7551F9B32C69FB810072CA88 /* EmptyClassPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassPresenter.m; sourceTree = "<group>"; };
+		7551F9B52C69FB810072CA88 /* EmptyClassProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassProtocol.h; sourceTree = "<group>"; };
+		7551F9B72C69FB810072CA88 /* EmptyClassCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassCollectionViewCell.h; sourceTree = "<group>"; };
+		7551F9B82C69FB810072CA88 /* EmptyClassCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassCollectionViewCell.m; sourceTree = "<group>"; };
+		7551F9B92C69FB810072CA88 /* EmptyClassContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassContentView.h; sourceTree = "<group>"; };
+		7551F9BA2C69FB810072CA88 /* EmptyClassContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassContentView.m; sourceTree = "<group>"; };
+		7551F9BB2C69FB810072CA88 /* EmptyClassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassTableViewCell.h; sourceTree = "<group>"; };
+		7551F9BC2C69FB810072CA88 /* EmptyClassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassTableViewCell.m; sourceTree = "<group>"; };
+		7551F9BD2C69FB810072CA88 /* EmptyClassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyClassTableViewCell.xib; sourceTree = "<group>"; };
+		7551F9BE2C69FB810072CA88 /* EmptyClassUnavailableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassUnavailableViewController.h; sourceTree = "<group>"; };
+		7551F9BF2C69FB810072CA88 /* EmptyClassUnavailableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassUnavailableViewController.m; sourceTree = "<group>"; };
+		7551F9C02C69FB810072CA88 /* EmptyClassUnavailableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyClassUnavailableViewController.xib; sourceTree = "<group>"; };
+		7551F9C12C69FB810072CA88 /* EmptyClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
+		7551F9C22C69FB810072CA88 /* EmptyClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
+		7551F9D02C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSetRemindBasicView.swift; sourceTree = "<group>"; };
+		7551F9D22C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectRepeatView.swift; sourceTree = "<group>"; };
+		7551F9DB2C73A3FC0072CA88 /* DLHistodyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLHistodyButton.swift; sourceTree = "<group>"; };
+		7551F9DD2C73A8BF0072CA88 /* DLTimeSelectedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLTimeSelectedButton.swift; sourceTree = "<group>"; };
+		7551F9DF2C74785A0072CA88 /* DiscoverTodoSelectDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectDateView.swift; sourceTree = "<group>"; };
+		7551F9E12C748F2F0072CA88 /* YearBtnsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearBtnsView.swift; sourceTree = "<group>"; };
+		7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSheetView.swift; sourceTree = "<group>"; };
+		7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTitleInputTextField.swift; sourceTree = "<group>"; };
+		7577294C2C85914E00982233 /* ToDoDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoDetailVC.swift; sourceTree = "<group>"; };
+		7577294D2C85914E00982233 /* ToDoDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoDetailView.swift; sourceTree = "<group>"; };
+		7577294E2C85914E00982233 /* ToDoTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTypeView.swift; sourceTree = "<group>"; };
+		7577294F2C85914E00982233 /* ToDoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoVC.swift; sourceTree = "<group>"; };
+		757729542C85915E00982233 /* ToDoAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoAlertView.swift; sourceTree = "<group>"; };
+		757729552C85915E00982233 /* ToDoBatchManageBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoBatchManageBottomView.swift; sourceTree = "<group>"; };
+		757729562C85915E00982233 /* ToDoEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoEmptyView.swift; sourceTree = "<group>"; };
+		757729572C85915E00982233 /* ToDoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopView.swift; sourceTree = "<group>"; };
+		7577295D2C85916E00982233 /* ToDoNonTopActiveStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoNonTopActiveStyleCell.swift; sourceTree = "<group>"; };
+		7577295E2C85916E00982233 /* ToDoNonTopExpiredStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoNonTopExpiredStyleCell.swift; sourceTree = "<group>"; };
+		7577295F2C85916E00982233 /* ToDoNonTopNoDeadlineStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoNonTopNoDeadlineStyleCell.swift; sourceTree = "<group>"; };
+		757729602C85916E00982233 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		757729612C85916E00982233 /* ToDoTopActiveStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopActiveStyleCell.swift; sourceTree = "<group>"; };
+		757729622C85916E00982233 /* ToDoTopExpiredStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopExpiredStyleCell.swift; sourceTree = "<group>"; };
+		757729632C85916E00982233 /* ToDoTopNoDeadlineStyleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopNoDeadlineStyleCell.swift; sourceTree = "<group>"; };
+		7577296C2C85E02B00982233 /* ToDoFinderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoFinderVC.swift; sourceTree = "<group>"; };
 		757A58ED2BA1EAD0003D95F0 /* ExpressDetailPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpressDetailPageVC.m; sourceTree = "<group>"; };
 		758C7E4E2BA456AF002CA3F4 /* MXBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MXBackButton.swift; sourceTree = "<group>"; };
 		758C7E502BA4700F002CA3F4 /* MXObjCBackButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MXObjCBackButton.h; sourceTree = "<group>"; };
@@ -1235,7 +1348,102 @@
 		75B1D7742B9EC71100BBC794 /* NSDictionaryExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryExtension.m; sourceTree = "<group>"; };
 		75B7AFB62B8F35F30028E4DC /* TaskTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewCell.m; sourceTree = "<group>"; };
 		75B7AFB82B8F35FD0028E4DC /* TaskTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskTableViewCell.h; sourceTree = "<group>"; };
+		75CC07C22C539B3700810A4E /* ExamArrangeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamArrangeData.h; sourceTree = "<group>"; };
+		75CC07C32C539B3700810A4E /* ExamArrangeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamArrangeData.m; sourceTree = "<group>"; };
+		75CC07C42C539B3700810A4E /* ExamArrangeDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamArrangeDataItem.h; sourceTree = "<group>"; };
+		75CC07C52C539B3700810A4E /* ExamArrangeDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamArrangeDataItem.m; sourceTree = "<group>"; };
+		75CC07C62C539B3700810A4E /* ExamArrangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamArrangeModel.h; sourceTree = "<group>"; };
+		75CC07C72C539B3700810A4E /* ExamArrangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamArrangeModel.m; sourceTree = "<group>"; };
+		75CC07C92C539B3700810A4E /* PointAndDottedLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointAndDottedLineView.h; sourceTree = "<group>"; };
+		75CC07CA2C539B3700810A4E /* PointAndDottedLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointAndDottedLineView.m; sourceTree = "<group>"; };
+		75CC07CB2C539B3700810A4E /* TestCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCardTableViewCell.h; sourceTree = "<group>"; };
+		75CC07CC2C539B3700810A4E /* TestCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCardTableViewCell.m; sourceTree = "<group>"; };
+		75CC07CE2C539B3700810A4E /* GPAUnavailableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAUnavailableViewController.h; sourceTree = "<group>"; };
+		75CC07CF2C539B3700810A4E /* GPAUnavailableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAUnavailableViewController.m; sourceTree = "<group>"; };
+		75CC07D02C539B3700810A4E /* GPAUnavailableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPAUnavailableViewController.xib; sourceTree = "<group>"; };
+		75CC07D12C539B3700810A4E /* ScorePresentAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScorePresentAnimation.h; sourceTree = "<group>"; };
+		75CC07D22C539B3700810A4E /* ScorePresentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScorePresentAnimation.m; sourceTree = "<group>"; };
+		75CC07D32C539B3700810A4E /* TestArrangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestArrangeViewController.h; sourceTree = "<group>"; };
+		75CC07D42C539B3700810A4E /* TestArrangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestArrangeViewController.m; sourceTree = "<group>"; };
+		75CC07D72C539B3700810A4E /* Credit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credit.h; sourceTree = "<group>"; };
+		75CC07D82C539B3700810A4E /* Credit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Credit.m; sourceTree = "<group>"; };
+		75CC07D92C539B3700810A4E /* Credits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credits.h; sourceTree = "<group>"; };
+		75CC07DA2C539B3700810A4E /* Credits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Credits.m; sourceTree = "<group>"; };
+		75CC07DB2C539B3700810A4E /* GPAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPAItem.h; sourceTree = "<group>"; };
+		75CC07DC2C539B3700810A4E /* GPAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPAItem.m; sourceTree = "<group>"; };
+		75CC07DD2C539B3700810A4E /* SingleGrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleGrade.h; sourceTree = "<group>"; };
+		75CC07DE2C539B3700810A4E /* SingleGrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleGrade.m; sourceTree = "<group>"; };
+		75CC07DF2C539B3700810A4E /* TermGrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermGrade.h; sourceTree = "<group>"; };
+		75CC07E02C539B3700810A4E /* TermGrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermGrade.m; sourceTree = "<group>"; };
+		75CC07E12C539B3700810A4E /* TermGrades.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermGrades.h; sourceTree = "<group>"; };
+		75CC07E22C539B3700810A4E /* TermGrades.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermGrades.m; sourceTree = "<group>"; };
+		75CC07E42C539B3700810A4E /* GPA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPA.h; sourceTree = "<group>"; };
+		75CC07E52C539B3700810A4E /* GPA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPA.m; sourceTree = "<group>"; };
+		75CC07E72C539B3700810A4E /* ABScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABScoreView.h; sourceTree = "<group>"; };
+		75CC07E82C539B3700810A4E /* ABScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABScoreView.m; sourceTree = "<group>"; };
+		75CC07E92C539B3700810A4E /* DetailScorePerYearCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailScorePerYearCell.h; sourceTree = "<group>"; };
+		75CC07EA2C539B3700810A4E /* DetailScorePerYearCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailScorePerYearCell.m; sourceTree = "<group>"; };
+		75CC07EB2C539B3700810A4E /* DetailSubjectScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSubjectScoreCell.h; sourceTree = "<group>"; };
+		75CC07EC2C539B3700810A4E /* DetailSubjectScoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSubjectScoreCell.m; sourceTree = "<group>"; };
+		75CC07ED2C539B3700810A4E /* ScoreTwoTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTwoTitleView.h; sourceTree = "<group>"; };
+		75CC07EE2C539B3700810A4E /* ScoreTwoTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreTwoTitleView.m; sourceTree = "<group>"; };
+		75CC07EF2C539B3700810A4E /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
+		75CC07F02C539B3700810A4E /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		75CC07F22C539B3700810A4E /* ScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreViewController.h; sourceTree = "<group>"; };
+		75CC07F32C539B3700810A4E /* ScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreViewController.m; sourceTree = "<group>"; };
+		75CC07F52C539B3700810A4E /* SportAttendanceItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportAttendanceItem.h; sourceTree = "<group>"; };
+		75CC07F62C539B3700810A4E /* SportAttendanceItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportAttendanceItem.m; sourceTree = "<group>"; };
+		75CC07F82C539B3700810A4E /* SportAttendanceItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportAttendanceItemModel.h; sourceTree = "<group>"; };
+		75CC07F92C539B3700810A4E /* SportAttendanceItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportAttendanceItemModel.m; sourceTree = "<group>"; };
+		75CC07FA2C539B3700810A4E /* SportAttendanceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportAttendanceModel.h; sourceTree = "<group>"; };
+		75CC07FB2C539B3700810A4E /* SportAttendanceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportAttendanceModel.m; sourceTree = "<group>"; };
+		75CC07FD2C539B3700810A4E /* SportAttendanceHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportAttendanceHeadView.h; sourceTree = "<group>"; };
+		75CC07FE2C539B3700810A4E /* SportAttendanceHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportAttendanceHeadView.m; sourceTree = "<group>"; };
+		75CC07FF2C539B3700810A4E /* SportAttendanceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportAttendanceTableViewCell.h; sourceTree = "<group>"; };
+		75CC08002C539B3700810A4E /* SportAttendanceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportAttendanceTableViewCell.m; sourceTree = "<group>"; };
+		75CC08022C539B3700810A4E /* SportAttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SportAttendanceViewController.h; sourceTree = "<group>"; };
+		75CC08032C539B3700810A4E /* SportAttendanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SportAttendanceViewController.m; sourceTree = "<group>"; };
+		75CC08222C564A4C00810A4E /* SportAttendanceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SportAttendanceHeader.h; sourceTree = "<group>"; };
+		75CC08232C564AB100810A4E /* TestArrangeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestArrangeHeader.h; sourceTree = "<group>"; };
+		75CC08242C564B9600810A4E /* ScorePageHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScorePageHeader.h; sourceTree = "<group>"; };
+		75CC08252C5657AA00810A4E /* SCBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBar.h; sourceTree = "<group>"; };
+		75CC08262C5657AA00810A4E /* SCBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBar.m; sourceTree = "<group>"; };
+		75CC08272C5657AA00810A4E /* SCBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBarChart.h; sourceTree = "<group>"; };
+		75CC08282C5657AA00810A4E /* SCBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBarChart.m; sourceTree = "<group>"; };
+		75CC08292C5657AA00810A4E /* SCChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCChart.h; sourceTree = "<group>"; };
+		75CC082A2C5657AA00810A4E /* SCChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCChart.m; sourceTree = "<group>"; };
+		75CC082B2C5657AA00810A4E /* SCChartDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCChartDelegate.h; sourceTree = "<group>"; };
+		75CC082C2C5657AA00810A4E /* SCChartLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCChartLabel.h; sourceTree = "<group>"; };
+		75CC082D2C5657AA00810A4E /* SCChartLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCChartLabel.m; sourceTree = "<group>"; };
+		75CC082E2C5657AA00810A4E /* SCCircleChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCCircleChart.h; sourceTree = "<group>"; };
+		75CC082F2C5657AA00810A4E /* SCCircleChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCCircleChart.m; sourceTree = "<group>"; };
+		75CC08302C5657AA00810A4E /* SCColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCColor.h; sourceTree = "<group>"; };
+		75CC08312C5657AA00810A4E /* SCColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCColor.m; sourceTree = "<group>"; };
+		75CC08322C5657AA00810A4E /* SCGenericChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGenericChart.h; sourceTree = "<group>"; };
+		75CC08332C5657AA00810A4E /* SCGenericChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGenericChart.m; sourceTree = "<group>"; };
+		75CC08342C5657AA00810A4E /* SCLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCLineChart.h; sourceTree = "<group>"; };
+		75CC08352C5657AA00810A4E /* SCLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCLineChart.m; sourceTree = "<group>"; };
+		75CC08362C5657AA00810A4E /* SCPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPieChart.h; sourceTree = "<group>"; };
+		75CC08372C5657AA00810A4E /* SCPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPieChart.m; sourceTree = "<group>"; };
+		75CC08382C5657AA00810A4E /* SCPieChartDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPieChartDataItem.h; sourceTree = "<group>"; };
+		75CC08392C5657AA00810A4E /* SCPieChartDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPieChartDataItem.m; sourceTree = "<group>"; };
+		75CC083A2C5657AA00810A4E /* SCTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTool.h; sourceTree = "<group>"; };
+		75CC083B2C5657AA00810A4E /* SCTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTool.m; sourceTree = "<group>"; };
+		75CC083C2C5657AA00810A4E /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		75CC083D2C5657AA00810A4E /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		75CE6C752BE0FEEC000D3DAF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		75F5E3272C887FFA00D539BA /* ToDoNonTopActiveStyleCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoNonTopActiveStyleCellForFinder.swift; sourceTree = "<group>"; };
+		75F5E3282C887FFA00D539BA /* ToDoNonTopExpiredStyleCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoNonTopExpiredStyleCellForFinder.swift; sourceTree = "<group>"; };
+		75F5E3292C887FFA00D539BA /* ToDoNonTopNoDeadlineStyleCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoNonTopNoDeadlineStyleCellForFinder.swift; sourceTree = "<group>"; };
+		75F5E32A2C887FFA00D539BA /* ToDoTableViewCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCellForFinder.swift; sourceTree = "<group>"; };
+		75F5E32B2C887FFA00D539BA /* ToDoTopActiveStyleCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopActiveStyleCellForFinder.swift; sourceTree = "<group>"; };
+		75F5E32C2C887FFA00D539BA /* ToDoTopExpiredStyleCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopExpiredStyleCellForFinder.swift; sourceTree = "<group>"; };
+		75F5E32D2C887FFA00D539BA /* ToDoTopNoDeadlineStyleCellForFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopNoDeadlineStyleCellForFinder.swift; sourceTree = "<group>"; };
+		75F7296C2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectTimeView.swift; sourceTree = "<group>"; };
+		75F7296E2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTodoSelectTypeView.swift; sourceTree = "<group>"; };
+		75F729702C7D8F4B00B36A56 /* TodoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDataModel.m; sourceTree = "<group>"; };
+		75F729712C7D8F4B00B36A56 /* TodoSyncTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoSyncTool.m; sourceTree = "<group>"; };
+		75F729722C7D8F4B00B36A56 /* TodoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDataModel.h; sourceTree = "<group>"; };
 		75FD5F672BC5514500D8302D /* CustomNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		7A64BFF32892826F007CCB1E /* NewQAHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewQAHeader.h; sourceTree = "<group>"; };
 		7AA4C469288D23A700E204C8 /* MineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeader.h; sourceTree = "<group>"; };
@@ -1712,57 +1920,10 @@
 		FE0D60422801702B00319A9E /* SchoolBusBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolBusBottomView.h; sourceTree = "<group>"; };
 		FE11E81D27E8712A00C4B90B /* QAListSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QAListSegmentView.m; sourceTree = "<group>"; };
 		FE11E81E27E8712A00C4B90B /* QAListSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QAListSegmentView.h; sourceTree = "<group>"; };
-		FE2C131627AEF629001CF7AF /* ToDoDetaileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetaileViewController.h; sourceTree = "<group>"; };
-		FE2C131727AEF629001CF7AF /* TODOMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TODOMainViewController.m; sourceTree = "<group>"; };
-		FE2C131827AEF629001CF7AF /* ToDoDetaileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetaileViewController.m; sourceTree = "<group>"; };
-		FE2C131927AEF629001CF7AF /* TODOMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TODOMainViewController.h; sourceTree = "<group>"; };
-		FE2C131B27AEF629001CF7AF /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
-		FE2C131C27AEF629001CF7AF /* ToDoDetailRepeatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailRepeatView.h; sourceTree = "<group>"; };
-		FE2C131D27AEF629001CF7AF /* ToDoEmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoEmptyCell.m; sourceTree = "<group>"; };
-		FE2C131E27AEF629001CF7AF /* ToDoMainBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoMainBarView.m; sourceTree = "<group>"; };
-		FE2C131F27AEF629001CF7AF /* ToDoTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableView.m; sourceTree = "<group>"; };
-		FE2C132027AEF629001CF7AF /* ToDoDetailCurrencyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailCurrencyView.h; sourceTree = "<group>"; };
-		FE2C132127AEF629001CF7AF /* ToDoDetailRemarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailRemarkView.m; sourceTree = "<group>"; };
-		FE2C132227AEF629001CF7AF /* ToDoDetailReminderTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailReminderTimeView.h; sourceTree = "<group>"; };
-		FE2C132327AEF629001CF7AF /* ToDoDetailBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailBar.h; sourceTree = "<group>"; };
-		FE2C132427AEF629001CF7AF /* ToDoDetailTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailTitleView.m; sourceTree = "<group>"; };
-		FE2C132527AEF629001CF7AF /* ToDoDetailRepeatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailRepeatView.m; sourceTree = "<group>"; };
-		FE2C132627AEF629001CF7AF /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
-		FE2C132727AEF629001CF7AF /* ToDoDetailRemarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailRemarkView.h; sourceTree = "<group>"; };
-		FE2C132827AEF629001CF7AF /* ToDoTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoTableView.h; sourceTree = "<group>"; };
-		FE2C132927AEF629001CF7AF /* ToDoDetailCurrencyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailCurrencyView.m; sourceTree = "<group>"; };
-		FE2C132A27AEF629001CF7AF /* ToDoMainBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoMainBarView.h; sourceTree = "<group>"; };
-		FE2C132B27AEF629001CF7AF /* ToDoEmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoEmptyCell.h; sourceTree = "<group>"; };
-		FE2C132C27AEF629001CF7AF /* ToDoDetailBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailBar.m; sourceTree = "<group>"; };
-		FE2C132D27AEF629001CF7AF /* ToDoDetailReminderTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoDetailReminderTimeView.m; sourceTree = "<group>"; };
-		FE2C132E27AEF629001CF7AF /* ToDoDetailTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoDetailTitleView.h; sourceTree = "<group>"; };
-		FE2C133027AEF629001CF7AF /* DiscoverTodoSelectRepeatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoSelectRepeatView.h; sourceTree = "<group>"; };
-		FE2C133127AEF629001CF7AF /* TodoTitleInputTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTitleInputTextField.m; sourceTree = "<group>"; };
-		FE2C133227AEF629001CF7AF /* DiscoverTodoSelectTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoSelectTimeView.h; sourceTree = "<group>"; };
-		FE2C133327AEF629001CF7AF /* DiscoverTodoSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoSheetView.h; sourceTree = "<group>"; };
-		FE2C133427AEF629001CF7AF /* DiscoverTodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoTableViewCell.m; sourceTree = "<group>"; };
-		FE2C133527AEF629001CF7AF /* DiscoverTodoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoView.m; sourceTree = "<group>"; };
-		FE2C133627AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoTableViewAnimationView.m; sourceTree = "<group>"; };
-		FE2C133727AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoSetRemindBasicView.h; sourceTree = "<group>"; };
-		FE2C133827AEF629001CF7AF /* YearBtnsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearBtnsView.h; sourceTree = "<group>"; };
-		FE2C133927AEF629001CF7AF /* TodoConflictStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoConflictStateView.h; sourceTree = "<group>"; };
-		FE2C133A27AEF629001CF7AF /* TodoTitleInputTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoTitleInputTextField.h; sourceTree = "<group>"; };
-		FE2C133B27AEF629001CF7AF /* DiscoverTodoSelectRepeatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoSelectRepeatView.m; sourceTree = "<group>"; };
-		FE2C133C27AEF629001CF7AF /* DiscoverTodoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoView.h; sourceTree = "<group>"; };
-		FE2C133D27AEF629001CF7AF /* DiscoverTodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoTableViewCell.h; sourceTree = "<group>"; };
-		FE2C133E27AEF629001CF7AF /* DiscoverTodoSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoSheetView.m; sourceTree = "<group>"; };
-		FE2C133F27AEF629001CF7AF /* DiscoverTodoSelectTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoSelectTimeView.m; sourceTree = "<group>"; };
-		FE2C134027AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTodoSetRemindBasicView.m; sourceTree = "<group>"; };
-		FE2C134127AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTodoTableViewAnimationView.h; sourceTree = "<group>"; };
-		FE2C134227AEF629001CF7AF /* TodoConflictStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoConflictStateView.m; sourceTree = "<group>"; };
-		FE2C134327AEF629001CF7AF /* YearBtnsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearBtnsView.m; sourceTree = "<group>"; };
 		FE2C134627AEF629001CF7AF /* TodoDateTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDateTool.m; sourceTree = "<group>"; };
-		FE2C134727AEF629001CF7AF /* TodoDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoDataModel.m; sourceTree = "<group>"; };
-		FE2C134827AEF629001CF7AF /* TodoSyncTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoSyncTool.m; sourceTree = "<group>"; };
 		FE2C134927AEF629001CF7AF /* TodoSyncMsg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoSyncMsg.m; sourceTree = "<group>"; };
 		FE2C134A27AEF629001CF7AF /* TodoDateTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDateTool.h; sourceTree = "<group>"; };
 		FE2C134B27AEF629001CF7AF /* TodoSyncTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoSyncTool.h; sourceTree = "<group>"; };
-		FE2C134C27AEF629001CF7AF /* TodoDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoDataModel.h; sourceTree = "<group>"; };
 		FE2C134D27AEF629001CF7AF /* TodoSyncMsg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoSyncMsg.h; sourceTree = "<group>"; };
 		FEBA676227E9BAC000C4D231 /* updatePopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = updatePopView.h; sourceTree = "<group>"; };
 		FEBA676327E9BAC000C4D231 /* updatePopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = updatePopView.m; sourceTree = "<group>"; };
@@ -2957,6 +3118,10 @@
 		18CDF4D4257F91BC006E8E5C /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				7551F9C42C69FB810072CA88 /* Discover_EmptyClass */,
+				75CC07F42C539B3700810A4E /* Discover_scorePage */,
+				75CC08052C539B3700810A4E /* Discover_SportAttendance */,
+				75CC07D62C539B3700810A4E /* Discover_TestArrange */,
 				7AA4C48528922AE300E204C8 /* Source */,
 				18CDF4D5257F91BC006E8E5C /* Discover_MainPage */,
 				B0F08FEE28A24F9000986EB6 /* IDSBinding */,
@@ -2974,6 +3139,7 @@
 		18CDF4D5257F91BC006E8E5C /* Discover_MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				7551F9A92C6549B30072CA88 /* Discover_SportAttendanceForMainPage */,
 				B0B1B9DB29E69E7B00A1BB02 /* Discover_Electric */,
 				14B73F29281BED7B00D08ADD /* Discover_MineMessage */,
 			);
@@ -4156,6 +4322,152 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		7551F9A22C6549B30072CA88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A02C6549B30072CA88 /* DiscoverSAVC.h */,
+				7551F9A12C6549B30072CA88 /* DiscoverSAVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7551F9A52C6549B30072CA88 /* PopUpController */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A32C6549B30072CA88 /* popUpViewController.h */,
+				7551F9A42C6549B30072CA88 /* popUpViewController.m */,
+			);
+			path = PopUpController;
+			sourceTree = "<group>";
+		};
+		7551F9A82C6549B30072CA88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A62C6549B30072CA88 /* DataContentView.h */,
+				7551F9A72C6549B30072CA88 /* DataContentView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7551F9A92C6549B30072CA88 /* Discover_SportAttendanceForMainPage */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9A22C6549B30072CA88 /* Controller */,
+				7551F9A52C6549B30072CA88 /* PopUpController */,
+				7551F9A82C6549B30072CA88 /* View */,
+			);
+			path = Discover_SportAttendanceForMainPage;
+			sourceTree = "<group>";
+		};
+		7551F9B12C69FB810072CA88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9AD2C69FB810072CA88 /* EmptyClassItem.h */,
+				7551F9AE2C69FB810072CA88 /* EmptyClassItem.m */,
+				7551F9AF2C69FB810072CA88 /* EmptyClassModel.h */,
+				7551F9B02C69FB810072CA88 /* EmptyClassModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7551F9B42C69FB810072CA88 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9B22C69FB810072CA88 /* EmptyClassPresenter.h */,
+				7551F9B32C69FB810072CA88 /* EmptyClassPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7551F9B62C69FB810072CA88 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9B52C69FB810072CA88 /* EmptyClassProtocol.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7551F9C32C69FB810072CA88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9B72C69FB810072CA88 /* EmptyClassCollectionViewCell.h */,
+				7551F9B82C69FB810072CA88 /* EmptyClassCollectionViewCell.m */,
+				7551F9B92C69FB810072CA88 /* EmptyClassContentView.h */,
+				7551F9BA2C69FB810072CA88 /* EmptyClassContentView.m */,
+				7551F9BB2C69FB810072CA88 /* EmptyClassTableViewCell.h */,
+				7551F9BC2C69FB810072CA88 /* EmptyClassTableViewCell.m */,
+				7551F9BD2C69FB810072CA88 /* EmptyClassTableViewCell.xib */,
+				7551F9BE2C69FB810072CA88 /* EmptyClassUnavailableViewController.h */,
+				7551F9BF2C69FB810072CA88 /* EmptyClassUnavailableViewController.m */,
+				7551F9C02C69FB810072CA88 /* EmptyClassUnavailableViewController.xib */,
+				7551F9C12C69FB810072CA88 /* EmptyClassViewController.h */,
+				7551F9C22C69FB810072CA88 /* EmptyClassViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7551F9C42C69FB810072CA88 /* Discover_EmptyClass */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9B12C69FB810072CA88 /* Model */,
+				7551F9B42C69FB810072CA88 /* Presenter */,
+				7551F9B62C69FB810072CA88 /* Protocols */,
+				7551F9C32C69FB810072CA88 /* View */,
+			);
+			path = Discover_EmptyClass;
+			sourceTree = "<group>";
+		};
+		7551F9CF2C733ABB0072CA88 /* AddView */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9DA2C73A3EB0072CA88 /* Button */,
+				7551F9D02C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift */,
+				7551F9D22C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift */,
+				7551F9DF2C74785A0072CA88 /* DiscoverTodoSelectDateView.swift */,
+				75F7296C2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift */,
+				7551F9E32C74AC470072CA88 /* DiscoverTodoSheetView.swift */,
+				7551F9E52C74C2020072CA88 /* TodoTitleInputTextField.swift */,
+				75F7296E2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift */,
+			);
+			path = AddView;
+			sourceTree = "<group>";
+		};
+		7551F9DA2C73A3EB0072CA88 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9DB2C73A3FC0072CA88 /* DLHistodyButton.swift */,
+				7551F9DD2C73A8BF0072CA88 /* DLTimeSelectedButton.swift */,
+				7551F9E12C748F2F0072CA88 /* YearBtnsView.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		757729582C85915E00982233 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7551F9CF2C733ABB0072CA88 /* AddView */,
+				757729542C85915E00982233 /* ToDoAlertView.swift */,
+				757729552C85915E00982233 /* ToDoBatchManageBottomView.swift */,
+				757729562C85915E00982233 /* ToDoEmptyView.swift */,
+				757729572C85915E00982233 /* ToDoTopView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		757729642C85916E00982233 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7577295D2C85916E00982233 /* ToDoNonTopActiveStyleCell.swift */,
+				7577295E2C85916E00982233 /* ToDoNonTopExpiredStyleCell.swift */,
+				7577295F2C85916E00982233 /* ToDoNonTopNoDeadlineStyleCell.swift */,
+				757729602C85916E00982233 /* ToDoTableViewCell.swift */,
+				757729612C85916E00982233 /* ToDoTopActiveStyleCell.swift */,
+				757729622C85916E00982233 /* ToDoTopExpiredStyleCell.swift */,
+				757729632C85916E00982233 /* ToDoTopNoDeadlineStyleCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		758C7E482BA4548D002CA3F4 /* MXBackButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -4207,6 +4519,218 @@
 			path = TaskDataModelNew;
 			sourceTree = "<group>";
 		};
+		75CC07C82C539B3700810A4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07C22C539B3700810A4E /* ExamArrangeData.h */,
+				75CC07C32C539B3700810A4E /* ExamArrangeData.m */,
+				75CC07C42C539B3700810A4E /* ExamArrangeDataItem.h */,
+				75CC07C52C539B3700810A4E /* ExamArrangeDataItem.m */,
+				75CC07C62C539B3700810A4E /* ExamArrangeModel.h */,
+				75CC07C72C539B3700810A4E /* ExamArrangeModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		75CC07CD2C539B3700810A4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07C92C539B3700810A4E /* PointAndDottedLineView.h */,
+				75CC07CA2C539B3700810A4E /* PointAndDottedLineView.m */,
+				75CC07CB2C539B3700810A4E /* TestCardTableViewCell.h */,
+				75CC07CC2C539B3700810A4E /* TestCardTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75CC07D52C539B3700810A4E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07CE2C539B3700810A4E /* GPAUnavailableViewController.h */,
+				75CC07CF2C539B3700810A4E /* GPAUnavailableViewController.m */,
+				75CC07D02C539B3700810A4E /* GPAUnavailableViewController.xib */,
+				75CC07D12C539B3700810A4E /* ScorePresentAnimation.h */,
+				75CC07D22C539B3700810A4E /* ScorePresentAnimation.m */,
+				75CC07D32C539B3700810A4E /* TestArrangeViewController.h */,
+				75CC07D42C539B3700810A4E /* TestArrangeViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75CC07D62C539B3700810A4E /* Discover_TestArrange */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07C82C539B3700810A4E /* Model */,
+				75CC07CD2C539B3700810A4E /* View */,
+				75CC07D52C539B3700810A4E /* ViewController */,
+			);
+			path = Discover_TestArrange;
+			sourceTree = "<group>";
+		};
+		75CC07E32C539B3700810A4E /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07D72C539B3700810A4E /* Credit.h */,
+				75CC07D82C539B3700810A4E /* Credit.m */,
+				75CC07D92C539B3700810A4E /* Credits.h */,
+				75CC07DA2C539B3700810A4E /* Credits.m */,
+				75CC07DB2C539B3700810A4E /* GPAItem.h */,
+				75CC07DC2C539B3700810A4E /* GPAItem.m */,
+				75CC07DD2C539B3700810A4E /* SingleGrade.h */,
+				75CC07DE2C539B3700810A4E /* SingleGrade.m */,
+				75CC07DF2C539B3700810A4E /* TermGrade.h */,
+				75CC07E02C539B3700810A4E /* TermGrade.m */,
+				75CC07E12C539B3700810A4E /* TermGrades.h */,
+				75CC07E22C539B3700810A4E /* TermGrades.m */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		75CC07E62C539B3700810A4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07E32C539B3700810A4E /* Item */,
+				75CC07E42C539B3700810A4E /* GPA.h */,
+				75CC07E52C539B3700810A4E /* GPA.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		75CC07F12C539B3700810A4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07E72C539B3700810A4E /* ABScoreView.h */,
+				75CC07E82C539B3700810A4E /* ABScoreView.m */,
+				75CC07E92C539B3700810A4E /* DetailScorePerYearCell.h */,
+				75CC07EA2C539B3700810A4E /* DetailScorePerYearCell.m */,
+				75CC07EB2C539B3700810A4E /* DetailSubjectScoreCell.h */,
+				75CC07EC2C539B3700810A4E /* DetailSubjectScoreCell.m */,
+				75CC07ED2C539B3700810A4E /* ScoreTwoTitleView.h */,
+				75CC07EE2C539B3700810A4E /* ScoreTwoTitleView.m */,
+				75CC07EF2C539B3700810A4E /* UserInfoView.h */,
+				75CC07F02C539B3700810A4E /* UserInfoView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75CC07F42C539B3700810A4E /* Discover_scorePage */ = {
+			isa = PBXGroup;
+			children = (
+				75CC083E2C5657AA00810A4E /* SCChart */,
+				75CC07E62C539B3700810A4E /* Model */,
+				75CC07F12C539B3700810A4E /* View */,
+				75CC07F22C539B3700810A4E /* ScoreViewController.h */,
+				75CC07F32C539B3700810A4E /* ScoreViewController.m */,
+			);
+			path = Discover_scorePage;
+			sourceTree = "<group>";
+		};
+		75CC07F72C539B3700810A4E /* SportAttendanceItem */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07F52C539B3700810A4E /* SportAttendanceItem.h */,
+				75CC07F62C539B3700810A4E /* SportAttendanceItem.m */,
+			);
+			path = SportAttendanceItem;
+			sourceTree = "<group>";
+		};
+		75CC07FC2C539B3700810A4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07F72C539B3700810A4E /* SportAttendanceItem */,
+				75CC07F82C539B3700810A4E /* SportAttendanceItemModel.h */,
+				75CC07F92C539B3700810A4E /* SportAttendanceItemModel.m */,
+				75CC07FA2C539B3700810A4E /* SportAttendanceModel.h */,
+				75CC07FB2C539B3700810A4E /* SportAttendanceModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		75CC08012C539B3700810A4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07FD2C539B3700810A4E /* SportAttendanceHeadView.h */,
+				75CC07FE2C539B3700810A4E /* SportAttendanceHeadView.m */,
+				75CC07FF2C539B3700810A4E /* SportAttendanceTableViewCell.h */,
+				75CC08002C539B3700810A4E /* SportAttendanceTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		75CC08042C539B3700810A4E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				75CC08022C539B3700810A4E /* SportAttendanceViewController.h */,
+				75CC08032C539B3700810A4E /* SportAttendanceViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		75CC08052C539B3700810A4E /* Discover_SportAttendance */ = {
+			isa = PBXGroup;
+			children = (
+				75CC07FC2C539B3700810A4E /* Model */,
+				75CC08012C539B3700810A4E /* View */,
+				75CC08042C539B3700810A4E /* ViewController */,
+			);
+			path = Discover_SportAttendance;
+			sourceTree = "<group>";
+		};
+		75CC083E2C5657AA00810A4E /* SCChart */ = {
+			isa = PBXGroup;
+			children = (
+				75CC08252C5657AA00810A4E /* SCBar.h */,
+				75CC08262C5657AA00810A4E /* SCBar.m */,
+				75CC08272C5657AA00810A4E /* SCBarChart.h */,
+				75CC08282C5657AA00810A4E /* SCBarChart.m */,
+				75CC08292C5657AA00810A4E /* SCChart.h */,
+				75CC082A2C5657AA00810A4E /* SCChart.m */,
+				75CC082B2C5657AA00810A4E /* SCChartDelegate.h */,
+				75CC082C2C5657AA00810A4E /* SCChartLabel.h */,
+				75CC082D2C5657AA00810A4E /* SCChartLabel.m */,
+				75CC082E2C5657AA00810A4E /* SCCircleChart.h */,
+				75CC082F2C5657AA00810A4E /* SCCircleChart.m */,
+				75CC08302C5657AA00810A4E /* SCColor.h */,
+				75CC08312C5657AA00810A4E /* SCColor.m */,
+				75CC08322C5657AA00810A4E /* SCGenericChart.h */,
+				75CC08332C5657AA00810A4E /* SCGenericChart.m */,
+				75CC08342C5657AA00810A4E /* SCLineChart.h */,
+				75CC08352C5657AA00810A4E /* SCLineChart.m */,
+				75CC08362C5657AA00810A4E /* SCPieChart.h */,
+				75CC08372C5657AA00810A4E /* SCPieChart.m */,
+				75CC08382C5657AA00810A4E /* SCPieChartDataItem.h */,
+				75CC08392C5657AA00810A4E /* SCPieChartDataItem.m */,
+				75CC083A2C5657AA00810A4E /* SCTool.h */,
+				75CC083B2C5657AA00810A4E /* SCTool.m */,
+				75CC083C2C5657AA00810A4E /* UICountingLabel.h */,
+				75CC083D2C5657AA00810A4E /* UICountingLabel.m */,
+			);
+			path = SCChart;
+			sourceTree = "<group>";
+		};
+		75F5E3262C887F5600D539BA /* FinderChild */ = {
+			isa = PBXGroup;
+			children = (
+				75F5E32E2C887FFA00D539BA /* TableViewCell */,
+				7577296C2C85E02B00982233 /* ToDoFinderVC.swift */,
+			);
+			path = FinderChild;
+			sourceTree = "<group>";
+		};
+		75F5E32E2C887FFA00D539BA /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				75F5E3272C887FFA00D539BA /* ToDoNonTopActiveStyleCellForFinder.swift */,
+				75F5E3282C887FFA00D539BA /* ToDoNonTopExpiredStyleCellForFinder.swift */,
+				75F5E3292C887FFA00D539BA /* ToDoNonTopNoDeadlineStyleCellForFinder.swift */,
+				75F5E32A2C887FFA00D539BA /* ToDoTableViewCellForFinder.swift */,
+				75F5E32B2C887FFA00D539BA /* ToDoTopActiveStyleCellForFinder.swift */,
+				75F5E32C2C887FFA00D539BA /* ToDoTopExpiredStyleCellForFinder.swift */,
+				75F5E32D2C887FFA00D539BA /* ToDoTopNoDeadlineStyleCellForFinder.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		7A64BFF22892826F007CCB1E /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -4237,6 +4761,9 @@
 		7AA4C48528922AE300E204C8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				75CC08242C564B9600810A4E /* ScorePageHeader.h */,
+				75CC08232C564AB100810A4E /* TestArrangeHeader.h */,
+				75CC08222C564A4C00810A4E /* SportAttendanceHeader.h */,
 				7AA4C47E2892206200E204C8 /* SchoolBusHeader.h */,
 				B0B1B9DA29E69E3C00A1BB02 /* ElectricHeader.h */,
 				7AA4C480289220CE00E204C8 /* ADHeader.h */,
@@ -5824,83 +6351,14 @@
 		FE2C131327AEF629001CF7AF /* Discover_ToDo */ = {
 			isa = PBXGroup;
 			children = (
-				FE2C131427AEF629001CF7AF /* ToDoOffcialEntrance */,
-				FE2C132F27AEF629001CF7AF /* Discover_ToDo */,
+				75F5E3262C887F5600D539BA /* FinderChild */,
+				7577294C2C85914E00982233 /* ToDoDetailVC.swift */,
+				7577294D2C85914E00982233 /* ToDoDetailView.swift */,
+				7577294E2C85914E00982233 /* ToDoTypeView.swift */,
+				7577294F2C85914E00982233 /* ToDoVC.swift */,
+				757729642C85916E00982233 /* TableViewCell */,
+				757729582C85915E00982233 /* View */,
 				FE2C134527AEF629001CF7AF /* Tool */,
-			);
-			path = Discover_ToDo;
-			sourceTree = "<group>";
-		};
-		FE2C131427AEF629001CF7AF /* ToDoOffcialEntrance */ = {
-			isa = PBXGroup;
-			children = (
-				FE2C131527AEF629001CF7AF /* Controller */,
-				FE2C131A27AEF629001CF7AF /* View */,
-			);
-			path = ToDoOffcialEntrance;
-			sourceTree = "<group>";
-		};
-		FE2C131527AEF629001CF7AF /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				FE2C131627AEF629001CF7AF /* ToDoDetaileViewController.h */,
-				FE2C131827AEF629001CF7AF /* ToDoDetaileViewController.m */,
-				FE2C131727AEF629001CF7AF /* TODOMainViewController.m */,
-				FE2C131927AEF629001CF7AF /* TODOMainViewController.h */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		FE2C131A27AEF629001CF7AF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FE2C132627AEF629001CF7AF /* TodoTableViewCell.h */,
-				FE2C131B27AEF629001CF7AF /* TodoTableViewCell.m */,
-				FE2C131C27AEF629001CF7AF /* ToDoDetailRepeatView.h */,
-				FE2C132527AEF629001CF7AF /* ToDoDetailRepeatView.m */,
-				FE2C132027AEF629001CF7AF /* ToDoDetailCurrencyView.h */,
-				FE2C132927AEF629001CF7AF /* ToDoDetailCurrencyView.m */,
-				FE2C132727AEF629001CF7AF /* ToDoDetailRemarkView.h */,
-				FE2C132127AEF629001CF7AF /* ToDoDetailRemarkView.m */,
-				FE2C132227AEF629001CF7AF /* ToDoDetailReminderTimeView.h */,
-				FE2C132D27AEF629001CF7AF /* ToDoDetailReminderTimeView.m */,
-				FE2C132327AEF629001CF7AF /* ToDoDetailBar.h */,
-				FE2C132C27AEF629001CF7AF /* ToDoDetailBar.m */,
-				FE2C132827AEF629001CF7AF /* ToDoTableView.h */,
-				FE2C131F27AEF629001CF7AF /* ToDoTableView.m */,
-				FE2C132B27AEF629001CF7AF /* ToDoEmptyCell.h */,
-				FE2C131D27AEF629001CF7AF /* ToDoEmptyCell.m */,
-				FE2C132A27AEF629001CF7AF /* ToDoMainBarView.h */,
-				FE2C131E27AEF629001CF7AF /* ToDoMainBarView.m */,
-				FE2C132E27AEF629001CF7AF /* ToDoDetailTitleView.h */,
-				FE2C132427AEF629001CF7AF /* ToDoDetailTitleView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FE2C132F27AEF629001CF7AF /* Discover_ToDo */ = {
-			isa = PBXGroup;
-			children = (
-				FE2C133027AEF629001CF7AF /* DiscoverTodoSelectRepeatView.h */,
-				FE2C133B27AEF629001CF7AF /* DiscoverTodoSelectRepeatView.m */,
-				FE2C133227AEF629001CF7AF /* DiscoverTodoSelectTimeView.h */,
-				FE2C133F27AEF629001CF7AF /* DiscoverTodoSelectTimeView.m */,
-				FE2C133327AEF629001CF7AF /* DiscoverTodoSheetView.h */,
-				FE2C133E27AEF629001CF7AF /* DiscoverTodoSheetView.m */,
-				FE2C133727AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.h */,
-				FE2C134027AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m */,
-				FE2C133827AEF629001CF7AF /* YearBtnsView.h */,
-				FE2C134327AEF629001CF7AF /* YearBtnsView.m */,
-				FE2C133927AEF629001CF7AF /* TodoConflictStateView.h */,
-				FE2C134227AEF629001CF7AF /* TodoConflictStateView.m */,
-				FE2C133A27AEF629001CF7AF /* TodoTitleInputTextField.h */,
-				FE2C133127AEF629001CF7AF /* TodoTitleInputTextField.m */,
-				FE2C133C27AEF629001CF7AF /* DiscoverTodoView.h */,
-				FE2C133527AEF629001CF7AF /* DiscoverTodoView.m */,
-				FE2C133D27AEF629001CF7AF /* DiscoverTodoTableViewCell.h */,
-				FE2C133427AEF629001CF7AF /* DiscoverTodoTableViewCell.m */,
-				FE2C134127AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.h */,
-				FE2C133627AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.m */,
 			);
 			path = Discover_ToDo;
 			sourceTree = "<group>";
@@ -5908,12 +6366,12 @@
 		FE2C134527AEF629001CF7AF /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				75F729722C7D8F4B00B36A56 /* TodoDataModel.h */,
+				75F729702C7D8F4B00B36A56 /* TodoDataModel.m */,
 				FE2C134A27AEF629001CF7AF /* TodoDateTool.h */,
 				FE2C134627AEF629001CF7AF /* TodoDateTool.m */,
 				FE2C134B27AEF629001CF7AF /* TodoSyncTool.h */,
-				FE2C134827AEF629001CF7AF /* TodoSyncTool.m */,
-				FE2C134C27AEF629001CF7AF /* TodoDataModel.h */,
-				FE2C134727AEF629001CF7AF /* TodoDataModel.m */,
+				75F729712C7D8F4B00B36A56 /* TodoSyncTool.m */,
 				FE2C134D27AEF629001CF7AF /* TodoSyncMsg.h */,
 				FE2C134927AEF629001CF7AF /* TodoSyncMsg.m */,
 			);
@@ -6107,12 +6565,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7551F9CD2C69FB810072CA88 /* EmptyClassUnavailableViewController.xib in Resources */,
 				1A3106312377173B00A56468 /* Impact.ttf in Resources */,
+				7551F9CB2C69FB810072CA88 /* EmptyClassTableViewCell.xib in Resources */,
 				73A1588A26C2475A00287C9F /* DIN-Medium.otf in Resources */,
 				EE899DEA2367DB2600DDB0D9 /* Bahnschrift.ttf in Resources */,
 				14F6F4FD2AFB81B9007C7CA6 /* LaunchScreen.storyboard in Resources */,
 				14F6F55F2AFB8CDB007C7CA6 /* FinderTools in Resources */,
 				DB34EB2C239BD4550052B65E /* DetailRemindTableViewCell.xib in Resources */,
+				75CC080C2C539B3700810A4E /* GPAUnavailableViewController.xib in Resources */,
 				14F6F5752AFB8F4C007C7CA6 /* Assets.xcassets in Resources */,
 				DB34EB20239BD4550052B65E /* DetailPageController.xib in Resources */,
 				14F6F4FF2AFB8C7D007C7CA6 /* 掌上重邮用户协议.md in Resources */,
@@ -6269,7 +6730,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B075972B2B2038440004AC3C /* TodoConflictStateView.m in Sources */,
 				B075972A2B20383F0004AC3C /* ElectricityView.m in Sources */,
 				B07597292B20381D0004AC3C /* ClassSchedulPresentingAnimater.m in Sources */,
 				B07597282B2037E00004AC3C /* TodoDateTool.m in Sources */,
@@ -6300,13 +6760,13 @@
 				DB4064FB2466D889006CE5BC /* DLWeeklSelectView.m in Sources */,
 				646B1967282AA9420015DF28 /* BusGuideViewController.m in Sources */,
 				14B73F72281BED7B00D08ADD /* ActiveMessageCell.m in Sources */,
-				FE2C135027AEF629001CF7AF /* TodoTableViewCell.m in Sources */,
 				14D03A0B27FE69A800D6AE93 /* SSRTopBarBaseView.m in Sources */,
 				B074C03B2AFD20F00086AB07 /* ActivityCenterVC.swift in Sources */,
 				14FFFBE52AF8C0F3005A7EBD /* UIView+Cyxbs.swift in Sources */,
 				FC05B1CC2ADAF054008B245B /* JudgeArrangeMessage.swift in Sources */,
 				B0C9F2382B0126E1006F4286 /* JXSegmentViewCustom.swift in Sources */,
 				18CDF4C4257F8DBD006E8E5C /* SetQuestionView.m in Sources */,
+				757729662C85916E00982233 /* ToDoNonTopExpiredStyleCell.swift in Sources */,
 				D0101F62243587A1004337ED /* UIScrollView+GKGestureHandle.m in Sources */,
 				D0101D5B2433C885004337ED /* SDMaskGuidBGView.m in Sources */,
 				7591F1AF2B95D61E001890D2 /* TaskManager.swift in Sources */,
@@ -6316,7 +6776,7 @@
 				B0F71C982ABC71B200F8B1AC /* PublishPageModel.m in Sources */,
 				187DF4BB260310DD000BCDE9 /* UIScrollView+Empty.m in Sources */,
 				646B199D28313CDB0015DF28 /* StationView.m in Sources */,
-				FE2C135827AEF629001CF7AF /* ToDoDetailBar.m in Sources */,
+				75CC080B2C539B3700810A4E /* GPAUnavailableViewController.m in Sources */,
 				49252DAA26D39CC9003A8A7F /* FeedBackMainPageViewController.m in Sources */,
 				B0C9F2342B0126E1006F4286 /* ActivityTypePickerVC.swift in Sources */,
 				49A50B6726D83B9600B25DDF /* CommonQuestionDetailVC.m in Sources */,
@@ -6324,24 +6784,30 @@
 				14FFFBE02AF8C0F3005A7EBD /* Constants.swift in Sources */,
 				AA289B1224EFC78C00FDF70C /* NoteDetailView.m in Sources */,
 				B0C9F2372B0126E1006F4286 /* ActivityMainViewController.swift in Sources */,
+				75CC081F2C539B3800810A4E /* SportAttendanceHeadView.m in Sources */,
+				7551F9E22C748F2F0072CA88 /* YearBtnsView.swift in Sources */,
 				B0F71C872ABC71B200F8B1AC /* AttitudeMainPageVC.m in Sources */,
 				1A141377235F524B0001417E /* SYCSegmentViewButton.m in Sources */,
 				DB34EB39239BD4550052B65E /* TimeChooseScrollView.m in Sources */,
 				49C2E78326D563AF00AFBE6F /* TypeSelectView.m in Sources */,
 				1A2CEA8F250667C200A0EE0F /* ClassDetailModel.m in Sources */,
+				75CC08072C539B3700810A4E /* ExamArrangeDataItem.m in Sources */,
 				4975628A26D5975F004499E6 /* FeedBackView.m in Sources */,
 				1A30F3AD23D33F1300FBBD83 /* CheckInModel.m in Sources */,
 				DB34EB34239BD4550052B65E /* LessonButton.m in Sources */,
 				1893DC8D26EA32F1007E871E /* MGDQueue.m in Sources */,
+				7551F9C82C69FB810072CA88 /* EmptyClassCollectionViewCell.m in Sources */,
 				DB34EAD9239BD4550052B65E /* TimeHandle.m in Sources */,
 				18CDF4C1257F8DBD006E8E5C /* sendEmailModel.m in Sources */,
 				1A1691FE2430ECFE0076EDC7 /* ClassTabBar.m in Sources */,
+				7577296D2C85E02B00982233 /* ToDoFinderVC.swift in Sources */,
 				73AAA1CD26C918250084E44D /* DetailsMainViewController.m in Sources */,
 				14FFFBE92AF8C0F3005A7EBD /* SwiftEX.swift in Sources */,
 				187DF4BE260310DD000BCDE9 /* FTEmptyView.m in Sources */,
 				B074C03C2AFD20F00086AB07 /* ActivityCenterTopView.swift in Sources */,
 				14B73F81281BED7B00D08ADD /* MessagePresentController.m in Sources */,
 				75B1D7752B9EC71100BBC794 /* NSDictionaryExtension.m in Sources */,
+				7551F9C92C69FB810072CA88 /* EmptyClassContentView.m in Sources */,
 				AA4FF36525879CD500C31286 /* MineSettingViewController.m in Sources */,
 				14B73F76281BED7B00D08ADD /* SystemMessageCell.m in Sources */,
 				AA0DDB53286C8B1900802324 /* MineMSSEnterBtn.m in Sources */,
@@ -6359,18 +6825,19 @@
 				B0FE5F29294C94540070E755 /* NSDate+Rising.m in Sources */,
 				D0101D592433C885004337ED /* SDMaskController.m in Sources */,
 				1A5A5EF12361A82E00543BAE /* UserItemTool.m in Sources */,
+				757729682C85916E00982233 /* ToDoTableViewCell.swift in Sources */,
 				FC4B3BD02A8766F2003336C8 /* WeDateTopView.swift in Sources */,
 				14B73F8B2823577600D08ADD /* SSRButton.m in Sources */,
+				75CC08082C539B3700810A4E /* ExamArrangeModel.m in Sources */,
+				7551F9AA2C6549B30072CA88 /* DiscoverSAVC.m in Sources */,
 				DB34EACF239BD4550052B65E /* WYCClassAndRemindDataModel.m in Sources */,
 				14F6F5552AFB8CDB007C7CA6 /* ScheduleDetailCollectionViewCell.swift in Sources */,
 				14F6F54D2AFB8CDA007C7CA6 /* ScheduleDrawType.swift in Sources */,
-				FE2C136027AEF629001CF7AF /* DiscoverTodoSelectTimeView.m in Sources */,
 				FC5110432AED3B6A0049EE43 /* ArrangeMessageHeader.swift in Sources */,
 				14F6F5462AFB8CDA007C7CA6 /* SearchStudentModel.swift in Sources */,
 				14B73F73281BED7B00D08ADD /* ActiveMessageVC.m in Sources */,
 				FE11E82027E8712B00C4B90B /* QAListSegmentView.m in Sources */,
 				B0D1A8D62B15E3C9005B858F /* PopUpInformationVC.swift in Sources */,
-				FE2C135327AEF629001CF7AF /* ToDoTableView.m in Sources */,
 				735BC55026D3C6EB00F22678 /* FeedBackDetailsRequestDataModel.m in Sources */,
 				FC1484692AD1D3AB00657191 /* SendMessageVC.swift in Sources */,
 				FCED76292AA9C51100A3D55C /* ChooseGroupCollectionViewCell.swift in Sources */,
@@ -6382,6 +6849,7 @@
 				646B1975282CDF840015DF28 /* StationsCollectionViewCell.m in Sources */,
 				AA0DDB6D286C8B1A00802324 /* EditMyInfoViewController.m in Sources */,
 				B0FE5F2D294C94540070E755 /* UIColor+Rising.m in Sources */,
+				7551F9DE2C73A8BF0072CA88 /* DLTimeSelectedButton.swift in Sources */,
 				D0101F66243587A1004337ED /* GKWebImageManager.m in Sources */,
 				14B73F70281BED7B00D08ADD /* ActiveMessageModel.m in Sources */,
 				D0101D6A24352092004337ED /* UITextView+Placeholder.m in Sources */,
@@ -6393,10 +6861,13 @@
 				FC4B3BCE2A8764FA003336C8 /* WeDateVC.swift in Sources */,
 				B0C9F2442B0126E1006F4286 /* ActivityAdminRejectVC.swift in Sources */,
 				75500E632AEE8FD200C2FC3A /* TextManager.swift in Sources */,
+				7551F9E02C74785A0072CA88 /* DiscoverTodoSelectDateView.swift in Sources */,
 				D0101D5A2433C885004337ED /* SDMaskNotificationName.m in Sources */,
 				14F6F54F2AFB8CDA007C7CA6 /* ScheduleCalModel+EX.swift in Sources */,
+				75F5E3312C887FFA00D539BA /* ToDoNonTopNoDeadlineStyleCellForFinder.swift in Sources */,
 				14FFFBEF2AF8C0F3005A7EBD /* PlaceholderCollectionViewCell.swift in Sources */,
 				18CDF690257F91BD006E8E5C /* CQUPTMapDataItem.m in Sources */,
+				757729672C85916E00982233 /* ToDoNonTopNoDeadlineStyleCell.swift in Sources */,
 				AA3F82DA24E8E03C00B65042 /* ClassDetailView.m in Sources */,
 				B0F71C9E2ABC71B200F8B1AC /* PublishPageCell.m in Sources */,
 				AA5368F02589E28800236CB5 /* QuitTipView.m in Sources */,
@@ -6404,29 +6875,37 @@
 				B0F71C922ABC71B200F8B1AC /* ExpressDeclareModel.m in Sources */,
 				646B1984282E8F000015DF28 /* StationGuideView.m in Sources */,
 				B0C9F22F2B0126E1006F4286 /* ActivityRankingListVC.swift in Sources */,
+				7551F9E42C74AC470072CA88 /* DiscoverTodoSheetView.swift in Sources */,
 				FC7D381A2AAB867000DEAD50 /* BatchAddModel.swift in Sources */,
 				14B73F7C281BED7B00D08ADD /* MineMessageModel.m in Sources */,
 				B0F71C832ABC71B200F8B1AC /* AttitudeSelfPageViewController.m in Sources */,
 				AA0DDB58286C8B1A00802324 /* UIScrollView+JHContentExtension.m in Sources */,
 				FC15428F2ABC221600BD806F /* CourseScheduleModel.swift in Sources */,
+				75CC08402C5657AA00810A4E /* SCBarChart.m in Sources */,
 				B0C9F23F2B0126E1006F4286 /* JustifiedLabel.swift in Sources */,
+				7551F9C62C69FB810072CA88 /* EmptyClassModel.m in Sources */,
+				7551F9CE2C69FB810072CA88 /* EmptyClassViewController.m in Sources */,
 				DB4064F82466D889006CE5BC /* DLWeekButton.m in Sources */,
 				14B73F84281CCC3000D08ADD /* MessageDetailVC.m in Sources */,
 				18CDF6A0257F91BD006E8E5C /* CQUPTMapMoreImageViewController.m in Sources */,
 				73AAA1CE26C918250084E44D /* DetailsGoodsTableViewCell.m in Sources */,
 				1A30F3AF23D33F8800FBBD83 /* TodaysDot.m in Sources */,
+				75F5E3352C887FFA00D539BA /* ToDoTopNoDeadlineStyleCellForFinder.swift in Sources */,
+				75CC08182C539B3800810A4E /* DetailSubjectScoreCell.m in Sources */,
 				14FFFC052AF8C0FD005A7EBD /* AliyunConfig.m in Sources */,
+				75F5E32F2C887FFA00D539BA /* ToDoNonTopActiveStyleCellForFinder.swift in Sources */,
 				AA4FA1DF25C2DE5F005139BA /* LearnMoreViewController.m in Sources */,
 				757A58EE2BA1EAD0003D95F0 /* ExpressDetailPageVC.m in Sources */,
 				FCB39F2D2AB03B7400914462 /* AddArrangePlaceVC.swift in Sources */,
 				1893DC8926EA32A3007E871E /* MGDGCD.m in Sources */,
 				AA0DDB6C286C8B1A00802324 /* EditMyInfoModel.m in Sources */,
+				7577295B2C85915E00982233 /* ToDoEmptyView.swift in Sources */,
+				75CC08092C539B3700810A4E /* PointAndDottedLineView.m in Sources */,
 				B0C9F23A2B0126E1006F4286 /* ActivitySelectBar.swift in Sources */,
 				B09BB8362AADA35400FF88F7 /* FoodDetailsModel.m in Sources */,
 				B0C9F2362B0126E1006F4286 /* ActivityCollectionVC.swift in Sources */,
 				B0C9F2432B0126E1006F4286 /* ActivityAdminReviewingVC.swift in Sources */,
 				752A03EC2B0796C1003256C1 /* ActivityMessageModel.swift in Sources */,
-				FE2C135527AEF629001CF7AF /* ToDoDetailTitleView.m in Sources */,
 				14B73F79281BED7B00D08ADD /* MessageMoreModel.m in Sources */,
 				14F6F56C2AFB8CDB007C7CA6 /* BaseTextFiledViewController.swift in Sources */,
 				AA3F82DD24E9343A00B65042 /* DayBarView.m in Sources */,
@@ -6440,7 +6919,6 @@
 				1A14136F235F524B0001417E /* UserDefaultTool.m in Sources */,
 				1A141366235F524B0001417E /* AESCipher.m in Sources */,
 				4931631026CD7B6800140412 /* StampCenterTopView.m in Sources */,
-				FE2C135C27AEF629001CF7AF /* DiscoverTodoView.m in Sources */,
 				AA3F82E624EA4A8900B65042 /* LeftBar.m in Sources */,
 				18CDF67B257F91BD006E8E5C /* ClassmateItem.m in Sources */,
 				1A1E869723C8D1DE00321367 /* CheckInBar.m in Sources */,
@@ -6453,7 +6931,6 @@
 				1451EA53282A09B800A5BB55 /* UserPublishModel.m in Sources */,
 				D0101F6A243587A1004337ED /* GKPanGestureRecognizer.m in Sources */,
 				18CDF4B7257F8DBD006E8E5C /* SetQuestionViewController.m in Sources */,
-				FE2C135127AEF629001CF7AF /* ToDoEmptyCell.m in Sources */,
 				4931630B26CD7B6800140412 /* GoodsCollectionViewCell.m in Sources */,
 				75B7AFB72B8F35F30028E4DC /* TaskTableViewCell.m in Sources */,
 				DB4065032466D889006CE5BC /* DLReminderView.m in Sources */,
@@ -6461,12 +6938,17 @@
 				B0C9F2402B0126E1006F4286 /* GradientButton.swift in Sources */,
 				14F6F5522AFB8CDB007C7CA6 /* RYScheduleViewController.swift in Sources */,
 				AA9ABE9024EB63BF00D16BE0 /* ClassDetailViewShower.m in Sources */,
+				75F5E3322C887FFA00D539BA /* ToDoTableViewCellForFinder.swift in Sources */,
+				75F7296F2C7D75D000B36A56 /* DiscoverTodoSelectTypeView.swift in Sources */,
 				18CDF694257F91BD006E8E5C /* CQUPTMapSearchItem.m in Sources */,
 				AAC7CA3B25F89C9D00E6B5D5 /* MainPageModel.m in Sources */,
 				FC06D0F02A9E643A00A974D8 /* StudentItem.swift in Sources */,
 				14F6F55B2AFB8CDB007C7CA6 /* ScheduleEditViewController.swift in Sources */,
 				14FFFC082AF8C0FD005A7EBD /* TabBarPresentationViewController.swift in Sources */,
 				4931630E26CD7B6800140412 /* StampCenterSecondHeaderView.m in Sources */,
+				7551F9D12C733E030072CA88 /* DiscoverTodoSetRemindBasicView.swift in Sources */,
+				75CC08192C539B3800810A4E /* ScoreTwoTitleView.m in Sources */,
+				7551F9D32C734B250072CA88 /* DiscoverTodoSelectRepeatView.swift in Sources */,
 				18CDF722257F91BE006E8E5C /* FinderToolViewItem.m in Sources */,
 				FE2C136827AEF629001CF7AF /* TodoSyncMsg.m in Sources */,
 				14F6F56D2AFB8CDB007C7CA6 /* ForgotViewController.swift in Sources */,
@@ -6486,14 +6968,11 @@
 				B0F71C952ABC71B200F8B1AC /* ExpressDeclareItem.m in Sources */,
 				18CDF4BE257F8DBD006E8E5C /* questionItem.m in Sources */,
 				18CDF69C257F91BD006E8E5C /* CQUPTMapViewController.m in Sources */,
-				FE2C135627AEF629001CF7AF /* ToDoDetailRepeatView.m in Sources */,
 				B0F71C9A2ABC71B200F8B1AC /* PublishTableHeadView.m in Sources */,
 				D0101F61243587A1004337ED /* GKLoadingView.m in Sources */,
 				7311328526CCEC2400EF88C1 /* ExchangeCenterViewController.m in Sources */,
 				14F6F55C2AFB8CDB007C7CA6 /* FinderToolsView.swift in Sources */,
 				1AC2550823C9B14F00DF0475 /* DidNotCheckInDot.m in Sources */,
-				FE2C135F27AEF629001CF7AF /* DiscoverTodoSheetView.m in Sources */,
-				FE2C136727AEF629001CF7AF /* TodoSyncTool.m in Sources */,
 				EE131C212471362E00B6ED97 /* URLController.m in Sources */,
 				AA0DDB6F286C8B1A00802324 /* MineInformationLabel.m in Sources */,
 				14E7E4A827F5762500B67469 /* QuestionSelectView.m in Sources */,
@@ -6501,14 +6980,18 @@
 				14FFFBE82AF8C0F3005A7EBD /* UIImageExtensions.swift in Sources */,
 				14F6F5572AFB8CDB007C7CA6 /* ScheduleDetailTableHeaderView.swift in Sources */,
 				18CDF689257F91BD006E8E5C /* WeDateViewController.m in Sources */,
+				75CC080A2C539B3700810A4E /* TestCardTableViewCell.m in Sources */,
 				DB34EACE239BD4550052B65E /* DateModle.m in Sources */,
 				AA49098624F3B6B4007CB3BC /* ClassSchedulInterController.m in Sources */,
 				B0FE5F2B294C94540070E755 /* RisingUIKitExtension.m in Sources */,
 				B0F71C972ABC71B200F8B1AC /* PublishViewController.m in Sources */,
 				AA0DDB70286C8B1A00802324 /* EditMyInfoContentView.m in Sources */,
+				757729502C85914F00982233 /* ToDoDetailVC.swift in Sources */,
 				1A141322235F521C0001417E /* BaseNavigationController.m in Sources */,
 				B033366E294C971D004D141D /* HttpTool.m in Sources */,
 				73AAA1D626C918250084E44D /* DetailsBaseTableViewCell.m in Sources */,
+				75CC080E2C539B3700810A4E /* TestArrangeViewController.m in Sources */,
+				75F729742C7D8F4B00B36A56 /* TodoSyncTool.m in Sources */,
 				73AAA1D526C918250084E44D /* PurchaseInfoOrderIDView.m in Sources */,
 				14FBBD4E2805489A00D5B05D /* SSRTextCycleCell.m in Sources */,
 				B0F71C942ABC71B200F8B1AC /* ExpressPickPutItem.m in Sources */,
@@ -6520,11 +7003,13 @@
 				FCBAC1DA2AD7D9B60010D85A /* CancelReminderAlertVC.swift in Sources */,
 				B0C9F23D2B0126E1006F4286 /* ActivitiesModel.swift in Sources */,
 				14CED37E288A594600BADA8B /* RisingRouterResponse.m in Sources */,
+				75F7296D2C7C624D00B36A56 /* DiscoverTodoSelectTimeView.swift in Sources */,
 				7311328926CCEC2400EF88C1 /* PopupView.m in Sources */,
 				AA0DDB64286C8B1A00802324 /* SQLCodeCreater.m in Sources */,
 				14FFFBE62AF8C0F3005A7EBD /* UIButton+Cyxbs.swift in Sources */,
 				758C7E522BA4700F002CA3F4 /* MXObjCBackButton.m in Sources */,
 				1A15DF97238D03B3005E0843 /* CheckInContentView.m in Sources */,
+				75CC080D2C539B3700810A4E /* ScorePresentAnimation.m in Sources */,
 				1A4A466C24C97E2A0033734E /* UserProtocolViewController.m in Sources */,
 				B0F71C902ABC71B200F8B1AC /* ExpressPutModel.m in Sources */,
 				14F6F54C2AFB8CDA007C7CA6 /* ScheduleDataFetch.swift in Sources */,
@@ -6535,11 +7020,15 @@
 				1451EA58282BAF0C00A5BB55 /* MessageDetailTitleView.m in Sources */,
 				FC4B3BD22A878457003336C8 /* TemporaryGroupVC.swift in Sources */,
 				FC9E3A922AB6CFF000E3C65F /* ScheduleFact.swift in Sources */,
+				757729592C85915E00982233 /* ToDoAlertView.swift in Sources */,
 				FC5279022AAC471400B09685 /* ClassResultItem.swift in Sources */,
 				B074C03D2AFD20F00086AB07 /* ActivityMineTableViewCell.swift in Sources */,
 				1893DC9526EA3887007E871E /* MGDTimer.m in Sources */,
 				D0101D5E2433C885004337ED /* SDMaskModel.m in Sources */,
+				75CC084A2C5657AA00810A4E /* UICountingLabel.m in Sources */,
 				14FFFC032AF8C0FD005A7EBD /* SessionManager.swift in Sources */,
+				75CC080F2C539B3700810A4E /* Credit.m in Sources */,
+				757729692C85916E00982233 /* ToDoTopActiveStyleCell.swift in Sources */,
 				AAFD87D024F50DB800CBBD11 /* FakeTabBarView.m in Sources */,
 				14FFFC072AF8C0FD005A7EBD /* TabBarHeaderView.swift in Sources */,
 				18CDF6A3257F91BD006E8E5C /* CQUPTMapDetailTagsCollectionViewCell.m in Sources */,
@@ -6552,28 +7041,32 @@
 				646B198D282FFC460015DF28 /* BusMAPointAnnotation.m in Sources */,
 				493162DE26CD7B6300140412 /* StampTaskData.m in Sources */,
 				7FBF39F4257B79F30077494E /* ByPasswordViewController.m in Sources */,
+				75CC08472C5657AA00810A4E /* SCPieChart.m in Sources */,
 				DB4065022466D889006CE5BC /* DLReminderView+Reset.m in Sources */,
 				14E7E4B227F57FC800B67469 /* FeedBackQuestionButton.m in Sources */,
+				757729652C85916E00982233 /* ToDoNonTopActiveStyleCell.swift in Sources */,
 				1A141378235F524B0001417E /* SYCSegmentView.m in Sources */,
 				DB34EB33239BD4550052B65E /* TickButton.m in Sources */,
 				14FFFBE12AF8C0F3005A7EBD /* UIColor+Theme.swift in Sources */,
 				1A5A5EE52360100B00543BAE /* UserItem.m in Sources */,
+				7551F9CA2C69FB810072CA88 /* EmptyClassTableViewCell.m in Sources */,
 				FC52790A2AAC490F00B09685 /* GroupSearchResultTableViewCell.swift in Sources */,
 				FC9E3A992AB6D2F200E3C65F /* WeDateCourseScheduleVC.swift in Sources */,
 				73AAA1D026C918250084E44D /* DetailsTaskTableViewCell.m in Sources */,
 				B0F71C962ABC71B200F8B1AC /* ExpressDetailCell.m in Sources */,
 				14F6F55A2AFB8CDB007C7CA6 /* ScheduleCustomEditView.swift in Sources */,
 				FC7EC7C22AA9000E009FC098 /* ChooseGroupVC.swift in Sources */,
+				75CC083F2C5657AA00810A4E /* SCBar.m in Sources */,
 				1AF4B6072362EBFE00A0823A /* NSDate+Timestamp.m in Sources */,
 				18CDF4C0257F8DBD006E8E5C /* sendCodeModel.m in Sources */,
 				147842F227F080A7002359BA /* NSDate+Day.m in Sources */,
 				D0101F68243587A1004337ED /* UIImage+GKDecoder.m in Sources */,
-				FE2C136127AEF629001CF7AF /* DiscoverTodoSetRemindBasicView.m in Sources */,
 				AA0DDB57286C8B1A00802324 /* UIView+JHFrameExtension.m in Sources */,
 				DB34EB32239BD4550052B65E /* LessonNumLabel.m in Sources */,
 				1A1691FB2430ECA70076EDC7 /* ClassTabBarController.m in Sources */,
 				646B1978282CE0340015DF28 /* StationsGuideTableViewCell.m in Sources */,
 				1AFE535124F7571300F42A74 /* IntroductionController.m in Sources */,
+				75F5E3302C887FFA00D539BA /* ToDoNonTopExpiredStyleCellForFinder.swift in Sources */,
 				735BC53C26D3B33E00F22678 /* FeedBackDetailsViewController.m in Sources */,
 				FC1542912ABC75E900BD806F /* WeekMaping.swift in Sources */,
 				18CDF68A257F91BD006E8E5C /* PeopleListTableViewCell.m in Sources */,
@@ -6587,13 +7080,14 @@
 				B0C9F24A2B0126E1006F4286 /* ActivityUploadScrollView.swift in Sources */,
 				FC66D92B2A88B4C80024FB6A /* StudentTableViewCell.swift in Sources */,
 				B0F71C892ABC71B200F8B1AC /* AttitudeMainPageItem.m in Sources */,
-				FE2C135227AEF629001CF7AF /* ToDoMainBarView.m in Sources */,
 				18CDF721257F91BE006E8E5C /* FinderToolViewController.m in Sources */,
 				14F6F5592AFB8CDB007C7CA6 /* ScheduleEditSectionCollectionViewCell.swift in Sources */,
 				1ABE8026238D01EC00E88C4E /* CheckInViewController.m in Sources */,
+				7551F9AC2C6549B30072CA88 /* DataContentView.m in Sources */,
 				DB4064FA2466D889006CE5BC /* DLTextFiled.m in Sources */,
 				147842EA27F0758F002359BA /* UIView+Frame.m in Sources */,
 				18CDF67E257F91BD006E8E5C /* HistoryView.m in Sources */,
+				75CC08132C539B3700810A4E /* TermGrade.m in Sources */,
 				14B73F77281BED7B00D08ADD /* SystemMessageView.m in Sources */,
 				AA7ABAC62873EA5500BA6790 /* NewQAHud.m in Sources */,
 				DB34EB36239BD4550052B65E /* ChooseButton.m in Sources */,
@@ -6601,20 +7095,27 @@
 				14F6F5622AFB8CDB007C7CA6 /* FinderNewsCollectionViewCell.swift in Sources */,
 				B09BB8302AADA35400FF88F7 /* popUpInformationVC.m in Sources */,
 				14FFFC002AF8C0FD005A7EBD /* APIConfigEX.swift in Sources */,
+				75CC081A2C539B3800810A4E /* UserInfoView.m in Sources */,
+				75CC08422C5657AA00810A4E /* SCChartLabel.m in Sources */,
 				18CDF69F257F91BD006E8E5C /* CQUPTMapSearchView.m in Sources */,
+				75CC08112C539B3700810A4E /* GPAItem.m in Sources */,
 				4931630C26CD7B6800140412 /* GotoButton.m in Sources */,
 				18CDF693257F91BD006E8E5C /* CQUPTMapHotPlaceItem.m in Sources */,
 				DB34EB29239BD4550052B65E /* WeekChooseViewController.m in Sources */,
 				14FFFC0A2AF8C0FD005A7EBD /* TabBarController.swift in Sources */,
 				D0101F65243587A1004337ED /* GKPhoto.m in Sources */,
+				75F729732C7D8F4B00B36A56 /* TodoDataModel.m in Sources */,
 				B0C9F2482B0126E1006F4286 /* ActivityReviewingTableViewCell.swift in Sources */,
-				FE2C135D27AEF629001CF7AF /* DiscoverTodoTableViewAnimationView.m in Sources */,
+				75CC08482C5657AA00810A4E /* SCPieChartDataItem.m in Sources */,
 				B05DE7862ABB226700A6A6F6 /* CustomSessionManager.m in Sources */,
 				14B73F75281BED7B00D08ADD /* SystemMessage.m in Sources */,
 				18CDF692257F91BD006E8E5C /* CQUPTMapPlaceDetailItem.m in Sources */,
 				4999FA8326D44EA8005D0ADE /* HintView.m in Sources */,
+				757729522C85914F00982233 /* ToDoTypeView.swift in Sources */,
 				1A141371235F524B0001417E /* CAShapeLayer+ViewMask.m in Sources */,
 				B0C9F23B2B0126E1006F4286 /* ActivityCollectionViewCell.swift in Sources */,
+				757729512C85914F00982233 /* ToDoDetailView.swift in Sources */,
+				75CC081B2C539B3800810A4E /* ScoreViewController.m in Sources */,
 				D0101D5F2433C885004337ED /* SDMaskBindingEvent.m in Sources */,
 				FC5388EB2AA4D1BF001ADD77 /* BatchAddVC.swift in Sources */,
 				FCF2B95B2A9343BD00A007DD /* SearchResultTableViewHeaderView.swift in Sources */,
@@ -6623,13 +7124,15 @@
 				14FFFBE22AF8C0F3005A7EBD /* UIAlterControllerFast.swift in Sources */,
 				735BC54D26D3C05900F22678 /* FeedBackReplyTableViewCell.m in Sources */,
 				14F6F5662AFB8CDB007C7CA6 /* FinderBannerCollectionViewCell.swift in Sources */,
-				FE2C136327AEF629001CF7AF /* YearBtnsView.m in Sources */,
 				B0F71C9B2ABC71B200F8B1AC /* PublishTopView.m in Sources */,
 				B0C9F2492B0126E1006F4286 /* ActivityUploadVC.swift in Sources */,
+				7551F9C72C69FB810072CA88 /* EmptyClassPresenter.m in Sources */,
 				18FE64F625FDA186008748AE /* UIControl+MGD.m in Sources */,
+				75F5E3342C887FFA00D539BA /* ToDoTopExpiredStyleCellForFinder.swift in Sources */,
 				AA0DDB87286C8E8100802324 /* AFHTTPSessionManager+compatibility.m in Sources */,
 				73AAA1D226C918250084E44D /* SegmentView.m in Sources */,
 				B0F08FF928A24F9000986EB6 /* IdsBinding.m in Sources */,
+				757729532C85914F00982233 /* ToDoVC.swift in Sources */,
 				7311328B26CCEC2400EF88C1 /* BottomView.m in Sources */,
 				AA4B0FB324D3E09B00221B5A /* TopBarScrollView.m in Sources */,
 				18CDF696257F91BD006E8E5C /* FYHCycleLabel.m in Sources */,
@@ -6638,6 +7141,7 @@
 				18CDF4C6257F8DBD006E8E5C /* setEmail.m in Sources */,
 				1A141376235F524B0001417E /* UIImage+Color.m in Sources */,
 				FE0D60452801702B00319A9E /* SchoolBusVC.m in Sources */,
+				75CC08062C539B3700810A4E /* ExamArrangeData.m in Sources */,
 				AA0DDB54286C8B1900802324 /* MineSignView.m in Sources */,
 				DB34EB3D239BD4550052B65E /* ORWInputTextView.m in Sources */,
 				14FBBD41280505CC00D5B05D /* SSRTextCycleView.m in Sources */,
@@ -6647,11 +7151,10 @@
 				B0F71C932ABC71B200F8B1AC /* ExpressPickGetItem.m in Sources */,
 				14B73F7D281BED7B00D08ADD /* MineMessageTopView.m in Sources */,
 				AA9ABE9324EB8ADB00D16BE0 /* LessonViewForAWeek.m in Sources */,
-				FE2C135A27AEF629001CF7AF /* TodoTitleInputTextField.m in Sources */,
+				7551F9C52C69FB810072CA88 /* EmptyClassItem.m in Sources */,
 				1AC2550523C9AB3700DF0475 /* CheckedInDot.m in Sources */,
 				FC52790C2AAC6C3A00B09685 /* NormalStudentItem.swift in Sources */,
 				14F6F54E2AFB8CDA007C7CA6 /* ScheduleCalModel.swift in Sources */,
-				FE2C135927AEF629001CF7AF /* ToDoDetailReminderTimeView.m in Sources */,
 				D0101F63243587A1004337ED /* GKScrollView.m in Sources */,
 				18CDF4C7257F8DBD006E8E5C /* sendCodeView.m in Sources */,
 				49628E3226D52C6000805A08 /* FeedBackVC.m in Sources */,
@@ -6659,12 +7162,14 @@
 				FEBA676427E9BAC000C4D231 /* updatePopView.m in Sources */,
 				14F6F55E2AFB8CDB007C7CA6 /* FinderToolsModel.swift in Sources */,
 				14FFFBEE2AF8C0F3005A7EBD /* MarkDownViewController.swift in Sources */,
+				75CC08442C5657AA00810A4E /* SCColor.m in Sources */,
 				18CDF6A2257F91BD006E8E5C /* CQUPTMapImageLayout.m in Sources */,
 				B0F71C8E2ABC71B200F8B1AC /* AttitudeNetWrong.m in Sources */,
 				14F6F5612AFB8CDB007C7CA6 /* FinderNewsView.swift in Sources */,
 				DB34EB38239BD4550052B65E /* MainView.m in Sources */,
 				1A14136D235F524B0001417E /* UIImage+Helper.m in Sources */,
 				75500E622AEE8FD200C2FC3A /* SwiftyClient.swift in Sources */,
+				75CC08202C539B3800810A4E /* SportAttendanceTableViewCell.m in Sources */,
 				14F6F5512AFB8CDB007C7CA6 /* RYScheduleCollectionViewLayout.swift in Sources */,
 				14FFFC062AF8C0FD005A7EBD /* TabBar.swift in Sources */,
 				DB34EB3A239BD4550052B65E /* CoverView.m in Sources */,
@@ -6675,6 +7180,8 @@
 				14FFFC022AF8C0FD005A7EBD /* APIConfig.swift in Sources */,
 				AA0DDB6B286C8B1A00802324 /* EditMyInfoPresenter.m in Sources */,
 				14F6F5602AFB8CDB007C7CA6 /* FinderNewsModel.swift in Sources */,
+				7551F9E62C74C2020072CA88 /* TodoTitleInputTextField.swift in Sources */,
+				7577296B2C85916E00982233 /* ToDoTopNoDeadlineStyleCell.swift in Sources */,
 				14F6F5482AFB8CDA007C7CA6 /* CurriculumModel.swift in Sources */,
 				FC5849B62A9677BB00D9BBDF /* GroupTableViewCell.swift in Sources */,
 				B0C9F2462B0126E1006F4286 /* ActivityAdminManageMainVC.swift in Sources */,
@@ -6687,6 +7194,7 @@
 				FC15428B2ABBEC8100BD806F /* ScheduleCollectionViewLayout.swift in Sources */,
 				FC9E3A8D2AB6CD4C00E3C65F /* ScheduleCollectionViewCell.swift in Sources */,
 				B0B1BA0A29E6E98000A1BB02 /* PickerDormitoryViewController.m in Sources */,
+				7551F9AB2C6549B30072CA88 /* popUpViewController.m in Sources */,
 				D0101D5C2433C885004337ED /* SDMaskGuidController.m in Sources */,
 				6464F93426E4F6EE008562C5 /* BuyModel.m in Sources */,
 				AA5D39B824F74A9800AB2DF5 /* LocalNotiManager.m in Sources */,
@@ -6698,30 +7206,41 @@
 				FC52790F2AACB8D200B09685 /* RepeatNameVC.swift in Sources */,
 				14FFFBE72AF8C0F3005A7EBD /* ConstantsMain.swift in Sources */,
 				D0101F64243587A1004337ED /* GKPhotoBrowser.m in Sources */,
+				7577295C2C85915E00982233 /* ToDoTopView.swift in Sources */,
+				75CC08412C5657AA00810A4E /* SCChart.m in Sources */,
 				FC5279112AACB92500B09685 /* RepeatNameTableViewCell.swift in Sources */,
+				75CC081C2C539B3800810A4E /* SportAttendanceItem.m in Sources */,
 				AA19FCB82663A266004E9F5D /* DeviceUtils.swift in Sources */,
+				75CC08122C539B3700810A4E /* SingleGrade.m in Sources */,
 				AA3F82E024E992C000B65042 /* LessonView.m in Sources */,
 				B0F71C882ABC71B200F8B1AC /* AttitudeMainModel.m in Sources */,
 				735BC53826D399DB00F22678 /* FeedBackModel.m in Sources */,
 				491DAE5726E207C600693AAA /* CommonQuestionData.m in Sources */,
 				14FFFC092AF8C0FD005A7EBD /* UITabBarItem+TabBar.swift in Sources */,
+				75CC08492C5657AA00810A4E /* SCTool.m in Sources */,
 				B09BB8322AADA35400FF88F7 /* FoodHomeModel.m in Sources */,
 				B0F71C8A2ABC71B200F8B1AC /* AttitudeSelfPageItem.m in Sources */,
 				1A141365235F524B0001417E /* UIFont+AdaptiveFont.m in Sources */,
 				1A344BB723E96AD80014A3B4 /* MineAboutController.m in Sources */,
 				B09BB8372AADA35400FF88F7 /* FoodMainPageCollectionViewCell.m in Sources */,
 				18CDF691257F91BD006E8E5C /* CQUPTMapStarPlaceItem.m in Sources */,
+				75CC08462C5657AA00810A4E /* SCLineChart.m in Sources */,
+				7551F9DC2C73A3FC0072CA88 /* DLHistodyButton.swift in Sources */,
 				AA0DDB72286C8B1A00802324 /* PMPPickerView.m in Sources */,
 				B0F71C992ABC71B200F8B1AC /* PublishTableAddTagView.m in Sources */,
+				75CC08162C539B3800810A4E /* ABScoreView.m in Sources */,
 				1A141320235F521C0001417E /* BaseTableViewController.m in Sources */,
+				75CC08452C5657AA00810A4E /* SCGenericChart.m in Sources */,
 				14F6F56B2AFB8CDB007C7CA6 /* RYLoginViewController.swift in Sources */,
+				75CC08212C539B3800810A4E /* SportAttendanceViewController.m in Sources */,
 				14F6F55D2AFB8CDB007C7CA6 /* FinderToolsCollectionViewCell.swift in Sources */,
 				FC42109D2AD5BC700044EEAA /* ArrangeMessageItem.swift in Sources */,
+				75CC08102C539B3700810A4E /* Credits.m in Sources */,
 				B0C9F2312B0126E1006F4286 /* ActivityDetailVC.swift in Sources */,
+				75CC081D2C539B3800810A4E /* SportAttendanceItemModel.m in Sources */,
 				14FFFBEB2AF8C0F3005A7EBD /* CacheManager.swift in Sources */,
 				B0275A032AFE4F9E007E3D02 /* SwiftToOC.swift in Sources */,
 				FC63434B2A891FD200DCD96C /* SearchResultVC.swift in Sources */,
-				FE2C136627AEF629001CF7AF /* TodoDataModel.m in Sources */,
 				DB34EADA239BD4550052B65E /* RemindNotification.m in Sources */,
 				FC42109F2AD5C2F20044EEAA /* ArrangeMessageTableViewCell.swift in Sources */,
 				18CDF678257F91BD006E8E5C /* ChooseStudentListViewController.m in Sources */,
@@ -6730,8 +7249,8 @@
 				18CDF698257F91BD006E8E5C /* CQUPTMapHotPlaceButton.m in Sources */,
 				187DF4BD260310DD000BCDE9 /* LYEmptyView.m in Sources */,
 				7FBF39F6257B79F30077494E /* ByWordViewController.m in Sources */,
-				FE2C135727AEF629001CF7AF /* ToDoDetailCurrencyView.m in Sources */,
 				D0101D582433C885004337ED /* UIResponder+SDMask.m in Sources */,
+				75CC08152C539B3700810A4E /* GPA.m in Sources */,
 				B0B1B9F629E69EAD00A1BB02 /* ElectricFeeModel.m in Sources */,
 				AA0DDB56286C8B1900802324 /* MineTopBlurView.m in Sources */,
 				7591F1B22B96FDB5001890D2 /* UpdatePersonModelTool.swift in Sources */,
@@ -6753,7 +7272,6 @@
 				AA0DDB51286C8B1900802324 /* MineViewController.m in Sources */,
 				18CDF4BF257F8DBD006E8E5C /* questionAndAnswerModel.m in Sources */,
 				DB4064F62466D889006CE5BC /* DLReminderViewController.m in Sources */,
-				FE2C135B27AEF629001CF7AF /* DiscoverTodoTableViewCell.m in Sources */,
 				AA86E38B2635B04A00756F05 /* ColorManager.m in Sources */,
 				738C15B126E0B35600E24F8C /* FeedBackDefaultView.m in Sources */,
 				FE0D60472801702B00319A9E /* SchoolBusMapView.m in Sources */,
@@ -6761,6 +7279,7 @@
 				D0101D5D2433C885004337ED /* SDMaskView.m in Sources */,
 				B0F08FF828A24F9000986EB6 /* IDSController.m in Sources */,
 				18CDF69B257F91BD006E8E5C /* CQUPTMapMyStarButton.m in Sources */,
+				7551F9CC2C69FB810072CA88 /* EmptyClassUnavailableViewController.m in Sources */,
 				14F6F5472AFB8CDA007C7CA6 /* ScheduleModel.swift in Sources */,
 				1A14136C235F524B0001417E /* UIViewController+BackButtonHandler.m in Sources */,
 				14B73F7A281BED7B00D08ADD /* MessageMoreCell.m in Sources */,
@@ -6770,16 +7289,18 @@
 				7311328626CCEC2400EF88C1 /* Goods.m in Sources */,
 				AAE3308725E3AD5E00324750 /* MainPageNumBtn.m in Sources */,
 				1A141368235F524B0001417E /* HttpClient.m in Sources */,
+				7577296A2C85916E00982233 /* ToDoTopExpiredStyleCell.swift in Sources */,
 				646B19A02833983E0015DF28 /* NextStationBtn.m in Sources */,
 				B0C9F2472B0126E1006F4286 /* ActivityReviewedTableViewCell.swift in Sources */,
 				AA0DDB55286C8B1900802324 /* MineTableViewCell.m in Sources */,
+				75CC081E2C539B3800810A4E /* SportAttendanceModel.m in Sources */,
 				B00C3C342AF243D60057DDBA /* RemindHUD.m in Sources */,
 				DB34EB3C239BD4550052B65E /* DayLabel.m in Sources */,
 				B0F71C8C2ABC71B200F8B1AC /* AttitudeHomeCell.m in Sources */,
 				B0F08FFA28A24F9000986EB6 /* IdsBindingView.m in Sources */,
 				1476CA6F2AFCD41200635848 /* UserModelEX.swift in Sources */,
 				FCEC87C22A8B69A2007EFBA4 /* SearchAlertVC.swift in Sources */,
-				FE2C135427AEF629001CF7AF /* ToDoDetailRemarkView.m in Sources */,
+				7577295A2C85915E00982233 /* ToDoBatchManageBottomView.swift in Sources */,
 				14F6F5562AFB8CDB007C7CA6 /* ScheduleDetailMessageTableViewCell.swift in Sources */,
 				14F6F5702AFB8CDB007C7CA6 /* RYCarnieHeaderView.swift in Sources */,
 				49628E3C26D52E6C00805A08 /* TypeButton.m in Sources */,
@@ -6803,10 +7324,10 @@
 				FCB921502AAF816A00F373A7 /* AddArrangeCollectionViewCell.swift in Sources */,
 				646B199728311B0E0015DF28 /* StationGuideBar.m in Sources */,
 				B0FE5F2C294C94540070E755 /* UIView+Rising.m in Sources */,
+				75CC08142C539B3700810A4E /* TermGrades.m in Sources */,
 				B09BB8332AADA35400FF88F7 /* FoodRefreshModel.m in Sources */,
 				73AAA1D426C918250084E44D /* PurchaseInfoGoodsInfoView.m in Sources */,
 				B0F71C9C2ABC71B200F8B1AC /* PublishMakeSureView.m in Sources */,
-				FE2C134F27AEF629001CF7AF /* ToDoDetaileViewController.m in Sources */,
 				B0C9F23E2B0126E1006F4286 /* TitleContentView.swift in Sources */,
 				646B1990283001A60015DF28 /* StationMAPointAnnotation.m in Sources */,
 				187DF4C5260310FA000BCDE9 /* UITextView+WZB.m in Sources */,
@@ -6829,6 +7350,7 @@
 				14FFFBF02AF8C0F3005A7EBD /* UserModel.swift in Sources */,
 				B0C9F2352B0126E1006F4286 /* ActivityDetailVCExtension.swift in Sources */,
 				14F6F5502AFB8CDA007C7CA6 /* RYScheduleMaping.swift in Sources */,
+				75CC08432C5657AA00810A4E /* SCCircleChart.m in Sources */,
 				18CDF67C257F91BD006E8E5C /* ClassmatesList.m in Sources */,
 				7311328826CCEC2400EF88C1 /* ContentScrollView.m in Sources */,
 				758C7E4F2BA456AF002CA3F4 /* MXBackButton.swift in Sources */,
@@ -6836,12 +7358,12 @@
 				18CDF4C9257F8DBD006E8E5C /* safePopView.m in Sources */,
 				FC5279082AAC48D000B09685 /* ClassSearchResultTableViewCell.swift in Sources */,
 				18CDF4B9257F8DBD006E8E5C /* sendCodeViewController.m in Sources */,
-				FE2C134E27AEF629001CF7AF /* TODOMainViewController.m in Sources */,
 				735BC54426D3B64500F22678 /* FeedBackDetailsTableViewCell.m in Sources */,
-				FE2C135E27AEF629001CF7AF /* DiscoverTodoSelectRepeatView.m in Sources */,
+				75CC08172C539B3800810A4E /* DetailScorePerYearCell.m in Sources */,
 				18CDF68E257F91BD006E8E5C /* CQUPTMapModel.m in Sources */,
 				7311328726CCEC2400EF88C1 /* Balance.m in Sources */,
 				18CDF4C3257F8DBD006E8E5C /* questionAndEmail.m in Sources */,
+				75F5E3332C887FFA00D539BA /* ToDoTopActiveStyleCellForFinder.swift in Sources */,
 				B047BF8D2AB34EF700616A5B /* ReduceAFSecurityPolicy.m in Sources */,
 				738C15CA26E2176700E24F8C /* ImgViewCollectionViewCell.m in Sources */,
 			);
@@ -7094,7 +7616,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CyxbsMobile2019_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 727CVV9PLJ;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
@@ -7124,7 +7646,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.5.1;
+				MARKETING_VERSION = 6.5.2;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
@@ -7149,7 +7671,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CyxbsMobile2019_iOS/掌上重邮.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 727CVV9PLJ;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
@@ -7205,7 +7727,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.5.1;
+				MARKETING_VERSION = 6.5.2;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
 				PRODUCT_NAME = "掌上重邮";

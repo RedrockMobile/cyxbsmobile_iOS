@@ -15,6 +15,10 @@
     self = [super init];
     if (self) {
         //这些初始化，是为了避免数据库因为空值出错
+        self.isPinned = NO;
+        self.type = @"";
+        self.isOvered = NO;
+        self.endTime = @"";
         self.todoIDStr = @"";
         self.titleStr = @"";
         self.repeatMode = TodoDataModelRepeatModeNO;
@@ -45,10 +49,18 @@
      },
      "detail": "全栈永远滴神",
      "last_modify_time": 1561561561,
-     "is_done": 0
+     "is_done": 0,
+     "type": "study",
+     "is_pinned": 0,
+     "is_overed": 0,
+     "end_time": ""
  }
  */
 - (void)setDataWithDict:(NSDictionary*)dict {
+    self.type = dict[@"type"];
+    self.isPinned = [dict[@"is_pinned"] boolValue];
+    self.isOvered = [dict[@"is_overed"] boolValue];
+    self.endTime = dict[@"end_time"];
     self.todoIDStr = dict[@"todo_id"];
     self.titleStr = dict[@"title"];
     NSDictionary* remind_mode = dict[@"remind_mode"];
@@ -93,7 +105,11 @@
         },
         @"detail": self.detailStr,
         @"last_modify_time":@(self.lastModifyTime),
-        @"is_done": @((int)self.isDone)
+        @"is_done": @((int)self.isDone),
+        @"type": self.type,
+        @"is_pinned": @((int)self.isPinned),
+        @"is_overed": @((int)self.isOvered),
+        @"end_time": self.endTime
     };
 }
 //从[1, 2, ... 7]转化为[2, 3, ... 1]
@@ -228,7 +244,7 @@ static inline int ForeignWeekToChinaWeek(int week) {
 }
 
 - (NSString *)overdueTimeStr {
-    [self resetOverdueTime];
+    [self resetOverdueTime:(long)[NSDate date].timeIntervalSince1970];
     NSString* str;
     if (self.overdueTime==-1) {
         str = @"";
@@ -240,13 +256,60 @@ static inline int ForeignWeekToChinaWeek(int week) {
     return str;
 }
 
-- (void)resetOverdueTime {
+// 从startTimeStamp开始计算下一次的过期时间
+- (void)resetOverdueTime:(long)startTimeStamp {
     if (self.overdueTime < 1) {
-    self.overdueTime = [TodoDateTool getOverdueTimeStampFrom:(long)[NSDate date].timeIntervalSince1970 inModel:self];
-    self.lastOverdueTime = -1;
+        self.overdueTime = [TodoDateTool getOverdueTimeStampFrom:startTimeStamp inModel:self];
+        self.lastOverdueTime = -1;
     }
 }
 //MARK: - 底下重写setter方法，是为了避免数据库因为空值出错
+
+- (void)setIsPinned:(BOOL)isPinned {
+    isPinned = !!isPinned;
+    if (isPinned == _isPinned) {
+        return;
+    }
+    _isPinned = isPinned;
+}
+
+- (void)setType:(NSString *)type {
+    if (type == nil) {
+        _type = @"ohter";
+        _typeMode = ToDoTypeOther;
+    } else {
+        _type = type;
+        _typeMode = [TodoDataModel ToDoTypeFromNSString:type];
+    }
+}
+
+- (void)setTypeMode:(ToDoType)typeMode {
+    if (typeMode == NSNotFound) {
+        _typeMode = ToDoTypeOther;
+        // 绕过属性封装，避免set方法的循环调用
+        _type = @"other";
+    } else {
+        _typeMode = typeMode;
+        _type = [TodoDataModel NSStringFromToDoType:typeMode];
+    }
+}
+
+- (void)setIsOvered:(BOOL)isOvered {
+    isOvered = !!isOvered;
+    if (isOvered == _isOvered) {
+        return;
+    }
+    _isOvered = isOvered;
+}
+
+- (void)setEndTime:(NSString *)endTime {
+    if (endTime == nil) {
+        _endTime = @"";
+    } else {
+        _endTime = endTime;
+    }
+}
+
 - (void)setTodoIDStr:(NSString *)todoIDStr {
     if (todoIDStr==nil) {
         _todoIDStr = @"";
@@ -380,6 +443,57 @@ static inline int ForeignWeekToChinaWeek(int week) {
      "is_done": 0
  }
  */
+
++ (nonnull NSString *)NSStringFromToDoType:(ToDoType)type {
+    switch (type) {
+        case ToDoTypeStudy:
+            return @"study";
+        case ToDoTypeLife:
+            return @"life";
+        case ToDoTypeOther:
+            return @"other";
+        default:
+            return @"";  // 处理未知类型
+    }
+}
+
++ (ToDoType)ToDoTypeFromNSString:(nonnull NSString *)string {
+    if ([string isEqualToString:@"study"]) {
+        return ToDoTypeStudy;
+    } else if ([string isEqualToString:@"life"]) {
+        return ToDoTypeLife;
+    } else if ([string isEqualToString:@"other"]) {
+        return ToDoTypeOther;
+    } else {
+        // 处理未知字符串
+        return NSNotFound;
+    }
+}
+
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    TodoDataModel *copy = [[[self class] allocWithZone:zone] init];
+    if (copy) {
+        copy.isPinned = self.isPinned;
+        copy.type = self.type;
+        copy.typeMode = self.typeMode;
+        copy.isOvered = self.isOvered;
+        copy.endTime = self.endTime;
+        copy.todoIDStr = self.todoIDStr;
+        copy.titleStr = self.titleStr;
+        copy.repeatMode = self.repeatMode;
+        copy.dateArr = self.dateArr;
+        copy.weekArr = self.weekArr;
+        copy.dayArr = self.dayArr;
+        copy.detailStr = self.detailStr;
+        copy.timeStr = self.timeStr;
+        copy.cellHeight = self.cellHeight;
+        copy.overdueTime = self.overdueTime;
+        copy.lastOverdueTime = self.lastOverdueTime;
+        copy.lastModifyTime = self.lastModifyTime;
+    }
+    return copy;
+}
+
 @end
 
 /*

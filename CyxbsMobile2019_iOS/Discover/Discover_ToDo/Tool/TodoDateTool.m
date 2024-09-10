@@ -281,6 +281,7 @@
                 nextRemindDateComponents.day = intDayArr[0];
                 nextRemindDateComponents.hour = hour;
                 nextRemindDateComponents.minute = minute;
+                nextRemindDateComponents.second = second;
                 notiDate = [[NSCalendar currentCalendar] dateFromComponents:nextRemindDateComponents];
             }
             break;
@@ -328,6 +329,7 @@
             nextRemindDateComponents.day = dateDict[TodoDataModelKeyDay].integerValue;
             nextRemindDateComponents.hour = hour;
             nextRemindDateComponents.minute = minute;
+            nextRemindDateComponents.second = second;
             notiDate = [[NSCalendar currentCalendar] dateFromComponents:nextRemindDateComponents];
             break;
         }
@@ -434,7 +436,7 @@ void getSortedIntDayArr(NSArray<NSString*>* dayStrArr, NSInteger* intDayArr, NSI
 void getSortedChainaIntWeekArr(NSArray<NSString*>* weekStrArr, NSInteger* intWeekArr) {
     int i=0;
     for (NSString* weekStr in weekStrArr) {
-        intWeekArr[i] = ForeignWeekToChinaWeek(weekStr.intValue);
+        intWeekArr[i] = weekStr.intValue;
         i++;
     }
     

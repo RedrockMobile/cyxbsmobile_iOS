@@ -24,6 +24,11 @@ protocol ScheduleCollectionViewLayoutDataSource {
     func collectionView(_ collectionView: UICollectionView, layout: ScheduleCollectionViewLayout, persentOfPointAtIndexPath indexPath: IndexPath) -> CGFloat
 }
 
+@objc public
+protocol ScheduleCollectionViewLayoutDelegate {
+    func pageWillScrollTo(page: Int)
+}
+
 // MARK: ScheduleCollectionViewLayout
 
 open class ScheduleCollectionViewLayout: UICollectionViewLayout {
@@ -31,6 +36,8 @@ open class ScheduleCollectionViewLayout: UICollectionViewLayout {
     // MARK: Property
     
     open weak var dataSource: ScheduleCollectionViewLayoutDataSource?
+    
+    open weak var delegate: ScheduleCollectionViewLayoutDelegate?
     
     open var lineSpacing: CGFloat = 2
     
@@ -45,6 +52,14 @@ open class ScheduleCollectionViewLayout: UICollectionViewLayout {
     open var heightForHeader: CGFloat = 50
     
     open var pageCalculation: Int = 0
+    
+    public var numberOfPages: Int = 0
+    
+    private(set) var pageWillShow: Int = 0 {
+        didSet {
+            delegate?.pageWillScrollTo(page: pageWillShow)
+        }
+    }
     
     private(set) open var itemSize: CGSize = .zero
     
@@ -201,6 +216,10 @@ open class ScheduleCollectionViewLayout: UICollectionViewLayout {
     
     open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         
+        // 加锁
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
+        
         let toTime = Int(collectionView!.contentOffset.y / (itemSize.height + lineSpacing) + 0.5)
         let toY = (itemSize.height + lineSpacing) * CGFloat(toTime)
         
@@ -218,6 +237,10 @@ open class ScheduleCollectionViewLayout: UICollectionViewLayout {
         
         let toX = collectionView!.bounds.width * CGFloat(index)
         
+        if pageWillShow != index {
+            pageWillShow = index
+        }
+        
         return CGPoint(x: toX, y: toY)
     }
     
@@ -225,6 +248,7 @@ open class ScheduleCollectionViewLayout: UICollectionViewLayout {
     
     private func calculateLayoutIfNeeded() {
         let width = (collectionView!.bounds.width - widthForLeadingSupplementaryView) / 7 - columnSpacing
+        numberOfPages = collectionView?.dataSource?.numberOfSections?(in: collectionView!) ?? 0
         itemSize = CGSize(width: width, height: width / aspectRatio)
         heightForHeaderSupplementaryView = width / aspectRatio
     }

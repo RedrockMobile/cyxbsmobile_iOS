@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     let activitiesModel = ActivitiesModel()
     var activityType: String = "all"
@@ -24,8 +24,6 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         view.addSubview(selectBar)
         view.addSubview(tableView)
         detailParagraphStyle.lineHeightMultiple = 0.8
-        tableView.dataSource = self
-        tableView.delegate = self
         setPosition()
     }
     
@@ -52,6 +50,8 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         textField.layer.cornerRadius = 19
         textField.clipsToBounds = true
         textLimitManager.setupLimitForTextField(textField, maxLength: 10)
+        textField.returnKeyType = .search
+        textField.delegate = self
         return textField
     }()
     
@@ -80,6 +80,8 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         tableView.register(ActivitySearchTableViewCell.self, forCellReuseIdentifier: "searchCell")
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
 
@@ -133,11 +135,16 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         default:
             break
         }
-        refreshSearchActivities()
+        hideKeyboardAndRequest()
     }
     
     //搜索按钮点击
     @objc func searchButtonTapped() {
+        hideKeyboardAndRequest()
+    }
+    
+    func hideKeyboardAndRequest() {
+        searchTextField.resignFirstResponder()
         refreshSearchActivities()
     }
     
@@ -146,12 +153,38 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         self.navigationController?.popViewController(animated: true)
     }
     
-    // UITableViewDataSource方法
+    func refreshSearchActivities() {
+        if searchTextField.text?.count != 0 {
+            activitiesModel.requestSearchActivity(keyword: searchTextField.text!, activityType: activityType) { activities in
+                print(self.activitiesModel.activities.count)
+                if (self.activitiesModel.activities.count == 0) {
+                    ActivityHUD.shared.showNoMoreData()
+                }
+                self.tableView.reloadData()
+            } failure: { error in
+                print(error)
+                ActivityHUD.shared.showNetworkError()
+            }
+        } else {
+            RemindHUD.shared().showDefaultHUD(withText: "请输入有效的活动名称")
+        }
+    }
+    
+    struct DateConvert {
+        static let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "zh_CN")
+            formatter.dateFormat = "yyyy年M月d日"
+            return formatter
+        }()
+    }
+    
+    // MARK: - UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath) as! ActivitySearchTableViewCell
         cell.coverImgView.sd_setImage(with: URL(string: activitiesModel.activities[indexPath.item].activityCoverURL))
         cell.titleLabel.text = activitiesModel.activities[indexPath.item].activityTitle
-//        cell.titleLabel.attributedText = NSMutableAttributedString(string: activities[indexPath.item].activityTitle, attributes: [NSAttributedString.Key.paragraphStyle: titleParagraphStyle])
         cell.detailLabel.attributedText = NSMutableAttributedString(string: activitiesModel.activities[indexPath.item].activityDetail, attributes: [NSAttributedString.Key.paragraphStyle: detailParagraphStyle])
         cell.startTimeLabel.text = DateConvert.dateFormatter.string(from: Date(timeIntervalSince1970: TimeInterval(activitiesModel.activities[indexPath.item].activityStartAt)))
         if (activitiesModel.activities[indexPath.item].ended ?? true){
@@ -170,7 +203,8 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         return activitiesModel.activities.count
     }
     
-    // UITableViewDelegate方法
+    // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = ActivityDetailVC()
         detailVC.activity = activitiesModel.activities[indexPath.row]
@@ -180,28 +214,12 @@ class ActivitySearchVC: UIViewController, UITableViewDataSource, UITableViewDele
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func refreshSearchActivities() {
-        if searchTextField.text?.count != 0 {
-            activitiesModel.requestSearchActivity(keyword: searchTextField.text!, activityType: activityType) { activities in
-                print(self.activitiesModel.activities.count)
-                if (self.activitiesModel.activities.count == 0) {
-                    ActivityHUD.shared.showNoMoreData()
-                }
-                self.tableView.reloadData()
-            } failure: { error in
-                print(error)
-                ActivityHUD.shared.showNetworkError()
-            }
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == searchTextField {
+            hideKeyboardAndRequest()
         }
-    }
-    
-    struct DateConvert {
-        static let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "zh_CN")
-            formatter.dateFormat = "yyyy年M月d日"
-            return formatter
-        }()
+        return true
     }
 }
 

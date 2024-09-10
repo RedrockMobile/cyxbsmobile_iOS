@@ -38,6 +38,7 @@ class ActivityDetailView: UIView {
         addSubview(endTimeLabel)
         addSubview(placeImg)
         addSubview(detailLabel)
+        addSubview(addTodoButton)
         setPosition()
     }
     
@@ -92,6 +93,14 @@ class ActivityDetailView: UIView {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(335)
+        }
+        
+        addTodoButton.snp.makeConstraints { make in
+            make.centerX.equalTo(self)
+            make.width.equalTo(0.32 * SCREEN_WIDTH)
+            make.height.equalTo(0.044334975369458 * SCREEN_HEIGHT)
+            make.top.equalTo(self.snp.top).offset(0.572660098522167 * SCREEN_HEIGHT)
+            make.top.greaterThanOrEqualTo(detailLabel.snp.bottom).offset(90)
         }
     }
     
@@ -239,5 +248,11 @@ class ActivityDetailView: UIView {
         return label
     }()
     
+    lazy var addTodoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "center_activity_add_todo_enable"), for: .normal)
+        button.setImage(UIImage(named: "center_activity_add_todo_disable"), for: .disabled)
+        return button
+    }()
 }
 
