@@ -24,15 +24,38 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     /// 覆盖在蒙版上的透明view，用于实现点击返回逻辑
     private let cancelView = UIView()
     /// 取消按钮
-    private let cancelBtn = UIButton()
+    private lazy var cancelBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("取消", for: .normal)
+        button.setTitleColor(UIColor.ry(light: "#15315B", dark: "#F0F0F2"), for: .normal)
+        button.titleLabel?.font = UIFont(name: PingFangSCSemibold, size: 15)
+        button.addTarget(self, action: #selector(cancel), for: .touchUpInside)
+        return button
+    }()
     /// 保存按钮
-    private let saveBtn = UIButton()
+    private lazy var saveBtn: UIButton = {
+        let button = UIButton()
+        button.setTitle("保存", for: .normal)
+        button.setTitleColor(UIColor.ry(light: "#15315B", dark: "#F0F0F2"), for: .normal)
+        button.alpha = 0.4
+        button.titleLabel?.font = UIFont(name: PingFangSCSemibold, size: 15)
+        button.addTarget(self, action: #selector(saveBtnClicked), for: .touchUpInside)
+        return button
+    }()
     /// 设置截止时间按钮
     private let remindTimeBtn = UIButton()
     /// 设置重复按钮
     private let repeatModelBtn = UIButton()
     /// 重复按钮的scrollView
-    private let scrollView = UIScrollView()
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isDirectionalLockEnabled = true
+        scrollView.contentInsetAdjustmentBehavior = .never  // 避免自动调整
+        scrollView.contentSize.height = scrollView.height
+        return scrollView
+    }()
     /// 重复按钮的contentView
     private var scrContenView = UIView()
     /// 重复按钮的数组
@@ -48,7 +71,11 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
     /// 设置分组按钮
     private let typeBtn = UIButton()
     /// 标题文本输入框
-    private let titleInputTextField = TodoTitleInputTextField()
+    private lazy var titleInputTextField: TodoTitleInputTextField = {
+        let textField = TodoTitleInputTextField()
+        textField.delegate = self
+        return textField
+    }()
     /// 删除按钮
     private let deleteBtn = UIButton()
     
@@ -140,15 +167,28 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
             make.left.right.top.equalTo(self)
             make.bottom.equalTo(backView.snp.top)
         }
-        
-        setupCancelButton()
-        setupSaveButton()
-        setupTitleInputTextField()
+        backView.addSubview(cancelBtn)
+        cancelBtn.snp.makeConstraints { make in
+            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.04)
+            make.top.equalTo(backView).offset(SCREEN_WIDTH * 0.02586)
+        }
+        backView.addSubview(saveBtn)
+        saveBtn.snp.makeConstraints { make in
+            make.right.equalTo(backView).offset(-SCREEN_WIDTH * 0.04)
+            make.top.equalTo(backView).offset(SCREEN_WIDTH * 0.02586)
+        }
+        backView.addSubview(titleInputTextField)
+        titleInputTextField.snp.makeConstraints { make in
+            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.048)
+            make.top.equalTo(backView).offset(SCREEN_HEIGHT * 0.09236)
+            make.width.equalTo(SCREEN_WIDTH * 0.904)
+            make.height.equalTo(SCREEN_WIDTH * 0.11733)
+        }
         setupRemindTimeButton()
         setupRepeatModelButton()
-        setupScrollView()
         setupTypeButton()
         setupDeleteButton()
+        setupScrollView()
     }
     
     private func createRoundedCornerMask() -> CAShapeLayer {
@@ -159,45 +199,6 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
         return layer
     }
     
-    private func setupCancelButton() {
-        cancelBtn.setTitle("取消", for: .normal)
-        cancelBtn.setTitleColor(UIColor.ry(light: "#15315B", dark: "#F0F0F2"), for: .normal)
-        cancelBtn.titleLabel?.font = UIFont(name: PingFangSCSemibold, size: 15)
-        cancelBtn.addTarget(self, action: #selector(cancel), for: .touchUpInside)
-        
-        backView.addSubview(cancelBtn)
-        cancelBtn.snp.makeConstraints { make in
-            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.04)
-            make.top.equalTo(backView).offset(SCREEN_WIDTH * 0.02586)
-        }
-    }
-    
-    private func setupSaveButton() {
-        saveBtn.setTitle("保存", for: .normal)
-        saveBtn.setTitleColor(UIColor.ry(light: "#15315B", dark: "#F0F0F2"), for: .normal)
-        saveBtn.alpha = 0.4
-        saveBtn.titleLabel?.font = UIFont(name: PingFangSCSemibold, size: 15)
-        saveBtn.addTarget(self, action: #selector(saveBtnClicked), for: .touchUpInside)
-        
-        backView.addSubview(saveBtn)
-        saveBtn.snp.makeConstraints { make in
-            make.right.equalTo(backView).offset(-SCREEN_WIDTH * 0.04)
-            make.top.equalTo(backView).offset(SCREEN_WIDTH * 0.02586)
-        }
-    }
-    
-    private func setupTitleInputTextField() {
-        titleInputTextField.delegate = self
-        
-        backView.addSubview(titleInputTextField)
-        titleInputTextField.snp.makeConstraints { make in
-            make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.048)
-            make.top.equalTo(backView).offset(SCREEN_HEIGHT * 0.09236)
-            make.width.equalTo(SCREEN_WIDTH * 0.904)
-            make.height.equalTo(SCREEN_WIDTH * 0.11733)
-        }
-    }
-    
     private func setupRemindTimeButton() {
         setupStandardButton(remindTimeBtn, title: "设置截止时间", imageName: "todo提醒的小铃铛")
         remindTimeBtn.addTarget(self, action: #selector(remindTimeBtnClicked), for: .touchUpInside)
@@ -206,7 +207,6 @@ class DiscoverTodoSheetView: UIView, UITextFieldDelegate {
             make.left.equalTo(backView).offset(SCREEN_WIDTH * 0.08)
             make.top.equalTo(backView).offset(SCREEN_HEIGHT * 0.17611)
         }
-        
         remindTimeBtn.imageView?.snp.makeConstraints { make in
             make.left.equalTo(remindTimeBtn)
             make.centerY.equalTo(remindTimeBtn.titleLabel!)

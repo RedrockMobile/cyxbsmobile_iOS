@@ -40,6 +40,8 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.contentSize.height = scrollView.height
         return scrollView
     }()
     private lazy var scrContenView: UIView = {
@@ -252,11 +254,6 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
                 }
             }
             increseCnt = 0
-        }
-        scrollView.snp.remakeConstraints { make in
-            make.left.right.equalTo(self)
-            make.top.equalTo(self).offset(0.01724137931 * SCREEN_HEIGHT)
-            make.height.equalTo(0.04433497537 * SCREEN_HEIGHT)
         }
     }
 
