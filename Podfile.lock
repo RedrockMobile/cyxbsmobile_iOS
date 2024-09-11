@@ -121,6 +121,8 @@ PODS:
     - UMShare/Social/ReducedWeChat
   - UMVerify (2.8.0):
     - UMCommon
+  - XBSBugly (0.1.0):
+    - Bugly
   - YBImageBrowser (3.0.9):
     - YBImageBrowser/Core (= 3.0.9)
   - YBImageBrowser/Core (3.0.9):
@@ -169,6 +171,7 @@ DEPENDENCIES:
   - UMShare/Social/QQ
   - UMShare/Social/WeChat
   - UMVerify
+  - XBSBugly (from `Development Pods/`)
   - YBImageBrowser
   - YYImage
   - YYKit
@@ -178,7 +181,7 @@ SPEC REPOS:
     - AlicloudHTTPDNS
     - AlicloudUTDID
     - AlicloudUtils
-  https://github.com/CocoaPods/specs:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - Alamofire
     - AMap3DMap-NO-IDFA
@@ -220,10 +223,14 @@ SPEC REPOS:
     - YYImage
     - YYKit
 
+EXTERNAL SOURCES:
+  XBSBugly:
+    :path: Development Pods/
+
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  AlicloudHTTPDNS: cff5f1151ab2612ec3f1c3a9f9a96c515d8e7dbb
+  AlicloudHTTPDNS: b1efa2e175672c5822d322c68efeae62068d7d05
   AlicloudUTDID: 4e9d44c2fd704b3508069c38eaec9d6a759e702c
   AlicloudUtils: 2a78de434a8b2dc99e408c4d6220e654076d9ef0
   AMap3DMap-NO-IDFA: bbec94f265ca66c0744a5634dec31cc6090fc970
@@ -261,10 +268,11 @@ SPEC CHECKSUMS:
   UMDevice: dcdf7ec167387837559d149fbc7d793d984faf82
   UMShare: 92c3b9361204a63236d134b359775c3795297e88
   UMVerify: 1744df15965a18c770af8017746d6ab0cf931f28
+  XBSBugly: 15cb1f1d1f30e3c1e0c902eafe566bada6fcf02e
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 3a53bd7cc0d2b9bec205dc100ff768deaa6dfd04
+PODFILE CHECKSUM: fda8fdf20917ca50c9fcdc3c9a0c3e1808d03cec
 
 COCOAPODS: 1.15.2

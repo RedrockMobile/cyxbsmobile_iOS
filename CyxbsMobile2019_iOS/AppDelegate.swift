@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XBSBugly
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupWindow() // 设置应用程序窗口
         setupAlicloudSDK() // 设置阿里云SDK
+        XBSBugly.buglyInit() // 设置bugly
         
         return true
     }
