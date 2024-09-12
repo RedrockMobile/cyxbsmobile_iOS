@@ -77,6 +77,9 @@ class ToDoFinderVC: UIViewController {
         view.layer.shadowOpacity = 0.33
         view.layer.shadowColor = UIColor.hex("#AEB6D3").cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: -5)
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(pushToDoVC))
+        tapGes.delegate = self
+        view.addGestureRecognizer(tapGes)
         view.addSubview(titleLab)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -90,6 +93,12 @@ class ToDoFinderVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getToDoData()
+    }
+    
+    @objc private func pushToDoVC() {
+        let vc = ToDoVC()
+        vc.hidesBottomBarWhenPushed = true
+        latestViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     // 获取每种todo待办,置顶的待办在上
@@ -263,7 +272,7 @@ extension ToDoFinderVC: UITableViewDelegate {
             self.deleteTableViewModel(self.entireToDoAry[indexPath.row])
             TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                tableView.reloadData()
+                self.getToDoData()
                 self.relayoutTableView()
             }
         }
@@ -291,7 +300,7 @@ extension ToDoFinderVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        var model = entireToDoAry[indexPath.row]
+        let model = entireToDoAry[indexPath.row]
         if #available(iOS 13.0, *) {
             for subView in tableView.subviews {
                 if let cellSwipeContainerClass = NSClassFromString("_UITableViewCellSwipeContainerView") {
@@ -363,3 +372,15 @@ extension ToDoFinderVC: UITableViewDelegate {
     }
 }
 
+// MARK: - UIGestureRecognizerDelegate
+extension ToDoFinderVC: UIGestureRecognizerDelegate {
+    // 处理手势冲突
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view {
+            if view.isDescendant(of: tableView) {
+               return false
+            }
+        }
+        return true
+    }
+}
