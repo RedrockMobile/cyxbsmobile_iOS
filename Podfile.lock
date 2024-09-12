@@ -15,12 +15,12 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - Alamofire (5.9.1)
-  - AlicloudHTTPDNS (3.1.0):
+  - AlicloudHTTPDNS (3.1.2):
     - AlicloudUtils
   - AlicloudUTDID (1.6.1)
   - AlicloudUtils (2.0.1):
     - AlicloudUTDID
-  - AMap3DMap-NO-IDFA (10.0.800):
+  - AMap3DMap-NO-IDFA (10.0.900):
     - AMapFoundation-NO-IDFA (>= 1.8.0)
   - AMapFoundation-NO-IDFA (1.8.2)
   - AMapLocation-NO-IDFA (2.10.0):
@@ -91,17 +91,17 @@ PODS:
   - RYTransitioningDelegateSwift (0.2.3)
   - SDCycleScrollView (1.82):
     - SDWebImage (>= 5.0.0)
-  - SDWebImage (5.19.4):
-    - SDWebImage/Core (= 5.19.4)
-  - SDWebImage/Core (5.19.4)
+  - SDWebImage (5.19.7):
+    - SDWebImage/Core (= 5.19.7)
+  - SDWebImage/Core (5.19.7)
   - SnapKit (5.7.1)
   - SwiftyJSON (5.0.2)
   - TOCropViewController (2.7.4)
-  - TZImagePickerController (3.8.6):
-    - TZImagePickerController/Basic (= 3.8.6)
-    - TZImagePickerController/Location (= 3.8.6)
-  - TZImagePickerController/Basic (3.8.6)
-  - TZImagePickerController/Location (3.8.6)
+  - TZImagePickerController (3.8.7):
+    - TZImagePickerController/Basic (= 3.8.7)
+    - TZImagePickerController/Location (= 3.8.7)
+  - TZImagePickerController/Basic (3.8.7)
+  - TZImagePickerController/Location (3.8.7)
   - UMCCommonLog (2.0.2)
   - UMCommon (7.4.7):
     - UMDevice
@@ -124,6 +124,8 @@ PODS:
     - UMShare/Social/ReducedWeChat
   - UMVerify (2.9.0):
     - UMCommon
+  - XBSBugly (0.1.0):
+    - Bugly
   - YBImageBrowser (3.0.9):
     - YBImageBrowser/Core (= 3.0.9)
   - YBImageBrowser/Core (3.0.9):
@@ -173,6 +175,7 @@ DEPENDENCIES:
   - UMShare/Social/QQ
   - UMShare/Social/WeChat
   - UMVerify
+  - XBSBugly (from `Development Pods/`)
   - YBImageBrowser
   - YYImage
   - YYKit
@@ -225,13 +228,17 @@ SPEC REPOS:
     - YYImage
     - YYKit
 
+EXTERNAL SOURCES:
+  XBSBugly:
+    :path: Development Pods/
+
 SPEC CHECKSUMS:
   AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  AlicloudHTTPDNS: 0fa795e920012715e79d40477a6cda3460ab9dc2
+  AlicloudHTTPDNS: 1703612ac5194f132d0772a5071d8f4d7f4f1436
   AlicloudUTDID: 5d2f22d50e11eecd38f30bc7a48c71925ea90976
   AlicloudUtils: ef4436f52b828b1182b002373758ecb88068e679
-  AMap3DMap-NO-IDFA: 038053b9431331a76bb40bf0d7514413da9af8db
+  AMap3DMap-NO-IDFA: b2f406364b15212e14d92655329726ccdfc55314
   AMapFoundation-NO-IDFA: 6ce0ef596d4eb8d934ff498e56747b6de1247b05
   AMapLocation-NO-IDFA: 735791aeb1ba52dff666e4158b86caf4b68b5be7
   Bugly: 217ac2ce5f0f2626d43dbaa4f70764c953a26a31
@@ -257,20 +264,21 @@ SPEC CHECKSUMS:
   RYAngelWalker: e5314ea021ca43de12bc4f86d086936caf4b7bdf
   RYTransitioningDelegateSwift: 72dee49a78fa4c2747b4d92ba3ed6b2e493e1df7
   SDCycleScrollView: a0d74c3384caa72bdfc81470bdbc8c14b3e1fbcf
-  SDWebImage: 066c47b573f408f18caa467d71deace7c0f8280d
+  SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
   TOCropViewController: 80b8985ad794298fb69d3341de183f33d1853654
-  TZImagePickerController: a013c186415f6044914bb0d0dd960a884cff46ec
+  TZImagePickerController: 5f35bb7266552e36ca834bafa955b869fe086124
   UMCCommonLog: bea707e50c85cef4b0eb47cc5c7226bb843245ca
   UMCommon: 8b4cd0423297c39bca6eea1ec896558b40e5bcf7
   UMDevice: dcdf7ec167387837559d149fbc7d793d984faf82
   UMShare: edb49e162824e2ddd61ef53a7c6e92d64f3c13b5
   UMVerify: 52693b0b98c654edb0b3f50065c16f6eda2b8882
+  XBSBugly: 15cb1f1d1f30e3c1e0c902eafe566bada6fcf02e
   YBImageBrowser: 7ecc8bf33ffa5f3b94c397c29b4f3638dd37f527
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 9afbaf515849c03a435560c35155f733e7611277
+PODFILE CHECKSUM: 682f8eb78a744b42fd8b014b66e91c7d14e55a3b
 
 COCOAPODS: 1.15.2
