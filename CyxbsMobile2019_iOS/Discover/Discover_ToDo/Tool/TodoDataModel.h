@@ -15,24 +15,43 @@ typedef NSString* TodoDataModelKey;
 static TodoDataModelKey const _Nonnull TodoDataModelKeyMonth = @"TodoDataModelKeyMonth";
 static TodoDataModelKey const _Nonnull TodoDataModelKeyDay = @"TodoDataModelKeyDay";
 
-typedef enum : NSUInteger {
-    TodoDataModelRepeatModeNO = 0,  //不重复
-    TodoDataModelRepeatModeDay,     //每日重复
-    TodoDataModelRepeatModeWeek,    //每周重复
-    TodoDataModelRepeatModeMonth,   //每月重复
-    TodoDataModelRepeatModeYear     //每年重复
-} TodoDataModelRepeatMode;
+typedef NS_ENUM(NSUInteger, TodoDataModelRepeatMode) {
+    TodoDataModelRepeatModeNO = 0,  // 不重复
+    TodoDataModelRepeatModeDay,     // 每日重复
+    TodoDataModelRepeatModeWeek,    // 每周重复
+    TodoDataModelRepeatModeMonth,   // 每月重复
+    TodoDataModelRepeatModeYear     // 每年重复
+};
 
-typedef enum : NSUInteger {
-    //已完成
-    TodoDataModelStateDone,
-    //已过期
-    TodoDataModelStateOverdue,
-    //待完成
-    TodoDataModelStateNeedDone,
-} TodoDataModelState;
+typedef NS_ENUM(NSUInteger, TodoDataModelState) {
+    TodoDataModelStateDone,      // 已完成
+    TodoDataModelStateOverdue,   // 已过期
+    TodoDataModelStateNeedDone   // 待完成
+};
 
-@interface TodoDataModel : NSObject
+// 定义 ToDoType 枚举
+typedef NS_ENUM(NSUInteger, ToDoType) {
+    ToDoTypeStudy,
+    ToDoTypeLife,
+    ToDoTypeOther
+};
+
+@interface TodoDataModel : NSObject<NSCopying>
+
+/// todo是否置顶
+@property (nonatomic, assign)BOOL isPinned;
+
+/// todo的分组（字符串类型）
+@property (nonatomic, assign)NSString* type;
+
+/// todo的分组（ToDoType类型）
+@property (nonatomic, assign)ToDoType typeMode;
+
+/// todo是否过期
+@property (nonatomic, assign)BOOL isOvered;
+
+/// 新增的用来存todo下次过期时间的字段,暂时没用
+@property (nonatomic, copy)NSString* endTime;
 
 /// todo的ID，创建时的时间戳
 @property (nonatomic, copy)NSString* todoIDStr;
@@ -78,7 +97,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly)NSString* overdueTimeStr;
 
 /// todo的过期时间（有提醒的情况下，代表提醒时间，无提醒的情况则代表todo需要完成的那一天的23:59:59的时间）
-/// 使用这个工具，写UI交互的同学，无需为这个属性赋值，只需在完成todo的各种数据设置后调用resetOverdueTime
 /// 为0意味着没有初始化，为-1意味着没有下一次提醒了
 @property (nonatomic, assign)long overdueTime;
 
@@ -105,11 +123,18 @@ typedef enum : NSUInteger {
 - (NSDictionary*)getDataDictToPush;
 
 /// 调用后计算过期时间，一般在完成todo的各种数据设置后调用，必须调用。
-- (void)resetOverdueTime;
+- (void)resetOverdueTime:(long)startTimeStamp;
 
 - (NSDate* _Nullable)getTimeStrDate;
 
 - (void)debugLog;
+
+// 从 ToDoType 转换到字符串
++(NSString *)NSStringFromToDoType:(ToDoType)type;
+
+// 从字符串转换到 ToDoType
++(ToDoType)ToDoTypeFromNSString:(NSString *)string;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -403,4 +403,11 @@ extension HttpManager {
         ]
         return SessionManager.shared.ry_upload(APIConfig.current.api("/magipoke-intergral/Integral/progress"), method: .post, parameters: parameters)
     }
+    
+    func magipoke_ufield_activity_addTodo(activity_id: Int) -> DataRequest {
+        let parameters: [String: Any] = [
+            "activity_id": activity_id
+        ]
+        return SessionManager.shared.ry_request(APIConfig.current.api("/magipoke-ufield/activity/addTodo"), method: .post, parameters: parameters, encoding: URLEncoding.queryString)
+    }
 }

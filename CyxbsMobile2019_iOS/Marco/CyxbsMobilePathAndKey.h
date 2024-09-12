@@ -62,6 +62,10 @@
 
 #import "ADHeader.h"
 
+#import "ScorePageHeader.h"
+
+#import "TestArrangeHeader.h"
+
 #import "ToDoHeader.h"
 
 #import "MapHeader.h"

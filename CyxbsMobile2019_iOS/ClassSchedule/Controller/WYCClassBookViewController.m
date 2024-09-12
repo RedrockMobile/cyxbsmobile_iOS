@@ -103,7 +103,7 @@
     //初始化self.scrollView，并把它加到self.view上面
     [self addScrollView];
     
-    _index = self.dateModel.nowWeek;
+    self.index = self.dateModel.nowWeek;
     
     //添加周选择条、显示本周的条
     [self addTopBarView];
@@ -198,7 +198,9 @@
 
 //重写set方法，如果index超过25，就让index变成0
 - (void)setIndex:(NSNumber *)index{
-    if(index.intValue>25)index = [NSNumber numberWithInt:0];
+    if(index.intValue > 25 || index.intValue < 0) {
+        index = [NSNumber numberWithInt:0];
+    }
     _index = index;
     self.topBarView.correctIndex = _index;
     int count = (int)self.dateModel.dateArray.count + 1;

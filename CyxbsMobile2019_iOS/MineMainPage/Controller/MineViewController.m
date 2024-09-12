@@ -107,8 +107,8 @@
     [self addStampCenterBtn];
     [self addSuggesstionBtn];
     [self addActivityCenterBtn];
-    [self addTableView];
     [self addSignView];
+    [self addTableView];
     
     self.userInfoModel = [MineUserInfoModel shareModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userItemDidUpdate:) name:@"UserItemGetUserInfo" object:nil];
@@ -304,7 +304,7 @@
 
 - (void)addActivityCenterBtn {
     MineMSSEnterBtn *btn = [[MineMSSEnterBtn alloc] init];
-    self.suggesstionBtn = btn;
+    self.activityCenterBtn = btn;
     [self.backBoardView addSubview:btn];
     
     [btn.iconImgView setImage:[UIImage imageNamed:@"活动中心"]];
@@ -328,7 +328,7 @@
     
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.backBoardView).offset(0.04266666667*SCREEN_WIDTH);
-        make.top.equalTo(self.backBoardView).offset(0.30325123*SCREEN_HEIGHT);
+        make.top.equalTo(self.activityCenterBtn.mas_bottom).offset(25);
     }];
     
     [view.signBtn addTarget:self action:@selector(signBtnClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -350,7 +350,7 @@
     
     [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.backBoardView);
-        make.top.equalTo(self.backBoardView).offset(0.41162562*SCREEN_HEIGHT);
+        make.top.equalTo(self.signView.mas_bottom).offset(25);
         
     }];
 }

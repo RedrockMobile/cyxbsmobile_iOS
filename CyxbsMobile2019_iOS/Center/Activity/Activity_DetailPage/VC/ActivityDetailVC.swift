@@ -27,12 +27,7 @@ class ActivityDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11.0, *) {
-            view.backgroundColor = UIColor.dm_color(withLightColor: UIColor(hexString: "#F8F9FC")!, darkColor: UIColor(hexString: "#F8F9FC")!, alpha: 1)
-        }
-        else {
-            view.backgroundColor = UIColor(hexString: "#F8F9FC")
-        }
+        view.backgroundColor = UIColor.ry(light: "#F8F9FC", dark: "#F8F9FC")
         view.addSubview(backButton)
         view.addSubview(coverImgView)
         view.addSubview(statusImgView)
@@ -325,6 +320,8 @@ class ActivityDetailVC: UIViewController {
         }
     }
     
+    // MARK: - Button Target
+    
     //返回上一级界面
     @objc func popController() {
         self.navigationController?.popViewController(animated: true)
@@ -354,6 +351,26 @@ class ActivityDetailVC: UIViewController {
         }
     }
     
+    @objc func addToDoButtonTapped() {
+        HttpManager.shared.magipoke_ufield_activity_addTodo(activity_id: activity.activityId).ry_JSON { response in
+            switch response {
+            case.success(let jsonData):
+                let responseData = StandardResponse(from: jsonData)
+                if responseData.status == 10000 {
+                    RemindHUD.shared().showDefaultHUD(withText: "添加代办成功")
+                    self.detailView.addTodoButton.isEnabled = false
+                } else if responseData.status == 50004 {
+                    RemindHUD.shared().showDefaultHUD(withText: "已经添加代办，请勿重复添加")
+                    self.detailView.addTodoButton.isEnabled = false
+                }
+                break
+            case.failure(_):
+                RemindHUD.shared().showDefaultHUD(withText: "网络错误")
+                break
+            }
+        }
+    }
+    
     // MARK: - 开始计时器以及倒计时更新
     func startCountdownTimer() {
         // 首次立即更新倒计时显示
@@ -366,7 +383,6 @@ class ActivityDetailVC: UIViewController {
     }
     
     @objc func updateCountdownLabel() {
-        print("倒计时")
         let currentTimeStamp = Date().timeIntervalSince1970
         var timeRemaining: Double
         if (TimeInterval(activity.activityStartAt) - currentTimeStamp >= 0) {
@@ -473,6 +489,10 @@ class ActivityDetailVC: UIViewController {
         detailView.startTimeLabel.text = formatTimestamp(timestamp: activity.activityStartAt)
         detailView.endTimeLabel.text = formatTimestamp(timestamp: activity.activityEndAt)
         detailView.detailLabel.text = activity.activityDetail
+        detailView.addTodoButton.addTarget(self, action: #selector(addToDoButtonTapped), for: .touchUpInside)
+        if activity.isAdded ?? false {
+            detailView.addTodoButton.isEnabled = false
+        }
     }
     
     func reinitializeDetailView() {
