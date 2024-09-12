@@ -55,7 +55,9 @@ target 'CyxbsMobile2019_iOS' do
   pod 'JXBanner'  # 轮播图库
   
   pod 'RYTransitioningDelegateSwift'  # 自定义过渡动画库
-  pod 'RYAngelWalker'  # 友盟行为统计库
+  pod 'RYAngelWalker' 
+
+  pod 'XBSBugly', :path => "Development Pods/"
 end
 
 target 'CyxbsWidgetExtension' do
