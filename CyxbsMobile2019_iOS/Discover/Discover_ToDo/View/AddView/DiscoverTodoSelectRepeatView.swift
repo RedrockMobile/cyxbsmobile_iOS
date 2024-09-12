@@ -49,6 +49,7 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
         return view
     }()
     private var selectedCntOfcom: [Int] = Array(repeating: 0, count: 3)
+    /// 本次新增的重复个数
     private var increseCnt: Int = 0
     
     // MARK: - Init
@@ -62,6 +63,65 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     }
     
     // MARK: - UI Setup
+    func refreshUIWith(repeatMode: TodoDataModelRepeatMode, dateArr: [String]) {
+        self.repeatMode = repeatMode
+        self.dateArr = dateArr
+        switch repeatMode {
+        case .NO:
+            break
+        case .day:
+            pickerView.selectRow(0, inComponent: 0, animated: true)
+            selectedCntOfcom[0] = 0
+            let btn = DLTimeSelectedButton()
+            btnArr.append(btn)
+            scrContenView.addSubview(btn)
+            btn.setTitle("每天", for: .normal)
+            btn.delegate = self
+            break
+        case .week:
+            pickerView.selectRow(1, inComponent: 0, animated: true)
+            selectedCntOfcom[0] = 1
+            for dateStr in dateArr {
+                if let weekNum = Int(dateStr) {
+                    let titleStr = week[ChinaWeekToForeignWeek(weekNum) - 1]
+                    let btn = DLTimeSelectedButton()
+                    btnArr.append(btn)
+                    scrContenView.addSubview(btn)
+                    btn.setTitle(titleStr, for: .normal)
+                    btn.delegate = self
+                }
+            }
+            break
+        case .month:
+            pickerView.selectRow(2, inComponent: 0, animated: true)
+            selectedCntOfcom[0] = 2
+            for dateStr in dateArr {
+                let titleStr = "每月\(dateStr)日"
+                let btn = DLTimeSelectedButton()
+                btnArr.append(btn)
+                scrContenView.addSubview(btn)
+                btn.setTitle(titleStr, for: .normal)
+                btn.delegate = self
+            }
+        default:
+            break
+        }
+        reLayoutAllBtn()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let x = self.scrollView.contentSize.width - SCREEN_WIDTH
+            if x > 60 {
+                UIView.animate(withDuration: 0.6, animations: {
+                    self.scrollView.contentOffset = CGPoint(x: x + 4, y: 0)
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.4) {
+                        self.scrollView.contentOffset = CGPoint(x: x, y: 0)
+                    }
+                })
+            }
+        }
+    }
+    
     private func setupUI() {
         addSubview(pickerView)
         pickerView.snp.makeConstraints { make in
@@ -304,7 +364,9 @@ extension DiscoverTodoSelectRepeatView: DLTimeSelectedButtonDelegate {
         }
         reLayoutAllBtn()
         // 调整按钮增加计数
-        increseCnt -= 1
+        if increseCnt >= 0 {
+            increseCnt -= 1
+        }
     }
 
     // MARK: - DLTimeSelectedButtonDelegate
