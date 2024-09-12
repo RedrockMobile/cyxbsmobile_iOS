@@ -11,6 +11,8 @@ import UIKit
 // todo详情
 class ToDoDetailVC: UIViewController {
     
+    var stringMap = [String: Int]()
+    
     // MARK: - Properties
     
     private var model = TodoDataModel()
@@ -75,6 +77,12 @@ class ToDoDetailVC: UIViewController {
     
     // 设置重复
     private func setRepeatContent(model: TodoDataModel) {
+        stringMap.removeAll()
+        for subView in detailView.repeatScrollView.subviews {
+            subView.removeFromSuperview()
+        }
+        detailView.selectRepeatView.repeatMode = model.repeatMode
+        
         switch model.repeatMode {
         case .day:
             detailView.repeatScrollView.addSubview(detailView.createRepeatCell(dateStr: "每天", leftPos: 0, width: 64))
@@ -82,28 +90,29 @@ class ToDoDetailVC: UIViewController {
             var startLeft = 0.0
             let weekAry = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
             for week in model.weekArr {
-                let weekStr = weekAry[(Int(week) ?? 1) - 1]
+                let weekNum = (Int(week) ?? 1) // [1, 7]
+                let weekStr = weekAry[weekNum - 1] // [0, 6]
+                stringMap[weekStr] = weekNum
+                
                 detailView.repeatScrollView.addSubview(detailView.createRepeatCell(dateStr: weekStr, leftPos: startLeft, width: 64))
                 startLeft = startLeft + 64 + 18
             }
             detailView.repeatScrollView.contentSize = CGSize(width: startLeft, height: detailView.repeatScrollView.height)
+            
+            detailView.selectRepeatView.dateArr = model.weekArr
         case .month:
             var startLeft = 0.0
             for monthStr in model.dayArr {
-                detailView.repeatScrollView.addSubview(detailView.createRepeatCell(dateStr: monthStr + "日", leftPos: startLeft, width: 64))
+                let monthNum = Int(monthStr) ?? 0
+                let str = monthStr + "日"
+                stringMap[str] = monthNum
+                
+                detailView.repeatScrollView.addSubview(detailView.createRepeatCell(dateStr: str, leftPos: startLeft, width: 64))
                 startLeft = startLeft + 64 + 18
             }
             detailView.repeatScrollView.contentSize = CGSize(width: startLeft, height: detailView.repeatScrollView.height)
-        case .year:
-            var startLeft = 0.0
-            for yearDic in model.dateArr {
-                if let month = yearDic["TodoDataModelKeyMonth"],
-                   let day = yearDic["TodoDataModelKeyDay"] {
-                    detailView.repeatScrollView.addSubview(detailView.createRepeatCell(dateStr: month + "月" + day + "日", leftPos: startLeft, width: 92))
-                    startLeft = startLeft + 92 + 18
-                }
-            }
-            detailView.repeatScrollView.contentSize = CGSize(width: startLeft, height: detailView.repeatScrollView.height)
+            
+            detailView.selectRepeatView.dateArr = model.dayArr
         default:
             detailView.repeatScrollView.addSubview(detailView.createNotRepeateCell())
         }
@@ -181,7 +190,9 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
     }
     
     func saveTheChanges() {
-        model.titleStr = detailView.nameTextField.text!
+        model.timeStr = ""
+        model.overdueTime = 0
+        model.titleStr = detailView.nameTextField.text ?? ""
         model.detailStr = detailView.noteTextView.text
         model.resetOverdueTime(NSDate.nowTimestamp())
         model.lastModifyTime = Int(Date().timeIntervalSince1970)
@@ -193,6 +204,37 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
         model.timeStr = ""
         detailView.timeLab.text = "设置截止时间"
         detailView.timeForkBtn.removeFromSuperview()
+    }
+    
+    func deleteRepeat(str: String) {
+                
+        switch model.repeatMode {
+        case .day :
+            model.repeatMode = .NO
+            detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: [])
+        case .week:
+            guard let num = stringMap[str] else { return }
+            if let index = model.weekArr.firstIndex(of: "\(num)") {
+                model.weekArr.remove(at: index)
+            }
+            if model.weekArr.isEmpty {
+                model.repeatMode = .NO
+            }
+            detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.weekArr)
+        case .month:
+            guard let num = stringMap[str] else { return }
+            if let index = model.dayArr.firstIndex(of: "\(num)") {
+                model.dayArr.remove(at: index)
+            }
+            if model.dayArr.isEmpty {
+                model.repeatMode = .NO
+            }
+            detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.dayArr)
+        default:
+            break
+        }
+        
+        setRepeatContent(model: model)
     }
 }
 
@@ -275,17 +317,12 @@ extension ToDoDetailVC: DiscoverTodoSelectRepeatViewDelegate {
             model.weekArr = view.dateArr
         case .month:
             model.dayArr = view.dateArr
-        // 每年重复迭代后取消，暂时废置
-//        case .year:
-//            model.dateArr = view.dateArr
         default:
             break
         }
         
         model.repeatMode = view.btnArr.isEmpty ? .NO : model.repeatMode
-        for subView in detailView.repeatScrollView.subviews {
-            subView.removeFromSuperview()
-        }
+        
         setRepeatContent(model: model)
         
         UIView.animate(withDuration: 0.3) {

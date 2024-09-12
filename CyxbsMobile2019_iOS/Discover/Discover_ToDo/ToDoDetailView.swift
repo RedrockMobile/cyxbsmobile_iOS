@@ -12,6 +12,7 @@ protocol ToDoDetailViewDelegate: AnyObject {
     func returnToPrevious()
     func saveTheChanges()
     func deleteTime()
+    func deleteRepeat(str: String)
 }
 
 class ToDoDetailView: UIView {
@@ -19,6 +20,8 @@ class ToDoDetailView: UIView {
     // MARK: - Properties
     
     weak var delegate: ToDoDetailViewDelegate?
+    
+    var stringMap = [Int: String]()
 
     // MARK: - Life Cycle
     
@@ -170,11 +173,22 @@ class ToDoDetailView: UIView {
         label.textColor = UIColor(.dm, light: UIColor(hexString: "#40639D", alpha: 1), dark: UIColor(hexString: "#B6B6B7", alpha: 1))
         cell.addSubview(label)
         
-        let imageView = UIImageView(frame: CGRect(x: cell.width - 15, y: 0, width: 15, height: 15))
-        imageView.image = UIImage(named: "todoFork")
-        cell.addSubview(imageView)
+        let button = UIButton(frame: CGRect(x: cell.width - 15, y: 0, width: 15, height: 15))
+        button.setBackgroundImage(UIImage(named: "todoFork"), for: .normal)
+        button.addTarget(self, action: #selector(clickDeleteRepeat(button:)), for: .touchUpInside)
+        cell.addSubview(button)
+        
+        button.tag = repeatScrollView.subviews.count
+        stringMap[button.tag] = dateStr
         
         return cell
+    }
+    
+    @objc private func clickDeleteRepeat(button: UIButton) {
+        let str = stringMap[button.tag] ?? ""
+        delegate?.deleteRepeat(str: str)
+        saveBtn.isUserInteractionEnabled = true
+        saveBtn.setTitleColor(UIColor(.dm, light: UIColor(hexString: "#2923D2", alpha: 1), dark: UIColor(hexString: "#2CDEFF", alpha: 1)), for: .normal)
     }
     
     @objc private func nameTextFieldChange() {

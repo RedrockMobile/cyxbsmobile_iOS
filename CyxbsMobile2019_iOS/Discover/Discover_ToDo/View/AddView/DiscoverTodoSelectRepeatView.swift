@@ -62,6 +62,12 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     }
     
     // MARK: - UI Setup
+    
+    func refreshUI(repeatMode: TodoDataModelRepeatMode, dateArr: [String]) {
+        self.repeatMode = repeatMode
+        self.dateArr = dateArr
+    }
+    
     private func setupUI() {
         addSubview(pickerView)
         pickerView.snp.makeConstraints { make in
