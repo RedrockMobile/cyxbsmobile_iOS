@@ -14,10 +14,25 @@ NSString * const XBSBuglyAppID = @"41e7a3c1b3";
 NSString * const XBSBuglyAppKey = @"c2299ab6-1680-4c45-a84a-a01b75e13709";
 
 @interface XBSBugly () <BuglyDelegate>
+
+@property (nonatomic, class, readonly) XBSBugly *shared;
+
+@property (nonatomic, strong) BuglyConfig *config;
+
 @end
 
 @implementation XBSBugly
 
++(instancetype)shared {
+    static XBSBugly *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        // 不能再使用 alloc 方法
+        // 因为已经重写了 allocWithZone 方法，所以这里要调用父类的分配空间的方法
+        instance = [[super allocWithZone:NULL] init];
+    });
+    return instance;
+}
 
 + (void)buglyInit {
     
@@ -36,7 +51,7 @@ NSString * const XBSBuglyAppKey = @"c2299ab6-1680-4c45-a84a-a01b75e13709";
     config.symbolicateInProcessEnable = YES;
     config.unexpectedTerminatingDetectionEnable = YES;
     config.viewControllerTrackingEnable = YES;
-    config.delegate = self;
+    config.delegate = XBSBugly.shared;
     config.reportLogLevel = BuglyLogLevelVerbose;
     config.consolelogEnable = YES;
     
