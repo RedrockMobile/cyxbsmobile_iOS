@@ -121,7 +121,6 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
                 })
             }
         }
->>>>>>> 479d38006eef378e424d5f597b4c0797980fed1e
     }
     
     private func setupUI() {
