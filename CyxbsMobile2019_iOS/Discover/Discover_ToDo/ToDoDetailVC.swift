@@ -216,7 +216,6 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
         switch model.repeatMode {
         case .day :
             model.repeatMode = .NO
-            //detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: [])
         case .week:
             guard let num = stringMap[str] else { return }
             if let index = model.weekArr.firstIndex(of: "\(num)") {
@@ -225,7 +224,6 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
             if model.weekArr.isEmpty {
                 model.repeatMode = .NO
             }
-            //detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.weekArr)
         case .month:
             guard let num = stringMap[str] else { return }
             if let index = model.dayArr.firstIndex(of: "\(num)") {
@@ -234,7 +232,6 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
             if model.dayArr.isEmpty {
                 model.repeatMode = .NO
             }
-            //detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.dayArr)
         default:
             break
         }

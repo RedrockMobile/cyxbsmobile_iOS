@@ -191,10 +191,17 @@ class ToDoVC: UIViewController {
     private func configStickyButton(_ button: UIButton, model: TodoDataModel) {
         button.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#5263FF", alpha: 1), dark: UIColor(hexString: "#5852FF", alpha: 1))
         
+        for subview in button.subviews {
+            if subview.isKind(of: UILabel.classForCoder())
+                || subview.isKind(of: UIImageView.classForCoder()) {
+                subview.alpha = 0
+            }
+        }
+        
         let cellBtn = UIButton()
         cellBtn.frame = button.frame
-        cellBtn.setImage(UIImage(named: "置顶"), for: .normal)
-        cellBtn.setTitle("置顶", for: .normal)
+        cellBtn.setImage(UIImage(named: model.isPinned ? "cancelSticky" : "置顶"), for: .normal)
+        cellBtn.setTitle(model.isPinned ? "取消置顶" : "置顶", for: .normal)
         cellBtn.titleLabel?.font = .systemFont(ofSize: 14)
         cellBtn.setTitleColor(UIColor(.dm, light: UIColor(hexString: "#FFFFFF", alpha: 1), dark: UIColor(hexString: "#FFFFFF", alpha: 1)), for: .normal)
         if model.timeStr.isEmpty && model.overdueTimeStr.isEmpty {
@@ -221,7 +228,6 @@ class ToDoVC: UIViewController {
     
     // 置顶按钮图片文字左右分布
     private func horizontalImgAndTextOnStickyBtn(_ button: UIButton) {
-//        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -1, bottom: 0, right: 1)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -3, bottom: 0, right: 3)
     }
     
@@ -560,9 +566,7 @@ extension ToDoVC: ToDoTableViewCellDelegate {
                 let group = DispatchGroup()
                 group.enter()
                 let contentOriginalColor = cell.contentLab.textColor
-//                let timeOriginalColor = cell.timeLab.textColor
                 cell.contentLab.textColor = UIColor(.dm, light: UIColor(hexString: "#B9C2CE", alpha: 1), dark: UIColor(hexString: "#5C5C5D", alpha: 1))
-//                cell.timeLab.textColor = UIColor(.dm, light: UIColor(hexString: "#CDD3DC", alpha: 1), dark: UIColor(hexString: "#F0F0F2", alpha: 1))
                 let strikethroughView = UIView(frame: CGRect(x: cell.contentLab.left - 5, y: cell.contentLab.top + cell.contentLab.height / 2, width: 0, height: 2))
                 strikethroughView.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#8997AD", alpha: 1), dark: UIColor(hexString: "#7E7E7F", alpha: 1))
                 cell.addSubview(strikethroughView)
@@ -597,7 +601,6 @@ extension ToDoVC: ToDoTableViewCellDelegate {
                 group.notify(queue: .main) {
                     strikethroughView.removeFromSuperview()
                     cell.contentLab.textColor = contentOriginalColor
-//                    cell.timeLab.textColor = timeOriginalColor
                     self.getToDoData()
                     self.refreshAllTableView()
                 }
@@ -798,7 +801,7 @@ extension ToDoVC: UITableViewDelegate {
             model = self.otherToDoAry[indexPath.row]
         }
         
-        let deleteAction = UIContextualAction(style: .destructive, title: " ") { action, sourceView, completionHandler in
+        let deleteAction = UIContextualAction(style: .destructive, title: "  ") { action, sourceView, completionHandler in
             self.deleteTableViewModel(model)
             TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -807,8 +810,8 @@ extension ToDoVC: UITableViewDelegate {
         }
         deleteAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FF6262", alpha: 1), dark: UIColor(hexString: "#FF6262", alpha: 1))
 
-        let stickyAction = UIContextualAction(style: .destructive, title: " ") { action, sourceView, completionHandler in
-            model.isPinned = true
+        let stickyAction = UIContextualAction(style: .destructive, title: model.isPinned ? "aaaaaaaaa" : "  ") { action, sourceView, completionHandler in
+            model.isPinned.toggle()
             model.lastModifyTime = Int(Date().timeIntervalSince1970)
             model.resetOverdueTime(NSDate.nowTimestamp())
             TodoSyncTool.share().alterTodo(with: model, needRecord: true)
@@ -818,11 +821,7 @@ extension ToDoVC: UITableViewDelegate {
         stickyAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#5263FF", alpha: 1), dark: UIColor(hexString: "#5852FF", alpha: 1))
         
         let action: [UIContextualAction]
-        if model.isPinned {
-            action = [deleteAction]
-        } else {
-            action = [deleteAction, stickyAction]
-        }
+        action = [deleteAction, stickyAction]
         let configuration = UISwipeActionsConfiguration(actions: action)
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
@@ -847,16 +846,11 @@ extension ToDoVC: UITableViewDelegate {
                        subView.subviews.count >= 1 {
                         let swipeView = subView.subviews.first
                         swipeView?.backgroundColor = .clear
-                        if !model.isPinned,
-                           swipeView?.subviews.count ?? 0 >= 2 {
+                        if swipeView?.subviews.count ?? 0 >= 2 {
                             let deleteBtn = swipeView?.subviews[1]
                             let stickyBtn = swipeView?.subviews[0]
                             configDeleteButton(deleteBtn as! UIButton, model: model)
                             configStickyButton(stickyBtn as! UIButton, model: model)
-                        } else if model.isPinned,
-                                  swipeView?.subviews.count ?? 0 >= 1 {
-                            let deleteBtn = swipeView?.subviews[0]
-                            configDeleteButton(deleteBtn as! UIButton, model: model)
                         }
                     }
                 }
@@ -870,16 +864,11 @@ extension ToDoVC: UITableViewDelegate {
                             if let swipeActionPullClass = NSClassFromString("UISwipeActionPullView") {
                                 if actionView.isKind(of: swipeActionPullClass) {
                                     actionView.backgroundColor = .clear
-                                    if !model.isPinned,
-                                       actionView.subviews.count >= 2 {
+                                    if actionView.subviews.count >= 2 {
                                         let deleteBtn = actionView.subviews[1]
                                         let stickyBtn = actionView.subviews[0]
                                         configDeleteButton(deleteBtn as! UIButton, model: model)
                                         configStickyButton(stickyBtn as! UIButton, model: model)
-                                    } else if model.isPinned,
-                                              actionView.subviews.count >= 1 {
-                                        let deleteBtn = actionView.subviews[0]
-                                        configDeleteButton(deleteBtn as! UIButton, model: model)
                                     }
                                 }
                             }
@@ -893,16 +882,11 @@ extension ToDoVC: UITableViewDelegate {
             for subView in tableCell.subviews {
                 if let cellDeleteConfirmationClass = NSClassFromString("UITableViewCellDeleteConfirmationView") {
                     if subView.isKind(of: cellDeleteConfirmationClass) {
-                        if !model.isPinned,
-                           subView.subviews.count >= 2 {
+                        if subView.subviews.count >= 2 {
                             let deleteBtn = subView.subviews[1]
                             let stickyBtn = subView.subviews[0]
                             configDeleteButton(deleteBtn as! UIButton, model: model)
                             configStickyButton(stickyBtn as! UIButton, model: model)
-                        } else if model.isPinned,
-                                  subView.subviews.count >= 1 {
-                            let deleteBtn = subView.subviews[0]
-                            configDeleteButton(deleteBtn as! UIButton, model: model)
                         }
                     }
                 }
