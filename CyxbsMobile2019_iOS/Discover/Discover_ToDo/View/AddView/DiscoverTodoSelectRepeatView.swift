@@ -67,6 +67,10 @@ class DiscoverTodoSelectRepeatView: DiscoverTodoSetRemindBasicView, UIPickerView
     func refreshUI(repeatMode: TodoDataModelRepeatMode, dateArr: [String]) {
         self.repeatMode = repeatMode
         self.dateArr = dateArr
+        
+        scrContenView.subviews.forEach { $0.removeFromSuperview() }
+        btnArr.removeAll()
+        
         switch repeatMode {
         case .NO:
             break

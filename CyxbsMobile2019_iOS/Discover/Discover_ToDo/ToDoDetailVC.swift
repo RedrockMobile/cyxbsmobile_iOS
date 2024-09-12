@@ -83,6 +83,8 @@ class ToDoDetailVC: UIViewController {
         }
         detailView.selectRepeatView.repeatMode = model.repeatMode
         
+        var dateAry: [String] = []
+        
         switch model.repeatMode {
         case .day:
             detailView.repeatScrollView.addSubview(detailView.createRepeatCell(dateStr: "每天", leftPos: 0, width: 64))
@@ -99,7 +101,7 @@ class ToDoDetailVC: UIViewController {
             }
             detailView.repeatScrollView.contentSize = CGSize(width: startLeft, height: detailView.repeatScrollView.height)
             
-            detailView.selectRepeatView.dateArr = model.weekArr
+            dateAry = model.weekArr
         case .month:
             var startLeft = 0.0
             for monthStr in model.dayArr {
@@ -112,10 +114,13 @@ class ToDoDetailVC: UIViewController {
             }
             detailView.repeatScrollView.contentSize = CGSize(width: startLeft, height: detailView.repeatScrollView.height)
             
-            detailView.selectRepeatView.dateArr = model.dayArr
+            dateAry = model.dayArr
         default:
             detailView.repeatScrollView.addSubview(detailView.createNotRepeateCell())
         }
+        
+        // refresh ui
+        detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: dateAry)
     }
     
     // 设置类型
@@ -211,7 +216,7 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
         switch model.repeatMode {
         case .day :
             model.repeatMode = .NO
-            detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: [])
+            //detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: [])
         case .week:
             guard let num = stringMap[str] else { return }
             if let index = model.weekArr.firstIndex(of: "\(num)") {
@@ -220,7 +225,7 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
             if model.weekArr.isEmpty {
                 model.repeatMode = .NO
             }
-            detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.weekArr)
+            //detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.weekArr)
         case .month:
             guard let num = stringMap[str] else { return }
             if let index = model.dayArr.firstIndex(of: "\(num)") {
@@ -229,7 +234,7 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
             if model.dayArr.isEmpty {
                 model.repeatMode = .NO
             }
-            detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.dayArr)
+            //detailView.selectRepeatView.refreshUI(repeatMode: model.repeatMode, dateArr: model.dayArr)
         default:
             break
         }
