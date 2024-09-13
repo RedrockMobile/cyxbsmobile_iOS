@@ -810,7 +810,7 @@ extension ToDoVC: UITableViewDelegate {
         }
         deleteAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FF6262", alpha: 1), dark: UIColor(hexString: "#FF6262", alpha: 1))
 
-        let stickyAction = UIContextualAction(style: .destructive, title: model.isPinned ? "aaaaaaaaa" : "  ") { action, sourceView, completionHandler in
+        let stickyAction = UIContextualAction(style: .destructive, title: model.isPinned ? "aaaaaaaaaaa" : "  ") { action, sourceView, completionHandler in
             model.isPinned.toggle()
             model.lastModifyTime = Int(Date().timeIntervalSince1970)
             model.resetOverdueTime(NSDate.nowTimestamp())
