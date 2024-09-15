@@ -181,6 +181,10 @@ extension ActivityCollectionVC: ActivityDetailVCDelegate {
     func updateModel(indexPathNum: Int, wantToWatch: Bool) {
         self.activitiesModel.activities[indexPathNum].wantToWatch = wantToWatch
     }
+    
+    func updateModel(indexPathNum: Int, addToDo: Bool) {
+        self.activitiesModel.activities[indexPathNum].isAdded = addToDo
+    }
 }
 
 // MARK: - JXSegmentedListContainerViewListDelegate，返回containerView展示的视图

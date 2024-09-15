@@ -12,6 +12,7 @@ import Alamofire
 
 protocol ActivityDetailVCDelegate: AnyObject {
     func updateModel(indexPathNum: Int, wantToWatch: Bool)
+    func updateModel(indexPathNum: Int, addToDo: Bool)
 }
 
 class ActivityDetailVC: UIViewController {
@@ -357,11 +358,14 @@ class ActivityDetailVC: UIViewController {
             case.success(let jsonData):
                 let responseData = StandardResponse(from: jsonData)
                 if responseData.status == 10000 {
-                    RemindHUD.shared().showDefaultHUD(withText: "添加代办成功")
+                    RemindHUD.shared().showDefaultHUD(withText: "添加待办成功")
                     self.detailView.addTodoButton.isEnabled = false
-                } else if responseData.status == 50004 {
-                    RemindHUD.shared().showDefaultHUD(withText: "已经添加代办，请勿重复添加")
+                    self.delegate?.updateModel(indexPathNum: self.numOfIndexPath, addToDo: true)
+                } else if responseData.status == 50003 {
+                    RemindHUD.shared().showDefaultHUD(withText: "已经添加待办，请勿重复添加")
                     self.detailView.addTodoButton.isEnabled = false
+                } else {
+                    RemindHUD.shared().showDefaultHUD(withText: responseData.info)
                 }
                 break
             case.failure(_):
