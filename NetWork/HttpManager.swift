@@ -408,6 +408,6 @@ extension HttpManager {
         let parameters: [String: Any] = [
             "activity_id": activity_id
         ]
-        return SessionManager.shared.ry_request(APIConfig.current.api("/magipoke-ufield/activity/addTodo"), method: .post, parameters: parameters, encoding: URLEncoding.queryString)
+        return SessionManager.shared.ry_request(APIConfig.current.api("/magipoke-ufield/activity/addTodo"), method: .put, parameters: parameters, encoding: URLEncoding.queryString)
     }
 }

@@ -228,6 +228,10 @@ extension ActivitySearchVC: ActivityDetailVCDelegate {
     func updateModel(indexPathNum: Int, wantToWatch: Bool) {
         self.activitiesModel.activities[indexPathNum].wantToWatch = wantToWatch
     }
+    
+    func updateModel(indexPathNum: Int, addToDo: Bool) {
+        self.activitiesModel.activities[indexPathNum].isAdded = addToDo
+    }
 }
 
 

@@ -148,4 +148,8 @@ extension ActivityRankingListVC: ActivityDetailVCDelegate {
     func updateModel(indexPathNum: Int, wantToWatch: Bool) {
         self.hitActivities.activities[indexPathNum].wantToWatch = wantToWatch
     }
+    
+    func updateModel(indexPathNum: Int, addToDo: Bool) {
+        self.hitActivities.activities[indexPathNum].isAdded = addToDo
+    }
 }

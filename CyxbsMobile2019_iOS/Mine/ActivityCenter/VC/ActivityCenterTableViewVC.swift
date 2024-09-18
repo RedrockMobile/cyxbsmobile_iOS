@@ -81,6 +81,10 @@ extension ActivityCenterTableViewVC: ActivityDetailVCDelegate {
     func updateModel(indexPathNum: Int, wantToWatch: Bool) {
         self.activities[indexPathNum].wantToWatch = wantToWatch
     }
+    
+    func updateModel(indexPathNum: Int, addToDo: Bool) {
+        self.activities[indexPathNum].isAdded = addToDo
+    }
 }
 // MARK: - JXSegmentedListContainerViewListDelegate，返回containerView展示的视图
 extension ActivityCenterTableViewVC: JXSegmentedListContainerViewListDelegate {
