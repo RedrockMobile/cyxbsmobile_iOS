@@ -288,7 +288,10 @@ extension ToDoFinderVC: UITableViewDelegate {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         self.getToDoData()
                         self.relayoutTableView()
+                        completionHandler(true)
                     }
+                } else if action.title == "取消" {
+                    completionHandler(false)
                 }
             }
             self.present(alertVC, animated: true)
