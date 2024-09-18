@@ -20,7 +20,7 @@ class ToDoFinderVC: UIViewController {
     private var entireToDoAry: [TodoDataModel] = []
     
     // MARK: - Lazy
-    lazy var titleLab: UILabel = {
+    private lazy var titleLab: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .ry(light: "#15315B", dark: "#F0F0F2")
@@ -29,7 +29,7 @@ class ToDoFinderVC: UIViewController {
         return label
     }()
     
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.estimatedRowHeight = 0
         tableView.contentInsetAdjustmentBehavior = .never
@@ -47,14 +47,14 @@ class ToDoFinderVC: UIViewController {
         return tableView
     }()
     
-    lazy var seperateLine: UIView = {
+    private lazy var seperateLine: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(light: UIColor(hexString: "#2A4E84", alpha: 0.1), dark: UIColor(hexString: "#2D2D2D", alpha: 0.5))
         view.frame = CGRect(x: 0, y: view.height - 1, width: view.width, height: 1)
         return view
     }()
     
-    lazy var emptyView: UIView = {
+    private lazy var emptyView: UIView = {
         let label = UILabel(frame: CGRect(x: 70, y: 84, width: 226, height: 25))
         label.text = "还没有待做事项哦~快去添加吧"
         label.textColor = UIColor(light: UIColor(hexString: "#15315B", alpha: 0.6), dark: UIColor(hexString: "#F0F0F2", alpha: 0.38))
@@ -145,7 +145,7 @@ class ToDoFinderVC: UIViewController {
         cellBtn.titleLabel?.font = .systemFont(ofSize: 14)
         cellBtn.setTitleColor(UIColor(.dm, light: UIColor(hexString: "#FFFFFF", alpha: 1), dark: UIColor(hexString: "#FFFFFF", alpha: 1)), for: .normal)
         if model.timeStr.isEmpty && model.overdueTimeStr.isEmpty {
-            horizontalImgAndTextOnBtn(cellBtn)
+            horizontalImgAndTextOnDeleteBtn(cellBtn)
         } else {
             centerImgAndTextOnBtn(cellBtn)
         }
@@ -154,16 +154,23 @@ class ToDoFinderVC: UIViewController {
     
     // 配置左滑的置顶按钮
     private func configStickyButton(_ button: UIButton, model: TodoDataModel) {
-        button.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#5263FF", alpha: 1), dark: UIColor(hexString: "#5263FF", alpha: 1))
+        button.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#5263FF", alpha: 1), dark: UIColor(hexString: "#5852FF", alpha: 1))
+        
+        for subview in button.subviews {
+            if subview.isKind(of: UILabel.classForCoder())
+                || subview.isKind(of: UIImageView.classForCoder()) {
+                subview.alpha = 0
+            }
+        }
         
         let cellBtn = UIButton()
         cellBtn.frame = button.frame
-        cellBtn.setImage(UIImage(named: "置顶"), for: .normal)
-        cellBtn.setTitle("置顶", for: .normal)
-        cellBtn.titleLabel?.font = .systemFont(ofSize: 14)
+        cellBtn.setImage(UIImage(named: model.isPinned ? "cancelSticky" : "置顶"), for: .normal)
+        cellBtn.setTitle(model.isPinned ? "取消置顶" : "置顶", for: .normal)
+        cellBtn.titleLabel?.font = .systemFont(ofSize: model.isPinned ? 12 : 14)
         cellBtn.setTitleColor(UIColor(.dm, light: UIColor(hexString: "#FFFFFF", alpha: 1), dark: UIColor(hexString: "#FFFFFF", alpha: 1)), for: .normal)
         if model.timeStr.isEmpty && model.overdueTimeStr.isEmpty {
-            horizontalImgAndTextOnBtn(cellBtn)
+            horizontalImgAndTextOnStickyBtn(cellBtn)
         } else {
             centerImgAndTextOnBtn(cellBtn)
         }
@@ -178,9 +185,14 @@ class ToDoFinderVC: UIViewController {
         button.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height / 2 + 3), left: titleSize.width / 2, bottom: titleSize.height / 2 + 3, right: -(titleSize.width / 2))
     }
     
-    // 按钮图片文字左右分布
-    private func horizontalImgAndTextOnBtn(_ button: UIButton) {
+    // 删除按钮图片文字左右分布
+    private func horizontalImgAndTextOnDeleteBtn(_ button: UIButton) {
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: -3)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -3, bottom: 0, right: 3)
+    }
+    
+    // 置顶按钮图片文字左右分布
+    private func horizontalImgAndTextOnStickyBtn(_ button: UIButton) {
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -3, bottom: 0, right: 3)
     }
     
@@ -269,31 +281,32 @@ extension ToDoFinderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let model = self.entireToDoAry[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: " ") { action, sourceView, completionHandler in
-            self.deleteTableViewModel(self.entireToDoAry[indexPath.row])
-            TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self.getToDoData()
-                self.relayoutTableView()
+            let alertVC = UIAlertController.normalType(title: "确认删除？", content: "是否确定删除,删除后无法恢复。", cancelText: "取消", sureText: "确认") { action in
+                if action.title == "确认" {
+                    self.deleteTableViewModel(self.entireToDoAry[indexPath.row])
+                    TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        self.getToDoData()
+                        self.relayoutTableView()
+                    }
+                }
             }
+            self.present(alertVC, animated: true)
         }
         deleteAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FF6262", alpha: 1), dark: UIColor(hexString: "#FF6262", alpha: 1))
 
-        let stickyAction = UIContextualAction(style: .destructive, title: " ") { action, sourceView, completionHandler in
-            model.isPinned = true
+        let stickyAction = UIContextualAction(style: .destructive, title: model.isPinned ? "aaaaaaaaa" : "  ") { action, sourceView, completionHandler in
+            model.isPinned.toggle()
             model.lastModifyTime = Int(Date().timeIntervalSince1970)
             model.resetOverdueTime(NSDate.nowTimestamp())
             TodoSyncTool.share().alterTodo(with: model, needRecord: true)
             self.getToDoData()
             tableView.reloadData()
         }
-        stickyAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#5263FF", alpha: 1), dark: UIColor(hexString: "#5263FF", alpha: 1))
+        stickyAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#5263FF", alpha: 1), dark: UIColor(hexString: "#5852FF", alpha: 1))
         
         let action: [UIContextualAction]
-        if model.isPinned {
-            action = [deleteAction]
-        } else {
-            action = [deleteAction, stickyAction]
-        }
+        action = [deleteAction, stickyAction]
         let configuration = UISwipeActionsConfiguration(actions: action)
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
@@ -308,16 +321,11 @@ extension ToDoFinderVC: UITableViewDelegate {
                        subView.subviews.count >= 1 {
                         let swipeView = subView.subviews.first
                         swipeView?.backgroundColor = .clear
-                        if !model.isPinned,
-                           swipeView?.subviews.count ?? 0 >= 2 {
+                        if swipeView?.subviews.count ?? 0 >= 2 {
                             let deleteBtn = swipeView?.subviews[1]
                             let stickyBtn = swipeView?.subviews[0]
                             configDeleteButton(deleteBtn as! UIButton, model: model)
                             configStickyButton(stickyBtn as! UIButton, model: model)
-                        } else if model.isPinned,
-                                  swipeView?.subviews.count ?? 0 >= 1 {
-                            let deleteBtn = swipeView?.subviews[0]
-                            configDeleteButton(deleteBtn as! UIButton, model: model)
                         }
                     }
                 }
@@ -331,16 +339,11 @@ extension ToDoFinderVC: UITableViewDelegate {
                             if let swipeActionPullClass = NSClassFromString("UISwipeActionPullView") {
                                 if actionView.isKind(of: swipeActionPullClass) {
                                     actionView.backgroundColor = .clear
-                                    if !model.isPinned,
-                                       actionView.subviews.count >= 2 {
+                                    if actionView.subviews.count >= 2 {
                                         let deleteBtn = actionView.subviews[1]
                                         let stickyBtn = actionView.subviews[0]
                                         configDeleteButton(deleteBtn as! UIButton, model: model)
                                         configStickyButton(stickyBtn as! UIButton, model: model)
-                                    } else if model.isPinned,
-                                              actionView.subviews.count >= 1 {
-                                        let deleteBtn = actionView.subviews[0]
-                                        configDeleteButton(deleteBtn as! UIButton, model: model)
                                     }
                                 }
                             }
