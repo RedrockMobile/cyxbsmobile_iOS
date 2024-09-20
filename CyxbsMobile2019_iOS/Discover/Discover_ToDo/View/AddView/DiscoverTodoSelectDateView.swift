@@ -39,8 +39,9 @@ class DiscoverTodoSelectDateView: DiscoverTodoSetRemindBasicView {
         calendar.locale = Locale(identifier: "zh-CN")
         // 日历中每周第一天为周一
         calendar.firstWeekday = 2
-        // 设置日历的“今天”为“无”，因为不想有特殊的标记
-        calendar.today = nil
+        // 设置日历中当天标注的外观
+        calendar.appearance.titleTodayColor = UIColor.ry(light: "#2DCCEF", dark: "#2DCCEF")
+        calendar.appearance.todayColor = .clear
         calendar.appearance.selectionColor = UIColor.ry(light: "#5552EF", dark: "#5552EF")
         calendar.appearance.titleDefaultColor = UIColor.ry(light: "#15315B", dark: "#FFFFFF")
         calendar.appearance.titlePlaceholderColor = UIColor.ry(light: "#D1D8E4", dark: "#696969")
