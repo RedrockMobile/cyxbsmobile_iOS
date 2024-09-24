@@ -195,7 +195,6 @@ extension ToDoDetailVC: ToDoDetailViewDelegate {
     }
     
     func saveTheChanges() {
-        model.timeStr = ""
         model.overdueTime = 0
         model.titleStr = detailView.nameTextField.text ?? ""
         model.detailStr = detailView.noteTextView.text
