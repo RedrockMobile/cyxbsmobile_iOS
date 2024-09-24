@@ -46,8 +46,6 @@ class ToDoVC: UIViewController {
         view.addSubview(listContainerView)
         view.addSubview(addToDoBtn)
         view.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FFFFFF", alpha: 1), dark: UIColor(hexString: "#000000", alpha: 1))
-        
-        checkIsFirstEntry()
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,31 +67,6 @@ class ToDoVC: UIViewController {
     }
     
     // MARK: - Method
-    
-    // 检查是否是第一次进入邮子清单
-    private func checkIsFirstEntry() {
-        if UserDefaults.standard.object(forKey: "isFirstVisitToDo") == nil || UserDefaults.standard.bool(forKey: "isFirstVisitToDo") == true {
-            uploadTips()
-            UserDefaults.standard.set(false, forKey: "isFirstVisitToDo")
-        }
-    }
-    
-    // 上传首次进入邮子清单的两条提示
-    private func uploadTips() {
-        let modelSecond = TodoDataModel()
-        modelSecond.todoIDStr = String(Int(Date().timeIntervalSince1970) + 1)
-        modelSecond.titleStr = "左滑可置顶或删除"
-        modelSecond.resetOverdueTime(NSDate.nowTimestamp())
-        modelSecond.lastModifyTime = Int(Date().timeIntervalSince1970 + 1)
-        TodoSyncTool.share().saveTodo(with: modelSecond, needRecord: true)
-        
-        let modelThird = TodoDataModel()
-        modelThird.todoIDStr = String(Int(Date().timeIntervalSince1970) + 2)
-        modelThird.titleStr = "点击查看待办详情"
-        modelThird.resetOverdueTime(NSDate.nowTimestamp())
-        modelThird.lastModifyTime = Int(Date().timeIntervalSince1970 + 2)
-        TodoSyncTool.share().saveTodo(with: modelThird, needRecord: true)
-    }
     
     // 获取每种todo待办,置顶的待办在上
     private func getToDoData() {
