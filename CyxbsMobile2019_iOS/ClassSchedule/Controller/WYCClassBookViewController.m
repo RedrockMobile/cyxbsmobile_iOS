@@ -103,7 +103,11 @@
     //初始化self.scrollView，并把它加到self.view上面
     [self addScrollView];
     
-    self.index = self.dateModel.nowWeek;
+    if (self.dateModel.nowWeek.intValue >= 0 && self.dateModel.nowWeek.intValue <= 25) {
+        _index = self.dateModel.nowWeek;
+    } else {
+        _index = 0;
+    }
     
     //添加周选择条、显示本周的条
     [self addTopBarView];

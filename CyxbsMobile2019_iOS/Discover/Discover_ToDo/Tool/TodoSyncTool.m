@@ -779,6 +779,12 @@ static TodoSyncTool* _instance;
     dispatch_queue_t que = dispatch_queue_create("登录成功后添加todo通知使用", DISPATCH_QUEUE_CONCURRENT);
     dispatch_async(que, ^{
         FMResultSet* resultSet = [self getAllTodoResultSet];
+        if (![resultSet hasAnotherRow]) {
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstVisitToDo"] == nil || [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstVisitToDo"] == YES) {
+                [self uploadTips];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirstVisitToDo"];
+            }
+        }
         while ([resultSet next]) {
             TodoDataModel* model = [self resultSetToDataModel:resultSet];
             [TodoDateTool addNotiWithModel:model];
@@ -1343,6 +1349,25 @@ static inline int ForeignWeekToChinaWeek(int week) {
         NSString* todoID = [set stringForColumn:@"todo_id"];
         CCLog(@"%@",todoID);
     }
+}
+
+// 添加两条提示
+- (void)uploadTips {
+    // 创建第一个 TodoDataModel 实例
+    TodoDataModel *modelSecond = [[TodoDataModel alloc] init];
+    modelSecond.todoIDStr = [NSString stringWithFormat:@"%ld", (long)([[NSDate date] timeIntervalSince1970] + 1)];
+    modelSecond.titleStr = @"左滑可置顶或删除";
+    [modelSecond resetOverdueTime:[NSDate nowTimestamp]];
+    modelSecond.lastModifyTime = (NSInteger)[[NSDate date] timeIntervalSince1970] + 1;
+    [self saveTodoWithModel:modelSecond needRecord:YES];
+    
+    // 创建第二个 TodoDataModel 实例
+    TodoDataModel *modelThird = [[TodoDataModel alloc] init];
+    modelThird.todoIDStr = [NSString stringWithFormat:@"%ld", (long)([[NSDate date] timeIntervalSince1970] + 2)];
+    modelThird.titleStr = @"点击查看待办详情";
+    [modelThird resetOverdueTime:[NSDate nowTimestamp]];
+    modelThird.lastModifyTime = (NSInteger)[[NSDate date] timeIntervalSince1970] + 2;
+    [self saveTodoWithModel:modelThird needRecord:YES];
 }
 
 @end

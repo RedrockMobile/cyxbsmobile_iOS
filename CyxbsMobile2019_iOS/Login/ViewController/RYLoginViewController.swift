@@ -160,6 +160,7 @@ extension RYLoginViewController {
                     
                     self.checktoutEmailBiding()
                     self.updatePersonModel()
+                    TodoSyncTool.share().logInSuccess()
                     
                 } else { // status == "20004"
                     ProgressHUD.showError("账号或密码出错")

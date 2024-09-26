@@ -207,17 +207,21 @@ fprintf(stderr,"\n");\
 }()
 
 //获取今日是否已签到
-#define isTodayCheckedIn_BOOL ^(void) {\
+#define isTodayCheckedIn_BOOL ^BOOL(void) {\
     NSString *str = [UserItem defaultItem].week_info;\
-    NSInteger day = NSDate.now.weekday;\
-    if (day==1) {\
-        day = 6;\
-    }else {\
-        day -= 2;\
+    NSInteger day = NSDate.now.weekday; \
+    if (day == 1) {\
+        day = 6; /* 星期天变为6 */ \
+    } else {\
+        day -= 2; /* 其它天数减2 */ \
     }\
-    day = 6-day;\
-    NSString *is = [str substringWithRange:NSMakeRange(day, 1)];\
-    return is.boolValue;\
+    day = 6 - day; /* 获取倒数第几天的索引 */ \
+    if (str.length > day) { /* 检查范围是否有效，避免week_info获取不到时出现崩溃问题 */ \
+        NSString *is = [str substringWithRange:NSMakeRange(day, 1)]; \
+        return is.boolValue; \
+    } else {\
+        return NO; /* 如果长度不够，返回NO */ \
+    }\
 }()
 
 //Bar的高度
