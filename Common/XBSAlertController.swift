@@ -13,7 +13,7 @@ class XBSAlertController: UIViewController {
     // MARK: - Properties
     private lazy var backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .ry(light: "#FFFFFF", dark: "#2C2C2C")
         view.layer.cornerRadius = 12
         view.clipsToBounds = true
         return view
