@@ -259,18 +259,16 @@ extension ToDoFinderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let model = self.entireToDoAry[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: " ") { action, sourceView, completionHandler in
-            let alertVC = UIAlertController.normalType(title: "确认删除？", content: "是否确定删除,删除后无法恢复。", cancelText: "取消", sureText: "确认") { action in
-                if action.title == "确认" {
-                    self.deleteTableViewModel(self.entireToDoAry[indexPath.row])
-                    TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self.getToDoData()
-                        self.relayoutTableView()
-                        completionHandler(true)
-                    }
-                } else if action.title == "取消" {
-                    completionHandler(false)
+            let alertVC = ToDoAlertController {
+                self.deleteTableViewModel(self.entireToDoAry[indexPath.row])
+                TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.getToDoData()
+                    self.relayoutTableView()
+                    completionHandler(true)
                 }
+            } cancelAction: {
+                completionHandler(false)
             }
             self.present(alertVC, animated: true)
         }

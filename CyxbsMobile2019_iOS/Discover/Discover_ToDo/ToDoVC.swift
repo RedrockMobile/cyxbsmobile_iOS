@@ -56,7 +56,6 @@ class ToDoVC: UIViewController {
         listContainerView.frame = CGRect(x: 0, y: segmentedView.bottom, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - segmentedView.bottom)
         addToDoBtn.frame = CGRect(x: SCREEN_WIDTH - 66 - 16, y: SCREEN_HEIGHT - 66 - 66, width: 66, height: 66)
         bottomView.frame = CGRect(x: 0, y: SCREEN_HEIGHT - 95, width: SCREEN_WIDTH, height: 95)
-        alertView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
         todoEmptyView.frame = CGRect(x: 0, y: segmentedView.bottom, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - segmentedView.bottom)
     }
     
@@ -362,13 +361,6 @@ class ToDoVC: UIViewController {
         return bottomView
     }()
     
-    private lazy var alertView: ToDoAlertView = {
-        let alertView = ToDoAlertView(firstLineStr: "是否确定删除", secondLineStr: "删除后无法恢复")
-        alertView.alpha = 0
-        alertView.delegate = self
-        return alertView
-    }()
-    
     private lazy var todoEmptyView: ToDoEmptyView = {
         let todoEmptyView = ToDoEmptyView()
         return todoEmptyView
@@ -433,7 +425,6 @@ extension ToDoVC: ToDoTopViewDelegate {
             segmentedView.isUserInteractionEnabled = false
             view.addSubview(bottomView)
             addToDoBtn.removeFromSuperview()
-            view.addSubview(alertView)
         } else {
             exitBatchManage()
         }
@@ -497,9 +488,17 @@ extension ToDoVC: ToDoBatchManageBottomViewDelegate {
     }
     
     func deleteToDos() {
-        UIView.animate(withDuration: 0.1) {
-            self.alertView.alpha = 1
+        let alertController = ToDoAlertController {
+            for model in self.selectedModel {
+                self.deleteTableViewModel(model)
+                TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
+            }
+            self.exitBatchManage()
+            self.refreshAllTableView()
+        } cancelAction: {
+            print("取消批量删除")
         }
+        self.present(alertController, animated: true)
     }
 }
 
@@ -580,30 +579,6 @@ extension ToDoVC: ToDoTableViewCellDelegate {
             } else {
                 sender.setBackgroundImage(UIImage(named: "未完成圆圈"), for: .normal)
             }
-        }
-    }
-}
-
-// MARK: - ToDoAlertViewDelegate
-
-extension ToDoVC: ToDoAlertViewDelegate {
-    
-    func confirmDecision() {
-        for model in selectedModel {
-            deleteTableViewModel(model)
-            TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
-        }
-        
-        exitBatchManage()
-        refreshAllTableView()
-        UIView.animate(withDuration: 0.1) {
-            self.alertView.alpha = 0
-        }
-    }
-    
-    func cancelDecision() {
-        UIView.animate(withDuration: 0.1) {
-            self.alertView.alpha = 0
         }
     }
 }
@@ -775,11 +750,18 @@ extension ToDoVC: UITableViewDelegate {
         }
         
         let deleteAction = UIContextualAction(style: .destructive, title: "  ") { action, sourceView, completionHandler in
-            self.deleteTableViewModel(model)
-            TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                tableView.reloadData()
+            let alertController = ToDoAlertController {
+                self.deleteTableViewModel(model)
+                TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    tableView.reloadData()
+                    completionHandler(true)
+                }
+            } cancelAction: {
+                completionHandler(false)
             }
+            self.present(alertController, animated: true)
+
         }
         deleteAction.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FF6262", alpha: 1), dark: UIColor(hexString: "#FF6262", alpha: 1))
 

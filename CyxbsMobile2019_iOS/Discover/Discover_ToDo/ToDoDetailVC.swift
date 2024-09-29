@@ -33,7 +33,6 @@ class ToDoDetailVC: UIViewController {
         view.backgroundColor = UIColor(.dm, light: UIColor(hexString: "#FFFFFF", alpha: 1), dark: UIColor(hexString: "#000000", alpha: 1))
         view.addSubview(scrollView)
         scrollView.addSubview(detailView)
-        view.addSubview(alertView)
         
         detailView.nameTextField.text = model.titleStr
         setTimetext(modelStr: model.timeStr)
@@ -48,7 +47,6 @@ class ToDoDetailVC: UIViewController {
         
         scrollView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
         detailView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
-        alertView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT)
     }
     
     // MARK: - Method
@@ -168,13 +166,6 @@ class ToDoDetailVC: UIViewController {
         detailView.selectTypeView.delegate = self
         return detailView
     }()
-    /// 提示框
-    private lazy var alertView: ToDoAlertView = {
-        let alertView = ToDoAlertView(firstLineStr: "是否确定返回", secondLineStr: "返回后修改内容不保存")
-        alertView.alpha = 0
-        alertView.delegate = self
-        return alertView
-    }()
     /// 用来容纳详情页的scrollview
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -189,8 +180,15 @@ class ToDoDetailVC: UIViewController {
 extension ToDoDetailVC: ToDoDetailViewDelegate {
     
     func returnToPrevious() {
-        UIView.animate(withDuration: 0.1) {
-            self.alertView.alpha = 1
+        if detailView.saveBtn.isUserInteractionEnabled {
+            let alertController = XBSAlertController(title: "确定是否返回", message: "返回后修改内容不保存") {
+                self.navigationController?.popViewController(animated: true)
+            } cancelAction: {
+                print("ToDo详情页取消返回")
+            }
+            self.present(alertController, animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -259,21 +257,6 @@ extension ToDoDetailVC: UITextViewDelegate {
         if textView.text.count > 100 {
             showTipsView(frame: CGRect(x: (view.width - 197) / 2, y: view.height - 430 - 36, width: 197, height: 36))
             textView.text = String(textView.text.prefix(100))
-        }
-    }
-}
-
-// MARK: - ToDoAlertViewDelegate
-
-extension ToDoDetailVC: ToDoAlertViewDelegate {
-
-    func confirmDecision() {
-        navigationController?.popViewController(animated: true)
-    }
-
-    func cancelDecision() {
-        UIView.animate(withDuration: 0.1) {
-            self.alertView.alpha = 0
         }
     }
 }
