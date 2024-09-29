@@ -175,9 +175,9 @@
         //避免timeStampOfOnceDate指向过去，且是不重复的情况下，日期反复横跳。
         return timeStamp;
     }
-    //不提醒的情况下，过期时间为那一天的23:59:59
+    //不提醒的情况下，过期时间为那一天的24:00:00
     if ([model.timeStr isEqualToString:@""]) {
-        return [self getOverdueTimeStampFrom:timeStamp remindHour:23 remindMinute:59 remindSecond:59 inModel:model];
+        return [self getOverdueTimeStampFrom:timeStamp remindHour:24 remindMinute:00 remindSecond:00 inModel:model];
     }
     
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
