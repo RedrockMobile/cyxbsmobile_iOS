@@ -20,6 +20,7 @@ class RYFinderViewController: UIViewController {
         vc.delegate = self
         return vc
     }()
+    private var todoHeightConstraint: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,6 @@ class RYFinderViewController: UIViewController {
         setupToDo()
         setupElectric()
         setupSA()
-        updateContentSize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +88,26 @@ class RYFinderViewController: UIViewController {
         let toolsView = FinderToolsView(frame: CGRect(x: marginSpaceForHorizontal, y: newsView.frame.maxY + 20, width: width, height: 70))
         return toolsView
     }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.alignment = .fill
+        stackView.spacing = 1
+        stackView.backgroundColor = UIColor.init(light: UIColor(hexString: "#2A4E84", alpha: 0.1), dark: UIColor(hexString: "#2D2D2D", alpha: 0.5))
+        // 只切上面的圆角
+        let maskPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1000), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 16, height: 16))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = stackView.bounds
+        maskLayer.path = maskPath.cgPath
+        stackView.layer.mask = maskLayer
+        // 设置阴影
+        stackView.layer.shadowOpacity = 0.33
+        stackView.layer.shadowColor = UIColor.hex("#AEB6D3").cgColor
+        stackView.layer.shadowOffset = CGSize(width: 0, height: -5)
+        return stackView
+    }()
 }
 
 extension RYFinderViewController {
@@ -99,49 +119,45 @@ extension RYFinderViewController {
         contentScrollView.addSubview(bannerView)
         contentScrollView.addSubview(newsView)
         contentScrollView.addSubview(toolsView)
+        contentScrollView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.widthAnchor.constraint(equalToConstant: SCREEN_WIDTH),
+            stackView.topAnchor.constraint(equalTo: toolsView.bottomAnchor, constant: 20)
+        ])
     }
     
     func setupToDo() {
-        ToDoMainPageVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 152)
-        ToDoMainPageVC.view.frame.origin.y = toolsView.frame.maxY + 20
-        contentScrollView.addSubview(ToDoMainPageVC.view)
+        ToDoMainPageVC.view.translatesAutoresizingMaskIntoConstraints = false
+        todoHeightConstraint = ToDoMainPageVC.view.heightAnchor.constraint(equalToConstant: 152)
+        todoHeightConstraint?.isActive = true
+        stackView.addArrangedSubview(ToDoMainPageVC.view)
     }
-    
+
     func setupElectric() {
-        electricVC.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 152)
-        electricVC.view.frame.origin.y = ToDoMainPageVC.view.frame.maxY
-        contentScrollView.addSubview(electricVC.view)
+        electricVC.view.heightAnchor.constraint(equalToConstant: 152).isActive = true
+        stackView.addArrangedSubview(electricVC.view)
     }
-    
+
     func setupSA() {
-        sportsVC.view.frame = CGRectMake(0, electricVC.view.frame.maxY, SCREEN_WIDTH, 152)
-        contentScrollView.addSubview(sportsVC.view)
+        sportsVC.view.heightAnchor.constraint(equalToConstant: 152).isActive = true
+        stackView.addArrangedSubview(sportsVC.view)
     }
     
     func reloadData() {
         headerView.reloadData()
         bannerView.request()
     }
-    
-    func updateContentSize() {
-        var contentHeight = SCREEN_HEIGHT
-        for subView in contentScrollView.subviews {
-            contentHeight = max(contentHeight, subView.frame.maxY)
-        }
-        contentHeight += 107 + Constants.safeDistanceBottom
-        UIView.animate(withDuration: 0.5) {
-            self.contentScrollView.contentSize = CGSize(width: self.contentScrollView.frame.width, height: contentHeight)
-        }
-    }
 }
 
 extension RYFinderViewController: ToDoFinderVCDelegate {
-    func updateContentSize(size: CGSize) {
-        UIView.animate(withDuration: 0.5) {
-            self.ToDoMainPageVC.view.frame = CGRectMake(0, self.toolsView.frame.maxY + 20, size.width, size.height)
-            self.electricVC.view.frame.origin.y = self.ToDoMainPageVC.view.frame.maxY
-            self.sportsVC.view.frame.origin.y = self.electricVC.view.frame.maxY
+    func updateContentHeight(height: Double) {
+        todoHeightConstraint?.constant = height
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded() // 强制更新布局
+            var contentHeight = self.stackView.frame.maxY
+            contentHeight += 107 + Constants.safeDistanceBottom
+            self.contentScrollView.contentSize = CGSize(width: self.contentScrollView.frame.width, height: max(contentHeight, self.view.height))
         }
-        self.updateContentSize()
     }
 }

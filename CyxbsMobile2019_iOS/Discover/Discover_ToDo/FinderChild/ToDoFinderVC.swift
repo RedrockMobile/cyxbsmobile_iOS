@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol ToDoFinderVCDelegate: AnyObject {
-    func updateContentSize(size: CGSize)
+    func updateContentHeight(height: Double)
 }
 
 class ToDoFinderVC: UIViewController {
@@ -47,13 +47,6 @@ class ToDoFinderVC: UIViewController {
         return tableView
     }()
     
-    private lazy var seperateLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(light: UIColor(hexString: "#2A4E84", alpha: 0.1), dark: UIColor(hexString: "#2D2D2D", alpha: 0.5))
-        view.frame = CGRect(x: 0, y: view.height - 1, width: view.width, height: 1)
-        return view
-    }()
-    
     private lazy var emptyView: UIView = {
         let label = UILabel(frame: CGRect(x: 70, y: 84, width: 226, height: 25))
         label.text = "还没有待做事项哦~快去添加吧"
@@ -67,16 +60,6 @@ class ToDoFinderVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.ry(light: "#F8F9FC", dark: "#1D1D1D")
-        // 只切上面的圆角
-        let maskPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1000), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 16, height: 16))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = view.bounds
-        maskLayer.path = maskPath.cgPath
-        view.layer.mask = maskLayer
-        // 设置阴影
-        view.layer.shadowOpacity = 0.33
-        view.layer.shadowColor = UIColor.hex("#AEB6D3").cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: -5)
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(pushToDoVC))
         tapGes.delegate = self
         view.addGestureRecognizer(tapGes)
@@ -87,7 +70,6 @@ class ToDoFinderVC: UIViewController {
             make.top.equalTo(view.snp.top).offset(57)
             make.bottom.equalTo(view.snp.bottom).offset(-15)
         }
-        view.addSubview(seperateLine)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,11 +104,7 @@ class ToDoFinderVC: UIViewController {
     
     func relayoutTableView() {
         tableView.size.height = tableView.contentSize.height
-        let newsize = CGSizeMake(tableView.contentSize.width, max(tableView.contentSize.height + 86, 152))
-        delegate?.updateContentSize(size: newsize)
-        UIView.animate(withDuration: 0.5) {
-            self.seperateLine.frame = CGRect(x: 0, y: newsize.height - 1, width: self.view.width, height: 1)
-        }
+        delegate?.updateContentHeight(height: max(tableView.contentSize.height + 86.0, 152))
         if entireToDoAry.isEmpty {
             view.addSubview(emptyView)
         } else {

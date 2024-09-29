@@ -51,21 +51,10 @@
     [self addSubview:self.electricFeeTitle];
 }
 
-- (void)addSeperateLine {
-    UIView *line = [[UIView alloc]init];
-    line.backgroundColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#2A4E84" alpha:0.1] darkColor:[UIColor colorWithHexString:@"#2D2D2D" alpha:0.5]];
-    [self addSubview:line];
-    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.equalTo(self);
-        make.height.equalTo(@1);
-    }];
-}
-
 #pragma mark - 未绑定部分
 - (void)addNoBindingView {
     [self removeAllSubviews];
     [self addTitle];
-    [self addSeperateLine];
     [self addHintLabel];
 }
 
@@ -81,7 +70,6 @@
 - (void)addBindingView {
     [self removeAllSubviews];
     [self addTitle];
-    [self addSeperateLine];
     //其中涉及网络请求的有time,money,consume
     [self addElectricFeeTime];
     [self addElectricFeeMoney];
