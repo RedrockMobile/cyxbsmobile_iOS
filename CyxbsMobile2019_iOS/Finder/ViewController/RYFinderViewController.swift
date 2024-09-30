@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class RYFinderViewController: UIViewController {
     
@@ -128,19 +129,23 @@ extension RYFinderViewController {
     }
     
     func setupToDo() {
-        ToDoMainPageVC.view.translatesAutoresizingMaskIntoConstraints = false
-        todoHeightConstraint = ToDoMainPageVC.view.heightAnchor.constraint(equalToConstant: 152)
-        todoHeightConstraint?.isActive = true
+        ToDoMainPageVC.view.snp.makeConstraints { make in
+            make.height.equalTo(152)
+        }
         stackView.addArrangedSubview(ToDoMainPageVC.view)
     }
 
     func setupElectric() {
-        electricVC.view.heightAnchor.constraint(equalToConstant: 152).isActive = true
+        electricVC.view.snp.makeConstraints { make in
+            make.height.equalTo(152)
+        }
         stackView.addArrangedSubview(electricVC.view)
     }
 
     func setupSA() {
-        sportsVC.view.heightAnchor.constraint(equalToConstant: 152).isActive = true
+        sportsVC.view.snp.makeConstraints { make in
+            make.height.equalTo(152)
+        }
         stackView.addArrangedSubview(sportsVC.view)
     }
     
@@ -152,8 +157,10 @@ extension RYFinderViewController {
 
 extension RYFinderViewController: ToDoFinderVCDelegate {
     func updateContentHeight(height: Double) {
-        todoHeightConstraint?.constant = height
         UIView.animate(withDuration: 0.3) {
+            self.ToDoMainPageVC.view.snp.updateConstraints({ make in
+                make.height.equalTo(height)
+            })
             self.view.layoutIfNeeded() // 强制更新布局
             var contentHeight = self.stackView.frame.maxY
             contentHeight += 107 + Constants.safeDistanceBottom

@@ -488,7 +488,8 @@ extension ToDoVC: ToDoBatchManageBottomViewDelegate {
     }
     
     func deleteToDos() {
-        let alertController = ToDoAlertController {
+        let alertController = ToDoAlertController { [weak self] in
+            guard let self = self else { return }
             for model in self.selectedModel {
                 self.deleteTableViewModel(model)
                 TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
@@ -750,7 +751,8 @@ extension ToDoVC: UITableViewDelegate {
         }
         
         let deleteAction = UIContextualAction(style: .destructive, title: "  ") { action, sourceView, completionHandler in
-            let alertController = ToDoAlertController {
+            let alertController = ToDoAlertController { [weak self] in
+                guard let self = self else { return }
                 self.deleteTableViewModel(model)
                 TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

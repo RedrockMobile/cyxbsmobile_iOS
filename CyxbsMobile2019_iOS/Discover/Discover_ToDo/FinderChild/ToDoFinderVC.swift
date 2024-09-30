@@ -259,7 +259,8 @@ extension ToDoFinderVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let model = self.entireToDoAry[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: " ") { action, sourceView, completionHandler in
-            let alertVC = ToDoAlertController {
+            let alertVC = ToDoAlertController { [weak self] in
+                guard let self = self else { return }
                 self.deleteTableViewModel(self.entireToDoAry[indexPath.row])
                 TodoSyncTool.share().deleteTodo(withTodoID: model.todoIDStr, needRecord: true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

@@ -7,6 +7,7 @@
 //  掌邮风格的AlertController
 
 import UIKit
+import SnapKit
 
 class XBSAlertController: UIViewController {
 
@@ -52,7 +53,7 @@ class XBSAlertController: UIViewController {
     private var cancelAction: (() -> Void)?
 
     // MARK: - Life Cycle
-    init(title: String?, titleFont: UIFont = .systemFont(ofSize: 15), message: String?, messageFont: UIFont = .systemFont(ofSize: 15), titleOfConfirmButton: String = "确定", confirmAction: (() -> Void)?, titleOfCancelButton: String = "取消", cancelAction: (() -> Void)?) {
+    init(title: String?, titleFont: UIFont = .systemFont(ofSize: 15), message: String?, messageFont: UIFont = .systemFont(ofSize: 15), confirmTitle: String = "确定", cancelTitle: String = "取消", confirmAction: (() -> Void)?, cancelAction: (() -> Void)?) {
         super.init(nibName: nil, bundle: nil)
         
         self.modalTransitionStyle = .crossDissolve
@@ -72,8 +73,8 @@ class XBSAlertController: UIViewController {
         titleLabel.font = titleFont
         messageLabel.text = message
         messageLabel.font = messageFont
-        cancelButton.setTitle(titleOfCancelButton, for: .normal)
-        confirmButton.setTitle(titleOfConfirmButton, for: .normal)
+        cancelButton.setTitle(cancelTitle, for: .normal)
+        confirmButton.setTitle(confirmTitle, for: .normal)
         setupConstraints()
         
         let maskTapGes = UITapGestureRecognizer(target: self, action: #selector(didTapView))
@@ -94,40 +95,38 @@ class XBSAlertController: UIViewController {
     }
     
     private func setupConstraints() {
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        cancelButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            // Background view constraints
-            backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            backgroundView.widthAnchor.constraint(equalToConstant: 303),
-            backgroundView.heightAnchor.constraint(greaterThanOrEqualToConstant: 171),
+        backgroundView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.width.equalTo(303)
+            make.height.greaterThanOrEqualTo(171)
+        }
 
-            // Title label constraints
-            titleLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 31),
-            titleLabel.leftAnchor.constraint(equalTo: backgroundView.leftAnchor, constant: 16),
-            titleLabel.rightAnchor.constraint(equalTo: backgroundView.rightAnchor, constant: -16),
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(backgroundView).offset(31)
+            make.left.equalTo(backgroundView).offset(16)
+            make.right.equalTo(backgroundView).offset(-16)
+        }
 
-            // Message label constraints
-            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 1),
-            messageLabel.leftAnchor.constraint(equalTo: backgroundView.leftAnchor, constant: 16),
-            messageLabel.rightAnchor.constraint(equalTo: backgroundView.rightAnchor, constant: -16),
+        messageLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(1)
+            make.left.equalTo(backgroundView).offset(16)
+            make.right.equalTo(backgroundView).offset(-16)
+        }
 
-            // Button constraints
-            cancelButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 26.5),
-            cancelButton.leftAnchor.constraint(equalTo: backgroundView.leftAnchor, constant: 49.5),
-            cancelButton.widthAnchor.constraint(equalToConstant: 92),
-            cancelButton.heightAnchor.constraint(equalToConstant: 36),
+        cancelButton.snp.makeConstraints { make in
+            make.top.equalTo(messageLabel.snp.bottom).offset(26.5)
+            make.left.equalTo(backgroundView).offset(49.5)
+            make.width.equalTo(92)
+            make.height.equalTo(36)
+        }
 
-            confirmButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 26.5),
-            confirmButton.rightAnchor.constraint(equalTo: backgroundView.rightAnchor, constant: -49.5),
-            confirmButton.widthAnchor.constraint(equalToConstant: 92),
-            confirmButton.heightAnchor.constraint(equalToConstant: 36)
-        ])
+        confirmButton.snp.makeConstraints { make in
+            make.top.equalTo(messageLabel.snp.bottom).offset(26.5)
+            make.right.equalTo(backgroundView).offset(-49.5)
+            make.width.equalTo(92)
+            make.height.equalTo(36)
+        }
     }
     
     // MARK: - Methods
