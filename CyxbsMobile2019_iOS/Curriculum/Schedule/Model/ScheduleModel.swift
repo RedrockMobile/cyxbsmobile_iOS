@@ -197,13 +197,9 @@ extension ScheduleModel {
         que.async {
             
             SearchStudentModel.request(info: UserModel.default.token?.stuNum ?? "") { response in
-                switch response {
-                case .success(let model):
+                if case .success(let model) = response {
                     scheduleModel.student = model.first
-                case .failure(let netError):
-                    handle(.failure(netError))
                 }
-                
                 semaphore.signal()
             }
             

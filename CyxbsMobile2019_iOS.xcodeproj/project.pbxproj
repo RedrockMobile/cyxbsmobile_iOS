@@ -367,7 +367,6 @@
 		757729512C85914F00982233 /* ToDoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294D2C85914E00982233 /* ToDoDetailView.swift */; };
 		757729522C85914F00982233 /* ToDoTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294E2C85914E00982233 /* ToDoTypeView.swift */; };
 		757729532C85914F00982233 /* ToDoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577294F2C85914E00982233 /* ToDoVC.swift */; };
-		757729592C85915E00982233 /* ToDoAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729542C85915E00982233 /* ToDoAlertView.swift */; };
 		7577295A2C85915E00982233 /* ToDoBatchManageBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729552C85915E00982233 /* ToDoBatchManageBottomView.swift */; };
 		7577295B2C85915E00982233 /* ToDoEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729562C85915E00982233 /* ToDoEmptyView.swift */; };
 		7577295C2C85915E00982233 /* ToDoTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757729572C85915E00982233 /* ToDoTopView.swift */; };
@@ -440,6 +439,8 @@
 		75FD5F692BC5514500D8302D /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FD5F672BC5514500D8302D /* CustomNavigationController.swift */; };
 		7FBF39F4257B79F30077494E /* ByPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EB257B79F20077494E /* ByPasswordViewController.m */; };
 		7FBF39F6257B79F30077494E /* ByWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF39EF257B79F30077494E /* ByWordViewController.m */; };
+		9AEC13522CA9062300486D26 /* XBSAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC13512CA9062300486D26 /* XBSAlertController.swift */; };
+		9AEC13542CA9396D00486D26 /* ToDoAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AEC13532CA9396D00486D26 /* ToDoAlertController.swift */; };
 		AA0DD8FB286C50E500802324 /* MineMsgCntView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0DD8FA286C50E400802324 /* MineMsgCntView.m */; };
 		AA0DDB51286C8B1900802324 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0DDACB286C8B1900802324 /* MineViewController.m */; };
 		AA0DDB52286C8B1900802324 /* MineUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0DDACD286C8B1900802324 /* MineUserInfoModel.m */; };
@@ -1326,7 +1327,6 @@
 		7577294D2C85914E00982233 /* ToDoDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoDetailView.swift; sourceTree = "<group>"; };
 		7577294E2C85914E00982233 /* ToDoTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTypeView.swift; sourceTree = "<group>"; };
 		7577294F2C85914E00982233 /* ToDoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoVC.swift; sourceTree = "<group>"; };
-		757729542C85915E00982233 /* ToDoAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoAlertView.swift; sourceTree = "<group>"; };
 		757729552C85915E00982233 /* ToDoBatchManageBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoBatchManageBottomView.swift; sourceTree = "<group>"; };
 		757729562C85915E00982233 /* ToDoEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoEmptyView.swift; sourceTree = "<group>"; };
 		757729572C85915E00982233 /* ToDoTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoTopView.swift; sourceTree = "<group>"; };
@@ -1462,6 +1462,8 @@
 		7FBF39EB257B79F20077494E /* ByPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ByPasswordViewController.m; sourceTree = "<group>"; };
 		7FBF39EF257B79F30077494E /* ByWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ByWordViewController.m; sourceTree = "<group>"; };
 		8C1447906DC7EB77D1BE49BD /* Pods-CyxbsMobile2019_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CyxbsMobile2019_iOS.release.xcconfig"; path = "Target Support Files/Pods-CyxbsMobile2019_iOS/Pods-CyxbsMobile2019_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		9AEC13512CA9062300486D26 /* XBSAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XBSAlertController.swift; sourceTree = "<group>"; };
+		9AEC13532CA9396D00486D26 /* ToDoAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAlertController.swift; sourceTree = "<group>"; };
 		AA0DD8F9286C50E400802324 /* MineMsgCntView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineMsgCntView.h; sourceTree = "<group>"; };
 		AA0DD8FA286C50E400802324 /* MineMsgCntView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineMsgCntView.m; sourceTree = "<group>"; };
 		AA0DDACA286C8B1900802324 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -2958,6 +2960,7 @@
 				1476CA6D2AFCD3FD00635848 /* UserModelEX.swift */,
 				14FFFBDF2AF8C0F3005A7EBD /* BaseButton.swift */,
 				B0D1A8D52B15E3C9005B858F /* PopUpInformationVC.swift */,
+				9AEC13512CA9062300486D26 /* XBSAlertController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -4446,10 +4449,10 @@
 			isa = PBXGroup;
 			children = (
 				7551F9CF2C733ABB0072CA88 /* AddView */,
-				757729542C85915E00982233 /* ToDoAlertView.swift */,
 				757729552C85915E00982233 /* ToDoBatchManageBottomView.swift */,
 				757729562C85915E00982233 /* ToDoEmptyView.swift */,
 				757729572C85915E00982233 /* ToDoTopView.swift */,
+				9AEC13532CA9396D00486D26 /* ToDoAlertController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -7020,7 +7023,6 @@
 				1451EA58282BAF0C00A5BB55 /* MessageDetailTitleView.m in Sources */,
 				FC4B3BD22A878457003336C8 /* TemporaryGroupVC.swift in Sources */,
 				FC9E3A922AB6CFF000E3C65F /* ScheduleFact.swift in Sources */,
-				757729592C85915E00982233 /* ToDoAlertView.swift in Sources */,
 				FC5279022AAC471400B09685 /* ClassResultItem.swift in Sources */,
 				B074C03D2AFD20F00086AB07 /* ActivityMineTableViewCell.swift in Sources */,
 				1893DC9526EA3887007E871E /* MGDTimer.m in Sources */,
@@ -7282,6 +7284,7 @@
 				7551F9CC2C69FB810072CA88 /* EmptyClassUnavailableViewController.m in Sources */,
 				14F6F5472AFB8CDA007C7CA6 /* ScheduleModel.swift in Sources */,
 				1A14136C235F524B0001417E /* UIViewController+BackButtonHandler.m in Sources */,
+				9AEC13542CA9396D00486D26 /* ToDoAlertController.swift in Sources */,
 				14B73F7A281BED7B00D08ADD /* MessageMoreCell.m in Sources */,
 				18CDF69D257F91BD006E8E5C /* CQUPTMapSearchResultCell.m in Sources */,
 				14FFFC042AF8C0FD005A7EBD /* HttpManager.swift in Sources */,
@@ -7297,6 +7300,7 @@
 				B00C3C342AF243D60057DDBA /* RemindHUD.m in Sources */,
 				DB34EB3C239BD4550052B65E /* DayLabel.m in Sources */,
 				B0F71C8C2ABC71B200F8B1AC /* AttitudeHomeCell.m in Sources */,
+				9AEC13522CA9062300486D26 /* XBSAlertController.swift in Sources */,
 				B0F08FFA28A24F9000986EB6 /* IdsBindingView.m in Sources */,
 				1476CA6F2AFCD41200635848 /* UserModelEX.swift in Sources */,
 				FCEC87C22A8B69A2007EFBA4 /* SearchAlertVC.swift in Sources */,
@@ -7616,7 +7620,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CyxbsMobile2019_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 727CVV9PLJ;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
@@ -7671,7 +7675,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CyxbsMobile2019_iOS/掌上重邮.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 727CVV9PLJ;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 $(inherited)";
