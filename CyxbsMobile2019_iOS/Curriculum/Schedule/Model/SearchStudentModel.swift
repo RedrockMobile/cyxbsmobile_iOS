@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 struct SearchStudentModel: Codable, Equatable {
     
@@ -48,16 +49,19 @@ extension SearchStudentModel {
 
 extension SearchStudentModel {
     
-    static func request(info: String, handle: @escaping (NetResponse<[SearchStudentModel]>) -> Void) {
-        HttpManager.shared.magipoke_text_search_people(stu: info).ry_JSON { response in
-            switch response {
-            case .success(let model):
-                if let ary = model["data"].array?.map(SearchStudentModel.init) {
-                    handle(.success(ary))
-                }
-            case .failure(let netError):
-                handle(.failure(netError))
-            }
-        }
-    }
+//    static func request(info: String, handle: @escaping (NetResponse<[SearchStudentModel]>) -> Void) {
+//        HttpManager.shared.magipoke_text_search_people(stu: info).ry_JSON { response in
+//            switch response {
+//            case .success(let model):
+//                if let ary = model["data"].array?.map(SearchStudentModel.init) {
+//                    handle(.success(ary))
+//                } else {
+//                    let error = AFError.responseSerializationFailed(reason: .customSerializationFailed(error: NSError(domain: "com.mredrock.com", code: 80001, userInfo: ["info": "success with no data"])))
+//                    handle(.failure(NetError(request: nil, response: nil, error: error)))
+//                }
+//            case .failure(let netError):
+//                handle(.failure(netError))
+//            }
+//        }
+//    }
 }
