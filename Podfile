@@ -45,7 +45,7 @@ target 'CyxbsMobile2019_iOS' do
 
   pod 'FluentDarkModeKit'  # 暗黑模式适配库
   pod 'MarkdownKit'  # Markdown解析库
-  pod 'AlicloudHTTPDNS'  # 阿里云HTTPDNS解析库
+  pod 'AlicloudHTTPDNS', '2.2.0'  # 阿里云HTTPDNS解析库
   
   # pod 'RxSwift'
   pod 'RxCocoa'  # ReactiveX Cocoa扩展库
