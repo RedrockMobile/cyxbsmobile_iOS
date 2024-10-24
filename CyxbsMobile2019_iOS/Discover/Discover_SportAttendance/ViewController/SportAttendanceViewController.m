@@ -11,6 +11,7 @@
 #import "SportAttendanceHeadView.h"
 #import "SportAttendanceTableViewCell.h"
 #import "DateModle.h"
+#import "RemindHUD.h"
 #import "MJRefresh.h"
 
 @interface SportAttendanceViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -38,18 +39,19 @@
     [self addWrongView];
     //判断是否假期
     [self judgeHoliday];
+    self.IsLoad = false;
     if (self.IsLoad) {
         //数据正确加载
         if (self.sAModel.status == 10000) {
             if (self.Isholiday) {
                 [self addHolidayView];
-            }else{
+            } else {
                 [self addSussesView];
             }
-        }else{
+        } else {
             [self addWrongView];
         }
-    }else{
+    } else {
         [self loadNewData];
     }
     
@@ -85,9 +87,7 @@
     cell.userInteractionEnabled =NO;
     cell.backgroundColor = UIColor.clearColor;
     //   显示所有内容
-    if (self.sAModel.sAItemModel.itemAry.count != 0) {
-        cell.sa = self.sAModel.sAItemModel.itemAry[indexPath.row];
-    }
+    cell.sa = self.sAModel.sAItemModel.itemAry[indexPath.section];
     return cell;
 }
 
@@ -198,12 +198,12 @@
 }
 
 //返回的方法
-- (void) back {
+- (void)back {
      [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Method
-- (void) judgeHoliday{
+- (void)judgeHoliday {
     //获取当前周数
     int count = [getNowWeek_NSString.numberValue intValue] ;
     if (count > 19) {
@@ -214,18 +214,28 @@
 }
 
 //加载新数据
-- (void) loadNewData{
-    [self.sAModel requestSuccess:^{
-            if (self.Isholiday) {
-                [self addHolidayView];
-            }else if (self.sAModel.status == 10000){
-                [self addSussesView];
-                //无需向前页面回传数据(返回时会自动重新网络请求)
+- (void)loadNewData {
+    [self.sAModel requestSuccess:^(bool isCachedData) {
+        if (self.Isholiday) {
+            [self addHolidayView];
+        } else if (self.sAModel.status == 10000) {
+            [self addSussesView];
+            //无需向前页面回传数据(返回时会自动重新网络请求)
+            [self.sADetailsTableView reloadData];
+        }
+        if (isCachedData) {
+            NSString *loadTime = [NSUserDefaults.standardUserDefaults   objectForKey:@"Sprot_Loadtime"];
+            NSTimeInterval timeInterval = [loadTime doubleValue];
+            if (timeInterval) {
+                NSDate *loadDate = [[NSDate alloc] initWithTimeIntervalSince1970:timeInterval];
+                NSString *string = [loadDate stringWithFormat:@"MM月dd日 HH:mm"];
+                [RemindHUD.shared showDefaultHUDWithText:[NSString stringWithFormat:@"请求失败，为您展示%@的缓存", string] completion:nil];
             }
-    }
-        failure:^(NSError * _Nonnull error) {
+        }
+        } failure:^(NSError * _Nonnull error) {
             NSLog(@"体育打卡刷新失败");
     }];
+    
     //伪刷新
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 结束刷新
@@ -234,7 +244,7 @@
 }
 
 //获取数据成功加载此视图
-- (void) addSussesView{
+- (void)addSussesView {
     //先移除所有View
     [self.view removeAllSubviews];
     //添加头视图
@@ -253,7 +263,7 @@
     }
 }
 
-- (void) addWrongView{
+- (void)addWrongView {
     //先移除所有View
     [self.view removeAllSubviews];
     self.sADetailsTableView.bounces = NO;
@@ -310,7 +320,7 @@
     }];
 }
 
-- (void) addHolidayView{
+- (void)addHolidayView {
     //先移除所有View
     [self.view removeAllSubviews];
     self.sAModel = nil;

@@ -776,15 +776,15 @@ static TodoSyncTool* _instance;
 - (void)logInSuccess {
     [self initDataBase];
     [self syncData];
+    FMResultSet* resultSet = [self getAllTodoResultSet];
+    if (![resultSet hasAnotherRow]) {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstVisitToDo"] == nil || [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstVisitToDo"] == YES) {
+            [self uploadTips];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirstVisitToDo"];
+        }
+    }
     dispatch_queue_t que = dispatch_queue_create("登录成功后添加todo通知使用", DISPATCH_QUEUE_CONCURRENT);
     dispatch_async(que, ^{
-        FMResultSet* resultSet = [self getAllTodoResultSet];
-        if (![resultSet hasAnotherRow]) {
-            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstVisitToDo"] == nil || [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstVisitToDo"] == YES) {
-                [self uploadTips];
-                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isFirstVisitToDo"];
-            }
-        }
         while ([resultSet next]) {
             TodoDataModel* model = [self resultSetToDataModel:resultSet];
             [TodoDateTool addNotiWithModel:model];
