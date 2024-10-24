@@ -34,13 +34,12 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor dm_colorWithLightColor: [UIColor colorWithHexString:@"#F8F9FC" alpha:1] darkColor: [UIColor colorWithHexString:@"#1D1D1D" alpha:1]];
     //监听IDS绑定是否成功,成功后刷新数据
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(idsBindingSuccess) name:@"IdsBinding_Success" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(idsBindingSuccess) name:@"IdsBinding_Success" object:nil];
     
     //默认为未绑定的失败页
-    [self addFailureView];
+//    [self addFailureView];
     
-    //暂停功能使用页
-    [self addStopView];
+    [self getSportData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -171,49 +170,48 @@
 }
 
 //查询失败,点击进入绑定页
-- (void)addFailureView{
-    [self removeView];
-    [self addbaseView];
-    UILabel *Lab = [[UILabel alloc] init];
-    Lab.font = [UIFont fontWithName:PingFangSCMedium size:14];
-    Lab.textColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#15315B" alpha:0.6] darkColor:[UIColor colorWithHexString:@"#F0F0F2" alpha:0.4]];
-    
-    NSString *keyword = @"教务在线";
-    NSString *result = @"查询失败，请先绑定 教务在线 后再试";
-     
-    // 设置标签文字
-    NSMutableAttributedString *attrituteString = [[NSMutableAttributedString alloc] initWithString:result];
-     
-    // 获取标红的位置和长度
-    NSRange range = [result rangeOfString:keyword];
-     
-    // 设置标签文字的属性
-    [attrituteString setAttributes:@{
-        NSForegroundColorAttributeName:
-            [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#4A44E4" alpha:1] darkColor:[UIColor colorWithHexString:@"#465FFF" alpha:1]],
-        NSFontAttributeName:
-            [UIFont fontWithName:PingFangSCMedium size:14],
-        NSUnderlineStyleAttributeName:
-            [NSNumber numberWithInteger:NSUnderlineStyleSingle]
-    }
-        range:range];
-    
-    // 显示在Label上
-    Lab.attributedText = attrituteString;
-    
-    [self.view addSubview:Lab];
-    [Lab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view);
-        make.centerY.equalTo(self.view).offset(20);
-    }];
-    
-    //点击按钮进入绑定页
-    [_SABtn removeAllTargets];
-    [_SABtn addTarget:self action:@selector(IDSBing) forControlEvents:UIControlEventTouchUpInside];
-}
+//- (void)addFailureView {
+//    [self removeView];
+//    [self addbaseView];
+//    UILabel *Lab = [[UILabel alloc] init];
+//    Lab.font = [UIFont fontWithName:PingFangSCMedium size:14];
+//    Lab.textColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#15315B" alpha:0.6] darkColor:[UIColor colorWithHexString:@"#F0F0F2" alpha:0.4]];
+//    
+//    NSString *keyword = @"教务在线";
+//    NSString *result = @"查询失败，请先绑定 教务在线 后再试";
+//     
+//    // 设置标签文字
+//    NSMutableAttributedString *attrituteString = [[NSMutableAttributedString alloc] initWithString:result];
+//     
+//    // 获取标红的位置和长度
+//    NSRange range = [result rangeOfString:keyword];
+//     
+//    // 设置标签文字的属性
+//    [attrituteString setAttributes:@{
+//        NSForegroundColorAttributeName:
+//            [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#4A44E4" alpha:1] darkColor:[UIColor colorWithHexString:@"#465FFF" alpha:1]],
+//        NSFontAttributeName:
+//            [UIFont fontWithName:PingFangSCMedium size:14],
+//        NSUnderlineStyleAttributeName:
+//            [NSNumber numberWithInteger:NSUnderlineStyleSingle]
+//    }
+//        range:range];
+//    
+//    // 显示在Label上
+//    Lab.attributedText = attrituteString;
+//    
+//    [self.view addSubview:Lab];
+//    [Lab mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self.view);
+//        make.centerY.equalTo(self.view).offset(20);
+//    }];
+//    
+//    //点击按钮进入绑定页
+//    [_SABtn removeAllTargets];
+//}
 
 //当前数据错误，点击进入错误页
-- (void)addWrongView{
+- (void)addWrongView {
     [self removeView];
     [self addbaseView];
     UILabel *Lab = [[UILabel alloc] init];
@@ -232,11 +230,11 @@
 }
 
 //服务功能暂停页
-- (void)addStopView{
+- (void)addErrorView {
     [self removeView];
     [self addbaseView];
     UILabel *Lab = [[UILabel alloc] init];
-    Lab.text = @"当前服务暂停使用";
+    Lab.text = @"查询失败，请检查网络连接";
     Lab.font = [UIFont fontWithName:PingFangSCLight size: 15];
     Lab.textColor = [UIColor dm_colorWithLightColor:[UIColor colorWithHexString:@"#15315B" alpha:1] darkColor:[UIColor colorWithHexString:@"#F0F0F2" alpha:1]];
     [self.view addSubview:Lab];
@@ -259,13 +257,6 @@
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     //填充全屏(原视图不会消失)
     vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
-}
-
-//进入IDS绑定页面
-- (void)IDSBing{
-    UIViewController *vc = [self.router controllerForRouterPath:@"IDSController"];
-    vc.view.backgroundColor = UIColor.whiteColor;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
@@ -293,6 +284,7 @@
             [self addWrongView];
         }
         } failure:^(NSError * _Nonnull error) {
+            [self addErrorView];
             NSLog(@"体育打卡加载失败");
     }];
 }

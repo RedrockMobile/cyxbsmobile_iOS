@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// 暴露在发现页的体育打卡
-@interface DiscoverSAVC : UIViewController
+@interface DiscoverSAVC : UIViewController <RisingRouterHandler>
 
 @end
 
