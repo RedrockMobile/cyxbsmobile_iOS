@@ -11,6 +11,7 @@
 #import "SportAttendanceHeadView.h"
 #import "SportAttendanceTableViewCell.h"
 #import "DateModle.h"
+#import "RemindHUD.h"
 #import "MJRefresh.h"
 
 @interface SportAttendanceViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -214,18 +215,27 @@
 
 //加载新数据
 - (void)loadNewData {
-    [self.sAModel requestSuccess:^{
-            if (self.Isholiday) {
-                [self addHolidayView];
-            }else if (self.sAModel.status == 10000){
-                [self addSussesView];
-                //无需向前页面回传数据(返回时会自动重新网络请求)
-                [self.sADetailsTableView reloadData];
+    [self.sAModel requestSuccess:^(bool isCachedData) {
+        if (self.Isholiday) {
+            [self addHolidayView];
+        } else if (self.sAModel.status == 10000) {
+            [self addSussesView];
+            //无需向前页面回传数据(返回时会自动重新网络请求)
+            [self.sADetailsTableView reloadData];
+        }
+        if (isCachedData) {
+            NSString *loadTime = [NSUserDefaults.standardUserDefaults   objectForKey:@"Sprot_Loadtime"];
+            NSTimeInterval timeInterval = [loadTime doubleValue];
+            if (timeInterval) {
+                NSDate *loadDate = [[NSDate alloc] initWithTimeIntervalSince1970:timeInterval];
+                NSString *string = [loadDate stringWithFormat:@"MM月dd日 HH:mm"];
+                [RemindHUD.shared showDefaultHUDWithText:[NSString stringWithFormat:@"请求失败，为您展示%@的缓存", string] completion:nil];
             }
-    }
-        failure:^(NSError * _Nonnull error) {
+        }
+        } failure:^(NSError * _Nonnull error) {
             NSLog(@"体育打卡刷新失败");
     }];
+    
     //伪刷新
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         // 结束刷新

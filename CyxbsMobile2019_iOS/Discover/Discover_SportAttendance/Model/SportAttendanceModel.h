@@ -32,8 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Item数据传递
 @property (nonatomic, strong, nonnull) SportAttendanceItemModel *sAItemModel;
 
-/// 网络请求
-- (void)requestSuccess:(void (^)(void))success failure:(void (^)(NSError *error))failure;
+/// 网络请求，isDataCached表示数据是否为从缓存中取出
+- (void)requestSuccess:(void (^)(bool isCachedData))success failure:(void (^)(NSError *error))failure;
 
 @end
 

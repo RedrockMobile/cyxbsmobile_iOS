@@ -8,7 +8,6 @@
 
 #import "SportAttendanceModel.h"
 #import "SportAttendanceHeader.h"
-#import "RemindHUD.h"
 
 @implementation SportAttendanceModel
 
@@ -20,7 +19,7 @@
     return self;
 }
 
-- (void)requestSuccess:(void (^)(void))success failure:(void (^)(NSError * _Nonnull))failure {
+- (void)requestSuccess:(void (^)(bool isCachedData))success failure:(void (^)(NSError * _Nonnull))failure {
     //获取当前时间
     [HttpTool.shareTool
      request:Discover_GET_SportAttendance_API
@@ -40,13 +39,13 @@
             self.award = [data[@"award"] intValue];
             self.sAItemModel = [[SportAttendanceItemModel alloc] initWithArray:data[@"item"]];
             //记录下加载时间
-            NSString *lodeTime = [self loadTime];
-            [NSUserDefaults.standardUserDefaults setObject:lodeTime forKey:@"Sprot_Loadtime"];
+            NSString *loadTime = [self loadTime];
+            [NSUserDefaults.standardUserDefaults setValue:loadTime forKey:@"Sprot_Loadtime"];
             //存下数据(后期需改用WCDB)
             [NSUserDefaults.standardUserDefaults setObject:data forKey:@"Sprot_data"];
         }
         if (success) {
-            success();
+            success(NO);
         }
     }
      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -60,8 +59,7 @@
             self.other_total = [data[@"other_total"] intValue];
             self.award = [data[@"award"] intValue];
             self.sAItemModel = [[SportAttendanceItemModel alloc] initWithArray:data[@"item"]];
-            [RemindHUD.shared showDefaultHUDWithText:[NSString stringWithFormat:@"没网了，为您展示%@缓存的信息", [self loadTime]] completion:nil];
-            success();
+            success(YES);
         } else if (failure) {
             failure(error);
         }
