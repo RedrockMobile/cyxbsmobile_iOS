@@ -61,7 +61,7 @@
     
 }
 
-- (void)historyBtnAddConstraints{
+- (void)historyBtnAddConstraints {
     if(self.buttonArray.count==0)return;
     __block int k = 0;
     [self.buttonArray[0] mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -100,6 +100,7 @@
     
     for (int i=0; i<self.buttonArray.count; i++) {
         if([self.buttonArray[i].titleLabel.text isEqualToString:string]){
+            [self.buttonArray[i] removeFromSuperview];
             [self.buttonArray removeObject:self.buttonArray[i]];
             [self.dataArray removeObject:string];
             break;
