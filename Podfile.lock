@@ -185,7 +185,7 @@ SPEC REPOS:
     - AlicloudHTTPDNS
     - AlicloudUTDID
     - AlicloudUtils
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/CocoaPods/specs:
     - AFNetworking
     - Alamofire
     - AMap3DMap-NO-IDFA

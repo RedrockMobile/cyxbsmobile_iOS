@@ -141,6 +141,7 @@ extension ScheduleModel {
                 if case let .success(model) = response, let ary = model["data"].array?.map(SearchStudentModel.init) {
                     scheduleModel.student = ary.first
                 }
+                semaphore.signal()
             }
             
             HttpManager.shared.magipoke_jwzx_kebiao(stu_num: sno).ry_JSON { response in
