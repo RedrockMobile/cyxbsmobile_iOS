@@ -162,8 +162,13 @@ extension RYLoginViewController {
                     self.updatePersonModel()
                     TodoSyncTool.share().logInSuccess()
                     
-                } else { // status == "20004"
+                } else if status == 20004 { // status == "20004"
                     ProgressHUD.showError("账号或密码出错")
+                        
+                } else if status == 40004 {
+                    ProgressHUD.showError("登录过于频繁，请稍后重试")
+                } else {
+                    ProgressHUD.showError(model["data"].stringValue)
                 }
                 
             case .failure(_):

@@ -14,6 +14,6 @@
 #define Discover_POST_idsBinding_API [CyxbsMobileBaseURL_1 stringByAppendingString:@"magipoke/ids/bind"]
 
 ///体育打卡数据查询
-#define Discover_GET_SportAttendance_API [CyxbsMobileBaseURL_1 stringByAppendingString:@"magipoke/sunSport"]
+#define Discover_GET_SportAttendance_API [CyxbsMobileBaseURL_1 stringByAppendingString:@"magipoke-sport/sport"]
 
 #endif /* SportAttendanceHeader_h */

@@ -39,6 +39,7 @@
 #import "SSRButton.h"
 #import "AliyunConfig.h"
 #import "UserItemTool.h"
+#import "RisingRouter.h"
 
 #pragma mark - Group共享
 
