@@ -137,9 +137,9 @@ extension ScheduleModel {
         
         que.async {
             
-            SearchStudentModel.request(info: sno) { response in
-                if case .success(let model) = response {
-                    scheduleModel.student = model.first
+            HttpManager.shared.magipoke_text_search_people(stu: sno).ry_JSON { response in
+                if case let .success(model) = response, let ary = model["data"].array?.map(SearchStudentModel.init) {
+                    scheduleModel.student = ary.first
                 }
                 semaphore.signal()
             }
@@ -196,9 +196,9 @@ extension ScheduleModel {
         
         que.async {
             
-            SearchStudentModel.request(info: UserModel.default.token?.stuNum ?? "") { response in
-                if case .success(let model) = response {
-                    scheduleModel.student = model.first
+            HttpManager.shared.magipoke_text_search_people(stu: UserModel.default.token?.stuNum ?? "").ry_JSON { response in
+                if case let .success(model) = response, let ary = model["data"].array?.map(SearchStudentModel.init) {
+                    scheduleModel.student = ary.first
                 }
                 semaphore.signal()
             }
